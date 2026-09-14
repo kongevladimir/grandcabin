@@ -1,7 +1,7 @@
 # Next.js starter
 
 A plain Next.js App Router boilerplate with TypeScript, CSS, and instructions for
-helping a non-technical owner in [AGENTS.md](AGENTS.md). No hosting is configured.
+helping a non-technical owner in [AGENTS.md](AGENTS.md).
 
 ## Get started
 
@@ -33,3 +33,9 @@ On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 The page is a neutral placeholder, not a finished villa website. Search indexing
 is disabled in `src/app/layout.tsx` until the owner is ready to launch.
+
+## Cloudflare deployment
+
+Cloudflare currently generates the Next.js deployment configuration during its
+build. Keep the package name `grandcabin` aligned with the Cloudflare Worker name:
+the generated `WORKER_SELF_REFERENCE` binding derives from this package name.
