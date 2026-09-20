@@ -1009,6 +1009,21 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-gallery-all-grid figure img { transition: transform .55s ease; }
 .retreat-gallery-all-grid figure:hover img { transform: scale(1.035); }
 .retreat-gallery-all-grid figure > span { position: absolute; z-index: 2; right: .8rem; bottom: .7rem; display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border-radius: 50%; background: rgba(15,24,33,.7); color: #fff; font-size: .58rem; }
+.retreat-tour-page { min-height: calc(100svh - 108px); background: #171e28; color: #fff; }
+.retreat-tour-intro { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(3rem, 9vw, 10rem); align-items: end; padding: clamp(5rem, 9vw, 10rem) clamp(1.4rem, 7vw, 8rem) clamp(4rem, 7vw, 7rem); }
+.retreat-tour-intro > div:first-child > p { color: #d8b687; font-size: .66rem; font-weight: 800; letter-spacing: .15em; }
+.retreat-tour-intro h1 { margin: 1rem 0 0; font-size: clamp(4.2rem, 9vw, 10rem); font-weight: 500; line-height: .84; letter-spacing: -.07em; }
+.retreat-tour-intro > div:last-child { padding-bottom: .7rem; }
+.retreat-tour-intro > div:last-child p { color: #d6dadd; font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.75; }
+.retreat-tour-intro > div:last-child span { display: block; margin-top: 1.5rem; color: #8f9aa4; font-size: .72rem; line-height: 1.6; }
+.retreat-tour-stage { padding: 0 clamp(.5rem, 2vw, 2rem) clamp(7rem, 10vw, 11rem); }
+.retreat-tour-frame { position: relative; height: min(78svh, 900px); min-height: 620px; overflow: hidden; background: #0e131a; box-shadow: 0 30px 90px rgba(0,0,0,.32); }
+.retreat-tour-frame iframe { width: 100%; height: 100%; border: 0; }
+.retreat-tour-caption { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem .4rem 0; }
+.retreat-tour-caption > div { display: flex; align-items: center; gap: 1rem; }
+.retreat-tour-caption span { color: #d8b687; font-size: 1.6rem; font-weight: 600; }
+.retreat-tour-caption p { color: #adb5bd; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+.retreat-tour-caption a { border-bottom: 1px solid #d8b687; padding-bottom: .35rem; color: #d8b687; font-size: .66rem; font-weight: 800; letter-spacing: .08em; }
 
 @media (max-width: 1100px) {
   .retreat-header-pages { grid-template-columns: 150px 1fr auto; gap: 1rem; }
@@ -1048,6 +1063,11 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-gallery-all-title { min-height: 430px; padding-inline: 1.4rem; }
   .retreat-gallery-all-grid { grid-auto-rows: 220px; grid-template-columns: repeat(2, 1fr); }
   .retreat-gallery-all-grid figure.wide { grid-column: span 2; }
+  .retreat-tour-page { min-height: calc(100svh - 88px); }
+  .retreat-tour-intro { grid-template-columns: 1fr; gap: 2rem; padding-block: 4.5rem 3rem; }
+  .retreat-tour-intro h1 { font-size: clamp(3.8rem, 17vw, 6.5rem); }
+  .retreat-tour-frame { height: 68svh; min-height: 520px; }
+  .retreat-tour-caption { align-items: flex-start; flex-direction: column; gap: 1.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

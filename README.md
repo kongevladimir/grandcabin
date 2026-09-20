@@ -25,6 +25,7 @@ Four alternate page structures are available for design comparison:
 - `/concepts/chalet` — formal alpine-luxury editorial presentation.
 - `/concepts/retreat` — contemporary multi-page mountain-retreat presentation.
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
+- `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 
 ## Commands
 

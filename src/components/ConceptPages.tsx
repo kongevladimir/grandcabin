@@ -452,7 +452,7 @@ export function RetreatLongConcept() {
   );
 }
 
-type RetreatPageKey = "cabin" | "bedrooms" | "meetings" | "saunas" | "turufjell" | "materials" | "gallery";
+type RetreatPageKey = "cabin" | "bedrooms" | "meetings" | "saunas" | "turufjell" | "materials" | "gallery" | "tour";
 
 const retreatPaths = [
   "/concepts/retreat/cabin",
@@ -462,12 +462,13 @@ const retreatPaths = [
   "/concepts/retreat/materials",
   "/concepts/retreat/turufjell",
   "/concepts/retreat/gallery",
+  "/concepts/retreat/3d-tour",
 ];
 
 function RetreatNav({ language, setLanguage }: { language: Language; setLanguage: (language: Language) => void }) {
   const labels = language === "nb"
-    ? ["Hytta", "Soverom", "Samlinger", "Badstuer", "Håndverk", "Turufjell", "Galleri"]
-    : ["The cabin", "Bedrooms", "Retreats", "Saunas", "Craftsmanship", "Turufjell", "Gallery"];
+    ? ["Hytta", "Soverom", "Samlinger", "Badstuer", "Håndverk", "Turufjell", "Galleri", "3D-visning"]
+    : ["The cabin", "Bedrooms", "Retreats", "Saunas", "Craftsmanship", "Turufjell", "Gallery", "3D tour"];
 
   return (
     <header className="retreat-header retreat-header-pages">
@@ -513,6 +514,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     materials: { number: "05", title: "Raffinert håndverk.\nNaturlige materialer.", text: "Massiv gran, børstet lerk og naturlige oljer gir Grandcabin en varm og moderne identitet. Hver overflate er valgt for å eldes vakkert og bringe naturen inn i rommene.", photo: "dining", alt: "Treverk og materialer i spisestuen", facts: ["Massiv gran", "Børstet lerk", "Naturlig oljebeis"] },
     turufjell: { number: "06", title: "Fjellet begynner\nutenfor døren.", text: "Ski inn og ut om vinteren, og sykkel, turstier og fiskevann når snøen forsvinner. Turufjell ligger under to timer fra Oslo og 15 minutter fra Flå sentrum.", photo: "terrace", alt: "Utsikten over Turufjell", facts: ["200 m til løype", "400 m til bakke", "Under 2 t fra Oslo"] },
     gallery: { number: "07", title: "Grandcabin\ni bilder.", text: "Se rommene, utsikten og fjellet gjennom årstidene. Alle 75 bilder og full informasjon finner dere i FINN-annonsen.", photo: "exterior", alt: "Grandcabin om vinteren", facts: ["75 bilder på FINN", "Fire årstider", "Ett privat opphold"] },
+    tour: { number: "08", title: "Gå gjennom\nGrandcabin.", text: "Utforsk hytta rom for rom i en interaktiv 3D-visning.", photo: "living", alt: "Grandcabin 3D-visning", facts: ["360° visning", "Tre nivåer", "Utforsk i eget tempo"] },
   };
   const en = {
     cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "Grandcabin offers 360 square metres with wide windows, two kitchens and generous shared spaces. The whole group can gather without losing the intimate mountain atmosphere.", photo: "living", alt: "Living room with a view", facts: ["360 m²", "2 kitchens", "4 bathrooms"] },
@@ -522,6 +524,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     materials: { number: "05", title: "Refined craft.\nNatural materials.", text: "Solid spruce, brushed larch and natural oils give Grandcabin its warm, modern identity. Every surface is chosen to age beautifully and bring nature into the rooms.", photo: "dining", alt: "Timber and materials in the dining room", facts: ["Solid spruce", "Brushed larch", "Natural oil stain"] },
     turufjell: { number: "06", title: "The mountain begins\noutside the door.", text: "Ski in and out in winter, with cycling, trails and fishing lakes when the snow clears. Turufjell is under two hours from Oslo and 15 minutes from Flå village.", photo: "terrace", alt: "The view across Turufjell", facts: ["200 m to trails", "400 m to slopes", "Under 2 h from Oslo"] },
     gallery: { number: "07", title: "Grandcabin\nin pictures.", text: "See the rooms, views and mountain through the seasons. All 75 photos and full information are available in the FINN listing.", photo: "exterior", alt: "Grandcabin in winter", facts: ["75 photos on FINN", "Four seasons", "One private stay"] },
+    tour: { number: "08", title: "Walk through\nGrandcabin.", text: "Explore the cabin room by room in an interactive 3D experience.", photo: "living", alt: "Grandcabin 3D tour", facts: ["360° view", "Three levels", "Explore at your pace"] },
   };
   const t = (language === "nb" ? nb : en)[page];
   const extendedNb = {
@@ -532,6 +535,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     turufjell: { leadTitle: "Vinteren starter ved hytta", leadText: "Langrennsløyper ligger omtrent 200 meter unna, og alpinbakken omtrent 400 meter unna. Mindre transport gir mer tid ute.", leadPhoto: "ski", bannerTitle: "Et fjell for alle årstider", bannerText: "Når snøen forsvinner, åpner området seg for sykkel, fjellturer, fiskevann og lange dager i frisk luft.", bannerPhoto: "cycling", pointsTitle: "Nærmere enn dere tror", points: ["Under 2 timer fra Oslo", "15 minutter til Flå", "Tog og taxi er mulig"] },
     materials: { leadTitle: "Heltre gran, formet av naturen", leadText: "Veggkledningen i massiv gran gir en moderne tolkning av tradisjonelt trehåndverk. Den tilhuggede overflaten skaper dybde og kontrast mot glass, glatte vegger og minimalistiske møbler. Ingen bord gjentar seg – hvert stykke får sitt eget uttrykk.", leadPhoto: "living", bannerTitle: "Børstet lerk med levende dybde", bannerText: "Børstingen fjerner det mykere vårveden og lar den hardere veden og årringene tre tydelig frem. Resultatet er en taktil overflate med naturlige fargevariasjoner, varme og en sterk forbindelse til landskapet.", bannerPhoto: "exterior", pointsTitle: "Materialer som arbeider med rommet", points: ["Massivtre fra Tirol", "Antistatisk og fuktighetsregulerende", "Innvendig og utvendig kledning"] },
     gallery: { leadTitle: "Fra de store rommene til de små detaljene", leadText: "Bildene viser hvordan utsikt, treverk og lys følger dere gjennom hele hytta – fra langbordet og møteplassen til soverommene og badstuen.", leadPhoto: "gathering", bannerTitle: "Samme utsikt. Nye årstider.", bannerText: "Vinteren er dramatisk og lun. Sommeren åpner terrassen og fjellet for lange dager ute.", bannerPhoto: "cycling", pointsTitle: "Se hele historien", points: ["Interiør og rom", "Fjell og aktiviteter", "Alle 75 bilder på FINN"] },
+    tour: { leadTitle: "Se rommene før dere kommer", leadText: "Den interaktive visningen gir et tydelig inntrykk av planløsning, avstander og de store fellesrommene.", leadPhoto: "living", bannerTitle: "Tre nivåer. Ett fjellhjem.", bannerText: "Beveg dere fritt gjennom Grandcabin og finn rommene som passer gruppen.", bannerPhoto: "exterior", pointsTitle: "Utforsk hele hytta", points: ["Interaktiv 3D-visning", "Alle tre nivåer", "Åpne i fullskjerm"] },
   };
   const extendedEn = {
     cabin: { leadTitle: "Made for long days together", leadText: "Two kitchens, two generous dining areas and several living zones make it easy to move between shared meals, quiet conversations and time alone.", leadPhoto: "dining", bannerTitle: "Mountain views from morning to evening", bannerText: "Wide windows bring the changing light and landscape into the interior.", bannerPhoto: "exterior", pointsTitle: "Considered comfort", points: ["Hydronic floor heating", "Balanced ventilation", "Parking at the cabin"] },
@@ -541,6 +545,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     turufjell: { leadTitle: "Winter begins at the cabin", leadText: "Cross-country trails are around 200 metres away and the ski slope around 400 metres away. Less transport means more time outside.", leadPhoto: "ski", bannerTitle: "A mountain for every season", bannerText: "When the snow clears, the area opens for cycling, mountain walks, fishing lakes and long days in fresh air.", bannerPhoto: "cycling", pointsTitle: "Closer than it feels", points: ["Under 2 hours from Oslo", "15 minutes to Flå", "Train and taxi are possible"] },
     materials: { leadTitle: "Solid spruce, shaped by nature", leadText: "Solid spruce wall cladding gives traditional timber craft a modern expression. The hewn surface creates depth and contrast beside glass, smooth walls and minimal furniture. No board repeats; every piece has its own character.", leadPhoto: "living", bannerTitle: "Brushed larch with living depth", bannerText: "Brushing removes the softer earlywood and reveals the harder latewood and annual rings. The result is a tactile surface with natural colour variation, warmth and a strong connection to the landscape.", bannerPhoto: "exterior", pointsTitle: "Materials that work with the room", points: ["Solid timber from Tyrol", "Antistatic and moisture regulating", "Interior and exterior cladding"] },
     gallery: { leadTitle: "From generous spaces to quiet details", leadText: "The photographs show how views, timber and light follow you through the cabin, from the long table and meeting room to bedrooms and saunas.", leadPhoto: "gathering", bannerTitle: "The same view. New seasons.", bannerText: "Winter feels dramatic and intimate. Summer opens the terrace and mountain for long days outside.", bannerPhoto: "cycling", pointsTitle: "See the full story", points: ["Interiors and rooms", "Mountain and activities", "All 75 photos on FINN"] },
+    tour: { leadTitle: "See the rooms before you arrive", leadText: "The interactive view gives a clear sense of the layout, distances and generous shared spaces.", leadPhoto: "living", bannerTitle: "Three levels. One mountain home.", bannerText: "Move freely through Grandcabin and find the rooms that suit your group.", bannerPhoto: "exterior", pointsTitle: "Explore the entire cabin", points: ["Interactive 3D view", "All three levels", "Open full screen"] },
   };
   const more = (language === "nb" ? extendedNb : extendedEn)[page];
   const moreSections = (
@@ -594,6 +599,25 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <div className="retreat-company-strip"><p>{language === "nb" ? "TEAM SOM HAR VALGT GRANDCABIN" : "TEAMS THAT HAVE CHOSEN GRANDCABIN"}</p><div>{["KIWI", "FLYTOGET", "RYSTAD ENERGY", "KPMG", "RSA"].map((company) => <span key={company}>{company}</span>)}</div></div>
     </section>
   );
+
+  if (page === "tour") {
+    return (
+      <div className="concept-page retreat-page retreat-detail-page">
+        <RetreatNav language={language} setLanguage={setLanguage} />
+        <main className="retreat-tour-page">
+          <section className="retreat-tour-intro">
+            <div><p>08 · GRANDCABIN</p><h1>{language === "nb" ? <>Gå gjennom<br />Grandcabin.</> : <>Walk through<br />Grandcabin.</>}</h1></div>
+            <div><p>{language === "nb" ? "Utforsk rommene, planløsningen og utsikten i en interaktiv 3D-visning. Beveg deg mellom alle tre nivåer og opplev hvordan hytta henger sammen før dere kommer." : "Explore the rooms, layout and views in an interactive 3D experience. Move through all three levels and discover how the cabin connects before you arrive."}</p><span>{language === "nb" ? "Klikk i visningen og bruk musen eller fingeren for å bevege deg." : "Click inside the tour and use your mouse or finger to move around."}</span></div>
+          </section>
+          <section className="retreat-tour-stage">
+            <div className="retreat-tour-frame"><iframe title={language === "nb" ? "Interaktiv 3D-visning av Grandcabin" : "Interactive 3D tour of Grandcabin"} src="https://my.matterport.com/show/?m=Cni4Ctd7QSV" allow="autoplay; fullscreen; web-share; xr-spatial-tracking" allowFullScreen /></div>
+            <div className="retreat-tour-caption"><div><span>360°</span><p>{language === "nb" ? "Hele hytta, rom for rom" : "The entire cabin, room by room"}</p></div><a href="https://my.matterport.com/show/?m=Cni4Ctd7QSV" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE 3D-VISNING I FULLSKJERM" : "OPEN 3D TOUR FULL SCREEN"} ↗</a></div>
+          </section>
+        </main>
+        <ConceptSwitcher active="retreat" />
+      </div>
+    );
+  }
 
   if (page === "gallery") {
     return (
