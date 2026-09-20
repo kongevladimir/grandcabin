@@ -950,8 +950,17 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-footer h2 { max-width: 900px; }
 .retreat-detail-footer a { border: 1px solid #17202c; padding: 1.2rem 1.6rem; font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-directions { display: grid; min-height: 800px; grid-template-columns: 54% 46%; background: #d8b687; }
-.retreat-map { min-height: 650px; }
-.retreat-map iframe { width: 100%; height: 100%; border: 0; filter: saturate(.72) contrast(.95); }
+.retreat-map { position: relative; min-height: 650px; overflow: hidden; background: #d4d9c7; }
+.retreat-map-tiles { position: absolute; left: calc(50% - 562px); top: calc(50% - 600px); display: grid; width: 1024px; height: 1024px; grid-template-columns: repeat(4, 256px); grid-template-rows: repeat(4, 256px); filter: saturate(.62) contrast(.92) sepia(.08); }
+.retreat-map-tiles span { width: 256px; height: 256px; background-position: center; background-repeat: no-repeat; background-size: 256px 256px; }
+.retreat-map::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(135deg, rgba(216,182,135,.08), rgba(23,32,44,.12)); }
+.retreat-map-pin { position: absolute; z-index: 2; left: 50%; top: 50%; width: 36px; height: 36px; transform: translate(-50%, -100%) rotate(45deg); border: 4px solid #fff; border-radius: 50% 50% 50% 0; background: #17202c; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.retreat-map-pin i { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; transform: translate(-50%, -50%); border-radius: 50%; background: #d8b687; }
+.retreat-map-credit { position: absolute; z-index: 3; left: .75rem; bottom: .55rem; padding: .25rem .4rem; background: rgba(255,255,255,.88); color: #17202c; font-size: .55rem; }
+.retreat-map-card { position: absolute; z-index: 2; right: 1.5rem; bottom: 1.5rem; display: flex; width: min(310px, calc(100% - 3rem)); flex-direction: column; padding: 1.25rem; background: #17202c; color: #fff; box-shadow: 0 18px 45px rgba(0,0,0,.22); }
+.retreat-map-card span { color: #d8b687; font-size: .58rem; font-weight: 800; letter-spacing: .14em; }
+.retreat-map-card b { margin-top: .45rem; font-size: 1.05rem; font-weight: 600; }
+.retreat-map-card small { margin-top: 1.1rem; color: #d8b687; font-size: .58rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-directions-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 6vw, 7rem); }
 .retreat-directions-copy > p, .retreat-floor-heading > p, .retreat-master-suite > div:last-child > p, .retreat-gathering-heading > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-directions-copy h2, .retreat-floor-heading h2, .retreat-master-suite h2, .retreat-gathering-heading h2 { margin: 1rem 0 2.2rem; font-size: clamp(3rem, 5.5vw, 6.2rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
@@ -995,6 +1004,35 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-company-strip > p { color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-company-strip > div { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(1.5rem, 5vw, 5rem); margin-top: 2rem; }
 .retreat-company-strip span { font-size: clamp(1.1rem, 2.2vw, 2rem); font-weight: 700; letter-spacing: -.03em; }
+.retreat-turufjell-about { display: grid; min-height: 820px; grid-template-columns: 52% 48%; background: #e1c9a7; }
+.retreat-turufjell-about-image { position: relative; min-height: 700px; }
+.retreat-turufjell-about-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 7vw, 8rem); }
+.retreat-turufjell-about-copy > p:first-child, .retreat-turufjell-travel-title > p, .retreat-turufjell-future-head > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
+.retreat-turufjell-about-copy h2, .retreat-turufjell-travel-title h2, .retreat-turufjell-future-head h2 { margin: 1rem 0 2rem; font-size: clamp(3rem, 5.7vw, 6.5rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
+.retreat-turufjell-about-copy > p:not(:first-child) { color: #4d4c49; line-height: 1.85; }
+.retreat-turufjell-about-copy a, .retreat-turufjell-future-grid a { align-self: flex-start; margin-top: 1.4rem; border-bottom: 1px solid #895d34; padding-bottom: .35rem; color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .08em; }
+.retreat-turufjell-travel { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #f2f0eb; }
+.retreat-turufjell-travel-title { display: grid; grid-template-columns: .4fr 1.6fr; gap: 3rem; align-items: start; margin-bottom: 4rem; }
+.retreat-turufjell-travel-title h2 { margin-top: 0; max-width: 920px; }
+.retreat-turufjell-travel-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #c9c6bf; border-bottom: 1px solid #c9c6bf; }
+.retreat-turufjell-travel-grid article { min-height: 330px; padding: 2.2rem; border-right: 1px solid #c9c6bf; }
+.retreat-turufjell-travel-grid article:last-child { border-right: 0; }
+.retreat-turufjell-travel-grid span { color: #bd8e57; font-size: .65rem; font-weight: 800; }
+.retreat-turufjell-travel-grid strong { display: block; margin-top: 3.2rem; font-size: clamp(2rem, 4vw, 4rem); font-weight: 500; letter-spacing: -.05em; }
+.retreat-turufjell-travel-grid h3 { margin: .7rem 0 1rem; font-size: .75rem; letter-spacing: .09em; text-transform: uppercase; }
+.retreat-turufjell-travel-grid p { color: #67717c; line-height: 1.7; }
+.retreat-turufjell-future { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #17202c; color: #fff; }
+.retreat-turufjell-future-head { display: grid; grid-template-columns: 1fr 1fr; column-gap: 5rem; align-items: end; margin-bottom: 5rem; }
+.retreat-turufjell-future-head > p { grid-column: 1 / -1; color: #d8b687; }
+.retreat-turufjell-future-head h2 { margin-bottom: 0; }
+.retreat-turufjell-future-head > span { padding-bottom: .6rem; color: #bfc6cc; line-height: 1.8; }
+.retreat-turufjell-future-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.retreat-turufjell-future-grid article { background: #f2f0eb; color: #17202c; }
+.retreat-turufjell-future-image { position: relative; min-height: 480px; }
+.retreat-turufjell-future-grid article > div:last-child { display: flex; flex-direction: column; align-items: flex-start; padding: 2.4rem; }
+.retreat-turufjell-future-grid article > div:last-child > span { color: #bd8e57; font-size: .66rem; font-weight: 800; }
+.retreat-turufjell-future-grid h3 { margin: 1rem 0; font-size: clamp(2rem, 3vw, 3rem); font-weight: 500; }
+.retreat-turufjell-future-grid p { color: #67717c; line-height: 1.8; }
 .retreat-gallery-all { background: #171e28; color: #fff; }
 .retreat-gallery-all-title { position: relative; display: flex; min-height: 520px; flex-direction: column; justify-content: center; padding: clamp(4rem, 8vw, 9rem); }
 .retreat-gallery-all-title > p { color: #d8b687; font-size: .66rem; font-weight: 800; letter-spacing: .15em; }
@@ -1060,6 +1098,15 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-floor-grid article { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(23,32,44,.22); }
   .retreat-gathering-image { min-height: 430px; }
   .retreat-company-strip > div { gap: 1.5rem; }
+  .retreat-turufjell-about, .retreat-turufjell-future-head { grid-template-columns: 1fr; }
+  .retreat-turufjell-about-image { min-height: 560px; }
+  .retreat-turufjell-about-copy { padding: 4.5rem 1.4rem; }
+  .retreat-turufjell-travel-title { grid-template-columns: 1fr; gap: 1rem; }
+  .retreat-turufjell-travel-grid, .retreat-turufjell-future-grid { grid-template-columns: 1fr; }
+  .retreat-turufjell-travel-grid article { min-height: auto; border-right: 0; border-bottom: 1px solid #c9c6bf; }
+  .retreat-turufjell-travel-grid article:last-child { border-bottom: 0; }
+  .retreat-turufjell-future-head { gap: 1.5rem; }
+  .retreat-turufjell-future-image { min-height: 420px; }
   .retreat-gallery-all-title { min-height: 430px; padding-inline: 1.4rem; }
   .retreat-gallery-all-grid { grid-auto-rows: 220px; grid-template-columns: repeat(2, 1fr); }
   .retreat-gallery-all-grid figure.wide { grid-column: span 2; }

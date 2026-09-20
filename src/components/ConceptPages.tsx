@@ -14,6 +14,10 @@ const finnGalleryPhotos = Array.from({ length: 75 }, (_, index) => {
   const extension = [2, 58, 65].includes(number) ? "png" : "jpg";
   return `/images/finn-gallery/${number.toString().padStart(2, "0")}.${extension}`;
 });
+const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
+  x: 4310 + (index % 4),
+  y: 2355 + Math.floor(index / 4),
+}));
 
 function LanguageToggle({ language, setLanguage, light = false }: {
   language: Language;
@@ -566,7 +570,12 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
 
   const cabinDirections = page === "cabin" && (
     <section className="retreat-directions">
-      <div className="retreat-map"><iframe title="Grandcabin on Google Maps" src="https://www.google.com/maps?q=60.47143205,9.5007444&z=12&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
+      <div className="retreat-map">
+        <div className="retreat-map-tiles" aria-hidden="true">{locationMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/13/${x}/${y}.png)` }} />)}</div>
+        <span className="retreat-map-pin" aria-hidden="true"><i /></span>
+        <a className="retreat-map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>
+        <a className="retreat-map-card" href="https://www.google.com/maps/dir/?api=1&destination=60.47143205%2C9.5007444" target="_blank" rel="noreferrer"><span>GRANDCABIN</span><b>Øvre Turusvingen 5</b><small>{language === "nb" ? "KLIKK FOR VEIBESKRIVELSE" : "CLICK FOR DIRECTIONS"} ↗</small></a>
+      </div>
       <div className="retreat-directions-copy"><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Under to timer fra Oslo." : "Under two hours from Oslo."}</h2><div className="retreat-direction-list">
         <article><b>01</b><h3>{language === "nb" ? "Med bil" : "By car"}</h3><span>{language === "nb" ? "Kjør fra Oslo til Turufjell på under to timer. Det er rikelig med parkering på eiendommen." : "Drive from Oslo to Turufjell in under two hours. There is ample parking at the property."}</span></article>
         <article><b>02</b><h3>{language === "nb" ? "Med tog" : "By train"}</h3><span>{language === "nb" ? "Ta toget til Flå stasjon og fortsett den siste korte etappen med taxi opp til fjellet." : "Take the train to Flå station and continue the final short leg by taxi up the mountain."}</span></article>
@@ -598,6 +607,30 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       </div>
       <div className="retreat-company-strip"><p>{language === "nb" ? "TEAM SOM HAR VALGT GRANDCABIN" : "TEAMS THAT HAVE CHOSEN GRANDCABIN"}</p><div>{["KIWI", "FLYTOGET", "RYSTAD ENERGY", "KPMG", "RSA"].map((company) => <span key={company}>{company}</span>)}</div></div>
     </section>
+  );
+
+  const turufjellDetails = page === "turufjell" && (
+    <>
+      <section className="retreat-turufjell-about">
+        <div className="retreat-turufjell-about-image"><Image src={image("terrace")} alt={language === "nb" ? "Utsikt fra Turufjell" : "View from Turufjell"} fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
+        <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger vestvendt med lange soldager og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell faces west, with long sunny days and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>
+      </section>
+      <section className="retreat-turufjell-travel">
+        <div className="retreat-turufjell-travel-title"><p>{language === "nb" ? "ENKELT Å KOMME HIT" : "EASY TO REACH"}</p><h2>{language === "nb" ? "Fjellet er nærmere enn det føles." : "The mountain is closer than it feels."}</h2></div>
+        <div className="retreat-turufjell-travel-grid">
+          <article><span>01</span><strong>116 km</strong><h3>{language === "nb" ? "Fra Oslo" : "From Oslo"}</h3><p>{language === "nb" ? "Kjøreturen tar normalt litt under to timer." : "The drive normally takes just under two hours."}</p></article>
+          <article><span>02</span><strong>15 min</strong><h3>{language === "nb" ? "Fra Flå" : "From Flå"}</h3><p>{language === "nb" ? "Kort vei til butikker, spisesteder, vinmonopol og Bjørneparken." : "A short drive to shops, restaurants, the wine shop and Bjørneparken."}</p></article>
+          <article><span>03</span><strong>{language === "nb" ? "Tog & buss" : "Train & bus"}</strong><h3>{language === "nb" ? "Til Flå stasjon" : "To Flå station"}</h3><p>{language === "nb" ? "Bergensbanen og Vy Buss stopper i Flå. Derfra fortsetter dere den siste etappen med taxi." : "The Bergen railway and Vy buses stop in Flå. Continue the final leg by taxi."}</p></article>
+        </div>
+      </section>
+      <section className="retreat-turufjell-future">
+        <div className="retreat-turufjell-future-head"><p>{language === "nb" ? "PLANENE FREMOVER" : "LOOKING AHEAD"}</p><h2>{language === "nb" ? "Et fjellsted i utvikling." : "A mountain destination in development."}</h2><span>{language === "nb" ? "Turufjell arbeider med en større alpinsatsing og et nytt, bilfritt sentrum. Planene utvikles trinnvis og kan bli justert underveis." : "Turufjell is developing a major alpine expansion and a new car-free village centre. The plans will be delivered in stages and may change over time."}</span></div>
+        <div className="retreat-turufjell-future-grid">
+          <article><div className="retreat-turufjell-future-image"><Image src={image("ski")} alt={language === "nb" ? "Alpint på Turufjell" : "Alpine skiing at Turufjell"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Større alpintilbud" : "Expanded alpine area"}</h3><p>{language === "nb" ? "En planlagt stolheis på 1 850 meter og en ny nedfart på over tre kilometer skal være første store trinn. Den langsiktige ambisjonen er fem heiser, 14 nedfarter, 17 kilometer med bakker og 420 høydemeter." : "A planned 1,850-metre chairlift and a new run of more than three kilometres form the first major stage. The long-term ambition is five lifts, 14 runs, 17 kilometres of slopes and 420 vertical metres."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turufjell-alpint" target="_blank" rel="noreferrer">{language === "nb" ? "SE ALPINPLANENE" : "VIEW THE ALPINE PLANS"} ↗</a></div></article>
+          <article><div className="retreat-turufjell-future-image"><Image src={image("dining")} alt={language === "nb" ? "Sosial møteplass" : "Social gathering place"} fill sizes="50vw" /></div><div><span>02</span><h3>Turutunet</h3><p>{language === "nb" ? "Den planlagte fjellandsbyen er tegnet i samarbeid med Reiulf Ramstad Arkitekter. En ny restaurantlåve, landhandel i en hallingstue, matpakkebu i stabburet og et aktivitetstun skal skape et levende sentrum gjennom hele året." : "The planned mountain village is designed with Reiulf Ramstad Architects. A restaurant barn, local shop in a traditional Hallingstue, a lunch shelter in the storehouse and an activity courtyard are intended to create a lively year-round centre."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turutunet-fjellandsby" target="_blank" rel="noreferrer">{language === "nb" ? "SE PLANENE FOR TURUTUNET" : "VIEW THE TURUTUNET PLANS"} ↗</a></div></article>
+        </div>
+      </section>
+    </>
   );
 
   if (page === "tour") {
@@ -643,6 +676,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {cabinDirections}
       {bedroomBreakdown}
       {gatheringTypes}
+      {turufjellDetails}
       {moreSections}
       <ConceptSwitcher active="retreat" />
     </div>
