@@ -908,8 +908,6 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail { display: grid; min-height: calc(100svh - 108px); grid-template-columns: 58% 42%; background: #f2f0eb; }
 .retreat-detail-image { position: relative; min-height: 0; overflow: hidden; background: #17202c; }
 .retreat-detail-image img { object-fit: cover; }
-.retreat-detail-cabin .retreat-detail-image img { animation: retreat-cabin-zoom 18s ease-in-out infinite alternate; transform: scale(1.025); }
-.retreat-detail-cabin .retreat-detail-image::after { position: absolute; z-index: 1; inset: -20%; content: ""; pointer-events: none; opacity: .32; background: radial-gradient(ellipse at 34% 13%, rgba(82,255,166,.72) 0, rgba(32,174,149,.34) 17%, transparent 38%), radial-gradient(ellipse at 70% 5%, rgba(123,95,255,.38) 0, rgba(67,210,190,.22) 21%, transparent 43%); mix-blend-mode: screen; filter: blur(22px); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,.8) 45%, transparent 76%); animation: retreat-aurora-drift 11s ease-in-out infinite alternate; }
 @keyframes retreat-cabin-zoom { from { transform: scale(1.025); } to { transform: scale(1.085); } }
 @keyframes retreat-aurora-drift { from { transform: translate3d(-5%, -1%, 0) skewX(-5deg) scaleX(.92); opacity: .22; } to { transform: translate3d(6%, 2%, 0) skewX(6deg) scaleX(1.08); opacity: .42; } }
 .retreat-detail-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: clamp(2rem, 4.8vw, 5.5rem); }
@@ -937,9 +935,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-story-copy > p { color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .12em; }
 .retreat-detail-story-copy h2, .retreat-detail-banner h2, .retreat-detail-points h2, .retreat-material-oil h2, .retreat-detail-footer h2 { margin: 1.2rem 0 2rem; font-size: clamp(3rem, 5.7vw, 6.6rem); font-weight: 500; line-height: .94; letter-spacing: -.06em; }
 .retreat-detail-story-copy > span { color: #4c4a45; line-height: 1.85; }
-.retreat-detail-banner { position: relative; min-height: 88svh; color: #fff; }
-.retreat-detail-banner-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,28,40,.78), rgba(15,28,40,.08) 72%); }
-.retreat-detail-banner > div { position: absolute; z-index: 2; top: 50%; left: clamp(1.4rem, 7vw, 8rem); width: min(680px, 52vw); transform: translateY(-50%); }
+.retreat-detail-banner { position: relative; min-height: 88svh; overflow: hidden; color: #fff; background: #07101f; }
+.retreat-detail-banner > img { object-fit: cover; }
+.retreat-detail-banner-shade { position: absolute; z-index: 2; inset: 0; background: linear-gradient(90deg, rgba(15,28,40,.78), rgba(15,28,40,.08) 72%); }
+.retreat-detail-banner > div { position: absolute; z-index: 3; top: 50%; left: clamp(1.4rem, 7vw, 8rem); width: min(680px, 52vw); transform: translateY(-50%); }
+.retreat-detail-banner-cabin > img { animation: retreat-cabin-zoom 18s ease-in-out infinite alternate; transform: scale(1.025); }
+.retreat-detail-banner-cabin::before { position: absolute; z-index: 1; inset: -22%; content: ""; pointer-events: none; opacity: .38; background: radial-gradient(ellipse at 28% 13%, rgba(84,255,169,.78) 0, rgba(28,179,151,.34) 18%, transparent 40%), radial-gradient(ellipse at 68% 4%, rgba(125,91,255,.46) 0, rgba(57,218,187,.24) 22%, transparent 46%); mix-blend-mode: screen; filter: blur(24px); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,.9) 48%, transparent 72%); animation: retreat-aurora-drift 11s ease-in-out infinite alternate; }
 .retreat-detail-banner h2 { margin-top: 0; }
 .retreat-detail-banner p { max-width: 540px; color: #e4e7e9; line-height: 1.8; }
 .retreat-detail-points { display: grid; grid-template-columns: .85fr 1.15fr; gap: 5rem; padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #f2f0eb; }
