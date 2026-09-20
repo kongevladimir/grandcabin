@@ -18,6 +18,10 @@ const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
   x: 4310 + (index % 4),
   y: 2355 + Math.floor(index / 4),
 }));
+const regionalMapTiles = Array.from({ length: 16 }, (_, index) => ({
+  x: 32 + (index % 4),
+  y: 16 + Math.floor(index / 4),
+}));
 
 function LanguageToggle({ language, setLanguage, light = false }: {
   language: Language;
@@ -585,6 +589,37 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     </section>
   );
 
+  const cabinDistances = page === "cabin" && (
+    <section className="retreat-distance-guide">
+      <div className="retreat-distance-overview">
+        <div className="retreat-distance-copy">
+          <p>{language === "nb" ? "KJØREAVSTANDER" : "DRIVING DISTANCES"}</p>
+          <h2>{language === "nb" ? "Under 2 timer fra Oslo." : "Under two hours from Oslo."}</h2>
+          <dl>
+            {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Drammen", "137 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
+          </dl>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=60.47143205%2C9.5007444" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
+        </div>
+        <div className="retreat-regional-map">
+          <div className="retreat-regional-map-tiles" aria-hidden="true">{regionalMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/6/${x}/${y}.png)` }} />)}</div>
+          <span className="retreat-regional-pin" aria-hidden="true"><i /></span>
+          <div className="retreat-regional-label"><span>GRANDCABIN</span><b>TURUFJELL</b></div>
+          <a className="retreat-regional-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>
+        </div>
+      </div>
+      <div className="retreat-nearby">
+        <div className="retreat-nearby-image"><Image src={image("terrace")} alt={language === "nb" ? "Naturen rundt Grandcabin" : "Nature around Grandcabin"} fill sizes="(max-width: 900px) 100vw, 48vw" /></div>
+        <div className="retreat-nearby-copy">
+          <p>{language === "nb" ? "KORT VEI TIL DET DERE TRENGER" : "EVERYTHING YOU NEED NEARBY"}</p>
+          <h2>{language === "nb" ? "Flå og Bjørneparken." : "Flå and Bjørneparken."}</h2>
+          <dl>
+            {[[language === "nb" ? "Bjørneparken" : "Bjørneparken wildlife park", "11 km"], [language === "nb" ? "Kjøpesenter" : "Shopping centre", "10 km"], [language === "nb" ? "Vinmonopol" : "Wine shop", "10 km"], [language === "nb" ? "Matbutikker" : "Grocery shops", "10 km"], [language === "nb" ? "Sportsbutikker" : "Sports shops", "10 km"], [language === "nb" ? "Spisesteder i Flå" : "Restaurants in Flå", "10 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+
   const bedroomBreakdown = page === "bedrooms" && (
     <>
       <section className="retreat-floor-plan">
@@ -675,6 +710,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-detail-copy"><p>{t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="retreat-detail-text"><span>{t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div><div className="retreat-detail-links"><Link href={page === "cabin" ? retreatPaths[1] : retreatPaths[Math.min(retreatPaths.indexOf(`/concepts/retreat/${page}`) + 1, retreatPaths.length - 1)]}>{language === "nb" ? "NESTE SIDE" : "NEXT PAGE"} →</Link><a href={finnUrl} target="_blank" rel="noreferrer">FINN ↗</a></div></div>
       </main>
       {cabinDirections}
+      {cabinDistances}
       {bedroomBreakdown}
       {gatheringTypes}
       {turufjellDetails}

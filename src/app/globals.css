@@ -970,6 +970,29 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-direction-list span { color: #4a4d4f; font-size: .8rem; line-height: 1.6; }
 .retreat-direction-list a { grid-column: 2; justify-self: start; margin-top: .8rem; border-bottom: 1px solid #17202c; padding-bottom: .25rem; font-size: .6rem; font-weight: 800; letter-spacing: .06em; }
 .retreat-map-link { align-self: flex-start; margin-top: 1.5rem; border-bottom: 1px solid #17202c; padding-bottom: .35rem; font-size: .68rem; font-weight: 800; letter-spacing: .06em; }
+.retreat-distance-guide { padding: clamp(5rem, 8vw, 9rem) clamp(1.4rem, 5vw, 5rem); background: #f2f0eb; color: #17202c; }
+.retreat-distance-overview { display: grid; grid-template-columns: .82fr 1.18fr; min-height: 690px; overflow: hidden; background: #e8e6dc; }
+.retreat-distance-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.4rem, 5vw, 5.5rem); }
+.retreat-distance-copy > p, .retreat-nearby-copy > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
+.retreat-distance-copy h2, .retreat-nearby-copy h2 { margin: 1rem 0 2.2rem; font-size: clamp(2.8rem, 4.8vw, 5.5rem); font-weight: 500; line-height: .94; letter-spacing: -.055em; }
+.retreat-distance-copy dl, .retreat-nearby-copy dl { width: 100%; max-width: 420px; margin: 0; }
+.retreat-distance-copy dl div, .retreat-nearby-copy dl div { display: flex; justify-content: space-between; gap: 2rem; padding: .32rem 0; border-bottom: 1px solid rgba(23,32,44,.13); }
+.retreat-distance-copy dt, .retreat-distance-copy dd, .retreat-nearby-copy dt, .retreat-nearby-copy dd { margin: 0; font-size: .9rem; }
+.retreat-distance-copy dd, .retreat-nearby-copy dd { font-weight: 700; }
+.retreat-distance-copy > a { align-self: flex-start; margin-top: 2.2rem; padding: 1rem 1.25rem; background: #bd8e57; color: #17202c; font-size: .63rem; font-weight: 800; letter-spacing: .07em; }
+.retreat-regional-map { position: relative; min-height: 690px; overflow: hidden; background: #313235; }
+.retreat-regional-map-tiles { position: absolute; left: calc(50% - 432px); top: calc(50% - 619px); display: grid; width: 1024px; height: 1024px; grid-template-columns: repeat(4, 256px); grid-template-rows: repeat(4, 256px); filter: grayscale(.9) brightness(.52) sepia(.15); }
+.retreat-regional-map-tiles span { width: 256px; height: 256px; background-position: center; background-repeat: no-repeat; background-size: 256px 256px; }
+.retreat-regional-map::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: rgba(23,32,44,.24); }
+.retreat-regional-pin { position: absolute; z-index: 2; left: 50%; top: 50%; width: 38px; height: 38px; transform: translate(-50%, -100%) rotate(45deg); border: 4px solid #fff; border-radius: 50% 50% 50% 0; background: #bd8e57; box-shadow: 0 10px 28px rgba(0,0,0,.4); }
+.retreat-regional-pin i { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; background: #17202c; }
+.retreat-regional-label { position: absolute; z-index: 2; left: calc(50% + 1.8rem); top: calc(50% - 3.2rem); display: flex; flex-direction: column; padding: .7rem .85rem; background: #f2f0eb; color: #17202c; }
+.retreat-regional-label span { color: #895d34; font-size: .52rem; font-weight: 800; letter-spacing: .12em; }
+.retreat-regional-label b { margin-top: .2rem; font-size: .85rem; }
+.retreat-regional-credit { position: absolute; z-index: 3; left: .75rem; bottom: .55rem; padding: .25rem .4rem; background: rgba(255,255,255,.82); color: #17202c; font-size: .55rem; }
+.retreat-nearby { display: grid; grid-template-columns: 48% 52%; min-height: 600px; margin-top: 2rem; overflow: hidden; border-radius: 18px; background: #fff; }
+.retreat-nearby-image { position: relative; min-height: 560px; }
+.retreat-nearby-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.5rem, 6vw, 6rem); }
 .retreat-floor-plan { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #e1c9a7; }
 .retreat-floor-heading { display: grid; grid-template-columns: .35fr 1.65fr; gap: 3rem; align-items: start; margin-bottom: 4rem; }
 .retreat-floor-heading h2 { margin-top: 0; }
@@ -1094,6 +1117,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-directions, .retreat-master-suite { grid-template-columns: 1fr; }
   .retreat-map, .retreat-master-image { min-height: 540px; }
   .retreat-directions-copy, .retreat-master-suite > div:last-child { padding: 4.5rem 1.4rem; }
+  .retreat-distance-guide { padding-inline: 1.4rem; }
+  .retreat-distance-overview, .retreat-nearby { grid-template-columns: 1fr; }
+  .retreat-distance-copy, .retreat-nearby-copy { padding: 4rem 1.4rem; }
+  .retreat-regional-map, .retreat-nearby-image { min-height: 520px; }
   .retreat-floor-heading, .retreat-gathering-heading { grid-template-columns: 1fr; gap: 1rem; }
   .retreat-floor-grid, .retreat-gathering-grid { grid-template-columns: 1fr; }
   .retreat-floor-grid article { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(23,32,44,.22); }
