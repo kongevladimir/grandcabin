@@ -941,6 +941,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-banner > div { position: absolute; z-index: 3; top: 50%; left: clamp(1.4rem, 7vw, 8rem); width: min(680px, 52vw); transform: translateY(-50%); }
 .retreat-detail-banner-cabin > img { animation: retreat-cabin-zoom 18s ease-in-out infinite alternate; transform: scale(1.025); }
 .retreat-detail-banner-cabin::before { position: absolute; z-index: 1; inset: -22%; content: ""; pointer-events: none; opacity: .38; background: radial-gradient(ellipse at 28% 13%, rgba(84,255,169,.78) 0, rgba(28,179,151,.34) 18%, transparent 40%), radial-gradient(ellipse at 68% 4%, rgba(125,91,255,.46) 0, rgba(57,218,187,.24) 22%, transparent 46%); mix-blend-mode: screen; filter: blur(24px); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,.9) 48%, transparent 72%); animation: retreat-aurora-drift 11s ease-in-out infinite alternate; }
+.retreat-banner-caption { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); gap: clamp(2rem, 8vw, 9rem); align-items: end; padding: clamp(3.5rem, 7vw, 7.5rem) clamp(1.4rem, 7vw, 8rem); color: #17202c; background: #f2f0eb; }
+.retreat-banner-caption h2 { max-width: 850px; margin: 0; font-size: clamp(3rem, 6vw, 7rem); font-weight: 500; line-height: .92; letter-spacing: -.06em; }
+.retreat-banner-caption p { max-width: 560px; margin: 0 0 .6rem; color: #4c4a45; font-size: clamp(1rem, 1.35vw, 1.25rem); line-height: 1.75; }
 .retreat-detail-banner h2 { margin-top: 0; }
 .retreat-detail-banner p { max-width: 540px; color: #e4e7e9; line-height: 1.8; }
 .retreat-detail-points { display: grid; grid-template-columns: .85fr 1.15fr; gap: 5rem; padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #f2f0eb; }
@@ -955,9 +958,15 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-material-oil h2 { margin-bottom: 0; }
 .retreat-material-oil > div:last-child { align-self: end; }
 .retreat-material-oil > div:last-child p { color: #c8cdd2; line-height: 1.9; }
-.retreat-detail-footer { display: flex; min-height: 560px; flex-direction: column; align-items: center; justify-content: center; padding: 5rem 1.5rem 8rem; background: #bd8e57; color: #17202c; text-align: center; }
-.retreat-detail-footer h2 { max-width: 900px; }
-.retreat-detail-footer a { border: 1px solid #17202c; padding: 1.2rem 1.6rem; font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
+.retreat-detail-footer { display: grid; grid-template-columns: .7fr 1.45fr .7fr; gap: clamp(2.5rem, 6vw, 7rem); align-items: start; padding: clamp(5rem, 8vw, 8rem) clamp(1.4rem, 7vw, 8rem); color: #fff; background: #17202c; }
+.retreat-detail-footer p { margin: 0 0 1.25rem; color: #dcc092; font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+.retreat-detail-footer span { display: block; color: #d8dde1; line-height: 1.75; }
+.retreat-detail-footer h2 { max-width: 760px; margin: 0 0 1.5rem; font-size: clamp(2.8rem, 4.8vw, 5.6rem); }
+.retreat-footer-booking > span { max-width: 560px; }
+.retreat-detail-footer a { color: inherit; }
+.retreat-footer-booking a { display: inline-flex; align-items: center; min-height: 54px; margin-top: 2rem; border: 1px solid #dcc092; padding: 0 1.5rem; color: #17202c; background: #dcc092; font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
+.retreat-footer-contact { display: flex; flex-direction: column; align-items: flex-start; }
+.retreat-footer-contact a { margin: 0 0 .65rem; border-bottom: 1px solid rgba(220,192,146,.45); padding-bottom: .25rem; font-family: var(--font-serif); font-size: clamp(1.25rem, 1.65vw, 1.75rem); }
 .retreat-directions { display: grid; min-height: 800px; grid-template-columns: 54% 46%; background: #d8b687; }
 .retreat-map { position: relative; min-height: 650px; overflow: hidden; background: #d4d9c7; }
 .retreat-map-tiles { position: absolute; left: calc(50% - 562px); top: calc(50% - 600px); display: grid; width: 1024px; height: 1024px; grid-template-columns: repeat(4, 256px); grid-template-rows: repeat(4, 256px); filter: saturate(.62) contrast(.92) sepia(.08); }
@@ -1125,8 +1134,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-detail-story-copy { padding: 4.5rem 1.4rem; }
   .retreat-detail-banner { min-height: 760px; }
   .retreat-detail-banner > div { left: 1.4rem; width: calc(100% - 2.8rem); }
+  .retreat-banner-caption { grid-template-columns: 1fr; gap: 1.5rem; }
   .retreat-detail-points, .retreat-material-oil { gap: 2rem; padding: 5rem 1.4rem; }
-  .retreat-detail-footer { min-height: 480px; }
+  .retreat-detail-footer { grid-template-columns: 1fr; gap: 3.5rem; padding-block: 4.5rem; }
   .retreat-directions, .retreat-master-suite { grid-template-columns: 1fr; }
   .retreat-map, .retreat-master-image { min-height: 540px; }
   .retreat-directions-copy, .retreat-master-suite > div:last-child { padding: 4.5rem 1.4rem; }

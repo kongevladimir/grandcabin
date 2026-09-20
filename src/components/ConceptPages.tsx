@@ -487,6 +487,28 @@ function RetreatNav({ language, setLanguage, page }: { language: Language; setLa
   );
 }
 
+function RetreatBookingFooter({ language }: { language: Language }) {
+  return (
+    <section className="retreat-detail-footer">
+      <div className="retreat-footer-address">
+        <p>GRANDCABIN</p>
+        <span>Øvre Turusvingen 7<br />3539 Flå<br />{language === "nb" ? "Norge" : "Norway"}</span>
+      </div>
+      <div className="retreat-footer-booking">
+        <p>{language === "nb" ? "FORESPØRSEL OG BESTILLING" : "ENQUIRIES AND BOOKING"}</p>
+        <h2>{language === "nb" ? "Velkommen til fjells." : "Welcome to the mountains."}</h2>
+        <span>{language === "nb" ? "Se ledige datoer, priser og send forespørselen trygt gjennom FINN." : "See available dates, prices and send your enquiry securely through FINN."}</span>
+        <a href={finnUrl} target="_blank" rel="noreferrer">{language === "nb" ? "SE DATOER OG PRISER PÅ FINN" : "SEE DATES AND PRICES ON FINN"} ↗</a>
+      </div>
+      <div className="retreat-footer-contact">
+        <p>{language === "nb" ? "KONTAKT OSS" : "CONTACT US"}</p>
+        <a href="tel:+4797816981">+47 978 16 981</a>
+        <a href="tel:+4796878888">+47 968 78 888</a>
+      </div>
+    </section>
+  );
+}
+
 export function RetreatConcept() {
   const [language, setLanguage] = useState<Language>("nb");
   const t = language === "nb" ? {
@@ -507,6 +529,7 @@ export function RetreatConcept() {
           <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
         </section>
       </main>
+      <RetreatBookingFooter language={language} />
       <ConceptSwitcher active="retreat" />
     </div>
   );
@@ -557,10 +580,13 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   };
   const more = (language === "nb" ? extendedNb : extendedEn)[page];
   const detailBanner = (
-    <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
-      <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" /><div className="retreat-detail-banner-shade" />
-      <div><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></div>
-    </section>
+    <>
+      <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
+        <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />
+        {page !== "cabin" && <><div className="retreat-detail-banner-shade" /><div><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></div></>}
+      </section>
+      {page === "cabin" && <section className="retreat-banner-caption"><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></section>}
+    </>
   );
   const moreSections = (
     <>
@@ -571,7 +597,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page !== "cabin" && detailBanner}
       <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
-      <section className="retreat-detail-footer"><h2>{language === "nb" ? "Klar for deres neste fjellopphold?" : "Ready for your next mountain stay?"}</h2><a href={finnUrl} target="_blank" rel="noreferrer">{language === "nb" ? "SE DATOER OG PRISER PÅ FINN" : "SEE DATES AND PRICES ON FINN"} ↗</a></section>
+      <RetreatBookingFooter language={language} />
     </>
   );
 
@@ -581,14 +607,14 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-map-tiles" aria-hidden="true">{locationMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/13/${x}/${y}.png)` }} />)}</div>
         <span className="retreat-map-pin" aria-hidden="true"><i /></span>
         <a className="retreat-map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>
-        <a className="retreat-map-card" href="https://www.google.com/maps/dir/?api=1&destination=60.47143205%2C9.5007444" target="_blank" rel="noreferrer"><span>GRANDCABIN</span><b>Øvre Turusvingen 5</b><small>{language === "nb" ? "KLIKK FOR VEIBESKRIVELSE" : "CLICK FOR DIRECTIONS"} ↗</small></a>
+        <a className="retreat-map-card" href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer"><span>GRANDCABIN</span><b>Øvre Turusvingen 7</b><small>{language === "nb" ? "KLIKK FOR VEIBESKRIVELSE" : "CLICK FOR DIRECTIONS"} ↗</small></a>
       </div>
       <div className="retreat-directions-copy"><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Under to timer fra Oslo." : "Under two hours from Oslo."}</h2><div className="retreat-direction-list">
         <article><b>01</b><h3>{language === "nb" ? "Med bil" : "By car"}</h3><span>{language === "nb" ? "Kjør fra Oslo til Turufjell på under to timer. Det er rikelig med parkering på eiendommen." : "Drive from Oslo to Turufjell in under two hours. There is ample parking at the property."}</span></article>
         <article><b>02</b><h3>{language === "nb" ? "Med tog" : "By train"}</h3><span>{language === "nb" ? "La bilen stå og reis komfortabelt med Bergensbanen. Flere daglige avganger i begge retninger stopper på Flå stasjon. Derfra tar dere taxi eller avtaler annen transport den siste korte etappen opp til Turufjell." : "Leave the car behind and travel comfortably on the Bergen railway. Several daily services in both directions stop at Flå station. From there, take a taxi or arrange transport for the final short journey to Turufjell."}</span><a href="https://www.vy.no/" target="_blank" rel="noreferrer">{language === "nb" ? "SJEKK AVGANGER OG BESTILL TOGBILLETT" : "CHECK TIMES AND BOOK TRAIN TICKETS"} ↗</a></article>
         <article><b>03</b><h3>{language === "nb" ? "Med buss" : "By bus"}</h3><span>{language === "nb" ? "Vy Buss har flere daglige avganger i begge retninger med stopp i Flå. Fra holdeplassen fortsetter dere med taxi eller annen avtalt transport det siste stykket opp til Turufjell." : "Vy Bus operates several daily services in both directions with stops in Flå. Continue from the bus stop by taxi or other arranged transport for the final journey to Turufjell."}</span><a href="https://www.vybuss.no/#!/" target="_blank" rel="noreferrer">{language === "nb" ? "SJEKK RUTETIDER OG BESTILL BUSSBILLETT" : "CHECK TIMES AND BOOK BUS TICKETS"} ↗</a></article>
         <article><b>04</b><h3>{language === "nb" ? "Med elbil" : "By electric car"}</h3><span>{language === "nb" ? "Ladestasjoner finnes ved kaféen nær skiheisen, omtrent 150 meter unna, og i Flå sentrum." : "Charging is available by the café near the ski lift, around 150 metres away, and in Flå village."}</span></article>
-      </div><a className="retreat-map-link" href="https://www.google.com/maps/dir/?api=1&destination=60.47143205%2C9.5007444" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE VEIBESKRIVELSE I GOOGLE MAPS" : "OPEN DIRECTIONS IN GOOGLE MAPS"} ↗</a></div>
+      </div><a className="retreat-map-link" href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE VEIBESKRIVELSE I GOOGLE MAPS" : "OPEN DIRECTIONS IN GOOGLE MAPS"} ↗</a></div>
     </section>
   );
 
@@ -601,7 +627,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <dl>
             {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Drammen", "137 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
           </dl>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=60.47143205%2C9.5007444" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
         </div>
         <div className="retreat-regional-map">
           <div className="retreat-regional-map-tiles" aria-hidden="true">{regionalMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/6/${x}/${y}.png)` }} />)}</div>
@@ -686,6 +712,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <div className="retreat-tour-caption"><div><span>360°</span><p>{language === "nb" ? "Hele hytta, rom for rom" : "The entire cabin, room by room"}</p></div><a href="https://my.matterport.com/show/?m=Cni4Ctd7QSV" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE 3D-VISNING I FULLSKJERM" : "OPEN 3D TOUR FULL SCREEN"} ↗</a></div>
           </section>
         </main>
+        <RetreatBookingFooter language={language} />
         <ConceptSwitcher active="retreat" />
       </div>
     );
