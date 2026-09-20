@@ -594,6 +594,29 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-detail-story-image"><Image src={image(more.leadPhoto)} alt="" fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
         <div className="retreat-detail-story-copy"><p>{t.number} · GRANDCABIN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
       </section>
+      {page === "materials" && (
+        <section className="retreat-bespoke">
+          <header>
+            <p>{language === "nb" ? "SKREDDERSYDD INTERIØR" : "BESPOKE INTERIORS"}</p>
+            <h2>{language === "nb" ? "Bygget for hytta. Laget for hånd." : "Built for the cabin. Made by hand."}</h2>
+            <span>{language === "nb" ? "Grandcabin er formet som en helhet, der varme naturmaterialer møter presise, moderne linjer. Mange av møblene og de faste løsningene er tegnet og bygget spesielt for rommene. Resultatet er en rolig luksus som merkes i detaljene." : "Grandcabin is conceived as a whole, where warm natural materials meet precise, modern lines. Many furnishings and fitted solutions were designed and built specifically for the rooms, creating a quiet sense of luxury in every detail."}</span>
+          </header>
+          <article className="retreat-bespoke-feature">
+            <div className="retreat-bespoke-images">
+              <figure><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+            </div>
+            <div className="retreat-bespoke-copy"><span>01</span><h3>{language === "nb" ? "Unike baderomsmøbler i eik" : "Unique oak bathroom furniture"}</h3><p>{language === "nb" ? "Baderomsmøblene er utført i eik og bygget enkeltvis for det rommet de står i. De er ikke hentet fra en fabrikkserie. Hver benk, skuff og detalj er tilpasset materialene, målene og uttrykket i hytta." : "The bathroom furniture is crafted in oak and built individually for each room. Nothing comes from a standard factory range. Every counter, drawer and detail is tailored to the cabin’s dimensions, materials and architectural character."}</p><p>{language === "nb" ? "Treets naturlige spill står i kontrast til mørk stein, sorte armaturer og rene flater. Det gir badene et moderne, eksklusivt uttrykk uten å miste varmen og nærheten til naturen." : "The natural grain contrasts with dark stone, black fittings and clean surfaces, giving the bathrooms a modern, exclusive character while retaining warmth and a close connection to nature."}</p></div>
+          </article>
+          <article className="retreat-bespoke-feature retreat-bespoke-feature-reverse">
+            <div className="retreat-bespoke-images">
+              <figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+            </div>
+            <div className="retreat-bespoke-copy"><span>02</span><h3>{language === "nb" ? "Senger integrert i arkitekturen" : "Beds integrated into the architecture"}</h3><p>{language === "nb" ? "Flere av sengene er bygget inn og håndtilpasset på stedet. De følger takvinkler og vegger, utnytter plassen godt og skaper lune, private soner selv når mange gjester bor sammen." : "Many beds are built in and fitted by hand on site. They follow roof angles and walls, make excellent use of space and create sheltered, private zones even when a large group stays together."}</p><p>{language === "nb" ? "De solide trekonstruksjonene gir hvert rom sitt eget særpreg. Sammen med behagelig belysning, myke tekstiler og gjennomtenkt oppbevaring blir soverommene både funksjonelle, moderne og inviterende." : "Solid timber construction gives every room its own identity. Paired with soft lighting, tactile textiles and considered storage, the bedrooms feel functional, modern and inviting."}</p></div>
+          </article>
+        </section>
+      )}
       {page !== "cabin" && detailBanner}
       <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
@@ -670,7 +693,14 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <article><div className="retreat-gathering-image"><Image src={image("gathering")} alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Flytt strategien, ledergruppen eller hele teamet ut av de vante rammene. Grandcabin gir dere arbeidsro, stor skjerm, bredbånd og fleksible fellesrom – med fjellet som arena for pauser, kick-off og teambuilding." : "Move strategy sessions, leadership meetings or the whole team beyond the usual setting. Grandcabin offers focus, a large screen, broadband and flexible shared spaces, with the mountain as a setting for breaks, kick-offs and team building."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
         <article><div className="retreat-gathering-image"><Image src={image("dining")} alt={language === "nb" ? "Privat samling" : "Private gathering"} fill sizes="50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Jubileum, storfamilie eller en helg med de nærmeste. Hele hytta er deres, med plass til lange middager, rolige morgener og feiringer som kan fortsette uten avbrudd. Ni soverom gjør det enkelt å samle alle under samme tak." : "An anniversary, the extended family or a weekend with close friends. The whole cabin is yours, with space for long dinners, slow mornings and celebrations that can continue uninterrupted. Nine bedrooms bring everyone under one roof."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
       </div>
-      <div className="retreat-company-strip"><p>{language === "nb" ? "TEAM SOM HAR VALGT GRANDCABIN" : "TEAMS THAT HAVE CHOSEN GRANDCABIN"}</p><div>{["KIWI", "FLYTOGET", "RYSTAD ENERGY", "KPMG", "RSA"].map((company) => <span key={company}>{company}</span>)}</div></div>
+      <div className="retreat-company-strip">
+        <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT GRANDCABIN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN GRANDCABIN"}</p>
+        <div className="retreat-company-wall">
+          {[["K", "KIWI"], ["F", "FLYTOGET"], ["RE", "RYSTAD ENERGY"], ["K", "KPMG"], ["R", "RSA"]].map(([mark, company]) => (
+            <article key={company}><span>{mark}</span><strong>{company}</strong><small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small></article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 
