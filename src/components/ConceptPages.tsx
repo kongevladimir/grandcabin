@@ -515,7 +515,7 @@ export function RetreatConcept() {
 export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const [language, setLanguage] = useState<Language>("nb");
   const nb = {
-    cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living", alt: "Stuen med utsikt", facts: ["360 m²", "2 kjøkken", "4 bad"] },
+    cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living-aurora", alt: "Stuen med utsikt og nordlys", facts: ["360 m²", "2 kjøkken", "4 bad"] },
     bedrooms: { number: "02", title: "Ni soverom.\n29 sengeplasser.", text: "Soveplassene er fordelt over tre nivåer: 16 i underetasjen, fem i hovedetasjen og åtte på loftet. Det gir nærhet for gruppen og rolige soner når dagen er over.", photo: "bedroom", alt: "Et av soverommene", facts: ["16 nede", "5 hovedplan", "8 på loftet"] },
     meetings: { number: "03", title: "Samlinger med\nrom for ideer.", text: "Bredbånd, stor skjerm og fleksible oppholdsrom legger til rette for møter, kurs og mindre konferanser. Fjellandskapet gir naturlige pauser mellom øktene.", photo: "gathering", alt: "Møte- og konferanserom", facts: ["Stor skjerm", "Bredbånd", "Fleksible rom"] },
     saunas: { number: "04", title: "To badstuer.\nFire bad.", text: "Etter en dag ute eller rundt møtebordet venter badstuvarme, varme gulv og god plass til å lande. Fasilitetene er fordelt slik at en stor gruppe får en enkel flyt.", photo: "sauna", alt: "Badstuen", facts: ["2 badstuer", "4 bad", "Gulvvarme"] },
@@ -525,7 +525,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     tour: { number: "08", title: "Gå gjennom\nGrandcabin.", text: "Utforsk hytta rom for rom i en interaktiv 3D-visning.", photo: "living", alt: "Grandcabin 3D-visning", facts: ["360° visning", "Tre nivåer", "Utforsk i eget tempo"] },
   };
   const en = {
-    cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "One of Norway’s most distinctive cabins – and it is easy to understand why. Thoughtful architecture, solid materials and exceptional comfort create the setting for a truly special stay.", photo: "living", alt: "Living room with a view", facts: ["360 m²", "2 kitchens", "4 bathrooms"] },
+    cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "One of Norway’s most distinctive cabins – and it is easy to understand why. Thoughtful architecture, solid materials and exceptional comfort create the setting for a truly special stay.", photo: "living-aurora", alt: "Living room with an aurora view", facts: ["360 m²", "2 kitchens", "4 bathrooms"] },
     bedrooms: { number: "02", title: "Nine bedrooms.\n29 beds.", text: "Sleeping space is arranged across three levels: 16 beds downstairs, five on the main floor and eight in the loft. The group stays close while everyone can still find a quiet place.", photo: "bedroom", alt: "One of the bedrooms", facts: ["16 downstairs", "5 main floor", "8 in the loft"] },
     meetings: { number: "03", title: "Gatherings with\nroom for ideas.", text: "Broadband, a large screen and flexible living spaces support meetings, workshops and smaller conferences. The mountain landscape creates natural breaks between sessions.", photo: "gathering", alt: "Meeting and conference room", facts: ["Large screen", "Broadband", "Flexible rooms"] },
     saunas: { number: "04", title: "Two saunas.\nFour bathrooms.", text: "After a day outside or around the meeting table, sauna heat, warm floors and space to unwind await. The facilities make life easy for a large group.", photo: "sauna", alt: "Private sauna", facts: ["2 saunas", "4 bathrooms", "Heated floors"] },
@@ -608,7 +608,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         </div>
       </div>
       <div className="retreat-nearby">
-        <div className="retreat-nearby-image"><Image src={image("terrace")} alt={language === "nb" ? "Naturen rundt Grandcabin" : "Nature around Grandcabin"} fill sizes="(max-width: 900px) 100vw, 48vw" /></div>
+        <div className="retreat-nearby-image"><Image src={image("bjorneparken-bear")} alt={language === "nb" ? "Brunbjørn i norsk fjellnatur" : "Brown bear in Norwegian mountain nature"} fill sizes="(max-width: 900px) 100vw, 48vw" /></div>
         <div className="retreat-nearby-copy">
           <p>{language === "nb" ? "KORT VEI TIL DET DERE TRENGER" : "EVERYTHING YOU NEED NEARBY"}</p>
           <h2>{language === "nb" ? "Flå og Bjørneparken." : "Flå and Bjørneparken."}</h2>
@@ -705,7 +705,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   return (
     <div className="concept-page retreat-page retreat-detail-page">
       <RetreatNav language={language} setLanguage={setLanguage} />
-      <main className="retreat-detail">
+      <main className={`retreat-detail${page === "cabin" ? " retreat-detail-cabin" : ""}`}>
         <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div>
         <div className="retreat-detail-copy"><p>{t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="retreat-detail-text"><span>{t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div><div className="retreat-detail-links"><Link href={page === "cabin" ? retreatPaths[1] : retreatPaths[Math.min(retreatPaths.indexOf(`/concepts/retreat/${page}`) + 1, retreatPaths.length - 1)]}>{language === "nb" ? "NESTE SIDE" : "NEXT PAGE"} →</Link><a href={finnUrl} target="_blank" rel="noreferrer">FINN ↗</a></div></div>
       </main>

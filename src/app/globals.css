@@ -903,7 +903,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-header-pages nav { gap: clamp(.7rem, 1.35vw, 1.3rem); font-size: .6rem; }
 .retreat-home-page .retreat-home-hero { height: calc(100svh - 108px); min-height: 0; }
 .retreat-detail { display: grid; min-height: calc(100svh - 108px); grid-template-columns: 58% 42%; background: #f2f0eb; }
-.retreat-detail-image { position: relative; min-height: 0; }
+.retreat-detail-image { position: relative; min-height: 0; overflow: hidden; background: #17202c; }
+.retreat-detail-image img { object-fit: cover; }
+.retreat-detail-cabin .retreat-detail-image img { animation: retreat-cabin-zoom 18s ease-in-out infinite alternate; transform: scale(1.025); }
+.retreat-detail-cabin .retreat-detail-image::after { position: absolute; z-index: 1; inset: -20%; content: ""; pointer-events: none; opacity: .32; background: radial-gradient(ellipse at 34% 13%, rgba(82,255,166,.72) 0, rgba(32,174,149,.34) 17%, transparent 38%), radial-gradient(ellipse at 70% 5%, rgba(123,95,255,.38) 0, rgba(67,210,190,.22) 21%, transparent 43%); mix-blend-mode: screen; filter: blur(22px); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,.8) 45%, transparent 76%); animation: retreat-aurora-drift 11s ease-in-out infinite alternate; }
+@keyframes retreat-cabin-zoom { from { transform: scale(1.025); } to { transform: scale(1.085); } }
+@keyframes retreat-aurora-drift { from { transform: translate3d(-5%, -1%, 0) skewX(-5deg) scaleX(.92); opacity: .22; } to { transform: translate3d(6%, 2%, 0) skewX(6deg) scaleX(1.08); opacity: .42; } }
 .retreat-detail-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: clamp(2rem, 4.8vw, 5.5rem); }
 .retreat-detail-copy > p, .retreat-gallery-screen-title > p { color: #bd8e57; font-size: .68rem; font-weight: 800; }
 .retreat-detail-copy h1, .retreat-gallery-screen-title h1 { margin: 1rem 0 2rem; font-size: clamp(2.8rem, 5vw, 6rem); font-weight: 500; line-height: .92; letter-spacing: -.06em; }
@@ -1147,5 +1152,5 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
