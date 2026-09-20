@@ -965,9 +965,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-directions-copy > p, .retreat-floor-heading > p, .retreat-master-suite > div:last-child > p, .retreat-gathering-heading > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-directions-copy h2, .retreat-floor-heading h2, .retreat-master-suite h2, .retreat-gathering-heading h2 { margin: 1rem 0 2.2rem; font-size: clamp(3rem, 5.5vw, 6.2rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
 .retreat-direction-list article { display: grid; grid-template-columns: 2.5rem 1fr; border-top: 1px solid rgba(23,32,44,.25); padding: 1rem 0; }
-.retreat-direction-list article b { grid-row: 1 / 3; color: #895d34; font-size: .65rem; }
+.retreat-direction-list article b { grid-row: 1 / 4; color: #895d34; font-size: .65rem; }
 .retreat-direction-list h3 { font-size: 1.05rem; font-weight: 700; }
 .retreat-direction-list span { color: #4a4d4f; font-size: .8rem; line-height: 1.6; }
+.retreat-direction-list a { grid-column: 2; justify-self: start; margin-top: .8rem; border-bottom: 1px solid #17202c; padding-bottom: .25rem; font-size: .6rem; font-weight: 800; letter-spacing: .06em; }
 .retreat-map-link { align-self: flex-start; margin-top: 1.5rem; border-bottom: 1px solid #17202c; padding-bottom: .35rem; font-size: .68rem; font-weight: 800; letter-spacing: .06em; }
 .retreat-floor-plan { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #e1c9a7; }
 .retreat-floor-heading { display: grid; grid-template-columns: .35fr 1.65fr; gap: 3rem; align-items: start; margin-bottom: 4rem; }
