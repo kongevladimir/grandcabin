@@ -473,7 +473,7 @@ const retreatPaths = [
   "/concepts/retreat/3d-tour",
 ];
 
-function RetreatNav({ language, setLanguage }: { language: Language; setLanguage: (language: Language) => void }) {
+function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
     ? ["Hytta", "Soverom", "Samlinger", "Badstuer", "Håndverk", "Turufjell", "Galleri", "3D-visning"]
     : ["The cabin", "Bedrooms", "Retreats", "Saunas", "Craftsmanship", "Turufjell", "Gallery", "3D tour"];
@@ -481,7 +481,7 @@ function RetreatNav({ language, setLanguage }: { language: Language; setLanguage
   return (
     <header className="retreat-header retreat-header-pages">
       <Link href="/concepts/retreat" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
-      <nav>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]}>{label}</Link>)}</nav>
+      <nav aria-label={language === "nb" ? "Grandcabin-sider" : "Grandcabin pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><a href={finnUrl} target="_blank" rel="noreferrer">{language === "nb" ? "SE TILGJENGELIGHET" : "CHECK AVAILABILITY"}</a></div>
     </header>
   );
@@ -672,7 +672,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   if (page === "tour") {
     return (
       <div className="concept-page retreat-page retreat-detail-page">
-        <RetreatNav language={language} setLanguage={setLanguage} />
+        <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-tour-page">
           <section className="retreat-tour-intro">
             <div><p>08 · GRANDCABIN</p><h1>{language === "nb" ? <>Gå gjennom<br />Grandcabin.</> : <>Walk through<br />Grandcabin.</>}</h1></div>
@@ -691,7 +691,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   if (page === "gallery") {
     return (
       <div className="concept-page retreat-page retreat-detail-page">
-        <RetreatNav language={language} setLanguage={setLanguage} />
+        <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-gallery-all">
           <div className="retreat-gallery-all-title"><p>{t.number} · GRANDCABIN</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><span>{language === "nb" ? "Hele FINN-galleriet samlet på ett sted." : "The complete FINN gallery in one place."}</span><b>75</b></div>
           <div className="retreat-gallery-all-grid">{finnGalleryPhotos.map((photo, index) => <figure className={index % 13 === 0 ? "wide" : index % 9 === 0 ? "tall" : ""} key={photo}><Image src={photo} alt={`${language === "nb" ? "Grandcabin bilde" : "Grandcabin photo"} ${index + 1}`} fill sizes="(max-width: 700px) 50vw, 33vw" /><span>{(index + 1).toString().padStart(2, "0")}</span></figure>)}</div>
@@ -704,7 +704,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
 
   return (
     <div className="concept-page retreat-page retreat-detail-page">
-      <RetreatNav language={language} setLanguage={setLanguage} />
+      <RetreatNav language={language} setLanguage={setLanguage} page={page} />
       <main className={`retreat-detail${page === "cabin" ? " retreat-detail-cabin" : ""}`}>
         <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div>
         <div className="retreat-detail-copy"><p>{t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="retreat-detail-text"><span>{t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div><div className="retreat-detail-links"><Link href={page === "cabin" ? retreatPaths[1] : retreatPaths[Math.min(retreatPaths.indexOf(`/concepts/retreat/${page}`) + 1, retreatPaths.length - 1)]}>{language === "nb" ? "NESTE SIDE" : "NEXT PAGE"} →</Link><a href={finnUrl} target="_blank" rel="noreferrer">FINN ↗</a></div></div>
