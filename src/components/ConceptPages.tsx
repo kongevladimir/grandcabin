@@ -603,18 +603,22 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </header>
           <article className="retreat-bespoke-feature">
             <div className="retreat-bespoke-images">
-              <figure><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+              <figure><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill unoptimized sizes="(max-width: 900px) 46vw, 20vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>01</span><h3>{language === "nb" ? "Unike baderomsmøbler i eik" : "Unique oak bathroom furniture"}</h3><p>{language === "nb" ? "Baderomsmøblene er utført i eik og bygget enkeltvis for det rommet de står i. De er ikke hentet fra en fabrikkserie. Hver benk, skuff og detalj er tilpasset materialene, målene og uttrykket i hytta." : "The bathroom furniture is crafted in oak and built individually for each room. Nothing comes from a standard factory range. Every counter, drawer and detail is tailored to the cabin’s dimensions, materials and architectural character."}</p><p>{language === "nb" ? "Treets naturlige spill står i kontrast til mørk stein, sorte armaturer og rene flater. Det gir badene et moderne, eksklusivt uttrykk uten å miste varmen og nærheten til naturen." : "The natural grain contrasts with dark stone, black fittings and clean surfaces, giving the bathrooms a modern, exclusive character while retaining warmth and a close connection to nature."}</p></div>
           </article>
           <article className="retreat-bespoke-feature retreat-bespoke-feature-reverse">
             <div className="retreat-bespoke-images">
-              <figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+              <figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill unoptimized sizes="(max-width: 900px) 46vw, 20vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>02</span><h3>{language === "nb" ? "Senger integrert i arkitekturen" : "Beds integrated into the architecture"}</h3><p>{language === "nb" ? "Flere av sengene er bygget inn og håndtilpasset på stedet. De følger takvinkler og vegger, utnytter plassen godt og skaper lune, private soner selv når mange gjester bor sammen." : "Many beds are built in and fitted by hand on site. They follow roof angles and walls, make excellent use of space and create sheltered, private zones even when a large group stays together."}</p><p>{language === "nb" ? "De solide trekonstruksjonene gir hvert rom sitt eget særpreg. Sammen med behagelig belysning, myke tekstiler og gjennomtenkt oppbevaring blir soverommene både funksjonelle, moderne og inviterende." : "Solid timber construction gives every room its own identity. Paired with soft lighting, tactile textiles and considered storage, the bedrooms feel functional, modern and inviting."}</p></div>
           </article>
+          <div className="retreat-bespoke-more">
+            <figure><Image src="/images/finn-gallery/47.jpg" alt={language === "nb" ? "Eikemøbel og servant i et av badene" : "Oak vanity and basin in one of the bathrooms"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
+            <figure><Image src="/images/finn-gallery/50.jpg" alt={language === "nb" ? "Håndbygde køyesenger i tre" : "Hand-built timber bunk beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
+          </div>
         </section>
       )}
       {page !== "cabin" && detailBanner}
