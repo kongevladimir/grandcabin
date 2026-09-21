@@ -11,12 +11,15 @@ The owner is non-technical, uses Windows, and communicates in English.
 - Read README.md before starting. Regularly review README.md and AGENTS.md and
   update them when changes make the instructions outdated.
 - Check each feature works, run `npm run check` after code changes, and show a
-  preview with a brief explanation of what changed.
-- After completing a feature, if Cloudflare or Vercel is connected, ask whether
-  the owner wants it published. If they already requested publication, proceed.
-- Once publication is authorized, publish and wait for deployment to finish.
-  Verify the live website, then simply say "Published" and provide the live link.
-  If deployment fails, investigate and fix it; never claim success before it is live.
+  preview with a brief explanation of what changed. Ask whether the change suits
+  the owner.
+- This repository is connected to Cloudflare through GitHub. When the owner
+  approves a change, commit the files belonging to that change and push them to
+  GitHub so Cloudflare publishes them. Do not leave approved changes only in the
+  local repository or ask a separate publication question.
+- After pushing, wait for the Cloudflare deployment to finish and verify the live
+  website. Then simply say "Published" and provide the live link. If deployment
+  fails, investigate and fix it; never claim success before it is live.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

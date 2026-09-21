@@ -15,15 +15,9 @@ npm run dev
 Open http://localhost:3000 (or the address printed by Next.js).
 On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
-Four alternate page structures are available for design comparison:
+The selected website design is the multi-page mountain-retreat presentation:
 
-- `/concepts/destination` — destination and activities first.
-- `/concepts/editorial` — architecture-led editorial story.
-- `/concepts/groups` — practical planning for large groups.
-- `/concepts/panorama` — full-screen luxury presentation for groups and retreats.
-- `/concepts/panorama-2`, `/concepts/panorama-3`, `/concepts/panorama-4` — alternate full-screen hero directions.
-- `/concepts/chalet` — formal alpine-luxury editorial presentation.
-- `/concepts/retreat` — contemporary multi-page mountain-retreat presentation.
+- `/concepts/retreat` — the main entrance.
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 

@@ -6,7 +6,6 @@ import { useState } from "react";
 import { finnUrl } from "@/content/site";
 
 type Language = "nb" | "en";
-type Concept = "themes" | "destination" | "editorial" | "groups" | "panorama" | "chalet" | "retreat";
 
 const image = (name: string) => `/images/${name}.avif`;
 const finnGalleryPhotos = Array.from({ length: 75 }, (_, index) => {
@@ -34,25 +33,6 @@ function LanguageToggle({ language, setLanguage, light = false }: {
       <span>/</span>
       <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
     </div>
-  );
-}
-
-function ConceptSwitcher({ active }: { active: Concept }) {
-  const items: { id: Concept; href: string; label: string }[] = [
-    { id: "themes", href: "/", label: "Temaer" },
-    { id: "destination", href: "/concepts/destination", label: "1 · Destinasjon" },
-    { id: "editorial", href: "/concepts/editorial", label: "2 · Arkitektur" },
-    { id: "groups", href: "/concepts/groups", label: "3 · Store grupper" },
-    { id: "panorama", href: "/concepts/panorama", label: "4 · Panorama" },
-    { id: "chalet", href: "/concepts/chalet", label: "5 · Alpine suites" },
-    { id: "retreat", href: "/concepts/retreat", label: "6 · Mountain retreat" },
-  ];
-
-  return (
-    <nav className="concept-switcher" aria-label="Velg sidestruktur">
-      <span className="concept-switcher-label">Sidestruktur</span>
-      <div>{items.map((item) => <Link key={item.id} className={active === item.id ? "active" : ""} href={item.href}>{item.label}</Link>)}</div>
-    </nav>
   );
 }
 
@@ -95,7 +75,7 @@ export function DestinationConcept() {
         <section className="dest-nearby"><h2>{t.nearby}</h2><div>{t.distances.map(([distance, label]) => <article key={distance}><strong>{distance}</strong><span>{label}</span></article>)}</div></section>
         <section className="dest-route" id="dest-2"><div className="dest-route-copy"><p className="concept-kicker">{t.routeLabel}</p><h2>{t.routeTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2><p>{t.routeText}</p></div><div className="dest-route-image"><Image src={image("terrace")} alt="View from the terrace" fill sizes="(max-width: 800px) 100vw, 50vw" /></div></section>
         <section className="dest-close"><p>GRANDCABIN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <b>↗</b></a></section>
-      </main><ConceptSwitcher active="destination" />
+      </main>
     </div>
   );
 }
@@ -127,7 +107,7 @@ export function EditorialConcept() {
         <section className="ed-rituals"><div className="ed-ritual-image"><Image src={image("terrace")} alt="Terrace at Turufjell" fill sizes="55vw" /></div><div className="ed-ritual-copy"><p>{t.chapter3}</p><h2>{t.rituals}</h2><span>{t.ritualsText}</span></div></section>
         <blockquote>{t.quote}</blockquote>
         <section className="ed-final"><Image src={image("ski")} alt="Turufjell in winter" fill sizes="100vw" /><div><h2>{t.ctaTitle}</h2><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></div></section>
-      </main><ConceptSwitcher active="editorial" />
+      </main>
     </div>
   );
 }
@@ -158,7 +138,7 @@ export function GroupsConcept() {
         <section className="groups-flow"><h2>{t.flowTitle}</h2><div className="groups-flow-grid">{["living", "dining", "sauna"].map((photo, index) => <article key={photo}><div><Image src={image(photo)} alt={t.flow[index][1]} fill sizes="33vw" /></div><span>{t.flow[index][0]}</span><h3>{t.flow[index][1]}</h3><p>{t.flow[index][2]}</p></article>)}</div></section>
         <section className="groups-included" id="groups-2"><h2>{t.included}</h2><ul>{t.includedItems.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul></section>
         <section className="groups-final"><div><p>GRANDCABIN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></div><Image src={image("exterior")} alt="Grandcabin exterior" fill sizes="100vw" /></section>
-      </main><ConceptSwitcher active="groups" />
+      </main>
     </div>
   );
 }
@@ -277,7 +257,6 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
           <div><p className="pano-kicker">{t.ctaLabel}</p><h2>{t.ctaTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <b>↗</b></a><small>{t.finnNote}</small></div>
         </section>
       </main>
-      <ConceptSwitcher active="panorama" />
     </div>
   );
 }
@@ -355,7 +334,6 @@ export function ChaletConcept() {
 
         <section className="chalet-closing"><p>GRANDCABIN · TURUFJELL</p><h2>{t.closing}</h2><span>{t.closingText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></section>
       </main>
-      <ConceptSwitcher active="chalet" />
     </div>
   );
 }
@@ -455,7 +433,6 @@ export function RetreatLongConcept() {
           <div><h2>{t.final}</h2><p>{t.finalText}</p><a href={finnUrl} target="_blank" rel="noreferrer">{t.finalCta}</a></div>
         </section>
       </main>
-      <ConceptSwitcher active="retreat" />
     </div>
   );
 }
@@ -530,7 +507,6 @@ export function RetreatConcept() {
         </section>
       </main>
       <RetreatBookingFooter language={language} />
-      <ConceptSwitcher active="retreat" />
     </div>
   );
 }
@@ -603,21 +579,21 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </header>
           <article className="retreat-bespoke-feature">
             <div className="retreat-bespoke-images">
-              <figure><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill unoptimized sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+              <figure className="retreat-craft-double-vanity"><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure className="retreat-craft-vanity-detail"><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill unoptimized sizes="(max-width: 900px) 58vw, 28vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>01</span><h3>{language === "nb" ? "Unike baderomsmøbler i eik" : "Unique oak bathroom furniture"}</h3><p>{language === "nb" ? "Baderomsmøblene er utført i eik og bygget enkeltvis for det rommet de står i. De er ikke hentet fra en fabrikkserie. Hver benk, skuff og detalj er tilpasset materialene, målene og uttrykket i hytta." : "The bathroom furniture is crafted in oak and built individually for each room. Nothing comes from a standard factory range. Every counter, drawer and detail is tailored to the cabin’s dimensions, materials and architectural character."}</p><p>{language === "nb" ? "Treets naturlige spill står i kontrast til mørk stein, sorte armaturer og rene flater. Det gir badene et moderne, eksklusivt uttrykk uten å miste varmen og nærheten til naturen." : "The natural grain contrasts with dark stone, black fittings and clean surfaces, giving the bathrooms a modern, exclusive character while retaining warmth and a close connection to nature."}</p></div>
           </article>
           <article className="retreat-bespoke-feature retreat-bespoke-feature-reverse">
             <div className="retreat-bespoke-images">
-              <figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill unoptimized sizes="(max-width: 900px) 46vw, 20vw" /></figure>
+              <figure className="retreat-craft-bunks"><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure className="retreat-craft-bed-detail"><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill unoptimized sizes="(max-width: 900px) 58vw, 28vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>02</span><h3>{language === "nb" ? "Senger integrert i arkitekturen" : "Beds integrated into the architecture"}</h3><p>{language === "nb" ? "Flere av sengene er bygget inn og håndtilpasset på stedet. De følger takvinkler og vegger, utnytter plassen godt og skaper lune, private soner selv når mange gjester bor sammen." : "Many beds are built in and fitted by hand on site. They follow roof angles and walls, make excellent use of space and create sheltered, private zones even when a large group stays together."}</p><p>{language === "nb" ? "De solide trekonstruksjonene gir hvert rom sitt eget særpreg. Sammen med behagelig belysning, myke tekstiler og gjennomtenkt oppbevaring blir soverommene både funksjonelle, moderne og inviterende." : "Solid timber construction gives every room its own identity. Paired with soft lighting, tactile textiles and considered storage, the bedrooms feel functional, modern and inviting."}</p></div>
           </article>
           <div className="retreat-bespoke-more">
-            <figure><Image src="/images/finn-gallery/47.jpg" alt={language === "nb" ? "Eikemøbel og servant i et av badene" : "Oak vanity and basin in one of the bathrooms"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
-            <figure><Image src="/images/finn-gallery/50.jpg" alt={language === "nb" ? "Håndbygde køyesenger i tre" : "Hand-built timber bunk beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
+            <figure className="retreat-craft-single-vanity"><Image src="/images/finn-gallery/47.jpg" alt={language === "nb" ? "Eikemøbel og servant i et av badene" : "Oak vanity and basin in one of the bathrooms"} fill unoptimized sizes="(max-width: 900px) 100vw, 40vw" /></figure>
+            <figure className="retreat-craft-bunks-detail"><Image src="/images/finn-gallery/50.jpg" alt={language === "nb" ? "Håndbygde køyesenger i tre" : "Hand-built timber bunk beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
           </div>
         </section>
       )}
@@ -726,7 +702,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-turufjell-future-head"><p>{language === "nb" ? "PLANENE FREMOVER" : "LOOKING AHEAD"}</p><h2>{language === "nb" ? "Et fjellsted i utvikling." : "A mountain destination in development."}</h2><span>{language === "nb" ? "Turufjell arbeider med en større alpinsatsing og et nytt, bilfritt sentrum. Planene utvikles trinnvis og kan bli justert underveis." : "Turufjell is developing a major alpine expansion and a new car-free village centre. The plans will be delivered in stages and may change over time."}</span></div>
         <div className="retreat-turufjell-future-grid">
           <article><div className="retreat-turufjell-future-image"><Image src={image("ski")} alt={language === "nb" ? "Alpint på Turufjell" : "Alpine skiing at Turufjell"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Større alpintilbud" : "Expanded alpine area"}</h3><p>{language === "nb" ? "En planlagt stolheis på 1 850 meter og en ny nedfart på over tre kilometer skal være første store trinn. Den langsiktige ambisjonen er fem heiser, 14 nedfarter, 17 kilometer med bakker og 420 høydemeter." : "A planned 1,850-metre chairlift and a new run of more than three kilometres form the first major stage. The long-term ambition is five lifts, 14 runs, 17 kilometres of slopes and 420 vertical metres."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turufjell-alpint" target="_blank" rel="noreferrer">{language === "nb" ? "SE ALPINPLANENE" : "VIEW THE ALPINE PLANS"} ↗</a></div></article>
-          <article><div className="retreat-turufjell-future-image"><Image src={image("dining")} alt={language === "nb" ? "Sosial møteplass" : "Social gathering place"} fill sizes="50vw" /></div><div><span>02</span><h3>Turutunet</h3><p>{language === "nb" ? "Den planlagte fjellandsbyen er tegnet i samarbeid med Reiulf Ramstad Arkitekter. En ny restaurantlåve, landhandel i en hallingstue, matpakkebu i stabburet og et aktivitetstun skal skape et levende sentrum gjennom hele året." : "The planned mountain village is designed with Reiulf Ramstad Architects. A restaurant barn, local shop in a traditional Hallingstue, a lunch shelter in the storehouse and an activity courtyard are intended to create a lively year-round centre."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turutunet-fjellandsby" target="_blank" rel="noreferrer">{language === "nb" ? "SE PLANENE FOR TURUTUNET" : "VIEW THE TURUTUNET PLANS"} ↗</a></div></article>
+          <article><div className="retreat-turufjell-future-image retreat-turutunet-image"><Image src="/images/turutunet-fjellandsby.jpg" alt={language === "nb" ? "Arkitekturillustrasjon av det planlagte Turutunet" : "Architectural visualisation of the planned Turutunet village"} fill sizes="(max-width: 900px) 100vw, 50vw" /><small>{language === "nb" ? "Illustrasjon: Reiulf Ramstad Arkitekter · endringer kan forekomme" : "Visualisation: Reiulf Ramstad Architects · plans may change"}</small></div><div><span>02</span><h3>Turutunet</h3><p>{language === "nb" ? "Turutunet er planlagt som Turufjells nye hjerte – et bilfritt fjelltun der tradisjonell byggeskikk møter moderne arkitektur av Reiulf Ramstad Arkitekter. Den nye Låven skal romme en lys og romslig restaurant med peis, utsikt og solrike uteplasser, mens Hallingstua, Stabburet og aktivitetstunet skal samle gjester til mat, kultur og gode øyeblikk gjennom hele året." : "Turutunet is planned as the new heart of Turufjell – a car-free mountain village where traditional craft meets contemporary architecture by Reiulf Ramstad Architects. The new barn will offer a bright, generous restaurant with a fireplace, panoramic views and sunny terraces, while Hallingstua, the storehouse and the activity courtyard will bring guests together for food, culture and memorable moments throughout the year."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turutunet-fjellandsby" target="_blank" rel="noreferrer">{language === "nb" ? "SE PLANENE FOR TURUTUNET" : "VIEW THE TURUTUNET PLANS"} ↗</a></div></article>
         </div>
       </section>
     </>
@@ -747,7 +723,6 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </section>
         </main>
         <RetreatBookingFooter language={language} />
-        <ConceptSwitcher active="retreat" />
       </div>
     );
   }
@@ -761,7 +736,6 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <div className="retreat-gallery-all-grid">{finnGalleryPhotos.map((photo, index) => <figure className={index % 13 === 0 ? "wide" : index % 9 === 0 ? "tall" : ""} key={photo}><Image src={photo} alt={`${language === "nb" ? "Grandcabin bilde" : "Grandcabin photo"} ${index + 1}`} fill sizes="(max-width: 700px) 50vw, 33vw" /><span>{(index + 1).toString().padStart(2, "0")}</span></figure>)}</div>
         </main>
         {moreSections}
-        <ConceptSwitcher active="retreat" />
       </div>
     );
   }
@@ -780,7 +754,6 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {gatheringTypes}
       {turufjellDetails}
       {moreSections}
-      <ConceptSwitcher active="retreat" />
     </div>
   );
 }
