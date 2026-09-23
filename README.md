@@ -18,7 +18,9 @@ On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`.
 The selected website design is the multi-page mountain-retreat presentation:
 
 - `/concepts/retreat` — the main entrance.
+- `/concepts/retreat/cabin` — cabin story and guest reviews.
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
+- `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 
 ## Commands
