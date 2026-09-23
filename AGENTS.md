@@ -17,9 +17,11 @@ The owner is non-technical, uses Windows, and communicates in English.
   approves a change, commit the files belonging to that change and push them to
   GitHub so Cloudflare publishes them. Do not leave approved changes only in the
   local repository or ask a separate publication question.
-- After pushing, wait for the Cloudflare deployment to finish and verify the live
-  website. Then simply say "Published" and provide the live link. If deployment
-  fails, investigate and fix it; never claim success before it is live.
+- After pushing, monitor only the GitHub CI check named `Workers Builds:
+  grandcabin` and wait until it completes successfully. Treat that successful
+  GitHub check as publication complete and simply say "Published". Do not open
+  the Cloudflare dashboard, inspect Cloudflare directly, verify the live website,
+  or provide a live link unless the owner explicitly asks for one.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
