@@ -444,7 +444,7 @@ const retreatPaths = [
   "/concepts/retreat/3d-tour",
 ];
 
-function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
+export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
     ? ["Hytta", "Soverom", "Samlinger", "Håndverk", "Turufjell", "Beliggenhet", "Galleri", "3D-visning"]
     : ["The cabin", "Bedrooms", "Retreats", "Craftsmanship", "Turufjell", "Location", "Gallery", "3D tour"];
@@ -453,12 +453,12 @@ function RetreatNav({ language, setLanguage, page }: { language: Language; setLa
     <header className="retreat-header retreat-header-pages">
       <Link href="/concepts/retreat" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
       <nav aria-label={language === "nb" ? "Grandcabin-sider" : "Grandcabin pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><a href={finnUrl} target="_blank" rel="noreferrer">{language === "nb" ? "SE TILGJENGELIGHET" : "CHECK AVAILABILITY"}</a></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">{language === "nb" ? "BESTILLING" : "BOOKING"} <span aria-hidden="true">↗</span></Link></div>
     </header>
   );
 }
 
-function RetreatBookingFooter({ language }: { language: Language }) {
+export function RetreatBookingFooter({ language }: { language: Language }) {
   return (
     <section className="retreat-detail-footer">
       <div className="retreat-footer-address">
@@ -468,8 +468,8 @@ function RetreatBookingFooter({ language }: { language: Language }) {
       <div className="retreat-footer-booking">
         <p>{language === "nb" ? "FORESPØRSEL OG BESTILLING" : "ENQUIRIES AND BOOKING"}</p>
         <h2>{language === "nb" ? "Velkommen til fjells." : "Welcome to the mountains."}</h2>
-        <span>{language === "nb" ? "Se ledige datoer, priser og send forespørselen trygt gjennom FINN." : "See available dates, prices and send your enquiry securely through FINN."}</span>
-        <a href={finnUrl} target="_blank" rel="noreferrer">{language === "nb" ? "SE DATOER OG PRISER PÅ FINN" : "SEE DATES AND PRICES ON FINN"} ↗</a>
+        <span>{language === "nb" ? "La fjelldrømmen bli virkelighet. Velg datoene som passer, og send oss en forespørsel om et opphold skapt for dere." : "Make your mountain escape a reality. Choose your dates and send us an enquiry for a stay made for you."}</span>
+        <Link href="/booking">{language === "nb" ? "SEND INN FORESPØRSEL" : "SEND AN ENQUIRY"} →</Link>
       </div>
       <div className="retreat-footer-contact">
         <p>{language === "nb" ? "KONTAKT OSS" : "CONTACT US"}</p>

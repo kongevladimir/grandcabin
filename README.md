@@ -1,7 +1,15 @@
 # Grandcabin
 
 A Norwegian and English presentation website for the Grandcabin rental property
-on Turufjell. Availability, prices and enquiries are handled through FINN.
+on Turufjell. The direct booking preview lets guests request dates and extras,
+then discuss their stay with the owner in a private conversation. The owner
+approves reservations manually; there is no payment collection.
+Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24
+adds NOK 750 per day, up to 29 guests. Easter 22–30 March 2027 starts at
+NOK 16,000 per day with the same extra-guest rule. Mandatory final cleaning is
+NOK 5,000 per stay, and the combined bed linen and towel package is NOK 350
+per person for up to 29 people. The selected stay shows a full price breakdown.
+The owner still needs to specify the winter holiday rate and deposit terms.
 
 ## Get started
 
@@ -22,6 +30,15 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
 - `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
+- `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
+- `/booking/owner` — private owner inbox, approval and date blocking.
+
+Real online enquiries still require permanent storage and email delivery to be
+connected. See [booking setup](docs/booking-setup.md) for local preview credentials,
+production setup and tests. The booking preview does not synchronize with FINN.
+The owner-provided FINN reservations for November and December 2026 and January
+2027 are recorded as unavailable nights in the booking calendar. New FINN
+reservations must still be added manually.
 
 ## Commands
 
@@ -30,7 +47,8 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `npm start` — serve the production build after building.
 - `npm run lint` — ESLint.
 - `npm run typecheck` — generate route types and check TypeScript.
-- `npm run check` — lint, typecheck, and production build.
+- `npm run test:booking` — date validation and reservation conflict tests.
+- `npm run check` — lint, booking tests, typecheck, and production build.
 
 ## Files
 

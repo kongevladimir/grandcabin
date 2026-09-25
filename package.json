@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "test:booking": "node --test tests/booking.test.mjs",
+    "check": "npm run lint && npm run test:booking && npm run typecheck && npm run build"
   },
   "dependencies": {
     "next": "16.3.5",

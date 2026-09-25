@@ -43,3 +43,7 @@ playwright-report/
 
 # Local IDE settings
 .idea/
+
+# Private local booking data and preview credentials
+.booking-data/
+.booking-owner-access.txt

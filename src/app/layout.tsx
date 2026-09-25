@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
 import "./globals.css";
+import "./booking.css";
 
 export const metadata: Metadata = {
   title: "Grandcabin · Sammen på Turufjell",
