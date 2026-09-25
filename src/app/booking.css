@@ -173,6 +173,28 @@
 .bk-blocks li { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 20px 0; border-top: 1px solid var(--bk-line); font-size: .8rem; }
 .bk-blocks li small { display: block; color: var(--bk-muted); margin-top: 8px; }
 .bk-privacy p { margin: 28px 0; color: var(--bk-muted); }
+.bk-owner-tabs { display: flex; gap: 12px; margin: 24px 0; flex-wrap: wrap; }
+.bk-owner-tabs button { padding: 14px 20px; border: 1px solid var(--bk-line); background: var(--bk-paper); color: var(--bk-ink); font-size: .85rem; }
+.bk-owner-tabs button.active { background: var(--bk-ink); color: #fff; border-color: var(--bk-ink); }
+.bk-price-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start; }
+.bk-prices .bk-calendar-toolbar h3 { font-size: 1.65rem; text-transform: capitalize; margin: 0; }
+.bk-price-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; margin-top: 24px; }
+.bk-price-days .bk-weekday { text-align: center; font-size: .72rem; color: var(--bk-muted); padding: 8px 0; }
+.bk-price-days button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 75px; border: 1px solid var(--bk-line); border-radius: 3px; color: var(--bk-ink); background: #fff; padding: 8px 2px; }
+.bk-price-days button small { font-size: .72rem; white-space: nowrap; }
+.bk-price-days button.custom { background: #eee2cb; border-color: #b89565; }
+.bk-price-days button:not(:disabled):hover { outline: 2px solid var(--bk-gold); outline-offset: -2px; }
+.bk-price-days button.selected { background: var(--bk-ink); color: #fff; border-color: var(--bk-ink); }
+.bk-price-days button.reserved { border-bottom: 4px solid #b67556; }
+.bk-price-days button:disabled { opacity: .35; }
+.bk-price-hint { font-size: .76rem; color: var(--bk-muted); line-height: 1.6; margin: 14px 0; }
+.bk-price-editor { background: #eeece5; padding: 24px; border: 1px solid var(--bk-line); }
+.bk-price-editor fieldset { padding: 0; margin: 0; border: 0; min-width: 0; display: grid; gap: 16px; }
+.bk-price-editor fieldset p { margin: 0; }
+.bk-price-editor .bk-primary, .bk-price-editor .bk-secondary { width: 100%; }
+.bk-price-saved { background: #dfe8e1; border-left: 3px solid #4f6b54; padding: 14px; color: #24472c; font-size: .82rem; }
+@media (max-width: 1000px) { .bk-price-layout { grid-template-columns: 1fr; } .bk-price-editor { max-width: 100%; } }
+@media (max-width: 560px) { .bk-price-days { gap: 3px; } .bk-price-days button { min-height: 60px; gap: 6px; font-size: .85rem; } .bk-price-days button small { font-size: .56rem; } .bk-price-editor { padding: 20px 16px; } .bk-owner-tabs button { flex: 1; padding: 12px; font-size: .76rem; } }
 @media (min-width: 1500px) { .bk-layout { grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; } .bk-panel { padding: 40px; } .bk-days button { min-height: 42px; } }
 @media (max-width: 1000px) { .bk-main { width: calc(100% - 48px); } .bk-layout { grid-template-columns: minmax(0, 1fr) 285px; gap: 20px; } .bk-panel { padding: 24px; } .bk-months { gap: 14px; } .bk-steps { gap: 10px; } .bk-steps button { font-size: .65rem; gap: 6px; } .bk-summary { top: 150px; } .bk-summary-copy { padding: 20px; } .bk-summary-facts { gap: 9px; } .bk-inbox-layout { grid-template-columns: 250px minmax(0, 1fr); } }
 @media (max-width: 820px) { .bk-heading { align-items: flex-start; gap: 30px; } .bk-heading > p { max-width: 240px; font-size: .83rem; } .bk-layout { grid-template-columns: 1fr; } .bk-summary { position: static; display: grid; grid-template-columns: 1fr 1fr; } .bk-summary-photo { height: 100%; min-height: 320px; } .bk-contact { grid-column: 1 / -1; flex-direction: column; align-items: flex-start; } .bk-inbox-layout { grid-template-columns: 1fr; } .bk-enquiries { max-height: 380px; overflow-y: auto; } .bk-blocks { grid-template-columns: 1fr; } }

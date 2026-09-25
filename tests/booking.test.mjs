@@ -136,3 +136,63 @@ test('guest and extras validation includes lower, upper and integer bounds', () 
 test('request requires consent, valid email and name and rejects honeypot spam', () => {
   for (const patch of [{ name: '' }, { consent: false }, { email: 'invalid' }, { website: 'spam' }, { name: ['object'] }, { message: 'x'.repeat(5001) }, { requestKey: '' }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /details/);
 });
+
+test('owner prices cover both selected nights, can overlap, and persist alongside legacy state', () => {
+  const state = { bookings: [], blocks: [], limits: {}, notices: [] };
+  m.setNightlyPrices(state, day(10), day(12), 17000);
+  m.setNightlyPrices(state, day(12), day(13), 18000);
+  assert.deepEqual(state.nightlyPrices, { [day(10)]: 17000, [day(11)]: 17000, [day(12)]: 18000, [day(13)]: 18000 });
+  assert.equal(m.nightlyPrice(day(9), state.nightlyPrices), 15000);
+  assert.equal(m.nightlyPrice(day(14), state.nightlyPrices), 15000);
+  const restored = JSON.parse(JSON.stringify(state));
+  assert.equal(m.rentalQuote({ arrival: day(10), departure: day(14) }, 0, 24, restored.nightlyPrices).rentalTotal, 70000);
+});
+
+test('custom rates group different prices correctly and add extra guests, linen and cleaning once', () => {
+  const prices = { [day(11)]: 17000, [day(12)]: 18000 };
+  const quote = m.rentalQuote({ arrival: day(10), departure: day(13) }, 2, 25, prices);
+  assert.deepEqual(quote.lines, [
+    { season: 'standard', days: 1, rate: 15750, subtotal: 15750 },
+    { season: 'custom', days: 1, rate: 17750, subtotal: 17750 },
+    { season: 'custom', days: 1, rate: 18750, subtotal: 18750 },
+  ]);
+  assert.equal(quote.total, 57950);
+});
+
+test('owner can set missing winter prices and override Easter; restoring removes only selected overrides', () => {
+  const state = m.emptyState();
+  m.setNightlyPrices(state, '2027-02-22', '2027-02-26', 19000);
+  const winter = { arrival: '2027-02-22', departure: '2027-02-27' };
+  assert.doesNotThrow(() => m.validateRequest({ ...request(), ...winter }, state.nightlyPrices));
+  assert.equal(m.rentalQuote(winter, 0, 24, state.nightlyPrices).rentalTotal, 95000);
+  m.setNightlyPrices(state, '2027-03-22', '2027-03-22', 20000);
+  assert.equal(m.nightlyPrice('2027-03-22', state.nightlyPrices), 20000);
+  m.setNightlyPrices(state, '2027-03-22', '2027-03-22', null);
+  assert.equal(m.nightlyPrice('2027-03-22', state.nightlyPrices), 16000);
+  assert.equal(m.nightlyPrice('2027-02-22', state.nightlyPrices), 19000);
+  m.setNightlyPrices(state, '2027-02-22', '2027-02-22', null);
+  assert.equal(m.nightlyPrice('2027-02-22', state.nightlyPrices), null);
+  assert.equal(m.nightlyPrice('2027-02-23', state.nightlyPrices), 19000);
+});
+
+test('invalid admin price or range cannot change stored data', () => {
+  const state = m.emptyState();
+  for (const amount of [0, -1, 1.2, '17000', undefined, {}, NaN, Infinity, 1000001]) {
+    assert.throws(() => m.setNightlyPrices(state, day(10), day(12), amount), /priceAmount/);
+  }
+  for (const [from, through] of [[day(-1), day(2)], [day(12), day(10)], [day(1), day(730)], ['', day(10)], ['2027-02-30', day(200)]]) {
+    assert.throws(() => m.setNightlyPrices(state, from, through, 17000), /priceDates/);
+  }
+  assert.deepEqual(state.nightlyPrices, {});
+  assert.doesNotThrow(() => m.setNightlyPrices(state, day(729), day(729), 1));
+});
+
+test('editing rates leaves previously submitted and accepted quotes unchanged', () => {
+  const state = m.emptyState();
+  state.bookings.push({ ...booking('quoted'), pricing: m.rentalQuote(stay) });
+  const original = structuredClone(state.bookings[0].pricing);
+  m.setNightlyPrices(state, stay.arrival, stay.departure, 22000);
+  m.changeStatus(state, state.bookings[0], 'accepted');
+  assert.deepEqual(state.bookings[0].pricing, original);
+  assert.equal(m.rentalQuote(stay, 0, 2, state.nightlyPrices).rentalTotal, 110000);
+});

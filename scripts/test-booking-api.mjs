@@ -8,7 +8,7 @@ assert.match(env, /^BOOKING_LOCAL_PREVIEW=true$/m, 'Only run against the explici
 const password = env.match(/^BOOKING_OWNER_PASSWORD=(.+)$/m)?.[1].trim();
 assert.ok(password, 'Local preview password is missing.');
 const prefix = `Booking test ${randomUUID().slice(0, 8)}`;
-const ids = []; let ownerCookie = '', blockId = '';
+const ids = []; let ownerCookie = '', blockId = '', changedPrices = false;
 const ip = `192.0.2.${Math.floor(Math.random() * 250) + 1}`;
 async function api(data, cookie = '', query = '', headers = {}) {
   const res = await fetch(`${origin}/api/booking${query}`, { method: data ? 'POST' : 'GET', headers: { Origin: origin, 'Content-Type': 'application/json', 'X-Forwarded-For': ip, Cookie: cookie, ...headers }, ...(data ? { body: JSON.stringify(data) } : {}) });
@@ -25,7 +25,7 @@ assert.match(availability.headers.get('cache-control'), /no-store/);
 assert.ok(availability.body.unavailable.some(b => b.arrival === '2026-12-23' && b.departure === '2026-12-26'), 'Known FINN reservations must appear as occupied nights.');
 const day = n => new Date(Date.parse(`${availability.body.today}T12:00:00Z`) + n * 86400000).toISOString().slice(0, 10);
 let offset = 40;
-while (availability.body.unavailable.some(b => day(offset) < b.departure && b.arrival < day(offset + 10))) offset += 12;
+while (availability.body.unavailable.some(b => day(offset) < b.departure && b.arrival < day(offset + 10)) || Object.keys(availability.body.nightlyPrices ?? {}).some(d => d >= day(offset) && d <= day(offset + 10))) offset += 12;
 assert.ok(offset < 650, 'No safe empty range to test.');
 const stay = { arrival: day(offset), departure: day(offset + 3) };
 const request = () => ({ action: 'enquire', ...stay, guests: 6, linenTowels: 3, name: prefix, email: `test-${randomUUID()}@example.com`, phone: '', message: 'Local automated test only.', occasion: 'company', language: 'en', consent: true, website: '', requestKey: randomUUID() });
@@ -86,11 +86,34 @@ try {
   assert.equal(largeBooking.body.booking.pricing.rentalTotal, 37500);
   assert.equal(largeBooking.body.booking.pricing.linenTowelsTotal, 10150);
   assert.equal(largeBooking.body.booking.pricing.total, 52650);
+  const priceChange = { action: 'set-prices', from: stay.arrival, through: day(offset + 1), amount: 16500 };
+  await expect(priceChange, 401);
+  await expect(priceChange, 401, largeAccess.cookie);
+  await expect(priceChange, 403, ownerCookie, '', { Origin: 'https://other.example' });
+  await expect({ ...priceChange, amount: -100 }, 400, ownerCookie);
+  await expect(priceChange, 200, ownerCookie); changedPrices = true;
+  const pricesAfterSave = await expect();
+  assert.equal(pricesAfterSave.body.nightlyPrices[stay.arrival], 16500);
+  assert.equal(pricesAfterSave.body.nightlyPrices[day(offset + 1)], 16500);
+  assert.equal(pricesAfterSave.body.nightlyPrices[day(offset + 2)], undefined);
+  const afterRateChange = await expect(undefined, 200, ownerCookie, `?view=conversation&id=${largeGroup.body.id}`);
+  assert.equal(afterRateChange.body.booking.pricing.total, 52650, 'Saved quotes must never be repriced.');
+  const priceHeaders = { 'X-Forwarded-For': `198.51.100.${Math.floor(Math.random() * 250) + 1}` };
+  const pricedRequest = { ...request(), departure: day(offset + 2), expectedTotal: 39050 };
+  await expect({ ...pricedRequest, expectedTotal: 36050 }, 409, '', '', priceHeaders);
+  const priced = await expect(pricedRequest, 201, '', '', priceHeaders); ids.push(priced.body.id);
+  const pricedBooking = await expect(undefined, 200, ownerCookie, `?view=conversation&id=${priced.body.id}`);
+  assert.equal(pricedBooking.body.booking.pricing.total, 39050, 'Server must use the stored owner prices.');
+  await expect({ ...priceChange, amount: null }, 200, ownerCookie); changedPrices = false;
+  const restoredPrices = await expect();
+  assert.equal(restoredPrices.body.nightlyPrices[stay.arrival], undefined);
+  console.log('PASS: admin-only price editing, persisted public rates, server-side totals, stale-price protection, saved quote stability and restoring defaults.');
   await expect({ action: 'unblock', id: blockId }, 200, ownerCookie); blockId = '';
   await expect({ ...request(), guests: 30 }, 400);
   console.log('PASS: private access, owner login, request/message retries, two-way chat, concurrent approval, checkout boundaries, blocking, cancellation, and preview email isolation.');
 } finally {
   if (ownerCookie) {
+    if (changedPrices) await expect({ action: 'set-prices', from: stay.arrival, through: day(offset + 1), amount: null }, 200, ownerCookie);
     const inbox = await api(undefined, ownerCookie, '?view=owner');
     for (const b of inbox.body.bookings ?? []) {
       if (!ids.includes(b.id) && b.name !== prefix) continue;

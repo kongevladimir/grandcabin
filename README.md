@@ -31,7 +31,14 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
-- `/booking/owner` — private owner inbox, approval and date blocking.
+- `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
+
+After signing in, the owner can select one night or a range (both dates included)
+and save a nightly price for up to 24 guests, or restore the original prices.
+Changes are stored in booking storage and require no website edit or deployment.
+Guest totals use these prices plus the existing extra-person and extras charges;
+already submitted enquiries keep their quoted prices. Production use still needs
+the storage and account setup described below.
 
 Real online enquiries still require permanent storage and email delivery to be
 connected. See [booking setup](docs/booking-setup.md) for local preview credentials,

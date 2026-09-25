@@ -60,6 +60,19 @@ do not inspect Cloudflare or verify the live site without an explicit request.
 ## Owner workflow
 
 - Sign in at `/booking/owner` with the private owner password.
+- The **Price calendar / Priskalender** opens first. Click one night, or the first
+  and last nights of a range, enter the base price in whole NOK and save. Both
+  selected dates are included. These prices cover up to 24 guests; the existing
+  extra-person charge, cleaning and linen/towels are added automatically.
+- Saved prices take effect for new enquiries without a code change or deployment.
+  They override standard and holiday prices, including the unset winter rate.
+  **Restore default prices** removes overrides for the selected nights only.
+  Earlier enquiries and confirmed reservations keep their saved price. A guest
+  submitting an out-of-date total is asked to review the current price first.
+- Changes use the same durable booking storage and authenticated owner session.
+  Existing storage records without `nightlyPrices` work without a migration;
+  local preview changes stay on this computer until production storage is set up.
+- Choose **Enquiries & dates / Forespørsler & datoer** to manage requests and blocks.
 - Open an enquiry and use its conversation to arrange practical details.
 - Confirm at the displayed total price. Dates are blocked atomically; two overlapping
   enquiries cannot both be accepted. Declining leaves dates available.

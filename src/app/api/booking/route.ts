@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
-import { BookingError, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
+import { BookingError, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
 import { configured, isLocalPreview, mutate, readState } from "@/lib/booking/store";
 import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, publicBooking, rateLimit, reply, session, withSession } from "@/lib/booking/server";
 
@@ -16,13 +16,13 @@ export async function GET(request: NextRequest) {
     if (view === "conversation") guestOrOwner(request, id);
     if (!["availability", "owner", "conversation"].includes(view)) throw new BookingError("missing", 404);
     const { state } = await readState();
-    if (view === "owner") return reply({ bookings: state.bookings.map(publicBooking).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)), blocks: [...finnReservations, ...state.blocks], pendingEmails: state.notices.length, preview: isLocalPreview() });
+    if (view === "owner") return reply({ bookings: state.bookings.map(publicBooking).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)), blocks: [...finnReservations, ...state.blocks], pendingEmails: state.notices.length, preview: isLocalPreview(), nightlyPrices: state.nightlyPrices ?? {}, today: osloToday() });
     if (view === "conversation") {
       const booking = state.bookings.find(b => b.id === id);
       if (!booking) throw new BookingError("missing", 404);
       return reply({ booking: publicBooking(booking), preview: isLocalPreview(), isOwner: !!session(request, "owner"), token: session(request, "guest") === id ? guestToken(id) : undefined });
     }
-    return reply({ ready: true, preview: isLocalPreview(), unavailable: unavailable(state), today: osloToday() });
+    return reply({ ready: true, preview: isLocalPreview(), unavailable: unavailable(state), today: osloToday(), nightlyPrices: state.nightlyPrices ?? {} });
   } catch (error) { return failure(error); }
 }
 
@@ -45,9 +45,10 @@ export async function POST(request: NextRequest) {
       return withSession(reply({ ok: true }), "guest", id);
     }
     if (action === "enquire") {
-      const details = validateRequest(data);
+      const current = (await readState()).state;
+      const details = validateRequest(data, current.nightlyPrices);
       // The same submission nonce safely retries a lost response without duplicate enquiries.
-      const existing = (await readState()).state.bookings.find(b => b.requestKey === details.requestKey);
+      const existing = current.bookings.find(b => b.requestKey === details.requestKey);
       if (existing) {
         if (existing.email !== details.email) throw new BookingError("details");
         return withSession(reply({ id: existing.id, token: guestToken(existing.id), preview: isLocalPreview() }), "guest", existing.id);
@@ -60,7 +61,10 @@ export async function POST(request: NextRequest) {
         if (duplicate) { if (duplicate.email !== details.email) throw new BookingError("details"); return duplicate; }
         assertAvailable(state, details);
         const { message, ...fields } = details;
-        const booking: Booking = { ...fields, id, pricing: rentalQuote(fields, fields.linenTowels, fields.guests), status: "pending", createdAt: now, updatedAt: now, messages: message ? [{ id: randomUUID(), author: "guest", text: message, createdAt: now }] : [] };
+        const pricing = rentalQuote(fields, fields.linenTowels, fields.guests, state.nightlyPrices);
+        if (pricing.total === null) throw new BookingError("pricing");
+        if (data.expectedTotal !== undefined && data.expectedTotal !== pricing.total) throw new BookingError("priceChanged", 409);
+        const booking: Booking = { ...fields, id, pricing, status: "pending", createdAt: now, updatedAt: now, messages: message ? [{ id: randomUUID(), author: "guest", text: message, createdAt: now }] : [] };
         state.bookings.push(booking); notify(state, id, "owner"); notify(state, id, "guest");
         return booking;
       });
@@ -85,6 +89,10 @@ export async function POST(request: NextRequest) {
       await deliverNotices(); return reply({ ok: true });
     }
     ownerOnly(request);
+    if (action === "set-prices") {
+      await mutate(state => setNightlyPrices(state, data.from, data.through, data.amount));
+      return reply({ ok: true });
+    }
     if (action === "status") {
       if (!["accepted", "declined", "cancelled"].includes(String(data.status))) throw new BookingError("status");
       await mutate(state => {

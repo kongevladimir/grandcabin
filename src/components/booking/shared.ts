@@ -2,7 +2,8 @@ import type { BookingStatus } from "@/lib/booking/model";
 export type Lang = "nb" | "en";
 export const words = (lang: Lang, nb: string, en: string) => lang === "nb" ? nb : en;
 export const money = (amount: number, lang: Lang) => `${new Intl.NumberFormat(lang === "nb" ? "nb-NO" : "en-GB", { maximumFractionDigits: 0 }).format(amount)} NOK`;
-export const priceSeasonLabel = (lang: Lang, season: "standard" | "winter" | "easter") => ({
+export const priceSeasonLabel = (lang: Lang, season: "standard" | "winter" | "easter" | "custom") => ({
+  custom: words(lang, "Nattpris", "Nightly rate"),
   standard: words(lang, "Ordinær pris", "Regular price"),
   winter: words(lang, "Vinterferie", "Winter holiday"),
   easter: words(lang, "Påskeferie", "Easter holiday"),
@@ -11,6 +12,9 @@ export const statusLabel = (lang: Lang, status: BookingStatus) => ({ pending: wo
 export function formatDay(day: string, lang: Lang) { return day ? new Date(`${day}T12:00:00Z`).toLocaleDateString(lang === "nb" ? "nb-NO" : "en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "—"; }
 export function errorText(code: string, lang: Lang) {
   const errors: Record<string, [string, string]> = {
+    priceDates: ["Velg første og siste natt innenfor de neste to årene.", "Choose the first and last night within the next two years."],
+    priceAmount: ["Skriv en hel nattpris mellom 1 og 1 000 000 kr.", "Enter a whole nightly price between NOK 1 and NOK 1,000,000."],
+    priceChanged: ["Prisen er oppdatert. Se gjennom den nye totalprisen før du sender forespørselen igjen.", "The price has changed. Please review the updated total before sending your enquiry again."],
     dates: ["Velg ankomst og avreise, med minst én natt mellom.", "Choose arrival and departure, with at least one night between."],
     guests: ["Velg 1–29 gjester. Antall sett kan ikke være større enn antall gjester.", "Choose 1–29 guests. Extras cannot exceed the number of guests."],
     pricing: ["Prisen for vinterferien er ikke lagt inn ennå. Velg andre datoer foreløpig.", "The winter holiday price is not set yet. Please choose other dates for now."],
