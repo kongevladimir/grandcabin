@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
+import { BedroomGallery } from "@/components/BedroomGallery";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const galleryPhotos = Array.from({ length: 74 }, (_, index) => `/images/gallery-updated/${(index + 1).toString().padStart(2, "0")}.png`);
@@ -446,14 +447,14 @@ const retreatPaths = [
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
-    ? ["Hytta", "Soverom", "Samlinger", "Håndverk", "Turufjell", "Beliggenhet", "Galleri", "3D-visning"]
-    : ["The cabin", "Bedrooms", "Retreats", "Craftsmanship", "Turufjell", "Location", "Gallery", "3D tour"];
+    ? ["Hytta", "Our Suites", "Samlinger", "Håndverk", "Turufjell", "Beliggenhet", "Galleri", "3D-visning"]
+    : ["The cabin", "Our Suites", "Retreats", "Craftsmanship", "Turufjell", "Location", "Gallery", "3D tour"];
 
   return (
     <header className="retreat-header retreat-header-pages">
       <Link href="/concepts/retreat" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
       <nav aria-label={language === "nb" ? "Grandcabin-sider" : "Grandcabin pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">{language === "nb" ? "BESTILLING" : "BOOKING"} <span aria-hidden="true">↗</span></Link></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link></div>
     </header>
   );
 }
@@ -703,7 +704,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <article><span>03</span><h3>{language === "nb" ? "Loft" : "Loft"}</h3><strong>{language === "nb" ? "8 sengeplasser" : "8 beds"}</strong><ul><li>{language === "nb" ? "Rom 8 · dobbeltseng · 2 plasser" : "Room 8 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 9 · dobbeltseng · 2 plasser" : "Room 9 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Sovealkove · 4 separate madrasser" : "Sleeping alcove · 4 single mattresses"}</li><li>{language === "nb" ? "Bad med dusj" : "Bathroom with shower"}</li></ul></article>
         </div>
       </section>
-      <section className="retreat-master-suite"><div className="retreat-master-image"><Image src="/images/finn-gallery/33.jpg" alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill sizes="(max-width: 900px) 100vw, 58vw" /></div><div><p>{language === "nb" ? "HOVEDSUITEN" : "THE MAIN SUITE"}</p><h2>{language === "nb" ? "Over 35 m² med privat velvære." : "Over 35 m² of private wellbeing."}</h2><span>{language === "nb" ? "Hovedsoverommet og den tilhørende velværeavdelingen danner en romslig, privat sone med eget toalett, badstue og badekar. Et rolig tilfluktssted med samme varme materialitet som resten av hytta." : "The main bedroom and its adjoining wellness area form a generous private zone with its own toilet, sauna and bathtub. A quiet retreat with the same warm material palette as the rest of the cabin."}</span><ul><li>{language === "nb" ? "Over 35 m² totalt" : "Over 35 m² in total"}</li><li>{language === "nb" ? "Eget toalett" : "Private toilet"}</li><li>{language === "nb" ? "Badstue og badekar" : "Sauna and bathtub"}</li></ul></div></section>
+      <section className="retreat-master-suite"><div className="retreat-master-image"><Image src="/images/finn-gallery/33.jpg" alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill sizes="(max-width: 900px) 100vw, 58vw" /></div><div><p>{language === "nb" ? "HOVEDSUITEN" : "MASTER SUITE"}</p><h2>{language === "nb" ? "Master suite." : "Master Suite."}</h2><span>{language === "nb" ? "Et lyst og rolig rom på 32 m² for to gjester, med varme treflater, en generøs dobbeltseng og utsikt mot fjellet. Velværeavdelingen like ved gir oppholdet en ekstra følelse av ro." : "A light-filled 32 m² retreat for two guests, with warm timber, a generous double bed and mountain views. The wellness area beside it adds an extra sense of calm."}</span><ul><li>{language === "nb" ? "2 gjester" : "2 guests"}</li><li>32 m²</li><li>{language === "nb" ? "Badstue og badekar like ved" : "Sauna and bathtub nearby"}</li></ul></div></section>
       <section className="retreat-bedroom-wellness">
         <header className="retreat-bedroom-wellness-head">
           <p>{language === "nb" ? "VELVÆRE VED HOVEDSOVEROMMET" : "WELLNESS BESIDE THE MAIN BEDROOM"}</p>
@@ -727,6 +728,26 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </figure>
         </div>
       </section>
+    </>
+  );
+
+  const bedroomTail = (
+    <>
+      <section className="retreat-suite-editorial retreat-suite-doubles">
+        <div className="retreat-suite-editorial-copy"><p>01 · {language === "nb" ? "DOBBELTSUITER" : "DOUBLE SUITES"}</p><h2>{language === "nb" ? "Fire elegante dobbeltsuiter." : "Four elegant double suites."}</h2><span>{language === "nb" ? "Fordelt over underetasjen, hovedetasjen og loftet gir de fire dobbeltsuitene hver sin rolige plass å trekke seg tilbake til. Premiumsenger og myke tekstiler gir gjennomført komfort, mens tradisjonelt treverk, panel og lyse rom knytter interiøret til fjellandskapet." : "Across the lower floor, main floor and loft, four double suites offer a peaceful place to retreat. Premium beds and soft textiles invite deep rest, while traditional timber and panelled walls bring warmth to bright, contemporary rooms."}</span><div className="retreat-suite-detail-line"><b>04</b><small>{language === "nb" ? "DOBBELTSUITER · TRE NIVÅER" : "DOUBLE SUITES · THREE LEVELS"}</small></div></div>
+        <div className="retreat-suite-editorial-image"><Image src="/images/finn-gallery/35.jpg" alt={language === "nb" ? "Lys dobbeltsuite med trepanel" : "Bright double suite with timber panelling"} fill sizes="(max-width: 900px) 100vw, 56vw" /></div>
+      </section>
+      <section className="retreat-suite-editorial retreat-suite-bunks">
+        <div className="retreat-suite-editorial-image"><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Lunt soverom med innebygd køyeseng" : "Inviting bedroom with a built-in bunk bed"} fill sizes="(max-width: 900px) 100vw, 56vw" /></div>
+        <div className="retreat-suite-editorial-copy"><p>02 · {language === "nb" ? "KØYESENGER" : "BUNK ROOMS"}</p><h2>{language === "nb" ? "Sammen, med plass til ro." : "Together, with room to unwind."}</h2><span>{language === "nb" ? "Tre lune rom med køyesenger gir familie og venner en fleksibel soveplass. Det varme treverket og de gjennomtenkte detaljene gjør hvert rom hyggelig å komme tilbake til etter en lang dag ute." : "Three welcoming bunk rooms give family and friends flexible sleeping space. Warm wood and considered details make each one a comfortable place to return to after a day outside."}</span><div className="retreat-suite-detail-line"><b>03</b><small>{language === "nb" ? "ROM MED KØYESENGER" : "BUNK ROOMS"}</small></div></div>
+      </section>
+      <section className="retreat-suite-four">
+        <header><p>03 · {language === "nb" ? "FOR BARN ELLER VOKSNE" : "FOR KIDS OR ADULTS"}</p><h2>Four Single Bed Suite<br />for Kids or Adults</h2><span>{language === "nb" ? "To rom, hvert med fire sengeplasser. Lune soveplasser, lyse materialer og et enkelt, moderne uttrykk gjør rommene like fine for barn som for voksne." : "Two rooms, each with four sleeping places. Cosy beds, light materials and clean modern details make them equally inviting for children and adults."}</span></header>
+        <div className="retreat-suite-four-images"><figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Soverom med fire sengeplasser i to køyesenger" : "Four sleeping places in two bunk beds"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom én" : "Suite one"}</figcaption></figure><figure><Image src="/images/finn-gallery/53.jpg" alt={language === "nb" ? "Det andre soverommet med fire sengeplasser" : "The second four-bed room"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom to" : "Suite two"}</figcaption></figure></div>
+      </section>
+      <section className="retreat-suite-final-image"><Image src="/images/finn-gallery/36.jpg" alt={language === "nb" ? "Soverom med vindu mot vinterlandskapet" : "Bedroom window overlooking a snowy landscape"} fill sizes="100vw" /></section>
+      <section className="retreat-banner-caption"><h2>{language === "nb" ? "Våkne til fjellet." : "Wake up to the mountains."}</h2><p>{more.bannerText}</p></section>
+      <RetreatBookingFooter language={language} />
     </>
   );
 
@@ -836,15 +857,16 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page === "cabin" && detailBanner}
       <main className="retreat-detail">
         <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div>
-        <div className="retreat-detail-copy"><p>{t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="retreat-detail-text"><span>{t.text}</span>{page === "cabin" && <span className="retreat-detail-intro-addendum">{more.bannerText}</span>}<ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
+        <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · OUR SUITES" : t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm." : "Refined luxury meets timeless mountain charm."}</strong>}<div className="retreat-detail-text"><span>{t.text}</span>{page === "cabin" && <span className="retreat-detail-intro-addendum">{more.bannerText}</span>}<ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>
+      {page === "bedrooms" && <BedroomGallery language={language} />}
       {locationDirections}
       {locationDistances}
       {locationArrival}
       {bedroomBreakdown}
       {gatheringTypes}
       {turufjellDetails}
-      {moreSections}
+      {page === "bedrooms" ? bedroomTail : moreSections}
     </div>
   );
 }
