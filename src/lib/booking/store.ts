@@ -8,7 +8,7 @@ export type Stored = { version: number; state: BookingState };
 const localDirectory = () => path.join(process.cwd(), ".booking-data");
 export function isLocalPreview() { return process.env.BOOKING_LOCAL_PREVIEW === "true"; }
 export function configured() {
-  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= 16 && (isLocalPreview() || (process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.RESEND_API_KEY)));
+  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= (isLocalPreview() ? 8 : 16) && (isLocalPreview() || (process.env.BOOKING_OWNER_USERNAME && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.BOOKING_OWNER_USERNAME) && process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.RESEND_API_KEY)));
 }
 async function database(endpoint: string, init?: RequestInit) {
   const base = process.env.BOOKING_SUPABASE_URL;

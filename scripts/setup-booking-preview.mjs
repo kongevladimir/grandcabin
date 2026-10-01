@@ -8,8 +8,8 @@ if (/^BOOKING_/m.test(existing)) {
 } else {
   const password = randomBytes(18).toString('base64url');
   const secret = randomBytes(48).toString('base64url');
-  existing += `\n# Local booking preview only. Never copy these credentials to production.\nBOOKING_LOCAL_PREVIEW=true\nBOOKING_SESSION_SECRET=${secret}\nBOOKING_OWNER_PASSWORD=${password}\n`;
+  existing += `\n# Local booking preview only. Never copy these credentials to production.\nBOOKING_LOCAL_PREVIEW=true\nBOOKING_SESSION_SECRET=${secret}\nBOOKING_OWNER_USERNAME=owner@example.com\nBOOKING_OWNER_PASSWORD=${password}\n`;
   await writeFile(file, existing, { mode: 0o600 });
-  await writeFile(new URL('../.booking-owner-access.txt', import.meta.url), `Grandcabin — local owner inbox\n\nOpen: http://localhost:3000/booking/owner\nOwner password: ${password}\n\nThis password is for this computer's preview only.\nEnquiries are stored locally. No email is sent.\nKeep this file private. It is excluded from Git.\n`, { mode: 0o600 });
+  await writeFile(new URL('../.booking-owner-access.txt', import.meta.url), `Grandcabin — local owner inbox\n\nOpen: http://localhost:3000/login\nUsername: owner@example.com\nOwner password: ${password}\n\nThis password is for this computer's preview only.\nEnquiries are stored locally. No email is sent.\nKeep this file private. It is excluded from Git.\n`, { mode: 0o600 });
   console.log('Local preview configured. Owner sign-in details saved in .booking-owner-access.txt (excluded from Git).');
 }

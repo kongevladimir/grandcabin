@@ -1,12 +1,15 @@
 .retreat-header-pages { grid-template-columns: 125px minmax(0, 1fr) auto; gap: clamp(.6rem, 1.2vw, 1.3rem); padding-inline: clamp(1rem, 2.2vw, 2.2rem); }
 .retreat-header-pages nav { min-width: 0; gap: clamp(.55rem, 1vw, 1.1rem); font-size: .59rem; }
 .retreat-header-pages .retreat-actions { gap: .8rem; justify-self: end; }
+.retreat-header-pages .retreat-actions > a.retreat-login-link { display: inline-flex; min-width: 0; padding: .5rem 0; background: transparent; color: #aeb3b6; font-size: .59rem; font-weight: 500; letter-spacing: .02em; text-decoration: none; white-space: nowrap; }
+.retreat-header-pages .retreat-login-link:hover, .retreat-header-pages .retreat-login-link:focus-visible { color: #f1e9dc; text-decoration: underline; text-underline-offset: 4px; }
 .retreat-header-pages .retreat-actions > a.retreat-booking-link { display: inline-flex; min-width: 150px; min-height: 52px; align-items: center; gap: .75rem; padding: .9rem 1.2rem; font-size: .67rem; box-shadow: 0 0 0 1px rgba(216,182,135,.45); }
 .retreat-booking-link span { font-size: 1rem; line-height: 0; }
 .retreat-header-pages .retreat-booking-link:hover, .retreat-header-pages .retreat-booking-link:focus-visible { background: #ead3b0; }
 @media (max-width: 1300px) { .retreat-header-pages nav { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .retreat-header-pages nav::-webkit-scrollbar { display: none; } }
 @media (max-width: 900px) { .retreat-header-pages { grid-template-columns: 1fr auto; } .retreat-header-pages .retreat-actions { grid-column: 2; } }
 @media (max-width: 560px) { .retreat-header-pages .retreat-actions { gap: .5rem; } .retreat-header-pages .retreat-actions > a.retreat-booking-link { min-width: 112px; min-height: 42px; gap: .35rem; padding: .65rem .7rem; font-size: .57rem; } }
+@media (max-width: 560px) { .retreat-header-pages .retreat-actions > a.retreat-login-link { font-size: .55rem; } }
 .bk-page { --bk-ink: #192730; --bk-muted: #64706e; --bk-gold: #b89565; --bk-line: #deded6; --bk-paper: #f8f7f3; }
 .bk-main { width: min(1312px, calc(100% - 96px)); margin: 0 auto; padding: 64px 0 88px; }
 .bk-page h1, .bk-page h2, .bk-page h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
@@ -122,6 +125,8 @@
 .bk-page .bk-consent { display: flex; flex-direction: row; align-items: flex-start; font-size: .75rem; font-weight: 400; line-height: 1.7; }
 .bk-consent input { width: 18px; height: 18px; min-height: 18px; margin-top: 3px; flex-shrink: 0; accent-color: var(--bk-ink); }
 .bk-consent a { text-decoration: underline; }
+.bk-required-mark { color: #8a4936; font-weight: 800; }
+.bk-page .bk-required-note { margin: 14px 0 0; color: #705a3c; font-size: .75rem; line-height: 1.6; }
 .bk-guest, .bk-privacy { max-width: 950px; }
 .bk-guest h1 { margin-bottom: 32px; }
 .bk-guest .bk-receipt { color: var(--bk-muted); margin-bottom: 25px; }
@@ -151,6 +156,9 @@
 .bk-owner .bk-kicker { margin-bottom: 14px; }
 .bk-login { max-width: 530px; margin: 50px auto; }
 .bk-login label { margin-bottom: 24px; }
+.bk-login .bk-error { color: #8a4936; margin: 0 0 20px; }
+.bk-login .bk-login-help { margin: 4px 0 0; text-align: right; }
+.bk-login-help a { color: #59645f; font-size: .72rem; text-decoration: underline; text-underline-offset: 3px; }
 .bk-owner-stats { display: flex; flex-wrap: wrap; gap: 40px; padding: 24px 0; margin-bottom: 28px; border-block: 1px solid var(--bk-line); }
 .bk-owner-stats span { display: flex; align-items: center; gap: 14px; font-size: .75rem; color: var(--bk-muted); }
 .bk-owner-stats b { font: 2.2rem Georgia, serif; color: var(--bk-ink); }

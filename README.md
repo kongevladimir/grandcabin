@@ -32,6 +32,8 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
 - `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
+- `/login` — owner sign-in with username and password.
+- `/forgot-password` — request an owner password reset by email when production email delivery is configured.
 
 After signing in, the owner can select one night or a range (both dates included)
 and save a nightly price for up to 24 guests, or restore the original prices.

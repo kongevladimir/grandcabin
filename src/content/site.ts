@@ -59,7 +59,7 @@ export const copy = {
     comfortLabel: "HYTTELIV, MED LITT EKSTRA",
     comfortTitle: "Alt ligger til rette.",
     comforts: [
-      ["Ski fra døren", "Langrennsløypa starter rett utenfor hytta, og alpinanlegget nås på ski etter omtrent 150 meter – helt uten bil."],
+      ["Ski fra døren", "Langrennsløypa starter rett utenfor hytta. Spenn på alpinskiene ved inngangen og følg løypa i et par minutter til alpinanlegget – helt uten bil."],
       ["Varme etter turen", "To badstuer, varme i gulvene og ved til peisen. Finn roen etter en dag i frisk fjelluft."],
       ["De lange måltidene", "To kjøkken og langbord med plass til 14–16 i hovedetasjen og 26–28 i underetasjen."],
       ["Samle kollegaene", "Plass til møter, kurs og teambuilding. Bredbånd og romslige fellesarealer gjør samlingen enkel."],
@@ -127,7 +127,7 @@ export const copy = {
     comfortLabel: "A LITTLE MORE CABIN COMFORT",
     comfortTitle: "Make yourself at home.",
     comforts: [
-      ["Ski from the doorstep", "The cross-country trail begins outside the cabin, and the alpine area is approximately 150 metres away by ski – no car needed."],
+      ["Ski from the doorstep", "The cross-country trail starts just outside the cabin. Clip into your alpine skis by the entrance and follow the trail for a couple of minutes to the ski area – no car needed."],
       ["Warm up after a day out", "Two saunas, underfloor heating and firewood for the fireplace. Settle in after a day in the mountain air."],
       ["Meals worth lingering over", "Two kitchens, with dining space for 14–16 on the main floor and 26–28 on the lower floor."],
       ["Bring the team", "Room for meetings, workshops and team retreats, with broadband and spacious shared areas."],

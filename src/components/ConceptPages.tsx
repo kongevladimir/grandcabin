@@ -5,8 +5,10 @@ import Link from "next/link";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
+import { TurufjellActivities } from "@/components/TurufjellActivities";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
+const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
 const galleryPhotos = Array.from({ length: 74 }, (_, index) => `/images/gallery-updated/${(index + 1).toString().padStart(2, "0")}.png`);
 const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
   x: 4310 + (index % 4),
@@ -38,7 +40,7 @@ export function DestinationConcept() {
     title: "Hele fjellet.\nEtt sted å samles.", lead: "En stor og lun base for 29 gjester, med natur og aktiviteter rett utenfor døren.", cta: "Se tilgjengelighet på FINN",
     seasonTitle: "Velg deres fjellopplevelse", seasonLead: "Turufjell skifter karakter med årstidene. Hytta gir dere samme gode utgangspunkt hele året.",
     winter: "Vinter på Turufjell", winterText: "Ski inn og ut, langrennsløyper og lune pauser rundt peisen.", summer: "Sommer i høyden", summerText: "Sykkel, fjellturer, fiskevann og lange kvelder på terrassen.",
-    baseLabel: "DERES BASE", baseTitle: "Stor nok for alle.\nLun nok til å føles nær.", baseText: "360 kvadratmeter gir rom for både fellesskap og rolige øyeblikk. To kjøkken, to badstuer og store oppholdsrom gjør det enkelt å samle familie, venner eller kollegaer.",
+    baseLabel: "DERES BASE", baseTitle: "Stor nok for alle.\nLun nok til å føles nær.", baseText: "Over 340 kvadratmeter gir rom for både fellesskap og rolige øyeblikk. To kjøkken, to badstuer og store oppholdsrom gjør det enkelt å samle familie, venner eller kollegaer.",
     nearby: "Alt dere trenger, i nærheten", distances: [["Ved døren", "til langrennsløypa"], ["Ca. 150 m", "til alpinbakken"], ["15 min", "til Flå sentrum"], ["< 2 timer", "fra Oslo"]],
     routeLabel: "EN ENKEL REISE TIL FJELLET", routeTitle: "Nær nok for en helg.\nStor nok for en anledning.", routeText: "Kjør fra Oslo på under to timer, eller ta toget til Flå og taxi videre. Ved hytta er det god plass til parkering.",
     close: "Klar for Turufjell?", closeText: "Se ledige datoer, priser og vilkår i vår FINN-annonse.",
@@ -47,7 +49,7 @@ export function DestinationConcept() {
     title: "The whole mountain.\nOne place to gather.", lead: "A generous, welcoming base for 29 guests, with nature and activities just outside.", cta: "Check availability on FINN",
     seasonTitle: "Choose your mountain experience", seasonLead: "Turufjell changes with the seasons. The cabin is your comfortable base all year round.",
     winter: "Winter at Turufjell", winterText: "Ski-in access, cross-country trails and warm evenings by the fire.", summer: "Summer in the mountains", summerText: "Cycling, mountain walks, fishing lakes and long evenings on the terrace.",
-    baseLabel: "YOUR BASE", baseTitle: "Room for everyone.\nWarm enough to feel close.", baseText: "With 360 square metres, there is room to come together and room to unwind. Two kitchens, two saunas and generous living spaces make group stays easy.",
+    baseLabel: "YOUR BASE", baseTitle: "Room for everyone.\nWarm enough to feel close.", baseText: "With over 340 square metres, there is room to come together and room to unwind. Two kitchens, two saunas and generous living spaces make group stays easy.",
     nearby: "Everything close at hand", distances: [["At the door", "to cross-country trails"], ["Approx. 150 m", "to the ski slope"], ["15 min", "to Flå village"], ["< 2 hours", "from Oslo"]],
     routeLabel: "AN EASY JOURNEY TO THE MOUNTAINS", routeTitle: "Close enough for a weekend.\nSpecial enough for an occasion.", routeText: "Drive from Oslo in under two hours, or take the train to Flå and continue by taxi. There is plenty of parking at the cabin.",
     close: "Ready for Turufjell?", closeText: "See available dates, prices and terms in our FINN listing.",
@@ -160,7 +162,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
     introLabel: "SKAPT FOR Å SAMLE MANGE",
     introTitle: "Storslått ute.\nRaus plass inne.",
     introText: "Grandcabin kombinerer roen fra et eksklusivt fjellhus med kapasiteten en stor gruppe trenger. Her kan 29 gjester bo, spise, møtes og koble av under samme tak.",
-    stats: [["29", "sengeplasser"], ["9", "soverom"], ["360 m²", "å leve på"], ["4", "bad"]],
+    stats: [["29", "sengeplasser"], ["9", "soverom"], ["over 340 m²", "å leve på"], ["4", "bad"]],
     conferenceLabel: "MØTER OG SAMLINGER",
     conferenceTitle: "Utsikten gjør halve jobben.",
     conferenceText: "Et lyst møterom med stor skjerm, bredbånd og plass til å arbeide sammen. Når agendaen er ferdig, ligger fjellet rett utenfor døren.",
@@ -182,7 +184,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
     introLabel: "MADE TO BRING PEOPLE TOGETHER",
     introTitle: "Expansive outside.\nGenerous inside.",
     introText: "Grandcabin combines the calm of an exclusive mountain home with the capacity a large group needs. Here, 29 guests can stay, dine, meet and unwind under one roof.",
-    stats: [["29", "beds"], ["9", "bedrooms"], ["360 m²", "to enjoy"], ["4", "bathrooms"]],
+    stats: [["29", "beds"], ["9", "bedrooms"], ["over 340 m²", "to enjoy"], ["4", "bathrooms"]],
     conferenceLabel: "MEETINGS AND RETREATS",
     conferenceTitle: "The view does half the work.",
     conferenceText: "A bright meeting room with a large screen, broadband and room to work together. When the agenda ends, the mountain begins outside the door.",
@@ -447,19 +449,19 @@ const retreatPaths = [
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
-    ? ["Hytta", "Our Suites", "Samlinger", "Håndverk", "Turufjell", "Beliggenhet", "Galleri", "3D-visning"]
-    : ["The cabin", "Our Suites", "Retreats", "Craftsmanship", "Turufjell", "Location", "Gallery", "3D tour"];
+    ? ["Hytta", "Suites", "Samlinger", "Håndverk", "Turufjell", "Beliggenhet", "Galleri", "3D-visning"]
+    : ["The cabin", "Suites", "Retreats", "Craftsmanship", "Turufjell", "Location", "Gallery", "3D tour"];
 
   return (
     <header className="retreat-header retreat-header-pages">
       <Link href="/concepts/retreat" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
       <nav aria-label={language === "nb" ? "Grandcabin-sider" : "Grandcabin pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
     </header>
   );
 }
 
-export function RetreatBookingFooter({ language }: { language: Language }) {
+export function RetreatBookingFooter({ language, omitHeadingPeriod = false }: { language: Language; omitHeadingPeriod?: boolean }) {
   return (
     <section className="retreat-detail-footer">
       <div className="retreat-footer-address">
@@ -468,7 +470,7 @@ export function RetreatBookingFooter({ language }: { language: Language }) {
       </div>
       <div className="retreat-footer-booking">
         <p>{language === "nb" ? "FORESPØRSEL OG BESTILLING" : "ENQUIRIES AND BOOKING"}</p>
-        <h2>{language === "nb" ? "Velkommen til fjells." : "Welcome to the mountains."}</h2>
+        <h2>{language === "nb" ? "Velkommen til fjells" : "Welcome to the mountains"}{omitHeadingPeriod ? "" : "."}</h2>
         <span>{language === "nb" ? "La fjelldrømmen bli virkelighet. Velg datoene som passer, og send oss en forespørsel om et opphold skapt for dere." : "Make your mountain escape a reality. Choose your dates and send us an enquiry for a stay made for you."}</span>
         <Link href="/booking">{language === "nb" ? "SEND INN FORESPØRSEL" : "SEND AN ENQUIRY"} →</Link>
       </div>
@@ -496,7 +498,15 @@ export function RetreatConcept() {
       <RetreatNav language={language} setLanguage={setLanguage} />
       <main>
         <section className="retreat-hero retreat-home-hero">
-          <Image src={image("exterior")} alt="Grandcabin and the mountains at Turufjell" fill priority sizes="100vw" />
+          <iframe
+            className="retreat-home-video-frame"
+            src={cabinVideoUrl}
+            title={language === "nb" ? "Video av Grandcabin på Turufjell" : "Video of Grandcabin at Turufjell"}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="eager"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
           <div className="retreat-hero-shade" />
           <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
         </section>
@@ -506,12 +516,53 @@ export function RetreatConcept() {
   );
 }
 
+function CabinVideoHero({ language, description }: { language: Language; description: string }) {
+  const isNorwegian = language === "nb";
+
+  return (
+    <>
+      <section className="retreat-cabin-video-hero" aria-labelledby="retreat-cabin-video-title">
+        <iframe
+          className="retreat-cabin-video-frame"
+          src={cabinVideoUrl}
+          title={isNorwegian ? "Video av Grandcabin på Turufjell" : "Video of Grandcabin at Turufjell"}
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          loading="eager"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+        <div className="retreat-cabin-video-shade" />
+        <div className="retreat-cabin-video-copy">
+          <p>GRANDCABIN · TURUFJELL</p>
+          <h1 id="retreat-cabin-video-title">{isNorwegian ? "Fjellet. Helt deres." : "The mountain. All yours."}</h1>
+          <span>{isNorwegian ? "Et privat fjellhjem for de store øyeblikkene" : "A private mountain home for moments worth sharing"}</span>
+        </div>
+      </section>
+      <section className="retreat-cabin-video-statement" id="retreat-cabin-video-intro">
+        <p>{description}</p>
+      </section>
+      <section className="retreat-cabin-video-intro">
+        <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
+        <h2>{isNorwegian ? "700 moh. Over 340 m² ren fjellglede." : "700 metres above sea level. Over 340 m² of mountain living."}</h2>
+        <div>
+          <p>{isNorwegian
+            ? "Grandcabin er et eksklusivt, privat fjellhjem på Turufjell, skapt for minnerike opphold med familie og venner, og for inspirerende bedriftssamlinger. Her kan opptil 29 gjester nyte et opphold med ski inn og ut, generøse rom og komfort i hver detalj."
+            : "Grandcabin is an exclusive private mountain home at Turufjell, created for memorable stays with family and friends, as well as inspiring company retreats. Up to 29 guests can enjoy ski-in, ski-out access, generous spaces and comfort in every detail."}</p>
+          <p>{isNorwegian
+            ? "Etter en dag på fjellet venter to badstuer, lange måltider og en romslig terrasse med vid utsikt. Her er det plass til å være sammen, og til å finne roen helt for seg selv."
+            : "After a day in the mountains, two saunas, unhurried dinners and a spacious terrace with far-reaching views await. There is room to gather, and room to find a quiet moment of your own."}</p>
+        </div>
+      </section>
+    </>
+  );
+}
+
 export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const [language, setLanguage] = useSiteLanguage();
   const nb = {
-    cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living", alt: "Stuen med utsikt", facts: ["Ny fra 2024", "360 m²", "4 bad · 2 badstuer"] },
-    bedrooms: { number: "02", title: "Ni soverom.\n29 sengeplasser.", text: "Soveplassene er fordelt over tre nivåer: 16 i underetasjen, fem i hovedetasjen og åtte på loftet. Det gir nærhet for gruppen og rolige soner når dagen er over.", photo: "bedroom", alt: "Et av soverommene", facts: ["16 nede", "5 hovedplan", "8 på loftet"] },
-    meetings: { number: "03", title: "Samlinger med\nrom for ideer.", text: "Bredbånd, stor skjerm og fleksible oppholdsrom legger til rette for møter, kurs og mindre konferanser. Fjellandskapet gir naturlige pauser mellom øktene.", photo: "gathering", alt: "Møte- og konferanserom", facts: ["Stor skjerm", "Bredbånd", "Fleksible rom"] },
+    cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living", alt: "Stuen med utsikt", facts: ["Ny fra 2024", "Over 340 m²", "4 bad · 2 badstuer"] },
+    bedrooms: { number: "02", title: "Ni soverom\n29 sengeplasser", text: "Soveplassene er fordelt over tre nivåer: 16 i underetasjen, fem i hovedetasjen og åtte på loftet. Det gir nærhet for gruppen og rolige soner når dagen er over.", photo: "bedroom", alt: "Et av soverommene", facts: ["16 nede", "5 hovedplan", "8 på loftet"] },
+    meetings: { number: "03", title: "Samlinger med\nrom for ideer.", text: "Et 100-tommers lerret, raskt bredbånd og fleksible oppholdsrom gir gode rammer for møter, kurs og mindre konferanser. Fjellandskapet gir naturlige pauser mellom øktene.", photo: "gathering", alt: "Møte- og konferanserom", facts: ["100-tommers lerret", "Raskt bredbånd", "Fleksible rom"] },
     materials: { number: "04", title: "Raffinert håndverk.\nNaturlige materialer.", text: "Massiv gran, børstet lerk og naturlige oljer gir Grandcabin en varm og moderne identitet. Hver overflate er valgt for å eldes vakkert og bringe naturen inn i rommene.", photo: "dining", alt: "Treverk og materialer i spisestuen", facts: ["4 bad · 2 badstuer", "Balansert ventilasjon", "Vannbåren varme"] },
     turufjell: { number: "05", title: "Fjellet begynner\nutenfor døren.", text: "Ski inn og ut om vinteren, og sykkel, turstier og fiskevann når snøen forsvinner. Turufjell ligger under to timer fra Oslo og 15 minutter fra Flå sentrum.", photo: "turufjell-hero-original", alt: "Panoramautsikt over Turufjell og Hallingdal", facts: ["Langrenn ved døren", "Ca. 150 m til alpint", "Under 2 t fra Oslo"] },
     location: { number: "06", title: "Nærmere enn\ndere tror.", text: "Grandcabin ligger på solsiden av Turufjell, under to timer fra Oslo og omtrent 15 minutter fra Flå. Kom med bil, tog eller buss – den siste etappen går rolig opp til fjellet.", photo: "terrace", alt: "Utsikten fra Grandcabin på Turufjell", facts: ["116 km fra Oslo", "15 min fra Flå", "Parkering ved hytta"] },
@@ -519,9 +570,9 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     tour: { number: "08", title: "Gå gjennom\nGrandcabin.", text: "Utforsk hytta rom for rom i en interaktiv 3D-visning.", photo: "living", alt: "Grandcabin 3D-visning", facts: ["360° visning", "Tre nivåer", "Utforsk i eget tempo"] },
   };
   const en = {
-    cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "One of Norway’s most distinctive cabins – and it is easy to understand why. Thoughtful architecture, solid materials and exceptional comfort create the setting for a truly special stay.", photo: "living", alt: "Living room with a view", facts: ["New in 2024", "360 m²", "4 bathrooms · 2 saunas"] },
-    bedrooms: { number: "02", title: "Nine bedrooms.\n29 beds.", text: "Sleeping space is arranged across three levels: 16 beds downstairs, five on the main floor and eight in the loft. The group stays close while everyone can still find a quiet place.", photo: "bedroom", alt: "One of the bedrooms", facts: ["16 downstairs", "5 main floor", "8 in the loft"] },
-    meetings: { number: "03", title: "Gatherings with\nroom for ideas.", text: "Broadband, a large screen and flexible living spaces support meetings, workshops and smaller conferences. The mountain landscape creates natural breaks between sessions.", photo: "gathering", alt: "Meeting and conference room", facts: ["Large screen", "Broadband", "Flexible rooms"] },
+    cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "One of Norway’s most distinctive cabins – and it is easy to understand why. Thoughtful architecture, solid materials and exceptional comfort create the setting for a truly special stay.", photo: "living", alt: "Living room with a view", facts: ["New in 2024", "Over 340 m²", "4 bathrooms · 2 saunas"] },
+    bedrooms: { number: "02", title: "Nine bedrooms\n29 beds", text: "Sleeping space is arranged across three levels: 16 beds downstairs, five on the main floor and eight in the loft. The group stays close while everyone can still find a quiet place.", photo: "bedroom", alt: "One of the bedrooms", facts: ["16 downstairs", "5 main floor", "8 in the loft"] },
+    meetings: { number: "03", title: "Gatherings with\nroom for ideas.", text: "A 100-inch presentation screen, fast broadband and flexible shared spaces create an inviting setting for meetings, workshops and smaller conferences. The mountain landscape offers natural breaks between sessions.", photo: "gathering", alt: "Meeting and conference room", facts: ["100-inch screen", "Fast broadband", "Flexible rooms"] },
     materials: { number: "04", title: "Refined craft.\nNatural materials.", text: "Solid spruce, brushed larch and natural oils give Grandcabin its warm, modern identity. Every surface is chosen to age beautifully and bring nature into the rooms.", photo: "dining", alt: "Timber and materials in the dining room", facts: ["4 bathrooms · 2 saunas", "Balanced ventilation", "Hydronic heating"] },
     turufjell: { number: "05", title: "The mountain begins\noutside the door.", text: "Ski in and out in winter, with cycling, trails and fishing lakes when the snow clears. Turufjell is under two hours from Oslo and 15 minutes from Flå village.", photo: "turufjell-hero-original", alt: "Panoramic view across Turufjell and Hallingdal", facts: ["Trails at the door", "Approx. 150 m to alpine", "Under 2 h from Oslo"] },
     location: { number: "06", title: "Closer than\nit feels.", text: "Grandcabin sits on the sunny side of Turufjell, under two hours from Oslo and around 15 minutes from Flå. Arrive by car, train or bus, then enjoy the final quiet climb into the mountains.", photo: "terrace", alt: "The view from Grandcabin at Turufjell", facts: ["116 km from Oslo", "15 min from Flå", "Parking at the cabin"] },
@@ -532,8 +583,8 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const extendedNb = {
     cabin: { leadTitle: "Laget for de lange dagene sammen", leadText: "To kjøkken, to store spiseområder og flere oppholdssoner gjør det enkelt å veksle mellom felles måltider, rolige samtaler og en pause for seg selv.", leadPhoto: "dining", bannerTitle: "Fjellutsikt fra morgen til kveld", bannerText: "De store vindusflatene lar lyset og landskapet bli en del av interiøret.", bannerPhoto: "exterior", pointsTitle: "Gjennomtenkt komfort", points: ["Vannbåren varme i hele hytta", "Balansert ventilasjon", "Parkering ved hytta"] },
     bedrooms: { leadTitle: "Tre nivåer gir naturlig ro", leadText: "Soverommene er fordelt slik at barn, voksne og mindre familier kan finne sin plass. En egen sovealkove på loftet gir ekstra fleksibilitet.", leadPhoto: "living", bannerTitle: "Våkne til fjellet", bannerText: "Naturlige materialer, varme flater og dempede farger skaper en rolig ramme rundt natten.", bannerPhoto: "terrace", pointsTitle: "Enkel romfordeling", points: ["5 soverom i underetasjen", "2 soverom i hovedetasjen", "2 soverom og alkove på loftet"] },
-    meetings: { leadTitle: "Fra agenda til langbord", leadText: "Når arbeidsøkten er ferdig, kan gruppen fortsette samtalen rundt et langbord med plass til opptil 26–28 personer i underetasjen.", leadPhoto: "dining", bannerTitle: "Pauser som faktisk gir energi", bannerText: "Langrennsløypa starter utenfor døren, og alpinbakken nås på ski uten bil. Et miljøskifte er bare noen skritt unna.", bannerPhoto: "terrace", pointsTitle: "For produktive samlinger", points: ["Stor skjerm", "Stabilt bredbånd", "Flere fellesarealer"] },
-    turufjell: { leadTitle: "Vinteren starter ved hytta", leadText: "Langrennsløypa starter rett utenfor hyttedøren. Herfra kan dere ta på skiene og følge løypa omtrent 150 meter til alpinanlegget – helt uten bil.", leadPhoto: "exterior", bannerTitle: "Et fjell for alle årstider", bannerText: "Når snøen forsvinner, åpner området seg for sykkel, fjellturer, fiskevann og lange dager i frisk luft.", bannerPhoto: "cycling", pointsTitle: "Nærmere enn dere tror", points: ["Under 2 timer fra Oslo", "15 minutter til Flå", "Tog og taxi er mulig"] },
+    meetings: { leadTitle: "Fra agenda til langbord", leadText: "Når arbeidsøkten er ferdig, kan gruppen samles rundt det store langbordet i underetasjen, med plass til opptil 26–28 personer. Her går dagen naturlig over i en stemningsfull middag, der gode samtaler og nye ideer får tid til å utvikle seg. Varme naturmaterialer og gjennomtenkte detaljer gir rommet en lun, eksklusiv atmosfære. Hele gruppen kan sitte sammen, nyte måltidet og la kvelden fortsette i sitt eget tempo.", leadPhoto: "dining", bannerTitle: "Pauser som faktisk gir energi", bannerText: "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil.", bannerPhoto: "terrace", pointsTitle: "For produktive samlinger", points: ["100-tommers lerret", "Raskt bredbånd", "Flere fellesarealer"] },
+    turufjell: { leadTitle: "Vinteren starter ved hytta", leadText: "Langrennsløypa starter rett utenfor hyttedøren. Ta på skistøvlene inne, spenn på alpinskiene ved hytta og følg løypa i et par minutter til alpinanlegget – helt uten bil.", leadPhoto: "exterior", bannerTitle: "Et fjell for alle årstider", bannerText: "Når snøen forsvinner, åpner området seg for sykkel, fjellturer, fiskevann og lange dager i frisk luft.", bannerPhoto: "cycling", pointsTitle: "Nærmere enn dere tror", points: ["Under 2 timer fra Oslo", "15 minutter til Flå", "Tog og taxi er mulig"] },
     location: { leadTitle: "En enkel reise til fjellet", leadText: "Adressen fører dere helt frem til hytta. Bilreisen fra Oslo er 116 kilometer, mens tog og buss stopper i Flå for en kort videre tur med taxi. Ved ankomst er det god plass til parkering på eiendommen.", leadPhoto: "exterior", bannerTitle: "Fra reisen til roen", bannerText: "Planlegg den siste etappen før avreise, så kan oppholdet begynne idet fjellandskapet åpner seg over Turufjell.", bannerPhoto: "terrace", pointsTitle: "Godt å vite før avreise", points: ["Øvre Turusvingen 7, 3539 Flå", "Bestill taxi fra Flå på forhånd", "Lading ved skikaféen og i Flå"] },
     materials: { leadTitle: "Heltre gran, formet av naturen", leadText: "Veggkledningen i massiv gran gir en moderne tolkning av tradisjonelt trehåndverk. Den tilhuggede overflaten skaper dybde og kontrast mot glass, glatte vegger og minimalistiske møbler. Ingen bord gjentar seg – hvert stykke får sitt eget uttrykk.", leadPhoto: "living", bannerTitle: "Børstet lerk med levende dybde", bannerText: "Børstingen fjerner det mykere vårveden og lar den hardere veden og årringene tre tydelig frem. Resultatet er en taktil overflate med naturlige fargevariasjoner, varme og en sterk forbindelse til landskapet.", bannerPhoto: "exterior", pointsTitle: "Materialer som arbeider med rommet", points: ["Massivtre fra Tirol", "Antistatisk og fuktighetsregulerende", "Innvendig og utvendig kledning"] },
     gallery: { leadTitle: "Fra de store rommene til de små detaljene", leadText: "Bildene viser hvordan utsikt, treverk og lys følger dere gjennom hele hytta – fra langbordet og møteplassen til soverommene og badstuen.", leadPhoto: "gathering", bannerTitle: "Samme utsikt. Nye årstider.", bannerText: "Vinteren er dramatisk og lun. Sommeren åpner terrassen og fjellet for lange dager ute.", bannerPhoto: "cycling", pointsTitle: "Se hele historien", points: ["Interiør og rom", "Fjell og aktiviteter", "74 oppdaterte bilder"] },
@@ -542,8 +593,8 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const extendedEn = {
     cabin: { leadTitle: "Made for long days together", leadText: "Two kitchens, two generous dining areas and several living zones make it easy to move between shared meals, quiet conversations and time alone.", leadPhoto: "dining", bannerTitle: "Mountain views from morning to evening", bannerText: "Wide windows bring the changing light and landscape into the interior.", bannerPhoto: "exterior", pointsTitle: "Considered comfort", points: ["Hydronic heating throughout the cabin", "Balanced ventilation", "Parking at the cabin"] },
     bedrooms: { leadTitle: "Three levels create natural calm", leadText: "The bedrooms are arranged so children, adults and smaller families can find their place. A separate sleeping alcove in the loft adds flexibility.", leadPhoto: "living", bannerTitle: "Wake up to the mountains", bannerText: "Natural materials, warm surfaces and quiet colours create a restful setting for the night.", bannerPhoto: "terrace", pointsTitle: "A simple room plan", points: ["5 bedrooms downstairs", "2 bedrooms on the main floor", "2 bedrooms and loft alcove"] },
-    meetings: { leadTitle: "From the agenda to the long table", leadText: "When the work session ends, the conversation can continue around a long table seating up to 26–28 people downstairs.", leadPhoto: "dining", bannerTitle: "Breaks that restore your energy", bannerText: "Cross-country trails begin at the door, and the alpine area is reached on skis without a car. A complete change of scene is only a few steps away.", bannerPhoto: "terrace", pointsTitle: "For productive retreats", points: ["Large screen", "Reliable broadband", "Several shared spaces"] },
-    turufjell: { leadTitle: "Winter begins at the cabin", leadText: "The cross-country trail begins right outside the cabin. From the doorstep, you can put on your skis and follow the trail for approximately 150 metres to the alpine area – no car needed.", leadPhoto: "exterior", bannerTitle: "A mountain for every season", bannerText: "When the snow clears, the area opens for cycling, mountain walks, fishing lakes and long days in fresh air.", bannerPhoto: "cycling", pointsTitle: "Closer than it feels", points: ["Under 2 hours from Oslo", "15 minutes to Flå", "Train and taxi are possible"] },
+    meetings: { leadTitle: "From the agenda to the long table", leadText: "When the work session ends, the group can gather around the generous dining table downstairs, with room for up to 26–28 people. The day flows naturally into an elegant dinner, where conversation and new ideas have time to unfold. Warm natural materials and considered details give the room an intimate, exclusive atmosphere. Everyone can dine together and let the evening continue at its own pace.", leadPhoto: "dining", bannerTitle: "Breaks that restore your energy", bannerText: "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed.", bannerPhoto: "terrace", pointsTitle: "For productive retreats", points: ["100-inch screen", "Fast broadband", "Several shared spaces"] },
+    turufjell: { leadTitle: "Winter begins at the cabin", leadText: "The cross-country trail starts just outside the cabin. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for a couple of minutes to the ski area – no car needed.", leadPhoto: "exterior", bannerTitle: "A mountain for every season", bannerText: "When the snow clears, the area opens for cycling, mountain walks, fishing lakes and long days in fresh air.", bannerPhoto: "cycling", pointsTitle: "Closer than it feels", points: ["Under 2 hours from Oslo", "15 minutes to Flå", "Train and taxi are possible"] },
     location: { leadTitle: "A simple journey to the mountains", leadText: "The address brings you all the way to the cabin. Oslo is 116 kilometres away, while trains and buses stop in Flå for a short onward taxi journey. Ample parking is available at the property when you arrive.", leadPhoto: "exterior", bannerTitle: "From the journey to the calm", bannerText: "Plan the final leg before departure, then let the stay begin as the mountain landscape opens across Turufjell.", bannerPhoto: "terrace", pointsTitle: "Good to know before you leave", points: ["Øvre Turusvingen 7, 3539 Flå", "Pre-book a taxi from Flå", "Charging by the ski café and in Flå"] },
     materials: { leadTitle: "Solid spruce, shaped by nature", leadText: "Solid spruce wall cladding gives traditional timber craft a modern expression. The hewn surface creates depth and contrast beside glass, smooth walls and minimal furniture. No board repeats; every piece has its own character.", leadPhoto: "living", bannerTitle: "Brushed larch with living depth", bannerText: "Brushing removes the softer earlywood and reveals the harder latewood and annual rings. The result is a tactile surface with natural colour variation, warmth and a strong connection to the landscape.", bannerPhoto: "exterior", pointsTitle: "Materials that work with the room", points: ["Solid timber from Tyrol", "Antistatic and moisture regulating", "Interior and exterior cladding"] },
     gallery: { leadTitle: "From generous spaces to quiet details", leadText: "The photographs show how views, timber and light follow you through the cabin, from the long table and meeting room to bedrooms and saunas.", leadPhoto: "gathering", bannerTitle: "The same view. New seasons.", bannerText: "Winter feels dramatic and intimate. Summer opens the terrace and mountain for long days outside.", bannerPhoto: "cycling", pointsTitle: "See the full story", points: ["Interiors and rooms", "Mountain and activities", "74 updated photos"] },
@@ -576,7 +627,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-reviews-summary"><strong>10</strong><span>{language === "nb" ? "UTMERKET" : "EXCELLENT"}</span><small>{language === "nb" ? "Vurderinger på FINN" : "Reviews on FINN"}</small></div>
       </header>
       <div className="retreat-reviews-grid">{guestReviews.map((review) => <article key={`${review.name}-${review.date}`}><div><span>{review.score}/10</span><small>{review.date}</small></div><p>{review.text}</p><strong>{review.name}</strong></article>)}</div>
-      <div className="retreat-reviews-source"><span>{language === "nb" ? "Kortfattede sammendrag av utvalgte positive gjestevurderinger på FINN." : "Concise summaries of selected positive guest reviews on FINN."}</span></div>
+      <div className="retreat-reviews-source"><span>{language === "nb" ? "Kortfattede sammendrag av utvalgte gjestevurderinger på FINN." : "Concise summaries of selected guest reviews on FINN."}</span></div>
     </section>
   );
   const moreSections = (
@@ -610,6 +661,18 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <figure className="retreat-craft-single-vanity"><Image src="/images/finn-gallery/47.jpg" alt={language === "nb" ? "Eikemøbel og servant i et av badene" : "Oak vanity and basin in one of the bathrooms"} fill unoptimized sizes="(max-width: 900px) 100vw, 40vw" /></figure>
             <figure className="retreat-craft-bunks-detail"><Image src="/images/finn-gallery/50.jpg" alt={language === "nb" ? "Håndbygde køyesenger i tre" : "Hand-built timber bunk beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
           </div>
+          <div className="retreat-bespoke-details">
+            <article>
+              <span>03 · {language === "nb" ? "KJØKKENENE" : "THE KITCHENS"}</span>
+              <h3>{language === "nb" ? "To kjøkken i treverk" : "Two timber kitchens"}</h3>
+              <p>{language === "nb" ? "De to kjøkkenene i treverk er tilpasset ulike måter å samles på. Kjøkkenet i underetasjen har også en kjøkkenøy og ligger nær langbordet, slik at alle kan dele måltidet ved både store private samlinger og bedriftssamlinger. I hovedetasjen blir hovedkjøkkenet med sin kjøkkenøy et naturlig midtpunkt for måltider, samtaler og samvær." : "The two timber kitchens are designed for different ways of gathering. The lower-level kitchen also has an island and sits close to the long table, where everyone can share a meal during large private gatherings or company retreats. On the main floor, the principal kitchen and its island form a natural centre for meals, conversation and time together."}</p>
+            </article>
+            <article>
+              <span>04 · {language === "nb" ? "TRAPPENE" : "THE STAIRCASES"}</span>
+              <h3>{language === "nb" ? "Håndlagde trapper i eik" : "Handmade oak staircases"}</h3>
+              <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
+            </article>
+          </div>
         </section>
       )}
       {page === "materials" && (
@@ -624,12 +687,14 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <article><strong>2</strong><h3>{language === "nb" ? "Badstuer" : "Saunas"}</h3><p>{language === "nb" ? "To separate badstuer gir flere gjester plass til å lande samtidig." : "Two separate saunas give more guests room to unwind at the same time."}</p></article>
             <article><strong>{language === "nb" ? "HELE" : "ALL"}</strong><h3>{language === "nb" ? "Vannbåren varme" : "Hydronic heating"}</h3><p>{language === "nb" ? "Jevn og behagelig varme i hele hytta." : "Even, comfortable warmth throughout the cabin."}</p></article>
             <article><strong>{language === "nb" ? "FRISK" : "FRESH"}</strong><h3>{language === "nb" ? "Balansert ventilasjon" : "Balanced ventilation"}</h3><p>{language === "nb" ? "Kontinuerlig utskifting av luft gir et friskt og behagelig inneklima." : "Continuous air exchange supports a fresh, comfortable indoor climate."}</p></article>
+            <article><strong>2</strong><h3>{language === "nb" ? "Kjøkken" : "Kitchens"}</h3><p>{language === "nb" ? "Ett i underetasjen og ett i hovedetasjen, begge med kjøkkenøy og plass til å samles." : "One downstairs and one on the main floor, both with islands and space to gather."}</p></article>
           </div>
         </section>
       )}
       {page !== "cabin" && detailBanner}
       <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
+      {page === "cabin" && <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>}
       {cabinReviews}
       <RetreatBookingFooter language={language} />
     </>
@@ -659,7 +724,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <p>{language === "nb" ? "KJØREAVSTANDER" : "DRIVING DISTANCES"}</p>
           <h2>{language === "nb" ? "Under 2 timer fra Oslo." : "Under two hours from Oslo."}</h2>
           <dl>
-            {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Drammen", "137 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
+            {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Drammen", "137 km"], ["Gardermoen (OSL)", "ca. 140 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
           </dl>
           <a href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
         </div>
@@ -697,19 +762,42 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const bedroomBreakdown = page === "bedrooms" && (
     <>
       <section className="retreat-floor-plan">
-        <div className="retreat-floor-heading"><p>{language === "nb" ? "SOVEPLAN" : "SLEEPING PLAN"}</p><h2>{language === "nb" ? "Alle rom, nivå for nivå." : "Every room, level by level."}</h2></div>
+        <div className="retreat-floor-heading"><p>{language === "nb" ? "SOVEPLAN" : "SLEEPING PLAN"}</p><h2>{language === "nb" ? "Alle rom, nivå for nivå" : "Every room, level by level"}</h2></div>
         <div className="retreat-floor-grid">
           <article><span>01</span><h3>{language === "nb" ? "Underetasje" : "Lower floor"}</h3><strong>{language === "nb" ? "16 sengeplasser" : "16 beds"}</strong><ul><li>{language === "nb" ? "Rom 1 · køyeseng · 3 plasser" : "Room 1 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 2 · køyeseng · 3 plasser" : "Room 2 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 3 · dobbeltseng · 2 plasser" : "Room 3 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 4 og 5 · to køyesenger · 4 i hvert rom" : "Rooms 4 and 5 · two bunk beds · 4 in each room"}</li></ul></article>
           <article><span>02</span><h3>{language === "nb" ? "Hovedetasje" : "Main floor"}</h3><strong>{language === "nb" ? "5 sengeplasser" : "5 beds"}</strong><ul><li>{language === "nb" ? "Rom 6 · dobbeltseng · 2 plasser" : "Room 6 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 7 · køyeseng · 3 plasser" : "Room 7 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Badstue og eget toalett på nivået" : "Sauna and separate toilet on the floor"}</li></ul></article>
           <article><span>03</span><h3>{language === "nb" ? "Loft" : "Loft"}</h3><strong>{language === "nb" ? "8 sengeplasser" : "8 beds"}</strong><ul><li>{language === "nb" ? "Rom 8 · dobbeltseng · 2 plasser" : "Room 8 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 9 · dobbeltseng · 2 plasser" : "Room 9 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Sovealkove · 4 separate madrasser" : "Sleeping alcove · 4 single mattresses"}</li><li>{language === "nb" ? "Bad med dusj" : "Bathroom with shower"}</li></ul></article>
         </div>
       </section>
-      <section className="retreat-master-suite"><div className="retreat-master-image"><Image src="/images/finn-gallery/33.jpg" alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill sizes="(max-width: 900px) 100vw, 58vw" /></div><div><p>{language === "nb" ? "HOVEDSUITEN" : "MASTER SUITE"}</p><h2>{language === "nb" ? "Master suite." : "Master Suite."}</h2><span>{language === "nb" ? "Et lyst og rolig rom på 32 m² for to gjester, med varme treflater, en generøs dobbeltseng og utsikt mot fjellet. Velværeavdelingen like ved gir oppholdet en ekstra følelse av ro." : "A light-filled 32 m² retreat for two guests, with warm timber, a generous double bed and mountain views. The wellness area beside it adds an extra sense of calm."}</span><ul><li>{language === "nb" ? "2 gjester" : "2 guests"}</li><li>32 m²</li><li>{language === "nb" ? "Badstue og badekar like ved" : "Sauna and bathtub nearby"}</li></ul></div></section>
+      <section className="retreat-master-suite">
+        <div className="retreat-master-image"><Image src="/images/finn-gallery/33.jpg" alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill sizes="(max-width: 900px) 100vw, 58vw" /></div>
+        <div>
+          <p>{language === "nb" ? "HOVEDSUITEN" : "MASTER SUITE"}</p>
+          <h2>{language === "nb" ? "Master suite" : "Master Suite"}</h2>
+          <span>{language === "nb" ? "Tre inn i et eksklusivt fjellopphold i vår romslige Master Suite på 32 m², der raffinert komfort, privatliv og direkte tilgang til spaavdelingen møtes i vakre omgivelser." : "Step into the ultimate mountain retreat in our spacious 32 m² Master Suite, where refined comfort, privacy, and direct access to the SPA area come together in an exceptional setting."}</span>
+          <ul><li>{language === "nb" ? "2 gjester" : "2 guests"}</li><li>32 m²</li><li>{language === "nb" ? "Direkte tilgang til spa" : "Direct spa access"}</li></ul>
+        </div>
+      </section>
+      <section className="retreat-master-description">
+        <div className="retreat-master-description-heading"><p>{language === "nb" ? "ET ROM FOR Å LANDE" : "A PLACE TO UNWIND"}</p><h2>{language === "nb" ? "Velvære, helt på dine premisser" : "Mountain calm, entirely your own"}</h2></div>
+        <div className="retreat-master-description-body">
+          <p>{language === "nb" ? "Suiten har en vakkert utformet seng med tekstiler av høy kvalitet, som gir rommet en rolig og luksuriøs atmosfære. Fra sengen kan du se rett ut mot fjellene. Når morgenlyset faller over toppene, er det lett å bli liggende litt lenger." : "The suite offers a beautifully designed bed dressed in premium fabrics, creating a serene and luxurious atmosphere for a restful night’s sleep. One of the suite’s most memorable features is the breathtaking mountain view, visible directly from the room. Waking up to the soft morning light over the surrounding peaks creates a truly unforgettable sense of calm, beauty, and escape."}</p>
+          <p>{language === "nb" ? "Du har direkte tilgang til spaavdelingen. Badstuen kan brukes privat for en mer intim og avslappende stund, eller deles med de andre gjestene om dere ønsker det. Her kan dagen begynne i stillhet eller avrundes med varme etter timer ute i fjellet." : "Guests enjoy direct access to the SPA area, including a sauna that can be used privately for a more intimate and relaxing experience, or shared with other guests if preferred. Whether starting the day with quiet moments in the sauna or unwinding after a day in the mountains, the SPA experience adds an extra layer of comfort and indulgence to the stay."}</p>
+          <p>{language === "nb" ? "Det romslige, private badet er innredet med frittstående badekar, separat dusj og en skreddersydd, håndlaget servantinnredning. Gjennomførte detaljer og god plass gjør badet til en egen velværesone i suiten." : "The spacious en-suite bathroom has been designed with the same attention to detail, featuring a freestanding soaking bathtub, separate shower, and a bespoke handcrafted vanity unit. Elegant finishes and generous proportions create a private wellness-inspired space within the suite itself."}</p>
+          <p>{language === "nb" ? "Fra Master Suite går du rett ut på en privat terrasse med uforstyrret utsikt mot fjellene. Ta med morgenkaffen ut i frisk fjelluft, eller finn et stille øyeblikk her når dagen går mot kveld." : "The Master Suite also opens directly onto a private terrace, offering uninterrupted mountain views and a peaceful setting for morning coffee, fresh alpine air, or a quiet moment at the end of the day."}</p>
+        </div>
+        <ul className="retreat-master-features">
+          <li>{language === "nb" ? "Direkte tilgang til spaavdelingen" : "Direct Access to SPA Area"}</li>
+          <li>{language === "nb" ? "Badstue til privat eller felles bruk" : "Sauna with Private or Shared Use"}</li>
+          <li>{language === "nb" ? "Privat bad i suiten" : "Private En-Suite Bathroom"}</li>
+          <li>{language === "nb" ? "Privat terrasse med fjellutsikt" : "Private Terrace with Breathtaking Mountain Views"}</li>
+        </ul>
+      </section>
       <section className="retreat-bedroom-wellness">
         <header className="retreat-bedroom-wellness-head">
           <p>{language === "nb" ? "VELVÆRE VED HOVEDSOVEROMMET" : "WELLNESS BESIDE THE MAIN BEDROOM"}</p>
           <div>
-            <h2>{language === "nb" ? "Eget bad. Privat badstue. Badekar." : "Private bathroom. Sauna. Bathtub."}</h2>
+            <h2>{language === "nb" ? "Eget bad · Privat badstue · Badekar" : "Private bathroom · Sauna · Bathtub"}</h2>
             <span>{language === "nb" ? "Hovedsuiten fortsetter inn i en lun velværeavdeling, der tre, mørk stein og store vindusflater skaper en rolig og privat ramme." : "The main suite continues into a warm wellness area, where timber, dark stone and generous windows create a calm, private setting."}</span>
           </div>
         </header>
@@ -734,20 +822,20 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const bedroomTail = (
     <>
       <section className="retreat-suite-editorial retreat-suite-doubles">
-        <div className="retreat-suite-editorial-copy"><p>01 · {language === "nb" ? "DOBBELTSUITER" : "DOUBLE SUITES"}</p><h2>{language === "nb" ? "Fire elegante dobbeltsuiter." : "Four elegant double suites."}</h2><span>{language === "nb" ? "Fordelt over underetasjen, hovedetasjen og loftet gir de fire dobbeltsuitene hver sin rolige plass å trekke seg tilbake til. Premiumsenger og myke tekstiler gir gjennomført komfort, mens tradisjonelt treverk, panel og lyse rom knytter interiøret til fjellandskapet." : "Across the lower floor, main floor and loft, four double suites offer a peaceful place to retreat. Premium beds and soft textiles invite deep rest, while traditional timber and panelled walls bring warmth to bright, contemporary rooms."}</span><div className="retreat-suite-detail-line"><b>04</b><small>{language === "nb" ? "DOBBELTSUITER · TRE NIVÅER" : "DOUBLE SUITES · THREE LEVELS"}</small></div></div>
+        <div className="retreat-suite-editorial-copy"><p>01 · {language === "nb" ? "DOBBELTSUITER" : "DOUBLE SUITES"}</p><h2>{language === "nb" ? "Fire elegante dobbeltsuiter" : "Four elegant double suites"}</h2><span>{language === "nb" ? "De fire elegante dobbeltsuitene, inkludert Master Suite, er fordelt over underetasjen, hovedetasjen og loftet. Hver suite gir en rolig plass å trekke seg tilbake til. Premiumsenger og myke tekstiler gir gjennomført komfort, mens tradisjonelt treverk, panel og lyse rom knytter interiøret til fjellandskapet." : "The four elegant double suites, including the Master Suite, are spread across the lower floor, main floor and loft. Each offers a peaceful place to retreat. Premium beds and soft textiles invite deep rest, while traditional timber and panelled walls bring warmth to bright, contemporary rooms."}</span><div className="retreat-suite-detail-line"><b>04</b><small>{language === "nb" ? "DOBBELTSUITER · TRE NIVÅER" : "DOUBLE SUITES · THREE LEVELS"}</small></div></div>
         <div className="retreat-suite-editorial-image"><Image src="/images/finn-gallery/35.jpg" alt={language === "nb" ? "Lys dobbeltsuite med trepanel" : "Bright double suite with timber panelling"} fill sizes="(max-width: 900px) 100vw, 56vw" /></div>
       </section>
       <section className="retreat-suite-editorial retreat-suite-bunks">
         <div className="retreat-suite-editorial-image"><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Lunt soverom med innebygd køyeseng" : "Inviting bedroom with a built-in bunk bed"} fill sizes="(max-width: 900px) 100vw, 56vw" /></div>
-        <div className="retreat-suite-editorial-copy"><p>02 · {language === "nb" ? "KØYESENGER" : "BUNK ROOMS"}</p><h2>{language === "nb" ? "Sammen, med plass til ro." : "Together, with room to unwind."}</h2><span>{language === "nb" ? "Tre lune rom med køyesenger gir familie og venner en fleksibel soveplass. Det varme treverket og de gjennomtenkte detaljene gjør hvert rom hyggelig å komme tilbake til etter en lang dag ute." : "Three welcoming bunk rooms give family and friends flexible sleeping space. Warm wood and considered details make each one a comfortable place to return to after a day outside."}</span><div className="retreat-suite-detail-line"><b>03</b><small>{language === "nb" ? "ROM MED KØYESENGER" : "BUNK ROOMS"}</small></div></div>
+        <div className="retreat-suite-editorial-copy"><p>02 · {language === "nb" ? "KØYESENGER" : "BUNK ROOMS"}</p><h2>{language === "nb" ? "Tre håndlagde køyesenger, bygget inn i rommene" : "Three handcrafted bunk beds, built into the rooms"}</h2><span>{language === "nb" ? "I tre lune soverom er køyesengene håndlaget og integrert i treverket. De følger rommenes linjer og materialer, slik at sengene blir en naturlig del av helheten. Svært komfortable madrasser garanterer en god og eksklusiv nattesøvn. De gjennomtenkte soveplassene gir familie og venner nærhet og et rolig sted å trekke seg tilbake etter en dag ute." : "In three inviting bedrooms, handcrafted bunk beds are integrated into the timberwork. Their lines and materials follow the rooms, making each bed feel like a natural part of the interior. Exceptionally comfortable mattresses guarantee a restful and luxurious night’s sleep. These thoughtfully designed sleeping spaces bring family and friends together after a day in the mountains."}</span><div className="retreat-suite-detail-line"><b>03</b><small>{language === "nb" ? "ROM MED HÅNDLAGDE KØYESENGER" : "ROOMS WITH HANDCRAFTED BUNK BEDS"}</small></div></div>
       </section>
       <section className="retreat-suite-four">
-        <header><p>03 · {language === "nb" ? "FOR BARN ELLER VOKSNE" : "FOR KIDS OR ADULTS"}</p><h2>Four Single Bed Suite<br />for Kids or Adults</h2><span>{language === "nb" ? "To rom, hvert med fire sengeplasser. Lune soveplasser, lyse materialer og et enkelt, moderne uttrykk gjør rommene like fine for barn som for voksne." : "Two rooms, each with four sleeping places. Cosy beds, light materials and clean modern details make them equally inviting for children and adults."}</span></header>
+        <header><p>03 · {language === "nb" ? "FOR BARN ELLER VOKSNE" : "FOR KIDS OR ADULTS"}</p><h2>{language === "nb" ? <>Fire senger<br />for barn eller voksne</> : <>Four Single Bed Suite<br />for Kids or Adults</>}</h2><span>{language === "nb" ? "To rom med fire sengeplasser hver. De håndlagde køyesengene er bygget inn og tilpasset treverket, slik at sengene blir en naturlig del av rommet. Komfortable madrasser, lyse materialer og moderne detaljer skaper et lunt sted å sove, like fint for barn som for voksne." : "Two rooms with four sleeping places each. Handcrafted bunk beds are built into the timberwork, making them a natural part of each room. Comfortable mattresses, light materials and modern details create a cosy place to rest for children and adults alike."}</span></header>
         <div className="retreat-suite-four-images"><figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Soverom med fire sengeplasser i to køyesenger" : "Four sleeping places in two bunk beds"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom én" : "Suite one"}</figcaption></figure><figure><Image src="/images/finn-gallery/53.jpg" alt={language === "nb" ? "Det andre soverommet med fire sengeplasser" : "The second four-bed room"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom to" : "Suite two"}</figcaption></figure></div>
       </section>
       <section className="retreat-suite-final-image"><Image src="/images/finn-gallery/36.jpg" alt={language === "nb" ? "Soverom med vindu mot vinterlandskapet" : "Bedroom window overlooking a snowy landscape"} fill sizes="100vw" /></section>
-      <section className="retreat-banner-caption"><h2>{language === "nb" ? "Våkne til fjellet." : "Wake up to the mountains."}</h2><p>{more.bannerText}</p></section>
-      <RetreatBookingFooter language={language} />
+      <section className="retreat-banner-caption"><h2>{language === "nb" ? "Våkne til fjellet" : "Wake up to the mountains"}</h2><div className="retreat-suite-closing-copy"><p>{more.bannerText}</p><p>{language === "nb" ? "Hver suite forener gjennomført komfort med skjønnheten på Turufjell. Etter en dag i skibakken eller ute i fjellet venter lune materialer og myke senger – et rolig sted å lande." : "Every suite pairs considered comfort with the beauty of Turufjell. After a day on the slopes or in the mountains, warm timber and inviting beds offer a quiet place to unwind."}</p></div></section>
+      <RetreatBookingFooter language={language} omitHeadingPeriod />
     </>
   );
 
@@ -755,30 +843,30 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     <section className="retreat-gathering-types">
       <div className="retreat-gathering-heading"><p>{language === "nb" ? "TO MÅTER Å SAMLES PÅ" : "TWO WAYS TO GATHER"}</p><h2>{language === "nb" ? "Profesjonelt når det trengs. Personlig når det gjelder." : "Professional when needed. Personal when it matters."}</h2></div>
       <div className="retreat-gathering-grid">
-        <article><div className="retreat-gathering-image"><Image src={image("gathering")} alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Flytt strategien, ledergruppen eller hele teamet ut av de vante rammene. Grandcabin gir dere arbeidsro, stor skjerm, bredbånd og fleksible fellesrom – med fjellet som arena for pauser, kick-off og teambuilding." : "Move strategy sessions, leadership meetings or the whole team beyond the usual setting. Grandcabin offers focus, a large screen, broadband and flexible shared spaces, with the mountain as a setting for breaks, kick-offs and team building."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
-        <article><div className="retreat-gathering-image"><Image src={image("dining")} alt={language === "nb" ? "Privat samling" : "Private gathering"} fill sizes="50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Jubileum, storfamilie eller en helg med de nærmeste. Hele hytta er deres, med plass til lange middager, rolige morgener og feiringer som kan fortsette uten avbrudd. Ni soverom gjør det enkelt å samle alle under samme tak." : "An anniversary, the extended family or a weekend with close friends. The whole cabin is yours, with space for long dinners, slow mornings and celebrations that can continue uninterrupted. Nine bedrooms bring everyone under one roof."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
+        <article><div className="retreat-gathering-image"><Image src={image("gathering")} alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Ta med ledergruppen eller hele teamet til Grandcabin for møter med arbeidsro og rom for nye ideer. Et 100-tommers lerret, raskt bredbånd og fleksible fellesrom gir profesjonelle rammer, mens fjellet rett utenfor døren åpner for inspirerende pauser, kick-off og teambuilding. Hele hytta er forbeholdt deres gruppe, så samtalene kan fortsette fra arbeidsøkten til middagen rundt langbordet." : "Bring your leadership group or the whole team to Grandcabin for focused meetings and fresh ideas. A 100-inch presentation screen, fast broadband and flexible shared spaces provide a professional setting, while the mountain just outside invites inspiring breaks, kick-offs and team building. The entire cabin is reserved for your group, so conversations can continue from the working session to dinner around the long table."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
+        <article><div className="retreat-gathering-image"><Image src={image("dining")} alt={language === "nb" ? "Privat samling" : "Private gathering"} fill sizes="50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Som et privat fjellhjem for storfamilier og nære venner samler Grandcabin besteforeldre, voksne barn og yngre generasjoner under ett tak. Romslige fellesarealer og en gjennomtenkt planløsning gir naturlige rammer for familiegjenforeninger, med plass til både feiring og rolige stunder. Hele hytta, de ni soverommene og sovealkoven er forbeholdt dere." : "As a private mountain home for extended families and close friends, Grandcabin brings grandparents, adult children and younger generations together under one roof. Generous shared spaces and a considered layout make family reunions feel effortless, with room to celebrate together and quiet corners to retreat to. The entire cabin, with nine bedrooms and a sleeping alcove, is reserved for your group."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Familiegjenforeninger" : "Family reunions"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
       </div>
       <div className="retreat-company-strip">
         <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT GRANDCABIN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN GRANDCABIN"}</p>
         <div className="retreat-company-wall">
           <article className="retreat-company-card retreat-company-kiwi">
-            <div className="retreat-company-logo retreat-company-logo-kiwi" aria-label="KIWI"><strong>KIWI</strong><span>MINIPRIS</span></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/kiwi.png" alt="KIWI Minipris" width={385} height={140} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-flytoget">
-            <div className="retreat-company-logo retreat-company-logo-flytoget" aria-label="Flytoget"><span aria-hidden="true" /><strong>FLYTOGET</strong></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/flytoget.png" alt="Flytoget" width={487} height={215} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-rystad">
-            <div className="retreat-company-logo retreat-company-logo-rystad" aria-label="Rystad Energy"><span aria-hidden="true">R</span><strong>Rystad<small>ENERGY</small></strong></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/rystad-energy.png" alt="Rystad Energy" width={522} height={185} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-kpmg">
-            <div className="retreat-company-logo retreat-company-logo-kpmg" aria-label="KPMG"><span aria-hidden="true"><i /><i /><i /><i /></span><strong>KPMG</strong></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/kpmg.png" alt="KPMG" width={741} height={326} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-rsa">
-            <div className="retreat-company-logo retreat-company-logo-rsa" aria-label="RSA"><strong>RSA</strong><span>GROUP</span></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/rsa.png" alt="RSA" width={237} height={152} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
         </div>
@@ -788,6 +876,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
 
   const turufjellDetails = page === "turufjell" && (
     <>
+      <TurufjellActivities language={language} />
       <section className="retreat-turufjell-about">
         <div className="retreat-turufjell-about-image"><Image src={image("terrace")} alt={language === "nb" ? "Utsikt fra Turufjell" : "View from Turufjell"} fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
         <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger vestvendt med lange soldager og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell faces west, with long sunny days and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>
@@ -800,28 +889,12 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <article><span>03</span><strong>{language === "nb" ? "Tog & buss" : "Train & bus"}</strong><h3>{language === "nb" ? "Til Flå stasjon" : "To Flå station"}</h3><p>{language === "nb" ? "Bergensbanen og Vy Buss stopper i Flå. Derfra fortsetter dere den siste etappen med taxi." : "The Bergen railway and Vy buses stop in Flå. Continue the final leg by taxi."}</p></article>
         </div>
       </section>
-      <section className="retreat-turufjell-future">
-        <div className="retreat-turufjell-future-head"><p>{language === "nb" ? "PLANENE FREMOVER" : "LOOKING AHEAD"}</p><h2>{language === "nb" ? "Et fjellsted i utvikling." : "A mountain destination in development."}</h2><span>{language === "nb" ? "Turufjell arbeider med en større alpinsatsing og et nytt, bilfritt sentrum. Planene utvikles trinnvis og kan bli justert underveis." : "Turufjell is developing a major alpine expansion and a new car-free village centre. The plans will be delivered in stages and may change over time."}</span></div>
-        <div className="retreat-turufjell-future-grid">
-          <article>
-            <figure className="retreat-turufjell-map-figure">
-              <div className="retreat-turufjell-map-image">
-                <Image src={image("ski")} alt={language === "nb" ? "Løypekart over Turufjell med Grandcabin markert" : "Turufjell trail map with Grandcabin marked"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" />
-                <div className="retreat-cabin-map-marker"><i aria-hidden="true" /><span><strong>Grandcabin</strong><small>{language === "nb" ? "HYTTA LIGGER HER" : "THE CABIN IS HERE"}</small></span></div>
-              </div>
-              <figcaption>{language === "nb" ? "Originalt løypekart fra Turufjell · Grandcabin er markert i gull" : "Original trail map from Turufjell · Grandcabin is marked in gold"}</figcaption>
-            </figure>
-            <div><span>01</span><h3>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h3><p>{language === "nb" ? "Langrennsløypa går rett utenfor Grandcabin. Etter omtrent 150 meter på ski kommer dere til alpinanlegget, slik at hele gruppen kan starte dagen uten bil eller transport." : "The cross-country trail begins right outside Grandcabin. Follow it for approximately 150 metres to reach the alpine area, allowing the whole group to begin the day without a car or transfer."}</p><a href="https://www.turufjell.no/skisenter/" target="_blank" rel="noreferrer">{language === "nb" ? "SE SKITILBUDET PÅ TURUFJELL" : "SEE THE SKI AREA AT TURUFJELL"} ↗</a></div>
-          </article>
-          <article><div className="retreat-turufjell-future-image retreat-turutunet-image"><Image src="/images/turutunet-fjellandsby.jpg" alt={language === "nb" ? "Arkitekturillustrasjon av det planlagte Turutunet" : "Architectural visualisation of the planned Turutunet village"} fill sizes="(max-width: 900px) 100vw, 50vw" /><small>{language === "nb" ? "Illustrasjon: Reiulf Ramstad Arkitekter · endringer kan forekomme" : "Visualisation: Reiulf Ramstad Architects · plans may change"}</small></div><div><span>02</span><h3>Turutunet</h3><p>{language === "nb" ? "Turutunet er planlagt som Turufjells nye hjerte – et bilfritt fjelltun der tradisjonell byggeskikk møter moderne arkitektur av Reiulf Ramstad Arkitekter. Den nye Låven skal romme en lys og romslig restaurant med peis, utsikt og solrike uteplasser, mens Hallingstua, Stabburet og aktivitetstunet skal samle gjester til mat, kultur og gode øyeblikk gjennom hele året." : "Turutunet is planned as the new heart of Turufjell – a car-free mountain village where traditional craft meets contemporary architecture by Reiulf Ramstad Architects. The new barn will offer a bright, generous restaurant with a fireplace, panoramic views and sunny terraces, while Hallingstua, the storehouse and the activity courtyard will bring guests together for food, culture and memorable moments throughout the year."}</p><a href="https://eiendom.turufjell.no/no/hvorfor-turufjell/fremtidsplaner/turutunet-fjellandsby" target="_blank" rel="noreferrer">{language === "nb" ? "SE PLANENE FOR TURUTUNET" : "VIEW THE TURUTUNET PLANS"} ↗</a></div></article>
-        </div>
-      </section>
     </>
   );
 
   if (page === "tour") {
     return (
-      <div className="concept-page retreat-page retreat-detail-page">
+      <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
         <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-tour-page">
           <section className="retreat-tour-intro">
@@ -840,7 +913,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
 
   if (page === "gallery") {
     return (
-      <div className="concept-page retreat-page retreat-detail-page">
+      <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
         <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-gallery-all">
           <div className="retreat-gallery-all-title"><p>{t.number} · GRANDCABIN</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><span>{language === "nb" ? "Den oppdaterte bildesamlingen fra hytta og Turufjell." : "The updated photo collection from the cabin and Turufjell."}</span><b>74</b></div>
@@ -852,13 +925,25 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   }
 
   return (
-    <div className="concept-page retreat-page retreat-detail-page">
+    <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
       <RetreatNav language={language} setLanguage={setLanguage} page={page} />
-      {page === "cabin" && detailBanner}
+      {page === "cabin" && <CabinVideoHero language={language} description={t.text} />}
       <main className="retreat-detail">
-        <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div>
-        <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · OUR SUITES" : t.number}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm." : "Refined luxury meets timeless mountain charm."}</strong>}<div className="retreat-detail-text"><span>{t.text}</span>{page === "cabin" && <span className="retreat-detail-intro-addendum">{more.bannerText}</span>}<ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
+        <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority={page !== "cabin"} sizes="(max-width: 900px) 100vw, 58vw" /></div>
+        <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · SUITES" : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>
+      {page === "meetings" && <section className="retreat-meetings-intro">
+        <div className="retreat-meetings-intro-copy">
+          <p className="retreat-meetings-intro-label">{language === "nb" ? "ET OPPHOLD PÅ DERES PREMISSER" : "A STAY ON YOUR TERMS"}</p>
+          <h2>{language === "nb" ? "Et privat fjellhjem. Helt deres." : "A private mountain home. Entirely yours."}</h2>
+          <p>{language === "nb" ? "Alt samles innenfor rammene av ett arkitektonisk gjennomført fjellhjem. Møter, måltider og rolige øyeblikk får utfolde seg i egne rom, mens hele Grandcabin er forbeholdt deres gruppe." : "Everything unfolds within one thoughtfully designed mountain home. Meetings, meals and quiet moments each have their place, while the whole of Grandcabin is reserved for your group."}</p>
+          <p>{language === "nb" ? "Oppholdet formes helt på deres premisser. Nyt friheten til å bestemme tempoet selv, med diskret hjelp etter avtale når dere ønsker det." : "Your stay unfolds entirely on your terms. Enjoy the privacy to set your own pace, with discreet assistance available by arrangement whenever you wish."}</p>
+        </div>
+        <div className="retreat-meetings-intro-signature">
+          <p>{language === "nb" ? <>Ingen ferdig oppskrift.<br />Ingen påtvungne rammer.</> : <>Nothing prescribed.<br />Nothing imposed.</>}</p>
+          <strong>{language === "nb" ? <>Deres selskap.<br />Deres tempo.<br />Deres fjellhjem.</> : <>Your company.<br />Your rhythm.<br />Your mountain home.</>}</strong>
+        </div>
+      </section>}
       {page === "bedrooms" && <BedroomGallery language={language} />}
       {locationDirections}
       {locationDistances}

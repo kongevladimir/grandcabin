@@ -7,10 +7,23 @@ import ts from 'typescript';
 const source = await readFile(new URL('../src/lib/booking/model.ts', import.meta.url), 'utf8');
 const js = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
 const m = await import(`data:text/javascript;base64,${Buffer.from(js).toString('base64')}`);
+const authSource = await readFile(new URL('../src/lib/booking/auth.ts', import.meta.url), 'utf8');
+const authJs = ts.transpileModule(authSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+const auth = await import(`data:text/javascript;base64,${Buffer.from(authJs).toString('base64')}`);
 const day = offset => new Date(m.dateValue(m.osloToday()) + offset * 86400000).toISOString().slice(0, 10);
 const stay = { arrival: day(10), departure: day(15) };
 const booking = (id, status = 'pending') => ({ id, ...stay, status, messages: [], updatedAt: '' });
 const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
+
+test('password reset replaces the owner password and invalidates prior sessions', () => {
+  const previous = { sessionVersion: 'previous-session', resetHash: auth.tokenHash('one-time-link'), resetExpires: Date.now() + 60000 };
+  const updated = auth.newPasswordAuth('a-new-private-password', previous);
+  assert.equal(auth.ownerPasswordMatches('a-new-private-password', updated), true);
+  assert.equal(auth.ownerPasswordMatches('incorrect-password', updated), false);
+  assert.notEqual(updated.sessionVersion, previous.sessionVersion);
+  assert.equal(updated.resetHash, undefined);
+  assert.equal(updated.resetExpires, undefined);
+});
 
 test('valid dates and leap days are round-tripped, impossible dates rejected', () => {
   assert.equal(m.isDate('2028-02-29'), true);

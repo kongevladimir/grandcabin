@@ -31,8 +31,13 @@ export function guard(request: NextRequest) {
   if (isLocalPreview() && !["localhost", "127.0.0.1", "[::1]"].includes(request.nextUrl.hostname)) throw new BookingError("setup", 503);
   if (!isLocalPreview() && new URL(process.env.BOOKING_SITE_URL!).protocol !== "https:") throw new BookingError("setup", 503);
 }
-export function ownerOnly(request: NextRequest) { if (!session(request, "owner")) throw new BookingError("login", 401); }
-export function guestOrOwner(request: NextRequest, id: string) { if (!session(request, "owner") && session(request, "guest") !== id) throw new BookingError("access", 401); }
+export async function ownerSession(request: NextRequest) {
+  const id = session(request, "owner");
+  if (!id) return false;
+  return id === ((await readState()).state.ownerAuth?.sessionVersion ?? "owner");
+}
+export async function ownerOnly(request: NextRequest) { if (!(await ownerSession(request))) throw new BookingError("login", 401); }
+export async function guestOrOwner(request: NextRequest, id: string) { if (session(request, "guest") !== id && !(await ownerSession(request))) throw new BookingError("access", 401); }
 export async function body(request: NextRequest): Promise<Record<string, unknown>> {
   const expected = isLocalPreview() ? request.nextUrl.origin : new URL(process.env.BOOKING_SITE_URL!).origin;
   if (request.headers.get("origin") !== expected || !request.headers.get("content-type")?.startsWith("application/json")) throw new BookingError("access", 403);

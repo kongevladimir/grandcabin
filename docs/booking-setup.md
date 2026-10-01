@@ -26,7 +26,8 @@ FINN stay changes; new reservations still require a manual block.
 Run `node scripts/setup-booking-preview.mjs` once, then restart the local server.
 This generates private credentials in `.env.local` and writes the owner's login
 details to `.booking-owner-access.txt`. Neither is committed. Open `/booking`
-for the guest journey or `/booking/owner` for the password-protected owner inbox.
+for the guest journey or `/login` for the owner sign-in page. The owner area is
+at `/booking/owner` after sign-in.
 
 Preview requests, conversations and date blocks persist across restarts in
 `.booking-data/state.json`. Preview mode is restricted to localhost requests and
@@ -46,7 +47,8 @@ the following is completed:
 3. Connect Resend with a verified sending domain. Configure the variables shown
    in `booking.env.example` through the deployment environment, keeping all keys
    private. Use the site's canonical HTTPS origin without a path. Generate a new
-   session secret (at least 32 characters) and owner password (at least 16).
+   session secret (at least 32 characters), owner email as the login username,
+   and owner password (at least 16 characters).
 4. Keep `BOOKING_LOCAL_PREVIEW=false`. Test durable writes against the production
    storage, email delivery to owner and guest, private link access, conversation
    replies, blocking dates and overlapping approvals. Remove only test records.
@@ -59,7 +61,11 @@ do not inspect Cloudflare or verify the live site without an explicit request.
 
 ## Owner workflow
 
-- Sign in at `/booking/owner` with the private owner password.
+- Sign in at `/login` with the owner email and private password. The
+  "Forgot password?" link sends a one-time reset link to that email address.
+  The link expires after 30 minutes and a reset signs out existing owner
+  sessions. Email reset is unavailable in the localhost preview because it
+  does not send email.
 - The **Price calendar / Priskalender** opens first. Click one night, or the first
   and last nights of a range, enter the base price in whole NOK and save. Both
   selected dates are included. These prices cover up to 24 guests; the existing

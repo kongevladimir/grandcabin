@@ -11,7 +11,8 @@ export type Booking = Stay & {
 export type Block = Stay & { id: string; note: string; external?: true };
 export type Notice = { id: string; bookingId: string; recipient: "owner" | "guest"; attempts: number; lastAttempt: number };
 export type NightlyPrices = Record<string, number>;
-export type BookingState = { bookings: Booking[]; blocks: Block[]; limits: Record<string, number[]>; notices: Notice[]; nightlyPrices?: NightlyPrices };
+export type OwnerAuth = { passwordHash?: string; passwordSalt?: string; sessionVersion?: string; resetHash?: string; resetExpires?: number };
+export type BookingState = { bookings: Booking[]; blocks: Block[]; limits: Record<string, number[]>; notices: Notice[]; nightlyPrices?: NightlyPrices; ownerAuth?: OwnerAuth };
 export const emptyState = (): BookingState => ({ bookings: [], blocks: [], limits: {}, notices: [], nightlyPrices: {} });
 // Existing FINN reservations, recorded as occupied nights. Departure is exclusive.
 export const finnReservations: Block[] = [
