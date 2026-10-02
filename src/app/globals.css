@@ -939,16 +939,26 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-story-copy > p { color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .12em; }
 .retreat-detail-story-copy h2, .retreat-detail-points h2, .retreat-material-oil h2, .retreat-detail-footer h2 { margin: 1.2rem 0 2rem; font-size: clamp(3rem, 5.7vw, 6.6rem); font-weight: 500; line-height: .94; letter-spacing: -.06em; }
 .retreat-detail-story-copy > span { color: #4c4a45; line-height: 1.85; }
-.retreat-cabin-video-hero { position: relative; isolation: isolate; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; color: #fff; background: #17202c; }
-.retreat-cabin-video-frame { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; border: 0; filter: contrast(1.1) saturate(1.08) brightness(1.04); }
-.retreat-cabin-video-shade { position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(7, 14, 22, .55), rgba(7, 14, 22, 0) 42%); }
-.retreat-cabin-video-copy { position: absolute; z-index: 3; top: clamp(1.3rem, 3.5vw, 4rem); left: clamp(1.4rem, 4vw, 4.5rem); max-width: min(78%, 850px); pointer-events: none; text-shadow: 0 2px 24px rgba(0, 0, 0, .55); }
-.retreat-cabin-video-copy > p { margin: 0 0 1rem; color: #e9d0aa; font-size: .72rem; font-weight: 800; letter-spacing: .22em; }
-.retreat-cabin-video-copy h1 { margin: 0; font-size: clamp(3.2rem, 6.5vw, 7rem); font-weight: 400; line-height: .94; letter-spacing: -.07em; }
-.retreat-cabin-video-copy > span { display: block; margin-top: 1rem; font-size: clamp(.95rem, 1.4vw, 1.25rem); letter-spacing: .015em; }
-.retreat-cabin-video-statement { padding: clamp(2.5rem, 4.5vw, 5rem) clamp(1.4rem, 8vw, 9rem); background: #fff; scroll-margin-top: 108px; }
-.retreat-cabin-video-statement p { max-width: 1100px; margin: 0 auto; color: #17202c; font-size: clamp(1.3rem, 2vw, 2.2rem); line-height: 1.55; text-align: center; }
-.retreat-cabin-video-intro { display: grid; grid-template-columns: minmax(160px, .36fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 6rem); align-items: start; padding: clamp(5rem, 9vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #f2f0eb; }
+.retreat-cabin-video-hero { position: relative; isolation: isolate; container-type: size; display: grid; place-items: center; width: 100%; height: calc(100svh - 108px); min-height: 620px; max-height: 1200px; overflow: hidden; color: #fff; background: #17202c; }
+.retreat-cabin-video-poster { z-index: 0; object-fit: cover; }
+.retreat-cabin-video-frame { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
+.retreat-cabin-video-frame iframe { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; filter: contrast(1.06) saturate(1.04); }
+.retreat-cabin-video-copy { position: relative; z-index: 3; align-self: start; width: 100%; max-width: 1200px; padding: clamp(.75rem, 1.5svh, 1.25rem) 1.5rem 7rem; border: 0; background: none; box-shadow: none; backdrop-filter: none; color: #fff; text-align: center; text-shadow: none; }
+.retreat-cabin-video-copy > p { margin: 0; background: none; color: #fff; font-size: clamp(.7rem, 1vw, .9rem); font-weight: 400; line-height: 1.8; letter-spacing: .16em; text-transform: uppercase; }
+.retreat-cabin-video-copy h1 { margin: 1.25rem 0 0; background: none; font-family: var(--serif); font-size: clamp(4.5rem, 8.8vw, 9.5rem); font-weight: 400; line-height: 1.06; letter-spacing: -.045em; }
+.retreat-cabin-video-copy h1 em { font-weight: 400; }
+.retreat-cabin-video-copy h2 { max-width: 820px; margin: 1.6rem auto 0; background: none; color: #fff; font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2.6rem); font-weight: 400; line-height: 1.4; letter-spacing: -.015em; }
+.retreat-cabin-video-copy h2 span { display: block; }
+.retreat-cabin-video-bottom { position: absolute; z-index: 3; right: clamp(1.5rem, 4vw, 4.5rem); bottom: .6rem; left: clamp(1.5rem, 4vw, 4.5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .8); }
+.retreat-cabin-video-bottom > span { color: #e5ddd0; font-size: .6rem; letter-spacing: .15em; }
+.retreat-cabin-video-bottom > a { display: flex; flex-direction: column; align-items: center; gap: .35rem; color: #f5eee4; font-size: .6rem; letter-spacing: .18em; }
+.retreat-cabin-video-bottom > a span { font-size: 1rem; }
+.retreat-cabin-video-bottom > button { justify-self: end; width: 42px; height: 42px; border: 1px solid rgba(235, 215, 184, .6); border-radius: 50%; background: transparent; color: #fff; font-size: 1rem; }
+.retreat-cabin-video-bottom > button:disabled { opacity: .4; cursor: default; }
+.retreat-cabin-video-statement { position: absolute; z-index: 3; right: 0; bottom: 6rem; left: 0; padding: 0 clamp(1.4rem, 6vw, 7rem); border: 0; background: none; box-shadow: none; backdrop-filter: none; text-align: center; text-shadow: none; }
+.retreat-cabin-statement-lead { max-width: 960px; margin: 0 auto; background: transparent; color: #fff; font-family: var(--serif); font-size: clamp(1.15rem, 1.9vw, 1.8rem); font-weight: 400; line-height: 1.35; letter-spacing: -.015em; text-wrap: balance; }
+.retreat-cabin-statement-detail { max-width: 740px; margin: .75rem auto 0; background: transparent; color: #fff; font-size: clamp(.85rem, 1.1vw, 1rem); line-height: 1.65; text-wrap: pretty; }
+.retreat-cabin-video-intro { display: grid; grid-template-columns: minmax(160px, .36fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 6rem); align-items: start; padding: clamp(5rem, 9vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #f2f0eb; scroll-margin-top: 108px; }
 .retreat-cabin-video-intro > p { margin: .6rem 0 0; color: #956b3e; font-size: .67rem; font-weight: 800; letter-spacing: .15em; }
 .retreat-cabin-video-intro h2 { max-width: 720px; margin: 0; font-size: clamp(3rem, 5.3vw, 6.3rem); font-weight: 500; line-height: .97; letter-spacing: -.06em; }
 .retreat-cabin-video-intro > div { max-width: 570px; }
@@ -1340,9 +1350,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-technical-comfort-grid article { min-height: 260px; }
   .retreat-detail-story-image { min-height: 560px; }
   .retreat-detail-story-copy { padding: 4.5rem 1.4rem; }
-  .retreat-cabin-video-copy h1 { font-size: clamp(2.2rem, 8vw, 4rem); }
-  .retreat-cabin-video-statement { scroll-margin-top: 132px; }
-  .retreat-cabin-video-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .retreat-cabin-video-hero { height: calc(100svh - 132px); min-height: 600px; }
+  .retreat-cabin-video-copy h1 { font-size: clamp(4.5rem, 10vw, 7rem); }
+  .retreat-cabin-video-intro { grid-template-columns: 1fr; gap: 1.5rem; scroll-margin-top: 132px; }
   .retreat-cabin-video-intro > p { margin: 0; }
   .retreat-cabin-video-intro h2 { max-width: 680px; }
   .retreat-detail-banner { min-height: 760px; }
@@ -1395,10 +1405,22 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-tour-caption { align-items: flex-start; flex-direction: column; gap: 1.5rem; }
 }
 
+@media (min-width: 561px) and (max-height: 760px) {
+  .retreat-cabin-video-copy h1 { font-size: clamp(3.5rem, 13svh, 6rem); }
+  .retreat-cabin-video-copy h2 { margin-top: 1rem; font-size: clamp(1.25rem, 3.5svh, 1.8rem); }
+}
+
 @media (max-width: 560px) {
-  .retreat-cabin-video-copy { top: 1.1rem; max-width: 80%; }
-  .retreat-cabin-video-copy > p { margin-bottom: .45rem; font-size: .55rem; }
-  .retreat-cabin-video-copy > span { display: none; }
+  .retreat-cabin-video-hero { min-height: 680px; }
+  .retreat-cabin-video-statement { bottom: 6rem; }
+  .retreat-cabin-video-copy { padding: .75rem 1.4rem 6rem; }
+  .retreat-cabin-video-copy > p { max-width: 300px; margin-inline: auto; font-size: .6rem; line-height: 1.9; }
+  .retreat-cabin-video-copy h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
+  .retreat-cabin-video-copy h1 em { display: block; }
+  .retreat-cabin-video-copy h2 { margin-top: 1.2rem; font-size: 1.2rem; }
+  .retreat-cabin-video-bottom { bottom: .6rem; grid-template-columns: 1fr auto; }
+  .retreat-cabin-video-bottom > span { display: none; }
+  .retreat-cabin-video-bottom > a { justify-self: start; align-items: start; gap: .6rem; font-size: .52rem; }
   .retreat-turufjell-activities-intro { margin-bottom: 3.5rem; }
   .retreat-turufjell-activities-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .retreat-turufjell-activities-grid .retreat-turufjell-activity-calm { grid-column: auto; }

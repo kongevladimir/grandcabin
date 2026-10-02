@@ -6,6 +6,7 @@ import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
 import { TurufjellActivities } from "@/components/TurufjellActivities";
+import { CabinFilm } from "@/components/CabinFilm";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -521,27 +522,8 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
 
   return (
     <>
-      <section className="retreat-cabin-video-hero" aria-labelledby="retreat-cabin-video-title">
-        <iframe
-          className="retreat-cabin-video-frame"
-          src={cabinVideoUrl}
-          title={isNorwegian ? "Video av Grandcabin på Turufjell" : "Video of Grandcabin at Turufjell"}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          loading="eager"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-        <div className="retreat-cabin-video-shade" />
-        <div className="retreat-cabin-video-copy">
-          <p>GRANDCABIN · TURUFJELL</p>
-          <h1 id="retreat-cabin-video-title">{isNorwegian ? "Fjellet. Helt deres." : "The mountain. All yours."}</h1>
-          <span>{isNorwegian ? "Et privat fjellhjem for de store øyeblikkene" : "A private mountain home for moments worth sharing"}</span>
-        </div>
-      </section>
-      <section className="retreat-cabin-video-statement" id="retreat-cabin-video-intro">
-        <p>{description}</p>
-      </section>
-      <section className="retreat-cabin-video-intro">
+      <CabinFilm language={language} description={description} />
+      <section className="retreat-cabin-video-intro" id="retreat-cabin-video-intro">
         <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
         <h2>{isNorwegian ? "700 moh. Over 340 m² ren fjellglede." : "700 metres above sea level. Over 340 m² of mountain living."}</h2>
         <div>
