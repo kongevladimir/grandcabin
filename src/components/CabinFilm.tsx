@@ -81,7 +81,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
       <Image className="retreat-cabin-video-poster" src="/images/living.avif" alt="" fill priority sizes="100vw" />
       <div className="retreat-cabin-video-frame" ref={host} />
       <div className="retreat-cabin-video-copy">
-        <p>{nb ? "Velkommen til Grandcabin på Turufjell | Norge" : "Welcome to Grandcabin at Turufjell | Norway"}</p>
+        <span className="retreat-cabin-welcome">{nb ? "Velkommen til Grandcabin på Turufjell | Norge" : "Welcome to Grandcabin at Turufjell | Norway"}</span>
         <h1 id="retreat-cabin-video-title">{nb ? "Tidløs" : "Timeless"} <em>{nb ? "eleganse" : "Elegance"}</em></h1>
         <h2>{nb ? "Et eksklusivt fjellhjem på Turufjell" : "An exclusive mountain home at Turufjell"}<span>{nb ? "Ski inn, ski ut – en eksklusiv fjellopplevelse" : "Ski-in, ski-out — a refined mountain escape"}</span></h2>
       </div>

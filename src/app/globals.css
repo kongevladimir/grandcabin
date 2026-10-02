@@ -944,7 +944,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-cabin-video-frame { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
 .retreat-cabin-video-frame iframe { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; filter: contrast(1.06) saturate(1.04); }
 .retreat-cabin-video-copy { position: relative; z-index: 3; align-self: start; width: 100%; max-width: 1200px; padding: clamp(.75rem, 1.5svh, 1.25rem) 1.5rem 7rem; border: 0; background: none; box-shadow: none; backdrop-filter: none; color: #fff; text-align: center; text-shadow: none; }
-.retreat-cabin-video-copy > p { margin: 0; background: none; color: #fff; font-size: clamp(.7rem, 1vw, .9rem); font-weight: 400; line-height: 1.8; letter-spacing: .16em; text-transform: uppercase; }
+.retreat-cabin-welcome { display: block; margin: 0; border: 0; padding: 0; background: none; box-shadow: none; backdrop-filter: none; filter: none; color: #fff; font-size: clamp(.7rem, 1vw, .9rem); font-weight: 400; line-height: 1.8; letter-spacing: .16em; text-shadow: none; text-transform: uppercase; }
 .retreat-cabin-video-copy h1 { margin: 1.25rem 0 0; background: none; font-family: var(--serif); font-size: clamp(4.5rem, 8.8vw, 9.5rem); font-weight: 400; line-height: 1.06; letter-spacing: -.045em; }
 .retreat-cabin-video-copy h1 em { font-weight: 400; }
 .retreat-cabin-video-copy h2 { max-width: 820px; margin: 1.6rem auto 0; background: none; color: #fff; font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2.6rem); font-weight: 400; line-height: 1.4; letter-spacing: -.015em; }
@@ -1414,7 +1414,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-cabin-video-hero { min-height: 680px; }
   .retreat-cabin-video-statement { bottom: 6rem; }
   .retreat-cabin-video-copy { padding: .75rem 1.4rem 6rem; }
-  .retreat-cabin-video-copy > p { max-width: 300px; margin-inline: auto; font-size: .6rem; line-height: 1.9; }
+  .retreat-cabin-welcome { max-width: 300px; margin-inline: auto; font-size: .6rem; line-height: 1.9; }
   .retreat-cabin-video-copy h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
   .retreat-cabin-video-copy h1 em { display: block; }
   .retreat-cabin-video-copy h2 { margin-top: 1.2rem; font-size: 1.2rem; }
