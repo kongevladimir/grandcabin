@@ -1120,10 +1120,15 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-distance-copy dt, .retreat-distance-copy dd, .retreat-nearby-copy dt, .retreat-nearby-copy dd { margin: 0; font-size: .9rem; }
 .retreat-distance-copy dd, .retreat-nearby-copy dd { font-weight: 700; }
 .retreat-distance-copy > a { align-self: flex-start; margin-top: 2.2rem; padding: 1rem 1.25rem; background: #bd8e57; color: #17202c; font-size: .63rem; font-weight: 800; letter-spacing: .07em; }
-.retreat-regional-map { position: relative; min-height: 690px; overflow: hidden; background: #313235; }
-.retreat-regional-map-tiles { position: absolute; left: calc(50% - 432px); top: calc(50% - 619px); display: grid; width: 1024px; height: 1024px; grid-template-columns: repeat(4, 256px); grid-template-rows: repeat(4, 256px); filter: grayscale(.9) brightness(.52) sepia(.15); }
+.retreat-regional-map { position: relative; min-height: 690px; overflow: hidden; background: #e9e3d8; }
+.retreat-regional-map-tiles { position: absolute; left: calc(50% - 432px); top: calc(50% - 619px); display: grid; width: 1024px; height: 1024px; grid-template-columns: repeat(4, 256px); grid-template-rows: repeat(4, 256px); filter: grayscale(.35) brightness(1.02) sepia(.22) saturate(.6); }
 .retreat-regional-map-tiles span { width: 256px; height: 256px; background-position: center; background-repeat: no-repeat; background-size: 256px 256px; }
-.retreat-regional-map::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: rgba(23,32,44,.24); }
+.retreat-regional-map::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: rgba(233,227,216,.12); }
+.retreat-regional-places { position: absolute; z-index: 2; left: calc(50% - 432px); top: calc(50% - 619px); width: 1024px; height: 1024px; overflow: visible; pointer-events: none; }
+.retreat-regional-places line { stroke: #895d34; stroke-width: 1; }
+.retreat-regional-places circle { fill: #895d34; stroke: #fff; stroke-width: 1.5; }
+.retreat-regional-places rect { fill: #f8f6f1; stroke: #d6cbb9; stroke-width: .6; }
+.retreat-regional-places text { fill: #17202c; font-family: var(--font-sans), sans-serif; font-size: 11px; font-weight: 600; }
 .retreat-regional-pin { position: absolute; z-index: 2; left: 50%; top: 50%; width: 38px; height: 38px; transform: translate(-50%, -100%) rotate(45deg); border: 4px solid #fff; border-radius: 50% 50% 50% 0; background: #bd8e57; box-shadow: 0 10px 28px rgba(0,0,0,.4); }
 .retreat-regional-pin i { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; background: #17202c; }
 .retreat-regional-label { position: absolute; z-index: 2; left: calc(50% + 1.8rem); top: calc(50% - 3.2rem); display: flex; flex-direction: column; padding: .7rem .85rem; background: #f2f0eb; color: #17202c; }
@@ -1283,6 +1288,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-activity-guide-section { scroll-margin-top: 100px; padding-bottom: clamp(5rem, 8vw, 8rem); }
 .retreat-activity-guide-photo { position: relative; height: clamp(320px, 42vw, 590px); overflow: hidden; background: #d6d4ce; }
 .retreat-activity-guide-photo img { object-position: center; }
+.retreat-activity-guide-photo.retreat-activity-guide-photo--map { height: auto; aspect-ratio: 1197 / 794; }
+.retreat-activity-guide-photo--map img { object-fit: contain; }
 .retreat-activity-guide-section > header { display: grid; grid-template-columns: .35fr 1.2fr .8fr; gap: clamp(1rem, 4vw, 5rem); align-items: end; padding: clamp(4rem, 7vw, 7rem) clamp(1.4rem, 6vw, 7rem) clamp(2.5rem, 4vw, 4rem); }
 .retreat-activity-guide-section > header p { align-self: start; margin: .5rem 0 0; color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-activity-guide-section > header h2 { margin: 0; font-size: clamp(3rem, 5.4vw, 6rem); font-weight: 500; line-height: .95; letter-spacing: -.06em; }
@@ -1778,6 +1785,16 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-suite-editorial-image,
   .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-regional-map {
     order: -1;
+  }
+
+  .retreat-detail-page[data-page="location"]:not([data-page="cabin"]) .retreat-regional-map {
+    height: 600px;
+  }
+
+  .retreat-regional-map-tiles,
+  .retreat-regional-places {
+    transform: scale(.82);
+    transform-origin: 432px 619px;
   }
 
   .retreat-detail-page[data-page]:not([data-page="cabin"]) :is(

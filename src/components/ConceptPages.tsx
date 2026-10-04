@@ -7,6 +7,7 @@ import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
 import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
+import { RegionalMapPlaces } from "@/components/RegionalMapPlaces";
 import cabinMountainView from "../../public/images/cabin-mountain-view.jpg";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
@@ -728,12 +729,13 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <p>{language === "nb" ? "KJØREAVSTANDER" : "DRIVING DISTANCES"}</p>
           <h2>{language === "nb" ? "Under 2 timer fra Oslo." : "Under two hours from Oslo."}</h2>
           <dl>
-            {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Drammen", "137 km"], ["Gardermoen (OSL)", "ca. 140 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}</dt><dd>{distance}</dd></div>)}
+            {[["Ringerike", "66 km"], ["Oslo", "116 km"], ["Asker", "117 km"], ["Gardermoen (OSL)", "131 km"], ["Drammen", "137 km"], ["Tønsberg", "197 km"], ["Fredrikstad", "213 km"], ["Sandefjord", "215 km"], ["Larvik", "226 km"], ["Bergen", "353 km"]].map(([place, distance]) => <div key={place}><dt>{place}{place === "Gardermoen (OSL)" && <span aria-hidden="true"> ✈︎</span>}</dt><dd>{distance}</dd></div>)}
           </dl>
           <a href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
         </div>
         <div className="retreat-regional-map">
           <div className="retreat-regional-map-tiles" aria-hidden="true">{regionalMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/6/${x}/${y}.png)` }} />)}</div>
+          <RegionalMapPlaces language={language} />
           <span className="retreat-regional-pin" aria-hidden="true"><i /></span>
           <div className="retreat-regional-label"><span>GRANDCABIN</span><b>TURUFJELL</b></div>
           <a className="retreat-regional-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>

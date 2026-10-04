@@ -21,8 +21,8 @@ const sections: GuideSection[] = [
     id: "winter",
     number: "01",
     image: "/images/ski.avif",
-    nb: { label: "VINTER", title: "Når fjellet kler seg i snø", intro: "Fra rolige spor til store fjelldager – finn vinteren som passer dere.", imageAlt: "Skidag på Turufjell" },
-    en: { label: "WINTER", title: "When the mountains turn white", intro: "From gentle trails to full days on the mountain, make winter your own.", imageAlt: "Skiing at Turufjell" },
+    nb: { label: "VINTER", title: "Når fjellet kler seg i snø", intro: "Fra rolige spor til store fjelldager – finn vinteren som passer dere.", imageAlt: "Løypekart for Turufjell med Grandcabin markert" },
+    en: { label: "WINTER", title: "When the mountains turn white", intro: "From gentle trails to full days on the mountain, make winter your own.", imageAlt: "Turufjell ski map with Grandcabin marked and an English legend" },
     items: [
       { nb: { title: "Langrenn", text: "Preparerte spor starter ved hytta. Velg lune rundløyper eller følg den 125 km lange Eventyrløypa videre gjennom Hallingdal." }, en: { title: "Cross-country skiing", text: "Groomed trails begin by the cabin. Choose sheltered loops or follow the 125 km Eventyrløypa farther into Hallingdal." } },
       { nb: { title: "Alpint", text: "Turufjell Skisenter har bakker for både nybegynnere og erfarne skiløpere, med barneområde, grønne løyper og mer utfordrende nedfarter." }, en: { title: "Alpine skiing", text: "Turufjell Ski Centre has slopes for beginners and experienced skiers, from the children’s area and green runs to more challenging descents." } },
@@ -84,7 +84,7 @@ export function TurufjellActivityGuide() {
           const copy = section[language];
           return (
             <section className="retreat-activity-guide-section" id={section.id} key={section.id}>
-              <div className="retreat-activity-guide-photo"><Image src={section.image} alt={copy.imageAlt} fill sizes="100vw" /></div>
+              <div className={`retreat-activity-guide-photo${section.id === "winter" ? " retreat-activity-guide-photo--map" : ""}`}><Image src={section.id === "winter" ? `/images/turufjell-ski-map-${language}.png` : section.image} alt={copy.imageAlt} fill sizes="100vw" /></div>
               <header><p>{section.number} · {copy.label}</p><h2>{copy.title}</h2><span>{copy.intro}</span></header>
               <div className="retreat-activity-guide-grid">
                 {section.items.map((item, index) => <article key={item.nb.title}><small>{(index + 1).toString().padStart(2, "0")}</small><h3>{item[language].title}</h3><p>{item[language].text}</p></article>)}
