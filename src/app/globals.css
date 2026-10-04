@@ -918,6 +918,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-text li { padding: 1rem .6rem 1rem 0; border-right: 1px solid #c9c8c3; color: #17202c; font-size: .67rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
 .retreat-detail-text li:last-child { border: 0; padding-left: .8rem; }
 .retreat-detail-text li:nth-child(2) { padding-left: .8rem; }
+.retreat-detail-page[data-page="location"] .retreat-detail-text ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.retreat-detail-page[data-page="location"] .retreat-detail-text li { border: 0; padding: 1rem .8rem; }
+.retreat-detail-page[data-page="location"] .retreat-detail-text li:nth-child(odd) { border-right: 1px solid #c9c8c3; padding-left: 0; }
+.retreat-detail-page[data-page="location"] .retreat-detail-text li:nth-child(-n+2) { border-bottom: 1px solid #c9c8c3; }
 .retreat-meetings-intro { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: clamp(3rem, 8vw, 10rem); align-items: end; padding: clamp(5rem, 8vw, 9rem) clamp(1.4rem, 7vw, 8rem); color: #fff; background: #17202c; }
 .retreat-meetings-intro-copy { max-width: 800px; }
 .retreat-meetings-intro-label { margin: 0 0 1.5rem; color: #d8b687; font-size: .66rem; font-weight: 800; letter-spacing: .14em; }
