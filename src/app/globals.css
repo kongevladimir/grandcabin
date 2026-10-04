@@ -997,6 +997,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-page[data-page="materials"] .retreat-bespoke { background: #17202c; }
 .retreat-detail-page[data-page="materials"] .retreat-bespoke-feature:not(.retreat-bespoke-feature-dark),
 .retreat-detail-page[data-page="materials"] .retreat-bespoke-details { background: #e9e3d8; }
+.retreat-detail-page[data-page="materials"] .retreat-bespoke-feature { width: 100%; align-items: stretch; }
 .retreat-bespoke > header > p { align-self: start; margin: .6rem 0 0; color: #d8b687; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-bespoke > header h2 { margin: 0; font-size: clamp(3.2rem, 5.7vw, 6.6rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
 .retreat-bespoke > header > span { color: #c6ccd1; line-height: 1.85; }
