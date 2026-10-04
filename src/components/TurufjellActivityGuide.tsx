@@ -72,7 +72,7 @@ export function TurufjellActivityGuide() {
       <RetreatNav language={language} setLanguage={setLanguage} page="turufjell" />
       <main className="retreat-activity-guide">
         <header className="retreat-activity-guide-intro">
-          <Link href="/concepts/retreat/turufjell">← {language === "nb" ? "TILBAKE TIL TURUFJELL" : "BACK TO TURUFJELL"}</Link>
+          <Link href="/concepts/retreat/turufjell">← {language === "nb" ? "TILBAKE TIL OPPLEVELSER" : "BACK TO EXPERIENCES"}</Link>
           <p>GRANDCABIN · TURUFJELL</p>
           <h1>{language === "nb" ? "Opplevelser, hele året" : "Experiences, all year"}</h1>
           <span>{language === "nb" ? "Vinter og sommer samlet på ett sted. Finn aktivitetene som passer deres opphold, fra ski og fjellturer til fiske, sykkel og opplevelser i Flå." : "Winter and summer together in one place. Find experiences that suit your stay, from skiing and mountain walks to fishing, cycling and days out in Flå."}</span>
