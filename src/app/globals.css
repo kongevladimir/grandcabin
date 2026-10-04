@@ -1006,9 +1006,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-bespoke-copy > span { color: #bd8e57; font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
 .retreat-bespoke-copy h3 { margin: 1rem 0 1.8rem; font-size: clamp(2.7rem, 4.5vw, 5rem); font-weight: 500; line-height: .98; letter-spacing: -.05em; }
 .retreat-bespoke-copy p { color: #565651; line-height: 1.85; }
-.retreat-bespoke-feature-dark .retreat-bespoke-copy { padding: clamp(2rem, 4vw, 4.5rem); background: #17202c; color: #fff; }
-.retreat-bespoke-feature-dark .retreat-bespoke-copy p { color: #c6ccd1; }
-.retreat-bespoke-feature-dark { background: #17202c; }
+.retreat-bespoke-feature-dark .retreat-bespoke-copy { padding: clamp(2rem, 4vw, 4.5rem); background: #fff; color: #17202c; }
+.retreat-bespoke-feature-dark .retreat-bespoke-copy p { color: #565651; }
+.retreat-bespoke-feature-dark { background: #fff; }
 .retreat-bespoke-feature-dark { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .retreat-bespoke-feature-dark .retreat-bespoke-images { order: 2; }
 .retreat-bespoke-feature-dark .retreat-bespoke-copy { order: 1; }
