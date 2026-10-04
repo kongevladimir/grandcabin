@@ -586,9 +586,9 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const more = (language === "nb" ? extendedNb : extendedEn)[page];
   const detailBanner = (
     <>
-      <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
+      {page !== "meetings" && <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
         <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />
-      </section>
+      </section>}
       <section className={`retreat-banner-caption${page === "cabin" ? " retreat-banner-caption-single" : ""}`}><h2>{more.bannerTitle}</h2>{page !== "cabin" && <p>{more.bannerText}</p>}</section>
     </>
   );
@@ -617,10 +617,27 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <div className="retreat-reviews-source"><span>{language === "nb" ? "Utvalgte gjestevurderinger fra FINN, gjengitt i fulltekst eller som sammendrag." : "Selected guest reviews from FINN, translated into English in full or as summaries."}</span></div>
     </section>
   );
+  const cabinComfort = page === "cabin" && (
+        <section className="retreat-technical-comfort">
+          <header>
+            <p>{language === "nb" ? "KOMFORT I HELE HYTTA" : "COMFORT THROUGHOUT"}</p>
+            <h2>{language === "nb" ? "Teknikk som merkes som ro." : "Technology that feels effortless."}</h2>
+            <span>{language === "nb" ? "Fire bad og to badstuer gir god flyt for store grupper. Samtidig sørger vannbåren varme i hele hytta og balansert ventilasjon for jevn temperatur og frisk luft på alle tre nivåer." : "Four bathrooms and two saunas keep a large group moving with ease. Hydronic heating throughout the cabin and balanced ventilation provide even warmth and fresh air across all three levels."}</span>
+          </header>
+          <div className="retreat-technical-comfort-grid">
+            <article><strong>4</strong><h3>{language === "nb" ? "Bad" : "Bathrooms"}</h3><p>{language === "nb" ? "God kapasitet gjennom travle morgener og rolige kvelder." : "Generous capacity through busy mornings and relaxed evenings."}</p></article>
+            <article><strong>2</strong><h3>{language === "nb" ? "Badstuer" : "Saunas"}</h3><p>{language === "nb" ? "To separate badstuer gir flere gjester plass til å lande samtidig." : "Two separate saunas give more guests room to unwind at the same time."}</p></article>
+            <article><strong>{language === "nb" ? "HELE" : "ALL"}</strong><h3>{language === "nb" ? "Vannbåren varme" : "Hydronic heating"}</h3><p>{language === "nb" ? "Jevn og behagelig varme i hele hytta." : "Even, comfortable warmth throughout the cabin."}</p></article>
+            <article><strong>{language === "nb" ? "FRISK" : "FRESH"}</strong><h3>{language === "nb" ? "Balansert ventilasjon" : "Balanced ventilation"}</h3><p>{language === "nb" ? "Kontinuerlig tilførsel av frisk luft fra fjellet gir et behagelig inneklima gjennom hele oppholdet." : "A continuous supply of fresh mountain air creates a comfortable indoor climate throughout your stay."}</p></article>
+            <article><strong>2</strong><h3>{language === "nb" ? "Kjøkken" : "Kitchens"}</h3><p>{language === "nb" ? "Ett i underetasjen og ett i hovedetasjen, begge med kjøkkenøy og plass til å samles." : "One downstairs and one on the main floor, both with islands and space to gather."}</p></article>
+          </div>
+        </section>
+  );
+
   const moreSections = (
     <>
-      <section className={`retreat-detail-story${page === "cabin" ? " retreat-detail-story-cabin" : ""}`}>
-        <div className="retreat-detail-story-image"><Image src={image(more.leadPhoto)} alt="" fill sizes={page === "cabin" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
+      <section className={`retreat-detail-story${page === "cabin" ? " retreat-detail-story-cabin" : page === "materials" ? " retreat-detail-story-materials" : ""}`}>
+        <div className="retreat-detail-story-image"><Image src={image(more.leadPhoto)} alt="" fill sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
         <div className="retreat-detail-story-copy"><p>{t.number} · GRANDCABIN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
       </section>
       {page === "cabin" && (
@@ -635,59 +652,54 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <h2>{language === "nb" ? "Bygget for hytta. Laget for hånd." : "Built for the cabin. Made by hand."}</h2>
             <span>{language === "nb" ? "Grandcabin er formet som en helhet, der varme naturmaterialer møter presise, moderne linjer. Mange av møblene og de faste løsningene er tegnet og bygget spesielt for rommene. Resultatet er en rolig luksus som merkes i detaljene." : "Grandcabin is conceived as a whole, where warm natural materials meet precise, modern lines. Many furnishings and fitted solutions were designed and built specifically for the rooms, creating a quiet sense of luxury in every detail."}</span>
           </header>
-          <article className="retreat-bespoke-feature">
+          <article className="retreat-bespoke-feature retreat-bespoke-feature-dark">
             <div className="retreat-bespoke-images">
               <figure className="retreat-craft-double-vanity"><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure className="retreat-craft-vanity-detail"><Image src="/images/finn-gallery/34.jpg" alt={language === "nb" ? "Unikt baderomsmøbel i eik" : "Unique oak bathroom vanity"} fill unoptimized sizes="(max-width: 900px) 58vw, 28vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>01</span><h3>{language === "nb" ? "Unike baderomsmøbler i eik" : "Unique oak bathroom furniture"}</h3><p>{language === "nb" ? "Baderomsmøblene er utført i eik og bygget enkeltvis for det rommet de står i. De er ikke hentet fra en fabrikkserie. Hver benk, skuff og detalj er tilpasset materialene, målene og uttrykket i hytta." : "The bathroom furniture is crafted in oak and built individually for each room. Nothing comes from a standard factory range. Every counter, drawer and detail is tailored to the cabin’s dimensions, materials and architectural character."}</p><p>{language === "nb" ? "Treets naturlige spill står i kontrast til mørk stein, sorte armaturer og rene flater. Det gir badene et moderne, eksklusivt uttrykk uten å miste varmen og nærheten til naturen." : "The natural grain contrasts with dark stone, black fittings and clean surfaces, giving the bathrooms a modern, exclusive character while retaining warmth and a close connection to nature."}</p></div>
           </article>
           <article className="retreat-bespoke-feature retreat-bespoke-feature-reverse">
             <div className="retreat-bespoke-images">
               <figure className="retreat-craft-bunks"><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Integrerte senger bygget i tre" : "Built-in timber beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
-              <figure className="retreat-craft-bed-detail"><Image src="/images/finn-gallery/21.jpg" alt={language === "nb" ? "Spesialbygget seng i tre" : "Custom-built timber bed"} fill unoptimized sizes="(max-width: 900px) 58vw, 28vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>02</span><h3>{language === "nb" ? "Senger integrert i arkitekturen" : "Beds integrated into the architecture"}</h3><p>{language === "nb" ? "Flere av sengene er bygget inn og håndtilpasset på stedet. De følger takvinkler og vegger, utnytter plassen godt og skaper lune, private soner selv når mange gjester bor sammen." : "Many beds are built in and fitted by hand on site. They follow roof angles and walls, make excellent use of space and create sheltered, private zones even when a large group stays together."}</p><p>{language === "nb" ? "De solide trekonstruksjonene gir hvert rom sitt eget særpreg. Sammen med behagelig belysning, myke tekstiler og gjennomtenkt oppbevaring blir soverommene både funksjonelle, moderne og inviterende." : "Solid timber construction gives every room its own identity. Paired with soft lighting, tactile textiles and considered storage, the bedrooms feel functional, modern and inviting."}</p></div>
           </article>
-          <div className="retreat-bespoke-more">
-            <figure className="retreat-craft-single-vanity"><Image src="/images/finn-gallery/47.jpg" alt={language === "nb" ? "Eikemøbel og servant i et av badene" : "Oak vanity and basin in one of the bathrooms"} fill unoptimized sizes="(max-width: 900px) 100vw, 40vw" /></figure>
-            <figure className="retreat-craft-bunks-detail"><Image src="/images/finn-gallery/50.jpg" alt={language === "nb" ? "Håndbygde køyesenger i tre" : "Hand-built timber bunk beds"} fill unoptimized sizes="(max-width: 900px) 100vw, 45vw" /></figure>
-          </div>
           <div className="retreat-bespoke-details">
-            <article>
-              <span>03 · {language === "nb" ? "KJØKKENENE" : "THE KITCHENS"}</span>
-              <h3>{language === "nb" ? "To kjøkken i treverk" : "Two timber kitchens"}</h3>
-              <p>{language === "nb" ? "De to kjøkkenene i treverk er tilpasset ulike måter å samles på. Kjøkkenet i underetasjen har også en kjøkkenøy og ligger nær langbordet, slik at alle kan dele måltidet ved både store private samlinger og bedriftssamlinger. I hovedetasjen blir hovedkjøkkenet med sin kjøkkenøy et naturlig midtpunkt for måltider, samtaler og samvær." : "The two timber kitchens are designed for different ways of gathering. The lower-level kitchen also has an island and sits close to the long table, where everyone can share a meal during large private gatherings or company retreats. On the main floor, the principal kitchen and its island form a natural centre for meals, conversation and time together."}</p>
+            <article className="retreat-bespoke-detail-row">
+              <div>
+                <span>03 · {language === "nb" ? "KJØKKENENE" : "THE KITCHENS"}</span>
+                <h3>{language === "nb" ? "To kjøkken i treverk" : "Two timber kitchens"}</h3>
+                <p>{language === "nb" ? "De to kjøkkenene i treverk er tilpasset ulike måter å samles på. Kjøkkenet i underetasjen har også en kjøkkenøy og ligger nær langbordet, slik at alle kan dele måltidet ved både store private samlinger og bedriftssamlinger. I hovedetasjen blir hovedkjøkkenet med sin kjøkkenøy et naturlig midtpunkt for måltider, samtaler og samvær." : "The two timber kitchens are designed for different ways of gathering. The lower-level kitchen also has an island and sits close to the long table, where everyone can share a meal during large private gatherings or company retreats. On the main floor, the principal kitchen and its island form a natural centre for meals, conversation and time together."}</p>
+              </div>
+              <figure><Image src="/images/finn-gallery/12.jpg" alt={language === "nb" ? "Hovedkjøkken med kjøkkenøy i treverk" : "Main timber kitchen with island"} fill unoptimized sizes="(max-width: 900px) 100vw, 42vw" /></figure>
             </article>
-            <article>
-              <span>04 · {language === "nb" ? "TRAPPENE" : "THE STAIRCASES"}</span>
-              <h3>{language === "nb" ? "Håndlagde trapper i eik" : "Handmade oak staircases"}</h3>
-              <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
+            <article className="retreat-bespoke-detail-row retreat-bespoke-detail-row-reverse">
+              <div>
+                <span>04 · {language === "nb" ? "TRAPPENE" : "THE STAIRCASES"}</span>
+                <h3>{language === "nb" ? "Håndlagde trapper i eik" : "Handmade oak staircases"}</h3>
+                <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
+              </div>
+              <figure><Image src="/images/finn-gallery/18.jpg" alt={language === "nb" ? "Håndlaget tretrapp i hytta" : "Handmade timber staircase in the cabin"} fill unoptimized sizes="(max-width: 900px) 100vw, 42vw" /></figure>
+            </article>
+            <article className="retreat-bespoke-detail-row">
+              <div>
+                <span>05 · {language === "nb" ? "PEISENE" : "THE FIREPLACES"}</span>
+                <h3>{language === "nb" ? "To peiser. Én varm atmosfære." : "Two fireplaces. One warm atmosphere."}</h3>
+                <p>{language === "nb" ? "Grandcabin har to peiser – én ved langbordet i underetasjen og én i stuen på hovedetasjen. Begge kan nytes samtidig, slik at varmen og gløden følger huset gjennom hele oppholdet, enten dagen samles rundt et måltid eller fortsetter i sofakroken med utsikt mot fjellet." : "Grandcabin has two fireplaces – one beside the long table downstairs and one in the main-floor living room. Both can be enjoyed at the same time, allowing warmth and firelight to accompany the house throughout the stay, whether the group is gathered around a meal or relaxing in the sitting room with views of the mountains."}</p>
+                <p>{language === "nb" ? "Peisene er utformet med store glassflater som gir flammene et rent og moderne uttrykk. Samtidig er de bygget inn i naturlig stein, med en tyngde og taktilitet som forankrer rommene i fjelltradisjonen. Resultatet er en gjennomført balanse mellom moderne luksus og en ekte, tradisjonell hyttefølelse." : "Designed with generous glass panels, the fireplaces give the flames a clean, contemporary presence. Natural stone anchors each one in the character of the mountains, adding weight and tactility rooted in tradition. The result is a considered balance of modern luxury and an authentic, traditional cabin feeling."}</p>
+              </div>
+              <figure><Image src="/images/finn-gallery/06.jpg" alt={language === "nb" ? "Peis i naturstein med synlige flammer" : "Natural stone fireplace with visible flames"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
             </article>
           </div>
         </section>
       )}
-      {page === "materials" && (
-        <section className="retreat-technical-comfort">
-          <header>
-            <p>{language === "nb" ? "KOMFORT I HELE HYTTA" : "COMFORT THROUGHOUT"}</p>
-            <h2>{language === "nb" ? "Teknikk som merkes som ro." : "Technology that feels effortless."}</h2>
-            <span>{language === "nb" ? "Fire bad og to badstuer gir god flyt for store grupper. Samtidig sørger vannbåren varme i hele hytta og balansert ventilasjon for jevn temperatur og frisk luft på alle tre nivåer." : "Four bathrooms and two saunas keep a large group moving with ease. Hydronic heating throughout the cabin and balanced ventilation provide even warmth and fresh air across all three levels."}</span>
-          </header>
-          <div className="retreat-technical-comfort-grid">
-            <article><strong>4</strong><h3>{language === "nb" ? "Bad" : "Bathrooms"}</h3><p>{language === "nb" ? "God kapasitet gjennom travle morgener og rolige kvelder." : "Generous capacity through busy mornings and relaxed evenings."}</p></article>
-            <article><strong>2</strong><h3>{language === "nb" ? "Badstuer" : "Saunas"}</h3><p>{language === "nb" ? "To separate badstuer gir flere gjester plass til å lande samtidig." : "Two separate saunas give more guests room to unwind at the same time."}</p></article>
-            <article><strong>{language === "nb" ? "HELE" : "ALL"}</strong><h3>{language === "nb" ? "Vannbåren varme" : "Hydronic heating"}</h3><p>{language === "nb" ? "Jevn og behagelig varme i hele hytta." : "Even, comfortable warmth throughout the cabin."}</p></article>
-            <article><strong>{language === "nb" ? "FRISK" : "FRESH"}</strong><h3>{language === "nb" ? "Balansert ventilasjon" : "Balanced ventilation"}</h3><p>{language === "nb" ? "Kontinuerlig utskifting av luft gir et friskt og behagelig inneklima." : "Continuous air exchange supports a fresh, comfortable indoor climate."}</p></article>
-            <article><strong>2</strong><h3>{language === "nb" ? "Kjøkken" : "Kitchens"}</h3><p>{language === "nb" ? "Ett i underetasjen og ett i hovedetasjen, begge med kjøkkenøy og plass til å samles." : "One downstairs and one on the main floor, both with islands and space to gather."}</p></article>
-          </div>
-        </section>
-      )}
-      {page !== "cabin" && detailBanner}
+
+      {page !== "cabin" && page !== "meetings" && detailBanner}
       <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
       {page === "cabin" && <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>}
       {cabinReviews}
+      {cabinComfort}
       <RetreatBookingFooter language={language} />
     </>
   );
@@ -756,9 +768,9 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <section className="retreat-floor-plan">
         <div className="retreat-floor-heading"><p>{language === "nb" ? "SOVEPLAN" : "SLEEPING PLAN"}</p><h2>{language === "nb" ? "Alle rom, nivå for nivå" : "Every room, level by level"}</h2></div>
         <div className="retreat-floor-grid">
-          <article><span>01</span><h3>{language === "nb" ? "Underetasje" : "Lower floor"}</h3><strong>{language === "nb" ? "16 sengeplasser" : "16 beds"}</strong><ul><li>{language === "nb" ? "Rom 1 · køyeseng · 3 plasser" : "Room 1 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 2 · køyeseng · 3 plasser" : "Room 2 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 3 · dobbeltseng · 2 plasser" : "Room 3 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 4 og 5 · to køyesenger · 4 i hvert rom" : "Rooms 4 and 5 · two bunk beds · 4 in each room"}</li><li>{language === "nb" ? "2 bad med dusj og eget toalett" : "2 bathrooms with showers and a separate toilet"}</li></ul></article>
-          <article><span>02</span><h3>{language === "nb" ? "Hovedetasje" : "Main floor"}</h3><strong>{language === "nb" ? "5 sengeplasser" : "5 beds"}</strong><ul><li>{language === "nb" ? "Rom 6 · dobbeltseng · 2 plasser" : "Room 6 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 7 · køyeseng · 3 plasser" : "Room 7 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Badstue og eget toalett på nivået" : "Sauna and separate toilet on the floor"}</li></ul></article>
-          <article><span>03</span><h3>{language === "nb" ? "Loft" : "Loft"}</h3><strong>{language === "nb" ? "8 sengeplasser" : "8 beds"}</strong><ul><li>{language === "nb" ? "Rom 8 · dobbeltseng · 2 plasser" : "Room 8 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 9 · dobbeltseng · 2 plasser" : "Room 9 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 10 · sovealkove · 4 separate madrasser" : "Room 10 · sleeping alcove · 4 single mattresses"}</li><li>{language === "nb" ? "Bad med dusj" : "Bathroom with shower"}</li></ul></article>
+          <article><span>01</span><h3>{language === "nb" ? "Underetasje" : "Lower floor"}</h3><strong>{language === "nb" ? "16 sengeplasser" : "16 beds"}</strong><ul><li>{language === "nb" ? "Rom 1 · køyeseng · 3 plasser" : "Room 1 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 2 · køyeseng · 3 plasser" : "Room 2 · bunk bed · sleeps 3"}</li><li>{language === "nb" ? "Rom 3 · dobbeltseng · 2 plasser" : "Room 3 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 4 og 5 · to køyesenger · 4 i hvert rom" : "Rooms 4 and 5 · two bunk beds · 4 in each room"}</li><li className="retreat-floor-facilities">{language === "nb" ? "Badstua, 2 bad med dusj og eget toalett." : "Sauna, 2 bathrooms with showers and a separate toilet."}</li></ul></article>
+          <article><span>02</span><h3>{language === "nb" ? "Hovedetasje" : "Main floor"}</h3><strong>{language === "nb" ? "5 sengeplasser" : "5 beds"}</strong><ul><li>{language === "nb" ? "Rom 6 · dobbeltseng · 2 plasser" : "Room 6 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 7 · køyeseng · 3 plasser" : "Room 7 · bunk bed · sleeps 3"}</li><li className="retreat-floor-facilities">{language === "nb" ? "Badstue, bad med dusj og badekar og eget toalett på nivået" : "Sauna, bathroom with shower and bathtub, and a separate toilet on the floor"}</li></ul></article>
+          <article><span>03</span><h3>{language === "nb" ? "Loft" : "Loft"}</h3><strong>{language === "nb" ? "8 sengeplasser" : "8 beds"}</strong><ul><li>{language === "nb" ? "Rom 8 · dobbeltseng · 2 plasser" : "Room 8 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 9 · dobbeltseng · 2 plasser" : "Room 9 · double bed · sleeps 2"}</li><li>{language === "nb" ? "Rom 10 · sovealkove · 4 separate madrasser" : "Room 10 · sleeping alcove · 4 single mattresses"}</li><li className="retreat-floor-facilities">{language === "nb" ? "Bad med dusj" : "Bathroom with shower"}</li></ul></article>
         </div>
       </section>
       <section className="retreat-master-suite">
@@ -825,19 +837,27 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <header><p>03 · {language === "nb" ? "FOR BARN ELLER VOKSNE" : "FOR KIDS OR ADULTS"}</p><h2>{language === "nb" ? <>Fire senger<br />for barn eller voksne</> : <>Four Single Bed Suite<br />for Kids or Adults</>}</h2><span>{language === "nb" ? "To rom med fire sengeplasser hver. De håndlagde køyesengene er bygget inn og tilpasset treverket, slik at sengene blir en naturlig del av rommet. Komfortable madrasser, lyse materialer og moderne detaljer skaper et lunt sted å sove, like fint for barn som for voksne." : "Two rooms with four sleeping places each. Handcrafted bunk beds are built into the timberwork, making them a natural part of each room. Comfortable mattresses, light materials and modern details create a cosy place to rest for children and adults alike."}</span></header>
         <div className="retreat-suite-four-images"><figure><Image src="/images/finn-gallery/52.jpg" alt={language === "nb" ? "Soverom med fire sengeplasser i to køyesenger" : "Four sleeping places in two bunk beds"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom én" : "Suite one"}</figcaption></figure><figure><Image src="/images/finn-gallery/53.jpg" alt={language === "nb" ? "Det andre soverommet med fire sengeplasser" : "The second four-bed room"} fill sizes="(max-width: 900px) 100vw, 50vw" /><figcaption>{language === "nb" ? "Rom to" : "Suite two"}</figcaption></figure></div>
       </section>
-      <section className="retreat-suite-final-image"><Image src="/images/finn-gallery/36.jpg" alt={language === "nb" ? "Soverom med vindu mot vinterlandskapet" : "Bedroom window overlooking a snowy landscape"} fill sizes="100vw" /></section>
+      <section className="retreat-suite-editorial retreat-suite-alcove">
+        <div className="retreat-suite-editorial-image"><Image src="/images/finn-gallery/42.jpg" alt={language === "nb" ? "Sovealkove på loftet med fire separate madrasser og varmt treverk" : "Loft sleeping alcove with four separate mattresses and warm timber"} fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
+        <div className="retreat-suite-editorial-copy"><p>04 · {language === "nb" ? "SOVEALKOVEN" : "THE SLEEPING ALCOVE"}</p><h2>{language === "nb" ? "Et lunt fristed på loftet" : "A cosy retreat in the loft"}</h2><span>{language === "nb" ? "Den romslige sovealkoven på loftet byr på fire separate soveplasser i en varm og omsluttende atmosfære. Naturlig treverk, takets myke linjer og komfortable madrasser skaper et innbydende sted å finne roen. Den skjermede plasseringen gir en følelse av privatliv, samtidig som familie og venner kan være nær hverandre. Her møter tradisjonell fjellsjarm en diskret, gjennomført luksus – med rom for rolige morgener og avslappende kvelder etter en dag på fjellet." : "The spacious sleeping alcove in the loft offers four separate sleeping places in a warm, enveloping setting. Natural timber, the soft lines of the roof and comfortable mattresses create an inviting place to unwind. Its tucked-away position offers a sense of privacy while keeping family and friends close. Traditional mountain charm meets discreet, considered luxury, with room for unhurried mornings and restful evenings after a day in the mountains."}</span><div className="retreat-suite-detail-line"><b>04</b><small>{language === "nb" ? "SOVEPLASSER · ALKOVE PÅ LOFTET" : "SLEEPING PLACES · LOFT ALCOVE"}</small></div></div>
+      </section>
       <section className="retreat-banner-caption"><h2>{language === "nb" ? "Våkne til fjellet" : "Wake up to the mountains"}</h2><div className="retreat-suite-closing-copy"><p>{more.bannerText}</p><p>{language === "nb" ? "Hver suite forener gjennomført komfort med skjønnheten på Turufjell. Etter en dag i skibakken eller ute i fjellet venter lune materialer og myke senger – et rolig sted å lande." : "Every suite pairs considered comfort with the beauty of Turufjell. After a day on the slopes or in the mountains, warm timber and inviting beds offer a quiet place to unwind."}</p></div></section>
       <RetreatBookingFooter language={language} omitHeadingPeriod />
     </>
   );
 
   const gatheringTypes = page === "meetings" && (
-    <section className="retreat-gathering-types">
+    <section className="retreat-gathering-types retreat-gathering-opening">
       <div className="retreat-gathering-heading"><p>{language === "nb" ? "TO MÅTER Å SAMLES PÅ" : "TWO WAYS TO GATHER"}</p><h2>{language === "nb" ? "Profesjonelt når det trengs. Personlig når det gjelder." : "Professional when needed. Personal when it matters."}</h2></div>
       <div className="retreat-gathering-grid">
         <article><div className="retreat-gathering-image"><Image src={image("gathering")} alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill sizes="50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Ta med ledergruppen eller hele teamet til Grandcabin for møter med arbeidsro og rom for nye ideer. Et 100-tommers lerret, raskt bredbånd og fleksible fellesrom gir profesjonelle rammer, mens fjellet rett utenfor døren åpner for inspirerende pauser, kick-off og teambuilding. Hele hytta er forbeholdt deres gruppe, så samtalene kan fortsette fra arbeidsøkten til middagen rundt langbordet." : "Bring your leadership group or the whole team to Grandcabin for focused meetings and fresh ideas. A 100-inch presentation screen, fast broadband and flexible shared spaces provide a professional setting, while the mountain just outside invites inspiring breaks, kick-offs and team building. The entire cabin is reserved for your group, so conversations can continue from the working session to dinner around the long table."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
         <article><div className="retreat-gathering-image"><Image src={image("dining")} alt={language === "nb" ? "Privat samling" : "Private gathering"} fill sizes="50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Som et privat fjellhjem for storfamilier og nære venner samler Grandcabin besteforeldre, voksne barn og yngre generasjoner under ett tak. Romslige fellesarealer og en gjennomtenkt planløsning gir naturlige rammer for familiegjenforeninger, med plass til både feiring og rolige stunder. Hele hytta, de ni soverommene og sovealkoven er forbeholdt dere." : "As a private mountain home for extended families and close friends, Grandcabin brings grandparents, adult children and younger generations together under one roof. Generous shared spaces and a considered layout make family reunions feel effortless, with room to celebrate together and quiet corners to retreat to. The entire cabin, with nine bedrooms and a sleeping alcove, is reserved for your group."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Familiegjenforeninger" : "Family reunions"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
       </div>
+    </section>
+  );
+
+  const gatheringCompanies = page === "meetings" && (
+    <section className="retreat-gathering-types">
       <div className="retreat-company-strip">
         <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT GRANDCABIN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN GRANDCABIN"}</p>
         <div className="retreat-company-wall">
@@ -920,10 +940,11 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
       <RetreatNav language={language} setLanguage={setLanguage} page={page} />
       {page === "cabin" && <CabinVideoHero language={language} description={t.text} />}
-      <main className="retreat-detail">
-        <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority={page !== "cabin"} sizes={page === "cabin" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
+      {gatheringTypes}
+      {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : ""}`}>
+        <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority={page !== "cabin"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
         <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · SUITES" : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
-      </main>
+      </main>}
       {page === "meetings" && <section className="retreat-meetings-intro">
         <div className="retreat-meetings-intro-copy">
           <p className="retreat-meetings-intro-label">{language === "nb" ? "ET OPPHOLD PÅ DERES PREMISSER" : "A STAY ON YOUR TERMS"}</p>
@@ -941,7 +962,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {locationDistances}
       {locationArrival}
       {bedroomBreakdown}
-      {gatheringTypes}
+      {gatheringCompanies}
       {turufjellDetails}
       {page === "bedrooms" ? bedroomTail : moreSections}
     </div>

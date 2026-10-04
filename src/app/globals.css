@@ -940,6 +940,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-story-cabin { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .retreat-detail-story-cabin .retreat-detail-story-copy { order: 1; }
 .retreat-detail-story-cabin .retreat-detail-story-image { order: 2; }
+.retreat-detail-story-materials .retreat-detail-story-copy { order: 1; }
+.retreat-detail-story-materials .retreat-detail-story-image { order: 2; }
 .retreat-cabin-landscape { margin: 0; }
 .retreat-cabin-landscape img { display: block; width: 100%; height: auto; }
 .retreat-detail-story-image { position: relative; min-height: 680px; }
@@ -989,35 +991,47 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-points li span { color: #bd8e57; font-size: .67rem; font-weight: 800; }
 .retreat-bespoke { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #e9e3d8; color: #17202c; }
 .retreat-bespoke > header { display: grid; grid-template-columns: .4fr 1.15fr .85fr; gap: clamp(2rem, 5vw, 6rem); align-items: end; margin-bottom: clamp(5rem, 9vw, 9rem); }
-.retreat-bespoke > header > p { align-self: start; margin: .6rem 0 0; color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
+.retreat-bespoke > header { padding: clamp(3rem, 6vw, 6rem) clamp(1.4rem, 5vw, 6rem); background: #17202c; color: #fff; }
+.retreat-bespoke > header > p { align-self: start; margin: .6rem 0 0; color: #d8b687; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-bespoke > header h2 { margin: 0; font-size: clamp(3.2rem, 5.7vw, 6.6rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
-.retreat-bespoke > header > span { color: #565651; line-height: 1.85; }
-.retreat-bespoke-feature { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(3rem, 7vw, 8rem); align-items: center; margin-bottom: clamp(7rem, 12vw, 12rem); }
+.retreat-bespoke > header > span { color: #c6ccd1; line-height: 1.85; }
+.retreat-bespoke-feature { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: center; margin-bottom: 0; }
 .retreat-bespoke-feature:last-child { margin-bottom: 0; }
-.retreat-bespoke-images { display: grid; gap: .9rem; min-width: 0; }
+.retreat-bespoke-images { display: grid; gap: 0; min-width: 0; }
+.retreat-bespoke-feature .retreat-bespoke-images { align-self: stretch; }
+.retreat-bespoke-feature .retreat-bespoke-images figure { height: 100%; aspect-ratio: auto; }
 .retreat-bespoke-images figure { position: relative; aspect-ratio: 1; overflow: hidden; margin: 0; background: #17202c; }
-.retreat-bespoke-images figure:last-child { width: 58%; justify-self: end; }
+.retreat-bespoke-images figure + figure { width: 58%; justify-self: end; }
 .retreat-bespoke-images img { object-fit: cover; }
 .retreat-bespoke-copy > span { color: #bd8e57; font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
 .retreat-bespoke-copy h3 { margin: 1rem 0 1.8rem; font-size: clamp(2.7rem, 4.5vw, 5rem); font-weight: 500; line-height: .98; letter-spacing: -.05em; }
 .retreat-bespoke-copy p { color: #565651; line-height: 1.85; }
+.retreat-bespoke-feature-dark .retreat-bespoke-copy { padding: clamp(2rem, 4vw, 4.5rem); background: #17202c; color: #fff; }
+.retreat-bespoke-feature-dark .retreat-bespoke-copy p { color: #c6ccd1; }
+.retreat-bespoke-feature-dark { background: #17202c; }
+.retreat-bespoke-feature-dark { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.retreat-bespoke-feature-dark .retreat-bespoke-images { order: 2; }
+.retreat-bespoke-feature-dark .retreat-bespoke-copy { order: 1; }
+.retreat-bespoke-feature:not(.retreat-bespoke-feature-dark) .retreat-bespoke-copy { padding: clamp(2rem, 5vw, 6rem); }
 .retreat-bespoke-feature-reverse { grid-template-columns: .8fr 1.2fr; }
-.retreat-bespoke-feature-reverse .retreat-bespoke-images { order: 2; }
-.retreat-bespoke-feature-reverse .retreat-bespoke-copy { order: 1; }
+.retreat-bespoke-feature-reverse .retreat-bespoke-images { order: 1; }
+.retreat-bespoke-feature-reverse .retreat-bespoke-copy { order: 2; }
 .retreat-bespoke-more { display: grid; grid-template-columns: .8fr 1fr; gap: clamp(.9rem, 3vw, 3rem); align-items: center; margin-top: clamp(-3rem, -4vw, -1.5rem); }
 .retreat-bespoke-more figure { position: relative; aspect-ratio: 1; overflow: hidden; margin: 0; background: #17202c; }
 .retreat-bespoke-more img { object-fit: cover; }
-.retreat-bespoke-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 7vw, 8rem); margin-top: clamp(5rem, 9vw, 9rem); }
-.retreat-bespoke-details article { border-top: 1px solid #b9aea0; padding-top: 1.7rem; }
-.retreat-bespoke-details article > span { color: #8a6036; font-size: .68rem; font-weight: 800; letter-spacing: .13em; }
-.retreat-bespoke-details h3 { margin: 1.2rem 0 1.4rem; font-size: clamp(2.4rem, 3.5vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
-.retreat-bespoke-details p { max-width: 580px; margin: 0; color: #565651; line-height: 1.85; }
+.retreat-bespoke-details { display: grid; gap: 0; margin-top: 0; }
+.retreat-bespoke-detail-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+.retreat-bespoke-detail-row-reverse > figure { order: -1; }
+.retreat-bespoke-detail-row > div { border-top: 1px solid #b9aea0; padding: 1.7rem clamp(2rem, 5vw, 6rem); }
+.retreat-bespoke-detail-row figure { position: relative; min-height: 440px; margin: 0; overflow: hidden; background: #17202c; }
+.retreat-bespoke-detail-row figure img { object-fit: cover; }
+.retreat-bespoke-detail-row > div > span { color: #8a6036; font-size: .68rem; font-weight: 800; letter-spacing: .13em; }
+.retreat-bespoke-detail-row h3 { margin: 1.2rem 0 1.4rem; font-size: clamp(2.4rem, 3.5vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
+.retreat-bespoke-detail-row p { max-width: 580px; margin: 0; color: #565651; line-height: 1.85; }
 /* Keep each handmade piece in focus, with the same crop on every screen size. */
 .retreat-craft-double-vanity img { object-position: 30% 100%; transform: scale(1.5); transform-origin: 30% 100%; }
-.retreat-craft-vanity-detail img { object-position: 100% 100%; transform: scale(1.6); transform-origin: 100% 100%; }
-.retreat-bespoke-images .retreat-craft-bunks, .retreat-bespoke-images .retreat-craft-bed-detail { aspect-ratio: 6 / 5; }
+.retreat-bespoke-images .retreat-craft-bunks { aspect-ratio: 6 / 5; }
 .retreat-craft-bunks img { object-position: 100% 50%; }
-.retreat-craft-bed-detail img { object-position: 88% 50%; }
 .retreat-bespoke-more .retreat-craft-single-vanity { aspect-ratio: 4 / 5; }
 .retreat-craft-single-vanity img { object-position: 100% 100%; transform: scale(1.25); transform-origin: 100% 100%; }
 .retreat-craft-bunks-detail img { object-position: 100% 50%; }
@@ -1130,6 +1144,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-floor-grid strong { color: #895d34; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .retreat-floor-grid ul { margin: 2.5rem 0 0; padding: 0; list-style: none; }
 .retreat-floor-grid li { border-top: 1px solid rgba(23,32,44,.18); padding: .8rem 0; color: #4d4c49; font-size: .78rem; line-height: 1.45; }
+.retreat-floor-grid li:has(+ .retreat-floor-facilities) { border-bottom: 1px solid rgba(23,32,44,.18); }
+.retreat-floor-grid .retreat-floor-facilities { margin-top: 1.5rem; border-top: 0; }
 .retreat-master-suite { display: grid; min-height: 820px; grid-template-columns: 58% 42%; background: #17202c; color: #fff; }
 .retreat-master-image { position: relative; min-height: 700px; }
 .retreat-master-suite > div:last-child { display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 6vw, 7rem); }
@@ -1350,10 +1366,16 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-bespoke > header, .retreat-bespoke-feature, .retreat-bespoke-feature-reverse { grid-template-columns: 1fr; }
   .retreat-bespoke > header { gap: 1.5rem; }
   .retreat-bespoke-feature { gap: 3rem; }
+  .retreat-bespoke-feature .retreat-bespoke-images figure { height: auto; aspect-ratio: 1; }
   .retreat-bespoke-images, .retreat-bespoke-feature-reverse .retreat-bespoke-images { order: 1; }
   .retreat-bespoke-copy, .retreat-bespoke-feature-reverse .retreat-bespoke-copy { order: 2; }
+  .retreat-bespoke-feature-dark .retreat-bespoke-images { order: 1; }
+  .retreat-bespoke-feature-dark .retreat-bespoke-copy { order: 2; }
   .retreat-bespoke-more { grid-template-columns: 1fr; margin-top: -2rem; }
-  .retreat-bespoke-details { grid-template-columns: 1fr; gap: 3rem; }
+  .retreat-bespoke-details { gap: 3rem; }
+  .retreat-bespoke-detail-row { grid-template-columns: 1fr; gap: 2rem; }
+  .retreat-bespoke-detail-row-reverse > figure { order: 0; }
+  .retreat-bespoke-detail-row figure { min-height: 320px; }
   .retreat-technical-comfort > header { grid-template-columns: 1fr; gap: 1.5rem; }
   .retreat-technical-comfort-grid article { min-height: 260px; }
   .retreat-detail-story-image { min-height: 560px; }
@@ -1602,13 +1624,13 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-bespoke-feature {
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
-  gap: clamp(2.5rem, 5vw, 6rem);
-  margin-bottom: var(--retreat-page-space);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 0;
 }
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-bespoke-feature-reverse {
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-detail-banner {
@@ -1648,29 +1670,49 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   background: #e1c9a7;
 }
 
+.retreat-detail-page[data-page="meetings"] .retreat-gathering-opening {
+  background: #fff;
+}
+
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="materials"] .retreat-detail.retreat-detail-materials,
+  .retreat-detail-page[data-page="materials"] .retreat-detail-story.retreat-detail-story-materials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about,
-.retreat-detail-page[data-page="meetings"] .retreat-detail-story,
-.retreat-detail-page[data-page="materials"] .retreat-detail-story {
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story {
   background: #17202c;
   color: #fff;
 }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-copy h2,
-.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy h2,
-.retreat-detail-page[data-page="materials"] .retreat-detail-story-copy h2 {
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy h2 {
   color: #fff;
 }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-copy > p:first-child,
-.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy > p,
-.retreat-detail-page[data-page="materials"] .retreat-detail-story-copy > p {
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy > p {
   color: #d8b687;
 }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-copy > p:not(:first-child),
-.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy > span,
-.retreat-detail-page[data-page="materials"] .retreat-detail-story-copy > span {
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy > span {
   color: #c6ccd1;
+}
+
+.retreat-detail-page[data-page="materials"] .retreat-detail-story {
+  background: #f2f0eb;
+  color: #17202c;
+}
+
+.retreat-detail-page[data-page="materials"] .retreat-detail-story-copy > p {
+  color: #bd8e57;
+}
+
+.retreat-detail-page[data-page="materials"] .retreat-detail-story-copy > span {
+  color: #67717c;
 }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-copy a {
