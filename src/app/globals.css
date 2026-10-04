@@ -992,6 +992,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-bespoke { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #e9e3d8; color: #17202c; }
 .retreat-bespoke > header { display: grid; grid-template-columns: .4fr 1.15fr .85fr; gap: clamp(2rem, 5vw, 6rem); align-items: end; margin-bottom: clamp(5rem, 9vw, 9rem); }
 .retreat-bespoke > header { margin: calc(-1 * clamp(6rem, 10vw, 10rem)) calc(-1 * clamp(1.4rem, 6vw, 7rem)) clamp(5rem, 9vw, 9rem); padding: clamp(3rem, 6vw, 6rem) clamp(1.4rem, 5vw, 6rem); background: #17202c; color: #fff; }
+.retreat-detail-page[data-page="materials"] .retreat-bespoke { padding: clamp(2rem, 3vw, 3rem) 1.4rem clamp(5rem, 9vw, 9rem); }
+.retreat-detail-page[data-page="materials"] .retreat-bespoke > header { margin: 0 0 clamp(5rem, 9vw, 9rem); }
 .retreat-bespoke > header > p { align-self: start; margin: .6rem 0 0; color: #d8b687; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-bespoke > header h2 { margin: 0; font-size: clamp(3.2rem, 5.7vw, 6.6rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
 .retreat-bespoke > header > span { color: #c6ccd1; line-height: 1.85; }
