@@ -1514,6 +1514,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   font-size: clamp(3rem, 5vw, 6rem);
 }
 
+.retreat-detail-page[data-page="turufjell"] .retreat-detail-copy h1 {
+  line-height: 1.1;
+  letter-spacing: 0;
+  word-spacing: .06em;
+}
+
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-detail-text > span {
   max-width: var(--retreat-page-copy);
   font-size: clamp(.95rem, 1.15vw, 1.1rem);
