@@ -59,6 +59,12 @@ reservations must still be added manually.
 - `npm run test:booking` — date validation and reservation conflict tests.
 - `npm run check` — lint, booking tests, typecheck, and production build.
 
+The regional location map uses MapLibre with an OpenFreeMap road style. The
+`predev` and `prebuild` hooks copy its worker and shared module from the installed
+package into `public/maplibre/`; these generated files are not committed. Road
+and place styling lives in `public/maps/regional-style.json`. To regenerate that
+style from its public base, run `node scripts/generate-regional-map-style.mjs`.
+
 ## Files
 
 - `src/app/` — pages, layout, global styles, and a 404 page.

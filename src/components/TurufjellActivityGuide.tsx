@@ -84,7 +84,17 @@ export function TurufjellActivityGuide() {
           const copy = section[language];
           return (
             <section className="retreat-activity-guide-section" id={section.id} key={section.id}>
-              <div className={`retreat-activity-guide-photo${section.id === "winter" ? " retreat-activity-guide-photo--map" : ""}`}><Image src={section.id === "winter" ? `/images/turufjell-ski-map-${language}.png` : section.image} alt={copy.imageAlt} fill sizes="100vw" /></div>
+              <div className={`retreat-activity-guide-photo${section.id === "winter" ? " retreat-activity-guide-photo--map" : ""}`}>
+                <Image src={section.id === "winter" ? `/images/turufjell-ski-map-${language}.png` : section.image} alt={copy.imageAlt} fill sizes="100vw" />
+                {section.id === "winter" && <>
+                  {/* Restore only the former marker area, preserving each translated map. */}
+                  <Image className="retreat-ski-map-marker-cleanup" src="/images/turufjell-ski-map-pin-cleanup.png" alt="" fill sizes="100vw" />
+                  <div className="retreat-ski-map-marker" aria-label="Grandcabin">
+                    <svg viewBox="0 0 32 44" aria-hidden="true"><path d="M16 43C12 37 1 23 1 16a15 15 0 0 1 30 0c0 7-11 21-15 27Z" fill="#bd8e57" stroke="#fff" strokeWidth="2" /><circle cx="16" cy="16" r="10" fill="#17212d" /><path d="m10 15 6-5 6 5v7h-4v-5h-4v5h-4Z" fill="none" stroke="#f4d19a" strokeWidth="1.5" /></svg>
+                    <span>GRANDCABIN</span>
+                  </div>
+                </>}
+              </div>
               <header><p>{section.number} · {copy.label}</p><h2>{copy.title}</h2><span>{copy.intro}</span></header>
               <div className="retreat-activity-guide-grid">
                 {section.items.map((item, index) => <article key={item.nb.title}><small>{(index + 1).toString().padStart(2, "0")}</small><h3>{item[language].title}</h3><p>{item[language].text}</p></article>)}

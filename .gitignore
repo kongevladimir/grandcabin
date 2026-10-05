@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/public/maplibre/
 /out/
 
 # production

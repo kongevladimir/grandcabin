@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated copies of the installed map renderer, not application code.
+    "public/maplibre/**",
   ]),
 ]);
 

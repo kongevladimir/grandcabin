@@ -7,7 +7,7 @@ import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
 import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
-import { RegionalMapPlaces } from "@/components/RegionalMapPlaces";
+import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-mountain-view.jpg";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
@@ -16,10 +16,6 @@ const galleryPhotos = Array.from({ length: 74 }, (_, index) => `/images/gallery-
 const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
   x: 4310 + (index % 4),
   y: 2355 + Math.floor(index / 4),
-}));
-const regionalMapTiles = Array.from({ length: 16 }, (_, index) => ({
-  x: 32 + (index % 4),
-  y: 16 + Math.floor(index / 4),
 }));
 
 function LanguageToggle({ language, setLanguage, light = false }: {
@@ -733,13 +729,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </dl>
           <a href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "FINN VEIEN MED GOOGLE MAPS" : "GET DIRECTIONS WITH GOOGLE MAPS"} ↗</a>
         </div>
-        <div className="retreat-regional-map">
-          <div className="retreat-regional-map-tiles" aria-hidden="true">{regionalMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/6/${x}/${y}.png)` }} />)}</div>
-          <RegionalMapPlaces language={language} />
-          <span className="retreat-regional-pin" aria-hidden="true"><i /></span>
-          <div className="retreat-regional-label"><span>GRANDCABIN</span><b>TURUFJELL</b></div>
-          <a className="retreat-regional-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>
-        </div>
+        <RegionalMap language={language} />
       </div>
       <div className="retreat-nearby">
         <div className="retreat-nearby-image"><Image src={image("bjorneparken-bear")} alt={language === "nb" ? "Brunbjørn i norsk fjellnatur" : "Brown bear in Norwegian mountain nature"} fill sizes="(max-width: 900px) 100vw, 48vw" /></div>
@@ -893,7 +883,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <TurufjellActivities language={language} />
       <section className="retreat-turufjell-about">
         <div className="retreat-turufjell-about-image"><Image src={image("terrace")} alt={language === "nb" ? "Utsikt fra Turufjell" : "View from Turufjell"} fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
-        <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger vestvendt med lange soldager og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell faces west, with long sunny days and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>
+        <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger på solsiden av Flå og vender mot sørvest og vest, med lange soldager, rikelig med kveldssol og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell lies on the sunny side of Flå, facing southwest and west, with long sunny days, plenty of evening sun and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>
       </section>
       <section className="retreat-turufjell-travel">
         <div className="retreat-turufjell-travel-title"><p>{language === "nb" ? "ENKELT Å KOMME HIT" : "EASY TO REACH"}</p><h2>{language === "nb" ? "Fjellet er nærmere enn det føles." : "The mountain is closer than it feels."}</h2></div>
