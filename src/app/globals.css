@@ -1536,6 +1536,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   grid-template-columns: 48% 52%;
 }
 
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="location"]:not([data-page="cabin"]) .retreat-directions {
+    grid-template-columns: 55% 45%;
+  }
+}
+
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-suite-editorial {
   min-height: 660px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
