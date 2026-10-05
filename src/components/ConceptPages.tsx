@@ -750,7 +750,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <div>
         <article><b>01</b><h3>{language === "nb" ? "Avtal den siste etappen" : "Arrange the final leg"}</h3><p>{language === "nb" ? "Kommer dere med tog eller buss, anbefaler vi å bestille taxi eller annen transport fra Flå på forhånd." : "If you arrive by train or bus, we recommend pre-booking a taxi or other transport from Flå."}</p></article>
         <article><b>02</b><h3>{language === "nb" ? "Handle i Flå" : "Shop in Flå"}</h3><p>{language === "nb" ? "Flå sentrum ligger omtrent 15 minutter unna og har matbutikker, kjøpesenter, vinmonopol, sportsbutikker og spisesteder." : "Flå village is around 15 minutes away, with grocery shops, a shopping centre, wine shop, sports stores and places to eat."}</p></article>
-        <article><b>03</b><h3>{language === "nb" ? "Del adressen" : "Share the address"}</h3><p>{language === "nb" ? "Send Google Maps-lenken til alle sjåfører før avreise. Ved hytta er det god plass til parkering for gruppen." : "Send the Google Maps link to every driver before departure. There is ample parking for the group at the cabin."}</p></article>
+        <article><b>03</b><h3>{language === "nb" ? "Pakk for fjellet" : "Pack for the mountains"}</h3><p>{language === "nb" ? "Sjekk værmeldingen før avreise, og ta med varme lag, en vindtett jakke og sko som passer årstiden. Da er dere klare for fine dager ute fra første stund." : "Check the forecast before departure and bring warm layers, a windproof jacket and footwear suited to the season. Then you’re ready to enjoy the outdoors from the moment you arrive."}</p></article>
       </div>
     </section>
   );
