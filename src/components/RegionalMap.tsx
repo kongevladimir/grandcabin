@@ -111,7 +111,7 @@ export function RegionalMap({ language }: { language: Language }) {
         map.addLayer({
           id: "grandcabin-airport", type: "symbol", source: "grandcabin-places",
           filter: ["==", ["get", "airport"], true],
-          layout: { "icon-image": "airport_11", "icon-size": 1.4, "icon-offset": [0, -14], "icon-allow-overlap": true },
+          layout: { "icon-image": "airport_11", "icon-size": 1.4, "icon-offset": [18, -14], "icon-allow-overlap": true },
         });
         setStatus("ready");
       });
