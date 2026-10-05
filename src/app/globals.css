@@ -1115,6 +1115,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-distance-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.4rem, 5vw, 5.5rem); }
 .retreat-distance-copy > p, .retreat-nearby-copy > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-distance-copy h2, .retreat-nearby-copy h2 { margin: 1rem 0 2.2rem; font-size: clamp(2.8rem, 4.8vw, 5.5rem); font-weight: 500; line-height: .94; letter-spacing: -.055em; }
+@media (min-width: 901px) {
+  .retreat-distance-copy { container-type: inline-size; }
+  .retreat-distance-copy h2 { font-size: clamp(1rem, 8.5cqw, 3.5rem); white-space: nowrap; }
+}
 .retreat-distance-copy dl, .retreat-nearby-copy dl { width: 100%; max-width: 420px; margin: 0; }
 .retreat-distance-copy dl div, .retreat-nearby-copy dl div { display: flex; justify-content: space-between; gap: 2rem; padding: .32rem 0; border-bottom: 1px solid rgba(23,32,44,.13); }
 .retreat-distance-copy dt, .retreat-distance-copy dd, .retreat-nearby-copy dt, .retreat-nearby-copy dd { margin: 0; font-size: .9rem; }
