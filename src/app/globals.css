@@ -1295,8 +1295,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-activity-guide-section > header p { align-self: start; margin: .5rem 0 0; color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-activity-guide-section > header h2 { margin: 0; font-size: clamp(3rem, 5.4vw, 6rem); font-weight: 500; line-height: .95; letter-spacing: -.06em; }
 .retreat-activity-guide-section > header span { max-width: 400px; color: #59616a; font-size: 1.05rem; line-height: 1.75; }
-.retreat-activity-guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0 clamp(1.4rem, 6vw, 7rem); border: 1px solid #ccc9c1; background: #ccc9c1; }
-.retreat-activity-guide-grid article { min-height: 245px; padding: clamp(1.5rem, 2.5vw, 2.8rem); background: #f2f0eb; }
+.retreat-activity-guide-grid { display: flex; flex-wrap: wrap; gap: 1px; margin: 0 clamp(1.4rem, 6vw, 7rem); border: 1px solid #ccc9c1; background: #ccc9c1; }
+.retreat-activity-guide-grid article { flex: 1 1 calc((100% - 2px) / 3); min-width: 0; min-height: 245px; padding: clamp(1.5rem, 2.5vw, 2.8rem); background: #f2f0eb; }
 .retreat-activity-guide-grid small { color: #a78157; font-size: .66rem; font-weight: 800; letter-spacing: .1em; }
 .retreat-activity-guide-grid h3 { margin: 2rem 0 .8rem; font-size: clamp(1.6rem, 2vw, 2.3rem); font-weight: 500; line-height: 1.1; }
 .retreat-activity-guide-grid p { margin: 0; color: #626b72; font-size: .92rem; line-height: 1.72; }
@@ -1434,7 +1434,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-turufjell-activities-grid .retreat-turufjell-activity-calm { grid-column: 1 / -1; }
   .retreat-activity-guide-section > header { grid-template-columns: 1fr 1fr; }
   .retreat-activity-guide-section > header p { grid-column: 1 / -1; }
-  .retreat-activity-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .retreat-activity-guide-grid article { flex-basis: calc((100% - 1px) / 2); }
   .retreat-activity-guide-sources { align-items: flex-start; flex-direction: column; }
   .retreat-turufjell-about { grid-template-columns: 1fr; }
   .retreat-turufjell-about-image { min-height: 560px; }
@@ -1479,8 +1479,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-activity-guide-photo { height: 300px; }
   .retreat-activity-guide-section > header { grid-template-columns: 1fr; }
   .retreat-activity-guide-section > header p { grid-column: auto; }
-  .retreat-activity-guide-grid { grid-template-columns: 1fr; }
-  .retreat-activity-guide-grid article { min-height: 0; }
+  .retreat-activity-guide-grid article { flex-basis: 100%; min-height: 0; }
   .retreat-activity-guide-grid h3 { margin-top: 1.3rem; }
   .retreat-activity-guide-sources div { flex-direction: column; align-items: flex-start; }
   .retreat-technical-comfort-grid { grid-template-columns: 1fr; }
