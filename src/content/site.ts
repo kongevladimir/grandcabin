@@ -103,7 +103,7 @@ export const copy = {
     introLabel: "ROOM TO COME TOGETHER",
     introTitle: "Away from the everyday.\nCloser to each other.",
     intro: "One of Turufjell’s most distinctive cabins – and it is easy to see why. Thoughtful architecture, quality materials and modern comfort come together for a truly special stay.",
-    intro2: "Completed in 2024, the cabin has hydronic heating throughout and balanced ventilation. Bring your extended family, friends or colleagues for a mountain getaway in Hallingdal.",
+    intro2: "Completed in 2024, the cabin has underfloor heating throughout and balanced ventilation. Bring your extended family, friends or colleagues for a mountain getaway in Hallingdal.",
     detail: "9 bedrooms · 4 bathrooms · 2 kitchens · 2 saunas",
     galleryLabel: "TAKE A LOOK INSIDE",
     galleryTitle: "Find your favourite corner.",
