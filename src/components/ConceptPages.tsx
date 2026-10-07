@@ -7,6 +7,7 @@ import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
 import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
+import { CabinFacilities } from "@/components/CabinFacilities";
 import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-mountain-view.jpg";
 
@@ -667,6 +668,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
                 <span>03 · {language === "nb" ? "KJØKKENENE" : "THE KITCHENS"}</span>
                 <h3>{language === "nb" ? "To kjøkken i treverk" : "Two timber kitchens"}</h3>
                 <p>{language === "nb" ? "De to kjøkkenene i treverk er tilpasset ulike måter å samles på. Kjøkkenet i underetasjen har også en kjøkkenøy og ligger nær langbordet, slik at alle kan dele måltidet ved både store private samlinger og bedriftssamlinger. I hovedetasjen blir hovedkjøkkenet med sin kjøkkenøy et naturlig midtpunkt for måltider, samtaler og samvær." : "The two timber kitchens are designed for different ways of gathering. The lower-level kitchen also has an island and sits close to the long table, where everyone can share a meal during large private gatherings or company retreats. On the main floor, the principal kitchen and its island form a natural centre for meals, conversation and time together."}</p>
+                <p>{language === "nb" ? "Begge kjøkkenene er utstyrt med eksklusive hvitevarer og to oppvaskmaskiner hver. Gjennomtenkt kapasitet og høy kvalitet gjør det enkelt å samle mange rundt bordet, med mer tid til å nyte måltidet og selskapet." : "Both kitchens feature premium appliances and two dishwashers each. Thoughtful capacity and quality throughout make hosting feel effortless, leaving more time to savour the meal and the company."}</p>
               </div>
               <figure><Image src="/images/finn-gallery/12.jpg" alt={language === "nb" ? "Hovedkjøkken med kjøkkenøy i treverk" : "Main timber kitchen with island"} fill unoptimized sizes="(max-width: 900px) 100vw, 42vw" /></figure>
             </article>
@@ -697,6 +699,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page === "cabin" && <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>}
       {cabinReviews}
       {cabinComfort}
+      {page === "cabin" && <CabinFacilities language={language} />}
       <RetreatBookingFooter language={language} />
     </>
   );
