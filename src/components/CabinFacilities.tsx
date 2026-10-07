@@ -5,13 +5,13 @@ const facilities = {
     { title: "Kjøkken", items: ["4 oppvaskmaskiner · 2 på hvert kjøkken", "2 stekeovner", "2 kjøleskap", "2 frysere"] },
     { title: "Bad & velvære", items: ["4 bad med dusj", "2 toaletter", "2 badstuer"] },
     { title: "Stuer & uteområder", items: ["3 stuer", "TV", "2 peiser", "2 terrasser", "Ski inn / ski ut"] },
-    { title: "Komfort & teknologi", items: ["Fiberoptisk internett med Wi-Fi", "Vaskemaskin", "Vannbåren gulvvarme", "Balansert ventilasjon", "Smart strømstyring"] },
+    { title: "Komfort & teknologi", items: ["Fiberoptisk internett med Wi-Fi", "Vaskemaskin", "Integrert støvsuger", "Vannbåren gulvvarme", "Balansert ventilasjon", "Smart strømstyring"] },
   ],
   en: [
     { title: "Kitchens", items: ["4 dishwashers · 2 in each kitchen", "2 ovens", "2 refrigerators", "2 freezers"] },
     { title: "Bathrooms & wellness", items: ["4 bathrooms with showers", "2 toilets", "2 saunas"] },
     { title: "Living spaces & outdoors", items: ["3 living rooms", "TV", "2 fireplaces", "2 terraces", "Ski-in / ski-out"] },
-    { title: "Comfort & technology", items: ["Fibre-optic internet with Wi-Fi", "Washing machine", "Underfloor heating", "Balanced ventilation", "Smart energy management"] },
+    { title: "Comfort & technology", items: ["Fibre-optic internet with Wi-Fi", "Washing machine", "Built-in vacuum system", "Underfloor heating", "Balanced ventilation", "Smart energy management"] },
   ],
 };
 
