@@ -1056,17 +1056,17 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-bespoke-detail-row > div > span { color: #8a6036; font-size: .68rem; font-weight: 800; letter-spacing: .13em; }
 .retreat-bespoke-detail-row h3 { margin: 1.2rem 0 1.4rem; font-size: clamp(2.4rem, 3.5vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
 .retreat-bespoke-detail-row p { max-width: 580px; margin: 0; color: #565651; line-height: 1.85; }
-.retreat-craft-stair-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; order: -1; padding: 1.4rem; background: #17202c; }
-.retreat-craft-stair-images figure { min-height: 440px; }
+.retreat-craft-stair-images { display: grid; grid-template-columns: minmax(0, .795fr) minmax(0, 1.5fr); align-content: center; gap: 1rem; order: -1; padding: 1.4rem; background: #17202c; }
+.retreat-bespoke-detail-row .retreat-craft-stair-images figure { min-height: 0; }
+.retreat-craft-stair-images figure:first-child { aspect-ratio: 10093 / 12699; }
+.retreat-craft-stair-images figure:last-child { aspect-ratio: 3 / 2; }
 .retreat-craft-stair-images figure img { object-fit: contain; }
+.retreat-craft-round-light { mask-image: radial-gradient(ellipse 21.5% 13.5% at 44.8% 11%, #000 80%, transparent 100%); pointer-events: none; }
 @media (max-width: 900px) {
   .retreat-craft-stair-images { order: 0; }
-  .retreat-craft-stair-images figure { min-height: 320px; }
 }
 @media (max-width: 560px) {
   .retreat-craft-stair-images { grid-template-columns: 1fr; }
-  .retreat-craft-stair-images figure:first-child { aspect-ratio: 3600 / 3091; min-height: 0; }
-  .retreat-craft-stair-images figure:last-child { aspect-ratio: 3 / 2; min-height: 0; }
 }
 /* Keep each handmade piece in focus, with the same crop on every screen size. */
 .retreat-craft-double-vanity img { object-fit: contain; object-position: center; }

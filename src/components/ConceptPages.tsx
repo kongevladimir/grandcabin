@@ -20,6 +20,7 @@ import craftOakBathroom from "../../public/images/craft-oak-bathroom.webp";
 import craftTimberHallway from "../../public/images/craft-timber-hallway.webp";
 import craftOakStaircase from "../../public/images/craft-oak-staircase.webp";
 import craftOakStepDetail from "../../public/images/craft-oak-step-detail.webp";
+import craftOakRoundLight from "../../public/images/craft-oak-staircase-round-light.png";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -691,7 +692,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
                 <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
               </div>
               <section className="retreat-craft-stair-images" aria-label={language === "nb" ? "Håndlagde eiketrapper i bilder" : "Handmade oak staircase photographs"}>
-                <figure><Image src={craftOakStaircase} alt={language === "nb" ? "Håndlaget eiketrapp med glassrekkverk og lysekrone" : "Handmade oak staircase with glass balustrade and chandelier"} fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw" /></figure>
+                <figure><Image src={craftOakStaircase} alt={language === "nb" ? "Håndlaget eiketrapp med glassrekkverk og lysekrone" : "Handmade oak staircase with glass balustrade and chandelier"} fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 35vw, 18vw" /><Image className="retreat-craft-round-light" src={craftOakRoundLight} alt="" aria-hidden="true" fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 35vw, 18vw" /></figure>
                 <figure><Image src={craftOakStepDetail} alt={language === "nb" ? "Detalj av eiketrinnets årringer og integrerte belysning" : "Detail of the oak step grain and integrated lighting"} fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw" /></figure>
               </section>
             </article>
