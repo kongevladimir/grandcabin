@@ -1224,6 +1224,19 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-suite-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
 .retreat-suite-slide.is-active { opacity: 1; }
 .retreat-suite-slide img { object-fit: cover; object-position: center; }
+.retreat-suite-gallery-open { position: absolute; z-index: 1; inset: 0; width: 100%; border: 0; padding: 0; background: transparent; color: white; cursor: zoom-in; }
+.retreat-suite-gallery-open span { position: absolute; top: 1.4rem; right: clamp(1.4rem, 5vw, 5rem); padding: .8rem 1rem; background: rgba(16,23,30,.7); font-size: .75rem; }
+.retreat-suite-gallery-open:focus-visible { outline: 3px solid #d8b687; outline-offset: -5px; }
+.retreat-suite-viewer { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; border: 0; padding: 0; overflow: hidden; background: #10171e; color: #f5f1e9; }
+.retreat-suite-viewer[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.retreat-suite-viewer::backdrop { background: #10171e; }
+.retreat-suite-viewer header, .retreat-suite-viewer footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 3vw, 3rem); font-size: .75rem; letter-spacing: .1em; }
+.retreat-suite-viewer header > span { color: #d8b687; }
+.retreat-suite-viewer button { min-width: 48px; min-height: 48px; border: 1px solid rgba(255,255,255,.5); padding: .6rem 1rem; background: transparent; color: #f5f1e9; font-size: 1.1rem; cursor: pointer; }
+.retreat-suite-viewer button:hover, .retreat-suite-viewer button:focus-visible { background: #d8b687; color: #17202c; }
+.retreat-suite-viewer-image { position: relative; min-height: 0; }
+.retreat-suite-viewer-image img { object-fit: contain; }
+.retreat-suite-viewer footer { justify-content: center; gap: clamp(2rem, 8vw, 6rem); }
 .retreat-suite-gallery-controls { position: absolute; z-index: 2; right: clamp(1.4rem, 5vw, 5rem); bottom: 2rem; left: clamp(1.4rem, 5vw, 5rem); display: flex; align-items: center; justify-content: space-between; color: #fff; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-shadow: 0 1px 8px #000; }
 .retreat-suite-gallery-controls > div { display: flex; gap: .5rem; }
 .retreat-suite-gallery-controls button { width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; color: #fff; background: rgba(16,23,30,.55); font-size: 1.2rem; cursor: pointer; }
