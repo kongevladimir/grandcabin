@@ -907,6 +907,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 .retreat-detail-image { position: relative; min-height: 0; overflow: hidden; background: #17202c; }
 .retreat-detail-image img { object-fit: cover; }
+.retreat-detail-page[data-page="bedrooms"] .retreat-detail-image img { object-position: 30% center; }
 @keyframes retreat-cabin-zoom { from { transform: scale(1.025); } to { transform: scale(1.085); } }
 @keyframes retreat-aurora-drift { from { transform: translate3d(-5%, -1%, 0) skewX(-5deg) scaleX(.92); opacity: .22; } to { transform: translate3d(6%, 2%, 0) skewX(6deg) scaleX(1.08); opacity: .42; } }
 .retreat-detail-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: clamp(2rem, 4.8vw, 5.5rem); }
