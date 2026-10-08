@@ -1069,6 +1069,14 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-craft-round-light { mask-image: radial-gradient(ellipse 21.5% 13.5% at 44.8% 11%, #000 80%, transparent 100%); pointer-events: none; }
 .retreat-bespoke-detail-row .retreat-craft-fireplace-image { background: transparent; }
 .retreat-bespoke-detail-row .retreat-craft-fireplace-image img { object-fit: contain; }
+.retreat-craft-kitchen-photos { position: relative; min-width: 0; min-height: 440px; background: #17202c; }
+.retreat-bespoke-detail-row .retreat-craft-kitchen-photos figure { position: absolute; inset: 0; min-height: 0; }
+.retreat-bespoke-detail-row .retreat-craft-kitchen-photos img { object-fit: contain; }
+.retreat-craft-kitchen-photos button { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border: 1px solid #d8b687; border-radius: 50%; color: #fff; background: rgba(23,32,44,.8); font-size: 1.25rem; cursor: pointer; }
+.retreat-craft-kitchen-photos .is-previous { left: 1rem; }
+.retreat-craft-kitchen-photos .is-next { right: 1rem; }
+.retreat-craft-kitchen-photos button:hover, .retreat-craft-kitchen-photos button:focus-visible { color: #17202c; background: #d8b687; }
+.retreat-craft-kitchen-photos > span { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); padding: .4rem .7rem; color: #fff; background: rgba(23,32,44,.8); font-size: .75rem; }
 @media (max-width: 900px) {
   .retreat-craft-stairs-row > div { grid-template-columns: 1fr; }
 }
