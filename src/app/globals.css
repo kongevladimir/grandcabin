@@ -1059,7 +1059,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 /* Keep each handmade piece in focus, with the same crop on every screen size. */
 .retreat-craft-double-vanity img { object-fit: contain; object-position: center; }
 .retreat-bespoke-images .retreat-craft-bunks { aspect-ratio: 6 / 5; }
-.retreat-craft-bunks img { object-position: 100% 50%; }
+.retreat-craft-bunks img { object-fit: contain; object-position: center; }
 .retreat-bespoke-more .retreat-craft-single-vanity { aspect-ratio: 4 / 5; }
 .retreat-craft-single-vanity img { object-position: 100% 100%; transform: scale(1.25); transform-origin: 100% 100%; }
 .retreat-craft-bunks-detail img { object-position: 100% 50%; }
