@@ -525,10 +525,14 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
   return (
     <>
       <CabinFilm language={language} description={description} />
+      <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>
       <section className="retreat-cabin-video-intro" id="retreat-cabin-video-intro">
-        <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
-        <h2>{isNorwegian ? "700 moh. Over 340 m² ren fjellglede." : "700 metres above sea level. Over 340 m² of mountain living."}</h2>
-        <div>
+        <div className="retreat-cabin-intro-image"><Image src="/images/cabin-aurora-enhanced.webp" alt={isNorwegian ? "Grandcabin i snøen under nordlys og stjernehimmel" : "Grandcabin in the snow beneath northern lights and a starry sky"} fill unoptimized sizes="100vw" /></div>
+        <div className="retreat-cabin-intro-heading">
+          <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
+          <h2>{isNorwegian ? <>700 moh.<br />Over 340 m²<br />ren fjellglede.</> : <>700 metres above sea level.<br />Over 340 m² of mountain living.</>}</h2>
+        </div>
+        <div className="retreat-cabin-intro-copy">
           <p>{isNorwegian
             ? "Grandcabin er et eksklusivt, privat fjellhjem på Turufjell, skapt for minnerike opphold med familie og venner, og for inspirerende bedriftssamlinger. Her kan opptil 29 gjester nyte et opphold med ski inn og ut, generøse rom og komfort i hver detalj."
             : "Grandcabin is an exclusive private mountain home at Turufjell, created for memorable stays with family and friends, as well as inspiring company retreats. Up to 29 guests can enjoy ski-in, ski-out access, generous spaces and comfort in every detail."}</p>
@@ -644,6 +648,10 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page === "cabin" && (
         <figure className="retreat-cabin-landscape">
           <Image src={cabinMountainView} alt={language === "nb" ? "Snødekt fjellandskap med hytter og langrennsløype" : "Snow-covered mountain landscape with cabins and a cross-country ski trail"} unoptimized sizes="100vw" />
+          <figcaption>
+            <h2>{language === "nb" ? "Utsikt som setter rammen." : "A panorama to linger over."}</h2>
+            <p>{language === "nb" ? "Fra alle tre stuene, spisestuene, Master Suite og begge badstuene åpner den samme storslåtte fjellutsikten seg. Nyt landskapet ved langbordet, fra sofakroken eller i badstuens varme – en stille luksus som følger deg gjennom hytta." : "The same magnificent mountain views unfold from all three living rooms, the dining rooms, the Master Suite and both saunas. Take in the landscape over dinner, from a comfortable sofa or in the warmth of the sauna – a quiet luxury throughout your stay."}</p>
+          </figcaption>
         </figure>
       )}
       {page === "materials" && (
@@ -699,7 +707,6 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page !== "cabin" && page !== "meetings" && detailBanner}
       <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
-      {page === "cabin" && <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>}
       {cabinReviews}
       {cabinComfort}
       {page === "cabin" && <CabinFacilities language={language} />}
