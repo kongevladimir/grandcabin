@@ -1971,8 +1971,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-page[data-page="cabin"] .retreat-detail-footer { grid-template-columns: .55fr 1.45fr .8fr; }
 
 /* The cabin gallery retains the complete image, including portrait photographs. */
-.retreat-cabin-gallery .retreat-suite-gallery-stage { width: min(1100px, calc(100% - 2.8rem)); height: clamp(300px, 46vw, 560px); min-height: 0; margin-inline: auto; }
-.retreat-cabin-gallery-photo { position: absolute; inset: 0; animation: retreat-cabin-gallery-fade .9s ease; }
+.retreat-cabin-gallery .retreat-suite-gallery-stage { width: min(996px, calc(100% - 2.8rem)); aspect-ratio: 16 / 9; height: auto; min-height: 0; margin-inline: auto; border: 1px solid rgb(216 182 135 / 35%); background: #10171e; }
+.retreat-cabin-gallery-photo { position: absolute; inset: clamp(.5rem, 1.3vw, 1rem); animation: retreat-cabin-gallery-fade .9s ease; }
 .retreat-cabin-gallery-photo img { object-fit: contain; }
 .retreat-cabin-gallery .retreat-cabin-gallery-photo img { object-fit: contain; }
 .retreat-cabin-gallery-arrow { position: absolute; z-index: 3; top: 50%; width: 48px; height: 48px; transform: translateY(-50%); border: 1px solid #d8b687; border-radius: 50%; background: rgb(16 23 30 / 85%); color: #fff; font-size: 1.4rem; }
@@ -2052,4 +2052,25 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 @media (min-width: 601px) and (max-width: 900px) {
   .retreat-reviews-carousel .retreat-reviews-grid { grid-auto-columns: calc((100% - 16px) / 2); }
+}
+
+/* The film's down arrow reveals the complete introduction below the sticky menu. */
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro {
+    aspect-ratio: auto;
+    height: calc(100svh - 108px);
+    min-height: 0;
+    gap: 1.5rem;
+    scroll-margin-top: 8px;
+    padding-block: clamp(1.25rem, 4svh, 3rem);
+  }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-intro-image img { object-fit: contain; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro h2 { font-size: min(var(--cabin-title-size), 7.5svh); }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-intro-copy p { font-size: min(var(--cabin-body-size), 2.5svh); line-height: 1.6; }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  .retreat-cabin-video-intro { scroll-margin-top: 32px; }
+}
+@media (max-width: 760px) {
+  .retreat-cabin-video-intro { scroll-margin-top: 112px; }
 }
