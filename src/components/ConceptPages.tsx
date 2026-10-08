@@ -775,7 +775,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         </div>
       </section>
       <section className="retreat-master-suite">
-        <div className="retreat-master-image"><Image src="/images/finn-gallery/33.jpg" alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill sizes="(max-width: 900px) 100vw, 58vw" /></div>
+        <div className="retreat-master-image"><Image src={suitesIntroduction} alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill unoptimized sizes="(max-width: 900px) 100vw, 58vw" /></div>
         <div>
           <p>{language === "nb" ? "HOVEDSUITEN" : "MASTER SUITE"}</p>
           <h2>{language === "nb" ? "Master suite" : "Master Suite"}</h2>
