@@ -14,7 +14,7 @@ import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.jpg";
 import cabinLivingSpace from "../../public/images/cabin-living-space.webp";
 import cabinLivingSpaceLoftView from "../../public/images/cabin-living-space-loft-view.webp";
-import suitesIntroduction from "../../public/images/suites-updated/master-suite.webp";
+import suitesIntroduction from "../../public/images/suites-updated/cozy-layered-bedding.jpg";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
