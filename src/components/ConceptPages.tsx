@@ -9,7 +9,9 @@ import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
 import { CabinFacilities } from "@/components/CabinFacilities";
 import { RegionalMap } from "@/components/RegionalMap";
-import cabinMountainView from "../../public/images/cabin-mountain-view.jpg";
+import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.webp";
+import cabinLivingSpace from "../../public/images/cabin-living-space.webp";
+import cabinLivingSpaceLoftView from "../../public/images/cabin-living-space-loft-view.webp";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -635,7 +637,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const moreSections = (
     <>
       <section className={`retreat-detail-story${page === "cabin" ? " retreat-detail-story-cabin" : page === "materials" ? " retreat-detail-story-materials" : ""}`}>
-        <div className="retreat-detail-story-image"><Image src={image(more.leadPhoto)} alt="" fill sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
+        <div className="retreat-detail-story-image"><Image src={page === "cabin" ? cabinLivingSpaceLoftView : image(more.leadPhoto)} alt={page === "cabin" ? (language === "nb" ? "Stue og kjøkken sett fra loftet" : "Living room and kitchen viewed from the loft") : ""} fill sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
         <div className="retreat-detail-story-copy"><p>{t.number} · GRANDCABIN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
       </section>
       {page === "cabin" && (
@@ -937,7 +939,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page === "cabin" && <CabinVideoHero language={language} description={t.text} />}
       {gatheringTypes}
       {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : ""}`}>
-        <div className="retreat-detail-image"><Image src={image(t.photo)} alt={t.alt} fill priority={page !== "cabin"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
+        <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : image(t.photo)} alt={t.alt} fill priority={page !== "cabin"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
         <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · SUITES" : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>}
       {page === "meetings" && <section className="retreat-meetings-intro">
