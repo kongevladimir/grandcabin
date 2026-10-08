@@ -805,15 +805,15 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         </header>
         <div className="retreat-bedroom-wellness-grid">
           <figure>
-            <div><Image src="/images/finn-gallery/24.jpg" alt={language === "nb" ? "Privat bad med badekar og håndlagde baderomsmøbler" : "Private bathroom with bathtub and handcrafted vanity"} fill sizes="(max-width: 900px) 100vw, 34vw" /></div>
+            <div><Image src="/images/finn-gallery/24.jpg" alt={language === "nb" ? "Privat bad med badekar og håndlagde baderomsmøbler" : "Private bathroom with bathtub and handcrafted vanity"} fill unoptimized sizes="(max-width: 900px) 100vw, 34vw" /></div>
             <figcaption><span>01</span><strong>{language === "nb" ? "Bad i varme naturmaterialer" : "Bathroom in warm natural materials"}</strong></figcaption>
           </figure>
           <figure>
-            <div><Image src="/images/finn-gallery/25.jpg" alt={language === "nb" ? "Privat badstue ved hovedsoverommet" : "Private sauna beside the main bedroom"} fill sizes="(max-width: 900px) 100vw, 34vw" /></div>
+            <div><Image src="/images/finn-gallery/25.jpg" alt={language === "nb" ? "Privat badstue ved hovedsoverommet" : "Private sauna beside the main bedroom"} fill unoptimized sizes="(max-width: 900px) 100vw, 34vw" /></div>
             <figcaption><span>02</span><strong>{language === "nb" ? "Privat badstue med utsikt" : "Private sauna with a view"}</strong></figcaption>
           </figure>
           <figure>
-            <div><Image src="/images/finn-gallery/26.jpg" alt={language === "nb" ? "Frittstående badekar med utsikt og badstue" : "Freestanding bathtub with a view and sauna"} fill sizes="(max-width: 900px) 100vw, 34vw" /></div>
+            <div><Image src="/images/finn-gallery/26.jpg" alt={language === "nb" ? "Frittstående badekar med utsikt og badstue" : "Freestanding bathtub with a view and sauna"} fill unoptimized sizes="(max-width: 900px) 100vw, 34vw" /></div>
             <figcaption><span>03</span><strong>{language === "nb" ? "Badekar med utsikt" : "Bathtub with a view"}</strong></figcaption>
           </figure>
         </div>
