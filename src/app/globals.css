@@ -1279,8 +1279,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-gathering-heading h2 { margin-top: 0; max-width: 1000px; }
 .retreat-gathering-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .retreat-gathering-grid > article { background: #fff; }
-.retreat-gathering-image { position: relative; aspect-ratio: 4 / 3; }
-.retreat-gathering-image img { object-fit: contain; }
+.retreat-gathering-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
+.retreat-gathering-image img { object-fit: cover; object-position: center; }
 .retreat-gathering-grid > article > div:last-child { padding: 2.3rem; }
 .retreat-gathering-grid > article > div:last-child > span { color: #bd8e57; font-size: .68rem; font-weight: 800; }
 .retreat-gathering-grid h3 { margin: .8rem 0 1rem; font-size: 2.4rem; font-weight: 500; }
