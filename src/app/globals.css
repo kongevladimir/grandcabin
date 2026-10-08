@@ -907,7 +907,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 .retreat-detail-image { position: relative; min-height: 0; overflow: hidden; background: #17202c; }
 .retreat-detail-image img { object-fit: cover; }
-.retreat-detail-page[data-page="bedrooms"] .retreat-detail-image img { object-position: 30% center; }
+.retreat-detail-page[data-page="bedrooms"] .retreat-detail-image { background: #f2f0eb; }
+.retreat-detail-page[data-page="bedrooms"] .retreat-detail-image img { object-fit: contain; object-position: center; }
 @keyframes retreat-cabin-zoom { from { transform: scale(1.025); } to { transform: scale(1.085); } }
 @keyframes retreat-aurora-drift { from { transform: translate3d(-5%, -1%, 0) skewX(-5deg) scaleX(.92); opacity: .22; } to { transform: translate3d(6%, 2%, 0) skewX(6deg) scaleX(1.08); opacity: .42; } }
 .retreat-detail-copy { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: clamp(2rem, 4.8vw, 5.5rem); }
@@ -1255,9 +1256,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-suite-four { padding: clamp(6rem, 9vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #f2f0eb; color: #17202c; }
 .retreat-suite-four header { display: grid; grid-template-columns: .3fr 1.1fr .75fr; gap: clamp(1.5rem, 4vw, 5rem); align-items: end; margin-bottom: clamp(3rem, 5vw, 5rem); }
 .retreat-suite-four header > span { color: #545b5b; }
-.retreat-suite-four-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.retreat-suite-four-images { display: grid; grid-template-columns: minmax(0, 1.776833fr) minmax(0, 1.5fr); gap: 1rem; }
 .retreat-suite-four-images figure { margin: 0; overflow: hidden; }
 .retreat-suite-four-images figure > div { position: relative; aspect-ratio: 3 / 2; }
+.retreat-suite-four-images figure:first-child > div { aspect-ratio: 1672 / 941; }
 .retreat-suite-four-images figcaption { padding: .65rem 1rem; color: #17202c; background: #f5f1e9; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .retreat-suite-final-image { position: relative; height: 86svh; min-height: 600px; }
 .retreat-suite-closing-copy p + p { margin-top: 1.3rem; }
@@ -1277,7 +1279,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-gathering-heading h2 { margin-top: 0; max-width: 1000px; }
 .retreat-gathering-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .retreat-gathering-grid > article { background: #fff; }
-.retreat-gathering-image { position: relative; min-height: 520px; }
+.retreat-gathering-image { position: relative; aspect-ratio: 4 / 3; }
+.retreat-gathering-image img { object-fit: contain; }
 .retreat-gathering-grid > article > div:last-child { padding: 2.3rem; }
 .retreat-gathering-grid > article > div:last-child > span { color: #bd8e57; font-size: .68rem; font-weight: 800; }
 .retreat-gathering-grid h3 { margin: .8rem 0 1rem; font-size: 2.4rem; font-weight: 500; }
@@ -1457,7 +1460,6 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-floor-heading, .retreat-gathering-heading, .retreat-bedroom-wellness-head { grid-template-columns: 1fr; gap: 1rem; }
   .retreat-floor-grid, .retreat-gathering-grid, .retreat-bedroom-wellness-grid { grid-template-columns: 1fr; }
   .retreat-floor-grid article { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(23,32,44,.22); }
-  .retreat-gathering-image { min-height: 430px; }
   .retreat-company-wall { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .retreat-company-wall article { min-height: 180px; }
   .retreat-company-wall article:last-child { grid-column: 1 / -1; }
@@ -1586,6 +1588,25 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) .retreat-suite-bunks {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-detail {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    min-height: 660px;
+  }
+
+  .retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-detail-copy {
+    padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3.5vw, 4rem);
+  }
+
+  .retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-suite-alcove {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-suite-editorial.retreat-suite-alcove .retreat-suite-editorial-copy {
+    padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3.5vw, 4rem);
+  }
 }
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) :is(
