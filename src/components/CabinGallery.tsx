@@ -9,15 +9,15 @@ const photos = [
   { file: "02", nb: "Stuen med peis og utsikt", en: "Living room with a fireplace and scenic views" },
   { file: "04", nb: "Langbordet foran panoramavinduene", en: "Dining table beside the panoramic windows" },
   { file: "06", nb: "Kjøkken og sittegruppe i hovedetasjen", en: "Kitchen and seating area on the main floor" },
-  { file: "07", nb: "Detaljer fra kjøkkenøya", en: "Details of the kitchen island" },
+  { file: "01", nb: "Teleskop ved vinduet mot fjellene", en: "Telescope beside a window overlooking the mountains" },
   { file: "08", nb: "Stue og spiseområde sett fra loftet", en: "Living and dining spaces viewed from the loft" },
   { file: "09", nb: "Spiseområdet i underetasjen", en: "Lower-floor dining area" },
+  { file: "10", nb: "Badekar og badstue med utsikt", en: "Bathtub and sauna with a view" },
   { file: "11", nb: "Loftstuen med fjellutsikt", en: "Loft living room with mountain views" },
   { file: "12", nb: "Bordtennis og sittegruppe på loftet", en: "Table tennis and seating in the loft" },
   { file: "15", nb: "Biljard og sofagruppe på loftet", en: "Pool table and sofas in the loft" },
-  { file: "10", nb: "Badekar og badstue med utsikt", en: "Bathtub and sauna with a view" },
   { file: "14", nb: "Bad med håndlaget servant i tre", en: "Bathroom with a handcrafted timber basin" },
-  { file: "01", nb: "Teleskop ved vinduet mot fjellene", en: "Telescope beside a window overlooking the mountains" },
+  { file: "07", nb: "Detaljer fra kjøkkenøya", en: "Details of the kitchen island" },
   { file: "03", nb: "Garderobe med plass til skiutstyr", en: "Entrance storage for ski equipment" },
 ];
 

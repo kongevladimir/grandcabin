@@ -15,6 +15,8 @@ import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.
 import cabinLivingSpace from "../../public/images/cabin-living-space.webp";
 import cabinLivingSpaceLoftView from "../../public/images/cabin-living-space-loft-view.webp";
 import suitesIntroduction from "../../public/images/suites-updated/cozy-layered-bedding.jpg";
+import craftSpruceStaircase from "../../public/images/craft-spruce-staircase.webp";
+import craftOakBathroom from "../../public/images/craft-oak-bathroom.webp";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -638,7 +640,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const moreSections = (
     <>
       <section className={`retreat-detail-story${page === "cabin" ? " retreat-detail-story-cabin" : page === "materials" ? " retreat-detail-story-materials" : ""}`}>
-        <div className="retreat-detail-story-image"><Image src={page === "cabin" ? cabinLivingSpaceLoftView : image(more.leadPhoto)} alt={page === "cabin" ? (language === "nb" ? "Stue og kjøkken sett fra loftet" : "Living room and kitchen viewed from the loft") : ""} fill unoptimized={page === "cabin"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
+        <div className="retreat-detail-story-image"><Image src={page === "cabin" ? cabinLivingSpaceLoftView : page === "materials" ? craftSpruceStaircase : image(more.leadPhoto)} alt={page === "cabin" ? (language === "nb" ? "Stue og kjøkken sett fra loftet" : "Living room and kitchen viewed from the loft") : page === "materials" ? (language === "nb" ? "Trapp med heltre gran og glassrekkverk" : "Staircase with solid spruce walls and glass balustrade") : ""} fill unoptimized={page === "cabin" || page === "materials"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
         <div className="retreat-detail-story-copy"><p>{t.number} · GRANDCABIN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
       </section>
       {page === "cabin" && (
@@ -659,7 +661,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </header>
           <article className="retreat-bespoke-feature retreat-bespoke-feature-dark">
             <div className="retreat-bespoke-images">
-              <figure className="retreat-craft-double-vanity"><Image src="/images/finn-gallery/46.jpg" alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
+              <figure className="retreat-craft-double-vanity"><Image src={craftOakBathroom} alt={language === "nb" ? "Håndlaget baderomsmøbel i eik med doble servanter" : "Handmade oak bathroom vanity with twin basins"} fill unoptimized sizes="(max-width: 900px) 100vw, 48vw" /></figure>
             </div>
             <div className="retreat-bespoke-copy"><span>01</span><h3>{language === "nb" ? "Unike baderomsmøbler i eik" : "Unique oak bathroom furniture"}</h3><p>{language === "nb" ? "Baderomsmøblene er utført i eik og bygget enkeltvis for det rommet de står i. De er ikke hentet fra en fabrikkserie. Hver benk, skuff og detalj er tilpasset materialene, målene og uttrykket i hytta." : "The bathroom furniture is crafted in oak and built individually for each room. Nothing comes from a standard factory range. Every counter, drawer and detail is tailored to the cabin’s dimensions, materials and architectural character."}</p><p>{language === "nb" ? "Treets naturlige spill står i kontrast til mørk stein, sorte armaturer og rene flater. Det gir badene et moderne, eksklusivt uttrykk uten å miste varmen og nærheten til naturen." : "The natural grain contrasts with dark stone, black fittings and clean surfaces, giving the bathrooms a modern, exclusive character while retaining warmth and a close connection to nature."}</p></div>
           </article>
