@@ -23,6 +23,7 @@ import craftOakStaircase from "../../public/images/craft-oak-staircase.webp";
 import craftOakStepDetail from "../../public/images/craft-oak-step-detail.webp";
 import craftOakRoundLight from "../../public/images/craft-oak-staircase-round-light.png";
 import craftFireplaceGlass from "../../public/images/craft-fireplace-glass.webp";
+import turufjellWinterAerial from "../../public/images/turufjell-winter-aerial.webp";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -953,8 +954,8 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <RetreatNav language={language} setLanguage={setLanguage} page={page} />
       {page === "cabin" && <CabinVideoHero language={language} description={t.text} />}
       {gatheringTypes}
-      {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : ""}`}>
-        <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : page === "bedrooms" ? suitesIntroduction : page === "materials" ? craftTimberHallway : image(t.photo)} alt={page === "materials" ? (language === "nb" ? "Gang med naturlig treverk og håndlagde detaljer" : "Hallway with natural timber and handcrafted details") : t.alt} fill unoptimized={page === "cabin" || page === "bedrooms" || page === "materials"} priority={page !== "cabin"} sizes={page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
+      {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : page === "turufjell" ? " retreat-detail-turufjell" : ""}`}>
+        <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : page === "bedrooms" ? suitesIntroduction : page === "materials" ? craftTimberHallway : page === "turufjell" ? turufjellWinterAerial : image(t.photo)} alt={page === "materials" ? (language === "nb" ? "Gang med naturlig treverk og håndlagde detaljer" : "Hallway with natural timber and handcrafted details") : page === "turufjell" ? (language === "nb" ? "Flyfoto av snødekte Turufjell med hytter, skiløyper og fjellandskapet rundt" : "Aerial photograph of snowy Turufjell, cabins, ski trails and surrounding mountains") : t.alt} fill unoptimized={page === "cabin" || page === "bedrooms" || page === "materials" || page === "turufjell"} priority={page !== "cabin"} sizes={page === "turufjell" ? "100vw" : page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
         <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · SUITES" : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>}
       {page === "meetings" && <section className="retreat-meetings-intro">
