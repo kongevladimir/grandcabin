@@ -1067,11 +1067,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-craft-stair-images figure:last-child { aspect-ratio: 3 / 2; }
 .retreat-craft-stair-images figure img { object-fit: contain; }
 .retreat-craft-round-light { mask-image: radial-gradient(ellipse 21.5% 13.5% at 44.8% 11%, #000 80%, transparent 100%); pointer-events: none; }
-.retreat-craft-fireplace-images { display: grid; gap: 1rem; align-content: center; background: #17202c; }
-.retreat-bespoke-detail-row .retreat-craft-fireplace-images figure { min-height: 0; }
-.retreat-craft-fireplace-images figure:first-child { aspect-ratio: 1695 / 928; }
-.retreat-craft-fireplace-images figure:last-child { aspect-ratio: 1525 / 1031; }
-.retreat-craft-fireplace-images figure img { object-fit: contain; }
+.retreat-bespoke-detail-row .retreat-craft-fireplace-image { background: transparent; }
+.retreat-bespoke-detail-row .retreat-craft-fireplace-image img { object-fit: contain; }
 @media (max-width: 900px) {
   .retreat-craft-stairs-row > div { grid-template-columns: 1fr; }
 }
