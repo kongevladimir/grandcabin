@@ -1056,14 +1056,24 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-bespoke-detail-row > div > span { color: #8a6036; font-size: .68rem; font-weight: 800; letter-spacing: .13em; }
 .retreat-bespoke-detail-row h3 { margin: 1.2rem 0 1.4rem; font-size: clamp(2.4rem, 3.5vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.045em; }
 .retreat-bespoke-detail-row p { max-width: 580px; margin: 0; color: #565651; line-height: 1.85; }
-.retreat-craft-stair-images { display: grid; grid-template-columns: minmax(0, .795fr) minmax(0, 1.5fr); align-content: center; gap: 1rem; order: -1; padding: 1.4rem; background: #17202c; }
+.retreat-craft-stairs-row { grid-template-columns: 1fr; }
+.retreat-craft-stairs-row > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 6rem); padding-block: 2.5rem; }
+.retreat-craft-stairs-row > div > span { grid-column: 1 / -1; }
+.retreat-craft-stairs-row h3 { margin-bottom: 0; }
+.retreat-craft-stairs-row p { align-self: center; margin-top: 1.2rem; }
+.retreat-craft-stair-images { display: grid; grid-template-columns: minmax(0, .795fr) minmax(0, 1.5fr); align-content: center; gap: 1rem; padding: 1.4rem; background: #17202c; }
 .retreat-bespoke-detail-row .retreat-craft-stair-images figure { min-height: 0; }
 .retreat-craft-stair-images figure:first-child { aspect-ratio: 10093 / 12699; }
 .retreat-craft-stair-images figure:last-child { aspect-ratio: 3 / 2; }
 .retreat-craft-stair-images figure img { object-fit: contain; }
 .retreat-craft-round-light { mask-image: radial-gradient(ellipse 21.5% 13.5% at 44.8% 11%, #000 80%, transparent 100%); pointer-events: none; }
+.retreat-craft-fireplace-images { display: grid; gap: 1rem; align-content: center; background: #17202c; }
+.retreat-bespoke-detail-row .retreat-craft-fireplace-images figure { min-height: 0; }
+.retreat-craft-fireplace-images figure:first-child { aspect-ratio: 1695 / 928; }
+.retreat-craft-fireplace-images figure:last-child { aspect-ratio: 1525 / 1031; }
+.retreat-craft-fireplace-images figure img { object-fit: contain; }
 @media (max-width: 900px) {
-  .retreat-craft-stair-images { order: 0; }
+  .retreat-craft-stairs-row > div { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .retreat-craft-stair-images { grid-template-columns: 1fr; }

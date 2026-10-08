@@ -21,6 +21,8 @@ import craftTimberHallway from "../../public/images/craft-timber-hallway.webp";
 import craftOakStaircase from "../../public/images/craft-oak-staircase.webp";
 import craftOakStepDetail from "../../public/images/craft-oak-step-detail.webp";
 import craftOakRoundLight from "../../public/images/craft-oak-staircase-round-light.png";
+import craftFireplaceScenic from "../../public/images/craft-fireplace-scenic.webp";
+import craftFireplaceGlass from "../../public/images/craft-fireplace-glass.webp";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -685,15 +687,15 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
               </div>
               <figure><Image src="/images/finn-gallery/12.jpg" alt={language === "nb" ? "Hovedkjøkken med kjøkkenøy i treverk" : "Main timber kitchen with island"} fill unoptimized sizes="(max-width: 900px) 100vw, 42vw" /></figure>
             </article>
-            <article className="retreat-bespoke-detail-row retreat-bespoke-detail-row-reverse">
+            <article className="retreat-bespoke-detail-row retreat-bespoke-detail-row-reverse retreat-craft-stairs-row">
               <div>
                 <span>04 · {language === "nb" ? "TRAPPENE" : "THE STAIRCASES"}</span>
                 <h3>{language === "nb" ? "Håndlagde trapper i eik" : "Handmade oak staircases"}</h3>
                 <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
               </div>
               <section className="retreat-craft-stair-images" aria-label={language === "nb" ? "Håndlagde eiketrapper i bilder" : "Handmade oak staircase photographs"}>
-                <figure><Image src={craftOakStaircase} alt={language === "nb" ? "Håndlaget eiketrapp med glassrekkverk og lysekrone" : "Handmade oak staircase with glass balustrade and chandelier"} fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 35vw, 18vw" /><Image className="retreat-craft-round-light" src={craftOakRoundLight} alt="" aria-hidden="true" fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 35vw, 18vw" /></figure>
-                <figure><Image src={craftOakStepDetail} alt={language === "nb" ? "Detalj av eiketrinnets årringer og integrerte belysning" : "Detail of the oak step grain and integrated lighting"} fill unoptimized sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw" /></figure>
+                <figure><Image src={craftOakStaircase} alt={language === "nb" ? "Håndlaget eiketrapp med glassrekkverk og lysekrone" : "Handmade oak staircase with glass balustrade and chandelier"} fill unoptimized sizes="(max-width: 560px) 100vw, 35vw" /><Image className="retreat-craft-round-light" src={craftOakRoundLight} alt="" aria-hidden="true" fill unoptimized sizes="(max-width: 560px) 100vw, 35vw" /></figure>
+                <figure><Image src={craftOakStepDetail} alt={language === "nb" ? "Detalj av eiketrinnets årringer og integrerte belysning" : "Detail of the oak step grain and integrated lighting"} fill unoptimized sizes="(max-width: 560px) 100vw, 65vw" /></figure>
               </section>
             </article>
             <article className="retreat-bespoke-detail-row">
@@ -703,7 +705,10 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
                 <p>{language === "nb" ? "Grandcabin har to glasspeiser – én ved langbordet i underetasjen og én i stuen på hovedetasjen. Begge kan nytes samtidig, slik at varmen og gløden følger huset gjennom hele oppholdet, enten dagen samles rundt et måltid eller fortsetter i sofakroken med utsikt mot fjellet." : "Grandcabin has two glass-fronted fireplaces – one beside the long table downstairs and one in the main-floor living room. Both can be enjoyed at the same time, allowing warmth and firelight to accompany the house throughout the stay, whether the group is gathered around a meal or relaxing in the sitting room with views of the mountains."}</p>
                 <p>{language === "nb" ? "Peisene er utformet med store glassflater som gir flammene et rent og moderne uttrykk. Begge er bygget av lokal stein, som gir rommene en varm og innbydende atmosfære og en naturlig tilknytning til fjellandskapet. Resultatet er en gjennomført balanse mellom moderne luksus og en ekte, tradisjonell hyttefølelse." : "Designed with generous glass panels, the fireplaces give the flames a clean, contemporary presence. Both are built from local stone, creating a warm, inviting atmosphere and a natural connection to the mountain landscape. The result is a considered balance of modern luxury and an authentic, traditional cabin feeling."}</p>
               </div>
-              <figure><Image src="/images/finn-gallery/06.jpg" alt={language === "nb" ? "Peis i naturstein med synlige flammer" : "Natural stone fireplace with visible flames"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
+              <section className="retreat-craft-fireplace-images" aria-label={language === "nb" ? "Glasspeis og lokal naturstein i stuen" : "Glass fireplace and local natural stone in the living room"}>
+                <figure><Image src={craftFireplaceScenic} alt={language === "nb" ? "Stue med peis i lokal naturstein, store vinduer og fjellutsikt" : "Living room with a local stone fireplace, large windows and mountain views"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
+                <figure><Image src={craftFireplaceGlass} alt={language === "nb" ? "Glasspeis med synlige flammer og naturstein, sett fra sofagruppen" : "Glass fireplace with visible flames and natural stone, viewed from the seating area"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
+              </section>
             </article>
           </div>
         </section>
