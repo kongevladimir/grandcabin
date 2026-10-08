@@ -31,7 +31,7 @@ export function CabinFacilities({ language }: { language: Language }) {
         {facilities[language].map((group) => (
           <div key={group.title}>
             <h3>{group.title}</h3>
-            <ul>{group.items.map((item) => <li key={item}>{item.includes("Wi-Fi") ? <>{item.split("Wi-Fi")[0]}<span className="retreat-facility-nowrap">Wi-Fi</span></> : item}</li>)}</ul>
+            <ul>{group.items.map((item) => <li key={item} className={item.includes("Wi-Fi") ? "retreat-facility-internet" : undefined}>{item}</li>)}</ul>
           </div>
         ))}
       </div>
