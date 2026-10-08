@@ -1246,7 +1246,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-suite-editorial h2 { margin: 1.4rem 0 2rem; }
 .retreat-suite-editorial-copy > span, .retreat-suite-four header > span { max-width: 610px; color: #545b5b; font-size: clamp(.98rem, 1.2vw, 1.15rem); line-height: 1.85; }
 .retreat-suite-editorial-image { position: relative; min-height: 620px; overflow: hidden; }
-.retreat-suite-editorial-image img, .retreat-suite-four-images img, .retreat-suite-final-image img { object-fit: cover; }
+.retreat-suite-editorial-image img, .retreat-suite-four-images img { object-fit: contain; }
+.retreat-suite-final-image img { object-fit: cover; }
 .retreat-suite-detail-line { display: flex; align-items: center; gap: 1rem; width: 100%; margin-top: 3rem; border-top: 1px solid rgba(23,32,44,.25); padding-top: 1.2rem; }
 .retreat-suite-detail-line b { color: #8a6036; font-family: var(--font-serif); font-size: 2rem; font-weight: 500; }
 .retreat-suite-detail-line small { color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .12em; }
@@ -1255,8 +1256,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-suite-four header { display: grid; grid-template-columns: .3fr 1.1fr .75fr; gap: clamp(1.5rem, 4vw, 5rem); align-items: end; margin-bottom: clamp(3rem, 5vw, 5rem); }
 .retreat-suite-four header > span { color: #545b5b; }
 .retreat-suite-four-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.retreat-suite-four-images figure { position: relative; height: clamp(420px, 43vw, 650px); margin: 0; overflow: hidden; }
-.retreat-suite-four-images figcaption { position: absolute; bottom: 1.5rem; left: 1.5rem; padding: .65rem 1rem; color: #17202c; background: #f5f1e9; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.retreat-suite-four-images figure { margin: 0; overflow: hidden; }
+.retreat-suite-four-images figure > div { position: relative; aspect-ratio: 3 / 2; }
+.retreat-suite-four-images figcaption { padding: .65rem 1rem; color: #17202c; background: #f5f1e9; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .retreat-suite-final-image { position: relative; height: 86svh; min-height: 600px; }
 .retreat-suite-closing-copy p + p { margin-top: 1.3rem; }
 @media (max-width: 900px) {
@@ -1268,7 +1270,6 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-suite-bunks .retreat-suite-editorial-image { order: 2; }
   .retreat-suite-editorial-copy { padding: 5rem 1.4rem; }
   .retreat-suite-four-images { grid-template-columns: 1fr; }
-  .retreat-suite-four-images figure { height: 65svh; min-height: 420px; }
 }
 @media (prefers-reduced-motion: reduce) { .retreat-suite-slide { transition: none; } }
 .retreat-gathering-types { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #f2f0eb; }
@@ -1868,8 +1869,4 @@ footer p { margin: 15px 0 0; font-size: 12px; }
     height: 58svh;
   }
 
-  .retreat-detail-page[data-page="bedrooms"] .retreat-suite-four-images figure {
-    min-height: 340px;
-    height: 50svh;
-  }
 }
