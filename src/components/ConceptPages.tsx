@@ -5,6 +5,8 @@ import Link from "next/link";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
+import { CabinGallery } from "@/components/CabinGallery";
+import { CabinReviews } from "@/components/CabinReviews";
 import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
 import { CabinFacilities } from "@/components/CabinFacilities";
@@ -613,14 +615,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     { name: "Alex Iqbal", date: "DECEMBER 2025", score: "10", text: "Absolutely incredible! Recommended to everyone, 10/10!" },
   ];
   const cabinReviews = page === "cabin" && (
-    <section className="retreat-reviews">
-      <header className="retreat-reviews-head">
-        <div><p>{language === "nb" ? "VURDERINGER PÅ FINN" : "REVIEWS ON FINN"}</p><h2>{language === "nb" ? "Dette trekker gjestene frem." : "What guests highlight."}</h2></div>
-        <div className="retreat-reviews-summary"><strong>10</strong><span>{language === "nb" ? "UTMERKET" : "EXCELLENT"}</span><small>{language === "nb" ? "Vurderinger på FINN" : "Reviews on FINN"}</small></div>
-      </header>
-      <div className="retreat-reviews-grid">{guestReviews.map((review) => <article key={`${review.name}-${review.date}`}><div><span>{review.score}/10</span><small>{review.date}</small></div><p>{review.text}</p><strong>{review.name}</strong></article>)}</div>
-      <div className="retreat-reviews-source"><span>{language === "nb" ? "Utvalgte gjestevurderinger fra FINN, gjengitt i fulltekst eller som sammendrag." : "Selected guest reviews from FINN, translated into English in full or as summaries."}</span></div>
-    </section>
+    <CabinReviews language={language} reviews={guestReviews} finnUrl={finnUrl} />
   );
   const cabinComfort = page === "cabin" && (
         <section className="retreat-technical-comfort">
@@ -631,10 +626,11 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           </header>
           <div className="retreat-technical-comfort-grid">
             <article><strong>4</strong><h3>{language === "nb" ? "Bad" : "Bathrooms"}</h3><p>{language === "nb" ? "God kapasitet gjennom travle morgener og rolige kvelder." : "Generous capacity through busy mornings and relaxed evenings."}</p></article>
-            <article><strong>2</strong><h3>{language === "nb" ? "Badstuer" : "Saunas"}</h3><p>{language === "nb" ? "To separate badstuer gir flere gjester plass til å lande samtidig." : "Two separate saunas give more guests room to unwind at the same time."}</p></article>
-            <article><strong>{language === "nb" ? "HELE" : "ALL"}</strong><h3>{language === "nb" ? "Vannbåren varme" : "Underfloor heating"}</h3><p>{language === "nb" ? "Jevn og behagelig varme i hele hytta." : "Even, comfortable warmth throughout the cabin."}</p></article>
-            <article><strong>{language === "nb" ? "FRISK" : "FRESH"}</strong><h3>{language === "nb" ? "Balansert ventilasjon" : "Balanced ventilation"}</h3><p>{language === "nb" ? "Kontinuerlig tilførsel av frisk luft fra fjellet gir et behagelig inneklima gjennom hele oppholdet." : "A continuous supply of fresh mountain air creates a comfortable indoor climate throughout your stay."}</p></article>
             <article><strong>2</strong><h3>{language === "nb" ? "Kjøkken" : "Kitchens"}</h3><p>{language === "nb" ? "Ett i underetasjen og ett i hovedetasjen, begge med kjøkkenøy og plass til å samles." : "One downstairs and one on the main floor, both with islands and space to gather."}</p></article>
+            <article><strong>2</strong><h3>{language === "nb" ? "Badstuer" : "Saunas"}</h3><p>{language === "nb" ? "To separate badstuer gir flere gjester plass til å lande samtidig." : "Two separate saunas give more guests room to unwind at the same time."}</p></article>
+            <article><strong>3</strong><h3>{language === "nb" ? "Toaletter" : "Toilets"}</h3><p>{language === "nb" ? "Tre toaletter gir ekstra fleksibilitet når mange bor sammen." : "Three toilets add convenience when a large group stays together."}</p></article>
+            <article><strong className="retreat-comfort-word">{language === "nb" ? "HELE HYTTA" : "THROUGHOUT"}</strong><h3>{language === "nb" ? "Vannbåren varme" : "Underfloor heating"}</h3><p>{language === "nb" ? "Jevn og behagelig varme i hele hytta." : "Even, comfortable warmth throughout the cabin."}</p></article>
+            <article><strong className="retreat-comfort-word">{language === "nb" ? "FRISK LUFT" : "FRESH AIR"}</strong><h3>{language === "nb" ? "Balansert ventilasjon" : "Balanced ventilation"}</h3><p>{language === "nb" ? "Kontinuerlig tilførsel av frisk luft fra fjellet gir et behagelig inneklima gjennom hele oppholdet." : "A continuous supply of fresh mountain air creates a comfortable indoor climate throughout your stay."}</p></article>
           </div>
         </section>
   );
@@ -650,7 +646,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <Image src={cabinMountainView} alt={language === "nb" ? "Snødekt fjellandskap med hytter og langrennsløype" : "Snow-covered mountain landscape with cabins and a cross-country ski trail"} unoptimized sizes="100vw" />
           <figcaption>
             <h2>{language === "nb" ? "Utsikt som setter rammen." : "A panorama to linger over."}</h2>
-            <p>{language === "nb" ? "Fra alle tre stuene, spisestuene, Master Suite og begge badstuene åpner den samme storslåtte fjellutsikten seg. Nyt landskapet ved langbordet, fra sofakroken eller i badstuens varme – en stille luksus som følger deg gjennom hytta." : "The same magnificent mountain views unfold from all three living rooms, the dining rooms, the Master Suite and both saunas. Take in the landscape over dinner, from a comfortable sofa or in the warmth of the sauna – a quiet luxury throughout your stay."}</p>
+            <p>{language === "nb" ? "Fra alle tre stuene, spisestuene, Master Suite, flere andre soverom og begge badstuene åpner den samme storslåtte fjellutsikten seg. Nyt landskapet ved langbordet, fra sofakroken eller i badstuens varme – en stille luksus som følger deg gjennom hytta." : "The same magnificent mountain views unfold from all three living rooms, the dining rooms, the Master Suite, several other bedrooms and both saunas. Take in the landscape over dinner, from a comfortable sofa or in the warmth of the sauna – a quiet luxury throughout your stay."}</p>
           </figcaption>
         </figure>
       )}
@@ -799,7 +795,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <li>{language === "nb" ? "Direkte tilgang til spaavdelingen" : "Direct Access to SPA Area"}</li>
           <li>{language === "nb" ? "Badstue til privat eller felles bruk" : "Sauna with Private or Shared Use"}</li>
           <li>{language === "nb" ? "Privat bad i suiten" : "Private En-Suite Bathroom"}</li>
-          <li>{language === "nb" ? "Privat terrasse med fjellutsikt" : "Private Terrace with Breathtaking Mountain Views"}</li>
+          <li>{language === "nb" ? "Direkte tilgang til terrasse med fjellutsikt" : "Direct access to terrace with mountain views"}</li>
         </ul>
       </section>
       <section className="retreat-bedroom-wellness">
@@ -963,6 +959,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         </div>
       </section>}
       {page === "bedrooms" && <BedroomGallery language={language} />}
+      {page === "cabin" && <CabinGallery language={language} />}
       {locationDirections}
       {locationDistances}
       {locationArrival}
