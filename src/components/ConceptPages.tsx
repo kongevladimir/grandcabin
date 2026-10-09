@@ -25,8 +25,9 @@ import craftOakRoundLight from "../../public/images/craft-oak-staircase-round-li
 import craftFireplaceGlass from "../../public/images/craft-fireplace-glass.webp";
 import turufjellWinterAerial from "../../public/images/turufjell-winter-aerial.webp";
 import turufjellSunnyCabin from "../../public/images/turufjell-sunny-cabin-original.jpg";
-import turufjellSkiRacks from "../../public/images/turufjell-ski-racks.jpg";
+import turufjellSkiRacks from "../../public/images/turufjell-ski-racks-hq.png";
 import locationNorthernLights from "../../public/images/location-northern-lights.jpg";
+import turufjellCyclingHq from "../../public/images/turufjell-cycling-hq.png";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -609,7 +610,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <>
           <section className="retreat-banner-caption retreat-banner-caption-above"><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></section>
           <section className="retreat-detail-banner retreat-detail-banner-seasonal">
-            <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />
+            <Image src={page === "turufjell" ? turufjellCyclingHq : image(more.bannerPhoto)} alt="" fill unoptimized={page === "turufjell"} sizes="100vw" />
           </section>
         </>
       ) : (

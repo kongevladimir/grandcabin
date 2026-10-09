@@ -2115,15 +2115,35 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-cabin-video-intro { scroll-margin-top: 112px; }
 }
 
+/* The cabin opening should read as one full-bleed photograph with its copy set over the scene. */
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-intro-image img {
+  object-fit: cover;
+  object-position: center;
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-intro-heading,
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-intro-copy {
+  text-shadow: 0 2px 16px rgb(0 0 0 / 45%);
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro .retreat-cabin-intro-copy p {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  line-height: 1.5;
+  letter-spacing: .005em;
+}
+
 .retreat-detail-page[data-page="turufjell"] .retreat-detail.retreat-detail-turufjell { min-height: 0; grid-template-columns: 1fr; grid-template-rows: auto auto; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-image { aspect-ratio: 16 / 9; height: auto; min-height: 0; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-image img { object-fit: contain; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-copy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: .75rem clamp(2rem, 5vw, 6rem); padding-block: clamp(3.5rem, 6vw, 6rem); overflow: visible; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-copy > p { grid-column: 1 / -1; margin: 0; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-copy h1 { margin: 0; }
-.retreat-detail-page[data-page="turufjell"] .retreat-detail-story { display: grid; min-height: 820px; grid-template-columns: 52% 48%; }
+.retreat-detail-page[data-page="turufjell"]:not([data-page="cabin"]) .retreat-detail-story { display: grid; min-height: 820px; grid-template-columns: 60% 40%; }
 .retreat-detail-page[data-page="turufjell"] .retreat-detail-story-image { min-height: 680px; background: #17202c; }
-.retreat-detail-page[data-page="turufjell"] .retreat-detail-story-image img { object-fit: cover; object-position: 50% center; }
+.retreat-detail-page[data-page="turufjell"] .retreat-detail-story-image img { object-fit: cover; object-position: right center; }
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay { display: block; min-height: 0; }
 .retreat-turufjell-about-scene { position: relative; display: grid; isolation: isolate; }
 .retreat-turufjell-about-scene::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(12,21,30,.88), rgba(12,21,30,.64) 38%, rgba(12,21,30,.1) 66%, transparent 82%); pointer-events: none; }
@@ -2145,7 +2165,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 @media (max-width: 900px) {
   .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-image { aspect-ratio: 4 / 3; }
   .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy { padding-block: 3.5rem 2rem; }
-  .retreat-detail-page[data-page="turufjell"] .retreat-detail-story { min-height: 0; grid-template-columns: 1fr; }
+  .retreat-detail-page[data-page="turufjell"]:not([data-page="cabin"]) .retreat-detail-story { min-height: 0; grid-template-columns: 1fr; }
   .retreat-detail-page[data-page="turufjell"] .retreat-detail-story-image { min-height: clamp(340px, 62svh, 560px); }
   .retreat-detail-page[data-page="turufjell"] .retreat-detail-turufjell .retreat-detail-copy { grid-template-columns: 1fr; gap: 1.5rem; }
 }
