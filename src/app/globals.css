@@ -1441,6 +1441,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-organized-gallery-viewer footer { justify-content: center; }
 .retreat-organized-gallery-full-photo { position: relative; min-height: 0; }
 .retreat-organized-gallery-full-photo img { object-fit: contain; }
+.retreat-gallery-loading { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); margin: 0; padding: .65rem 1rem; border-radius: 4px; background: #10171ee6; color: #fff; text-align: center; font-size: .85rem; }
 @media (max-width: 900px) { .retreat-organized-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .retreat-organized-gallery-grid { grid-template-columns: 1fr; } .retreat-organized-gallery-hero { min-height: 360px; height: 65svh; } .retreat-organized-gallery-filters { gap: 1.3rem; padding-top: 2rem; } }
 @media (prefers-reduced-motion: reduce) { .retreat-organized-gallery-grid img { transition: none; } }

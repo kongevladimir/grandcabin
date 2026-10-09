@@ -3,726 +3,1099 @@
     "id": "cabin-01",
     "category": "cabin",
     "file": "01.jpg",
-    "original": "/images/organized-gallery/cabin-01.jpg",
+    "original": "/images/gallery-originals/cabin-01.jpg",
     "preview": "/images/organized-gallery/cabin-01-preview.webp",
     "width": 1448,
     "height": 1086,
     "originalWidth": 1448,
-    "originalHeight": 1086
+    "originalHeight": 1086,
+    "originalMime": "image/jpeg",
+    "originalSha256": "d8d29dd3bbf7de1238a6871688660529dd096b81b7f48375026efb0d48d88b47",
+    "originalParts": []
   },
   {
     "id": "cabin-02",
     "category": "cabin",
     "file": "02.jpg",
-    "original": "/images/organized-gallery/cabin-02.jpg",
+    "original": "/images/gallery-originals/cabin-02.jpg",
     "preview": "/images/organized-gallery/cabin-02-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 1672,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/jpeg",
+    "originalSha256": "289b86af968e3dd05c5887b59c86d83e048faeb050e2a29ef574acf333532317",
+    "originalParts": []
   },
   {
     "id": "cabin-03",
     "category": "cabin",
     "file": "03.jpg",
-    "original": "/images/organized-gallery/cabin-03.jpg",
+    "original": "/images/organized-gallery/cabin-03-preview.webp",
     "preview": "/images/organized-gallery/cabin-03-preview.webp",
     "width": 1600,
     "height": 755,
     "originalWidth": 17921,
-    "originalHeight": 8460
+    "originalHeight": 8460,
+    "originalMime": "image/jpeg",
+    "originalSha256": "b4e75d39fbc1ae72e3d6c9a85c8cfd0aba3e0f725c58ebd5d5053f0d31b81286",
+    "originalParts": [
+      "/images/gallery-originals/cabin-03-00.bin",
+      "/images/gallery-originals/cabin-03-01.bin"
+    ]
   },
   {
     "id": "cabin-04",
     "category": "cabin",
     "file": "04.jpg",
-    "original": "/images/organized-gallery/cabin-04.jpg",
+    "original": "/images/organized-gallery/cabin-04-preview.webp",
     "preview": "/images/organized-gallery/cabin-04-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 19008,
-    "originalHeight": 10688
+    "originalHeight": 10688,
+    "originalMime": "image/jpeg",
+    "originalSha256": "dacaf25786e6c98ef2915a969de5d4ed89cdb9f219021bfa90c602ab552eb966",
+    "originalParts": [
+      "/images/gallery-originals/cabin-04-00.bin",
+      "/images/gallery-originals/cabin-04-01.bin",
+      "/images/gallery-originals/cabin-04-02.bin"
+    ]
   },
   {
     "id": "cabin-05",
     "category": "cabin",
     "file": "4,1.jpg",
-    "original": "/images/organized-gallery/cabin-05.jpg",
+    "original": "/images/gallery-originals/cabin-05.jpg",
     "preview": "/images/organized-gallery/cabin-05-preview.webp",
     "width": 1600,
     "height": 1200,
     "originalWidth": 4032,
-    "originalHeight": 3024
+    "originalHeight": 3024,
+    "originalMime": "image/jpeg",
+    "originalSha256": "b9d2f08992f4b20066c9e8352f1f6124abe5e36d9bd41722d143c949f25ac877",
+    "originalParts": []
   },
   {
     "id": "cabin-06",
     "category": "cabin",
     "file": "05.jpg",
-    "original": "/images/organized-gallery/cabin-06.jpg",
+    "original": "/images/organized-gallery/cabin-06-preview.webp",
     "preview": "/images/organized-gallery/cabin-06-preview.webp",
     "width": 1600,
     "height": 975,
     "originalWidth": 12700,
-    "originalHeight": 7738
+    "originalHeight": 7738,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8ed99f25d3aafab295e20613202010d739cbc7a83ff43bfeca55750e27838544",
+    "originalParts": [
+      "/images/gallery-originals/cabin-06-00.bin",
+      "/images/gallery-originals/cabin-06-01.bin"
+    ]
   },
   {
     "id": "cabin-07",
     "category": "cabin",
     "file": "06.jpg",
-    "original": "/images/organized-gallery/cabin-07.jpg",
+    "original": "/images/organized-gallery/cabin-07-preview.webp",
     "preview": "/images/organized-gallery/cabin-07-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 16128,
-    "originalHeight": 9072
+    "originalHeight": 9072,
+    "originalMime": "image/jpeg",
+    "originalSha256": "86a88d828dd2a3f27043c0988cbc530695e2adb09b45b33eb9ec65a3eb610a7c",
+    "originalParts": [
+      "/images/gallery-originals/cabin-07-00.bin",
+      "/images/gallery-originals/cabin-07-01.bin",
+      "/images/gallery-originals/cabin-07-02.bin"
+    ]
   },
   {
     "id": "cabin-08",
     "category": "cabin",
     "file": "07.jpg",
-    "original": "/images/organized-gallery/cabin-08.jpg",
+    "original": "/images/organized-gallery/cabin-08-preview.webp",
     "preview": "/images/organized-gallery/cabin-08-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 16128,
-    "originalHeight": 9072
+    "originalHeight": 9072,
+    "originalMime": "image/jpeg",
+    "originalSha256": "22c245bed9ad981038a9994e6c5f18f4157bce2ecd1c0193f9758af5a7ad1201",
+    "originalParts": [
+      "/images/gallery-originals/cabin-08-00.bin",
+      "/images/gallery-originals/cabin-08-01.bin",
+      "/images/gallery-originals/cabin-08-02.bin"
+    ]
   },
   {
     "id": "cabin-09",
     "category": "cabin",
     "file": "7,5.jpg",
-    "original": "/images/organized-gallery/cabin-09.jpg",
+    "original": "/images/gallery-originals/cabin-09.jpg",
     "preview": "/images/organized-gallery/cabin-09-preview.webp",
     "width": 1600,
     "height": 1200,
     "originalWidth": 4000,
-    "originalHeight": 3000
+    "originalHeight": 3000,
+    "originalMime": "image/jpeg",
+    "originalSha256": "84b200f8cd7c908f7682516f73c4af80a56d28e3109a366622a4b87eeb42d3e6",
+    "originalParts": []
   },
   {
     "id": "cabin-10",
     "category": "cabin",
     "file": "08.jpg",
-    "original": "/images/organized-gallery/cabin-10.jpg",
+    "original": "/images/organized-gallery/cabin-10-preview.webp",
     "preview": "/images/organized-gallery/cabin-10-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 16128,
-    "originalHeight": 9072
+    "originalHeight": 9072,
+    "originalMime": "image/jpeg",
+    "originalSha256": "487ad75176068454c980fac78655bf8c5874d56932bbc39c55bcb6039270f81a",
+    "originalParts": [
+      "/images/gallery-originals/cabin-10-00.bin",
+      "/images/gallery-originals/cabin-10-01.bin",
+      "/images/gallery-originals/cabin-10-02.bin"
+    ]
   },
   {
     "id": "cabin-11",
     "category": "cabin",
     "file": "8,5.jpg",
-    "original": "/images/organized-gallery/cabin-11-sunny.png",
+    "original": "/images/gallery-originals/cabin-11-sunny.png",
     "preview": "/images/organized-gallery/cabin-11-preview.webp",
     "width": 1448,
     "height": 1086,
     "originalWidth": 1448,
-    "originalHeight": 1086
+    "originalHeight": 1086,
+    "originalMime": "image/png",
+    "originalSha256": "5d54aa53af4285671354a503b6dfdc83dcac259b6f615351f5009558b353e02f",
+    "originalParts": []
   },
   {
     "id": "cabin-12",
     "category": "cabin",
     "file": "09.jpg",
-    "original": "/images/organized-gallery/cabin-12.jpg",
+    "original": "/images/gallery-originals/cabin-12.jpg",
     "preview": "/images/organized-gallery/cabin-12-preview.webp",
     "width": 1024,
     "height": 768,
     "originalWidth": 1024,
-    "originalHeight": 768
+    "originalHeight": 768,
+    "originalMime": "image/jpeg",
+    "originalSha256": "9643e67f4e20f994cc312ffd1737443f1927dcfa653093a1e4c5ea9b60024be3",
+    "originalParts": []
   },
   {
     "id": "cabin-13",
     "category": "cabin",
     "file": "10.jpg",
-    "original": "/images/organized-gallery/cabin-13.jpg",
+    "original": "/images/organized-gallery/cabin-13-preview.webp",
     "preview": "/images/organized-gallery/cabin-13-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 16128,
-    "originalHeight": 9072
+    "originalHeight": 9072,
+    "originalMime": "image/jpeg",
+    "originalSha256": "180ebb77197ff48204b477857fe8719846171ee1136d4b393eaf7270bd8f8dd7",
+    "originalParts": [
+      "/images/gallery-originals/cabin-13-00.bin",
+      "/images/gallery-originals/cabin-13-01.bin",
+      "/images/gallery-originals/cabin-13-02.bin"
+    ]
   },
   {
     "id": "cabin-14",
     "category": "cabin",
     "file": "10,5.jpg",
-    "original": "/images/organized-gallery/cabin-14.jpg",
+    "original": "/images/gallery-originals/cabin-14.jpg",
     "preview": "/images/organized-gallery/cabin-14-preview.webp",
     "width": 1600,
     "height": 1200,
     "originalWidth": 4000,
-    "originalHeight": 3000
+    "originalHeight": 3000,
+    "originalMime": "image/jpeg",
+    "originalSha256": "f7383967719a8561a95cd51dbe790f27f9e173f00c9530ef7c425bed176db844",
+    "originalParts": []
   },
   {
     "id": "cabin-15",
     "category": "cabin",
     "file": "11.jpg",
-    "original": "/images/organized-gallery/cabin-15.jpg",
+    "original": "/images/organized-gallery/cabin-15-preview.webp",
     "preview": "/images/organized-gallery/cabin-15-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "ae5e362d21971c4f4522bcadbb9cff0a7ce0644e85b0e37a0dc8a96524dc61c6",
+    "originalParts": [
+      "/images/gallery-originals/cabin-15-00.bin",
+      "/images/gallery-originals/cabin-15-01.bin",
+      "/images/gallery-originals/cabin-15-02.bin"
+    ]
   },
   {
     "id": "living-01",
     "category": "living",
     "file": "_A7R7697-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-01.jpg",
+    "original": "/images/organized-gallery/living-01-preview.webp",
     "preview": "/images/organized-gallery/living-01-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 17448,
-    "originalHeight": 11632
+    "originalHeight": 11632,
+    "originalMime": "image/jpeg",
+    "originalSha256": "5c4577f62bc587eca6d371a8885f7ae01117fa253bce766330eefe70e4cac0c8",
+    "originalParts": [
+      "/images/gallery-originals/living-01-00.bin",
+      "/images/gallery-originals/living-01-01.bin",
+      "/images/gallery-originals/living-01-02.bin"
+    ]
   },
   {
     "id": "living-02",
     "category": "living",
     "file": "_A7R7700-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-02.jpg",
+    "original": "/images/organized-gallery/living-02-preview.webp",
     "preview": "/images/organized-gallery/living-02-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18988,
-    "originalHeight": 12658
+    "originalHeight": 12658,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8ed2af155c1c13d70f88826952dd97ea09e6e1fd56883482e28c4b7c5d141ca0",
+    "originalParts": [
+      "/images/gallery-originals/living-02-00.bin",
+      "/images/gallery-originals/living-02-01.bin",
+      "/images/gallery-originals/living-02-02.bin"
+    ]
   },
   {
     "id": "living-03",
     "category": "living",
     "file": "_A7R7724-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-03.jpg",
+    "original": "/images/organized-gallery/living-03-preview.webp",
     "preview": "/images/organized-gallery/living-03-preview.webp",
     "width": 1600,
     "height": 766,
     "originalWidth": 22561,
-    "originalHeight": 10800
+    "originalHeight": 10800,
+    "originalMime": "image/jpeg",
+    "originalSha256": "3f96e20fc52cd83a5024a1b128732e1928719b2d1afbab6e00f84d56b1367132",
+    "originalParts": [
+      "/images/gallery-originals/living-03-00.bin",
+      "/images/gallery-originals/living-03-01.bin",
+      "/images/gallery-originals/living-03-02.bin"
+    ]
   },
   {
     "id": "living-04",
     "category": "living",
     "file": "_A7R7733-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-04.jpg",
+    "original": "/images/organized-gallery/living-04-preview.webp",
     "preview": "/images/organized-gallery/living-04-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18912,
-    "originalHeight": 12608
+    "originalHeight": 12608,
+    "originalMime": "image/jpeg",
+    "originalSha256": "ba8211f5d57a0991ed978c6b6242c72433bc0f01777ca195e0be1f6a1c6998d3",
+    "originalParts": [
+      "/images/gallery-originals/living-04-00.bin",
+      "/images/gallery-originals/living-04-01.bin",
+      "/images/gallery-originals/living-04-02.bin",
+      "/images/gallery-originals/living-04-03.bin"
+    ]
   },
   {
     "id": "living-05",
     "category": "living",
     "file": "_A7R7772-HDR-Pano-2-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-05.jpg",
+    "original": "/images/organized-gallery/living-05-preview.webp",
     "preview": "/images/organized-gallery/living-05-preview.webp",
     "width": 1331,
     "height": 1600,
     "originalWidth": 18834,
-    "originalHeight": 22640
+    "originalHeight": 22640,
+    "originalMime": "image/jpeg",
+    "originalSha256": "3b66766083ddb1521b47c57b4d7b32400428f8a94bbd99801bef4f42fb4b55be",
+    "originalParts": [
+      "/images/gallery-originals/living-05-00.bin",
+      "/images/gallery-originals/living-05-01.bin",
+      "/images/gallery-originals/living-05-02.bin",
+      "/images/gallery-originals/living-05-03.bin",
+      "/images/gallery-originals/living-05-04.bin",
+      "/images/gallery-originals/living-05-05.bin"
+    ]
   },
   {
     "id": "living-06",
     "category": "living",
     "file": "_A7R7793-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-06.jpg",
+    "original": "/images/organized-gallery/living-06-preview.webp",
     "preview": "/images/organized-gallery/living-06-preview.webp",
     "width": 1600,
     "height": 1264,
     "originalWidth": 18838,
-    "originalHeight": 14882
+    "originalHeight": 14882,
+    "originalMime": "image/jpeg",
+    "originalSha256": "0f5ef7d5eb3d72e6be68cad2803093501f78f7aef3fc52b2bfade84fa8efdf66",
+    "originalParts": [
+      "/images/gallery-originals/living-06-00.bin",
+      "/images/gallery-originals/living-06-01.bin",
+      "/images/gallery-originals/living-06-02.bin",
+      "/images/gallery-originals/living-06-03.bin"
+    ]
   },
   {
     "id": "living-07",
     "category": "living",
     "file": "_A7R7794-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-07.jpg",
+    "original": "/images/organized-gallery/living-07-preview.webp",
     "preview": "/images/organized-gallery/living-07-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18972,
-    "originalHeight": 12648
+    "originalHeight": 12648,
+    "originalMime": "image/jpeg",
+    "originalSha256": "55338f80489aa2f262eae789cdc66cc46ba60a2873293df8037b32bd2a7ae5ac",
+    "originalParts": [
+      "/images/gallery-originals/living-07-00.bin",
+      "/images/gallery-originals/living-07-01.bin"
+    ]
   },
   {
     "id": "living-08",
     "category": "living",
     "file": "_A7R7797-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-08.jpg",
+    "original": "/images/organized-gallery/living-08-preview.webp",
     "preview": "/images/organized-gallery/living-08-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "548c9f46648bc821f6e15147239f398e8170452db625969029c8caa7d0b47346",
+    "originalParts": [
+      "/images/gallery-originals/living-08-00.bin",
+      "/images/gallery-originals/living-08-01.bin",
+      "/images/gallery-originals/living-08-02.bin"
+    ]
   },
   {
     "id": "living-09",
     "category": "living",
     "file": "_A7R7808-HDR-Pano-2-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-09.jpg",
+    "original": "/images/organized-gallery/living-09-preview.webp",
     "preview": "/images/organized-gallery/living-09-preview.webp",
     "width": 1600,
     "height": 1400,
     "originalWidth": 17730,
-    "originalHeight": 15516
+    "originalHeight": 15516,
+    "originalMime": "image/jpeg",
+    "originalSha256": "31d2f50f0b37b4859959201767451f7691a1927b0836b76d5e6ffbf028f87bcc",
+    "originalParts": [
+      "/images/gallery-originals/living-09-00.bin",
+      "/images/gallery-originals/living-09-01.bin",
+      "/images/gallery-originals/living-09-02.bin",
+      "/images/gallery-originals/living-09-03.bin"
+    ]
   },
   {
     "id": "living-10",
     "category": "living",
     "file": "_A7R7829-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-10.jpg",
+    "original": "/images/organized-gallery/living-10-preview.webp",
     "preview": "/images/organized-gallery/living-10-preview.webp",
     "width": 1600,
     "height": 1538,
     "originalWidth": 16584,
-    "originalHeight": 15950
+    "originalHeight": 15950,
+    "originalMime": "image/jpeg",
+    "originalSha256": "a0812300d60100cea33b2ad3e1166f6525c2ab909886d67f6312506c2d66d042",
+    "originalParts": [
+      "/images/gallery-originals/living-10-00.bin",
+      "/images/gallery-originals/living-10-01.bin",
+      "/images/gallery-originals/living-10-02.bin",
+      "/images/gallery-originals/living-10-03.bin"
+    ]
   },
   {
     "id": "living-11",
     "category": "living",
     "file": "_A7R7865-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-11.jpg",
+    "original": "/images/organized-gallery/living-11-preview.webp",
     "preview": "/images/organized-gallery/living-11-preview.webp",
     "width": 1600,
     "height": 1503,
     "originalWidth": 17224,
-    "originalHeight": 16188
+    "originalHeight": 16188,
+    "originalMime": "image/jpeg",
+    "originalSha256": "b119e39292f9fe84ab152600e4df20100282f83e3b5bf0d07808393841d9c34a",
+    "originalParts": [
+      "/images/gallery-originals/living-11-00.bin",
+      "/images/gallery-originals/living-11-01.bin",
+      "/images/gallery-originals/living-11-02.bin",
+      "/images/gallery-originals/living-11-03.bin"
+    ]
   },
   {
     "id": "living-12",
     "category": "living",
     "file": "_A7R7881-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-12.jpg",
+    "original": "/images/organized-gallery/living-12-preview.webp",
     "preview": "/images/organized-gallery/living-12-preview.webp",
     "width": 1600,
     "height": 954,
     "originalWidth": 27922,
-    "originalHeight": 16660
+    "originalHeight": 16660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "59f8a414ac8f3ab3f3d1f42e6585190ac544357dd5275b10ee9f31722732a6c0",
+    "originalParts": [
+      "/images/gallery-originals/living-12-00.bin",
+      "/images/gallery-originals/living-12-01.bin",
+      "/images/gallery-originals/living-12-02.bin",
+      "/images/gallery-originals/living-12-03.bin",
+      "/images/gallery-originals/living-12-04.bin",
+      "/images/gallery-originals/living-12-05.bin"
+    ]
   },
   {
     "id": "living-13",
     "category": "living",
     "file": "_A7R7906-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-13.jpg",
+    "original": "/images/organized-gallery/living-13-preview.webp",
     "preview": "/images/organized-gallery/living-13-preview.webp",
     "width": 1026,
     "height": 1600,
     "originalWidth": 8572,
-    "originalHeight": 13368
+    "originalHeight": 13368,
+    "originalMime": "image/jpeg",
+    "originalSha256": "b873e57cd0fddadd084f9583604401699f6366430ff7a40e47cc548754b30e61",
+    "originalParts": [
+      "/images/gallery-originals/living-13-00.bin",
+      "/images/gallery-originals/living-13-01.bin"
+    ]
   },
   {
     "id": "living-14",
     "category": "living",
     "file": "_A7R7926-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-14.jpg",
+    "original": "/images/organized-gallery/living-14-preview.webp",
     "preview": "/images/organized-gallery/living-14-preview.webp",
     "width": 1600,
     "height": 1087,
     "originalWidth": 18368,
-    "originalHeight": 12486
+    "originalHeight": 12486,
+    "originalMime": "image/jpeg",
+    "originalSha256": "d0ad88d4c5240aaaa138e237a80cfc573e1d4962bc3d291c83c3a4f228e60c1d",
+    "originalParts": [
+      "/images/gallery-originals/living-14-00.bin",
+      "/images/gallery-originals/living-14-01.bin",
+      "/images/gallery-originals/living-14-02.bin"
+    ]
   },
   {
     "id": "living-15",
     "category": "living",
     "file": "_A7R7945-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-15.jpg",
+    "original": "/images/organized-gallery/living-15-preview.webp",
     "preview": "/images/organized-gallery/living-15-preview.webp",
     "width": 1600,
     "height": 1374,
     "originalWidth": 19008,
-    "originalHeight": 16322
+    "originalHeight": 16322,
+    "originalMime": "image/jpeg",
+    "originalSha256": "e709941c4216b1417b86d21ad135caa9b7b8b26e3a2ae437327ce083babd3a64",
+    "originalParts": [
+      "/images/gallery-originals/living-15-00.bin",
+      "/images/gallery-originals/living-15-01.bin",
+      "/images/gallery-originals/living-15-02.bin",
+      "/images/gallery-originals/living-15-03.bin"
+    ]
   },
   {
     "id": "living-16",
     "category": "living",
     "file": "_A7R7977-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-16.jpg",
+    "original": "/images/organized-gallery/living-16-preview.webp",
     "preview": "/images/organized-gallery/living-16-preview.webp",
     "width": 1600,
     "height": 992,
     "originalWidth": 22620,
-    "originalHeight": 14018
+    "originalHeight": 14018,
+    "originalMime": "image/jpeg",
+    "originalSha256": "80d935fa9b320c0f8d116564a178caf03707bb732d8bcd1ee656cbe70a341ec6",
+    "originalParts": [
+      "/images/gallery-originals/living-16-00.bin",
+      "/images/gallery-originals/living-16-01.bin",
+      "/images/gallery-originals/living-16-02.bin",
+      "/images/gallery-originals/living-16-03.bin",
+      "/images/gallery-originals/living-16-04.bin"
+    ]
   },
   {
     "id": "living-17",
     "category": "living",
     "file": "_A7R8022-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-17.jpg",
+    "original": "/images/organized-gallery/living-17-preview.webp",
     "preview": "/images/organized-gallery/living-17-preview.webp",
     "width": 1600,
     "height": 1585,
     "originalWidth": 19404,
-    "originalHeight": 19230
+    "originalHeight": 19230,
+    "originalMime": "image/jpeg",
+    "originalSha256": "ada88fc1f89dac08d2111b27b820a5c70fe59fd5e2e414d4040050da5bcdc7f4",
+    "originalParts": [
+      "/images/gallery-originals/living-17-00.bin",
+      "/images/gallery-originals/living-17-01.bin",
+      "/images/gallery-originals/living-17-02.bin",
+      "/images/gallery-originals/living-17-03.bin"
+    ]
   },
   {
     "id": "living-18",
     "category": "living",
     "file": "_A7R8035-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-18.jpg",
+    "original": "/images/organized-gallery/living-18-preview.webp",
     "preview": "/images/organized-gallery/living-18-preview.webp",
     "width": 1600,
     "height": 978,
     "originalWidth": 16694,
-    "originalHeight": 10202
+    "originalHeight": 10202,
+    "originalMime": "image/jpeg",
+    "originalSha256": "aa695bc0cdc0eb165ef2c9872876bc285836be9065829f37268712396eaf6564",
+    "originalParts": [
+      "/images/gallery-originals/living-18-00.bin",
+      "/images/gallery-originals/living-18-01.bin",
+      "/images/gallery-originals/living-18-02.bin"
+    ]
   },
   {
     "id": "living-19",
     "category": "living",
     "file": "_A7R8101-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-19.jpg",
+    "original": "/images/organized-gallery/living-19-preview.webp",
     "preview": "/images/organized-gallery/living-19-preview.webp",
     "width": 1600,
     "height": 1066,
     "originalWidth": 18130,
-    "originalHeight": 12086
+    "originalHeight": 12086,
+    "originalMime": "image/jpeg",
+    "originalSha256": "9ce57f8e96e11ca25f285383f092a1222acff8b49cb0d44df6b2085a8253e3e4",
+    "originalParts": [
+      "/images/gallery-originals/living-19-00.bin",
+      "/images/gallery-originals/living-19-01.bin"
+    ]
   },
   {
     "id": "living-20",
     "category": "living",
     "file": "_A7R8124-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-20.jpg",
+    "original": "/images/organized-gallery/living-20-preview.webp",
     "preview": "/images/organized-gallery/living-20-preview.webp",
     "width": 1600,
     "height": 1066,
     "originalWidth": 17996,
-    "originalHeight": 11998
+    "originalHeight": 11998,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8c395bb4a267af3b911a96010c88259787c678cb59fa3e4fc3dcd4e330769c18",
+    "originalParts": [
+      "/images/gallery-originals/living-20-00.bin",
+      "/images/gallery-originals/living-20-01.bin"
+    ]
   },
   {
     "id": "living-21",
     "category": "living",
     "file": "_A7R8125-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-21.jpg",
+    "original": "/images/organized-gallery/living-21-preview.webp",
     "preview": "/images/organized-gallery/living-21-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 17700,
-    "originalHeight": 11800
+    "originalHeight": 11800,
+    "originalMime": "image/jpeg",
+    "originalSha256": "92170a277e2beea5e96e128d60b20a3f6705043d84f90ae6617805eb6ff9fec9",
+    "originalParts": [
+      "/images/gallery-originals/living-21-00.bin",
+      "/images/gallery-originals/living-21-01.bin"
+    ]
   },
   {
     "id": "living-22",
     "category": "living",
     "file": "_A7R8139-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-22.jpg",
+    "original": "/images/organized-gallery/living-22-preview.webp",
     "preview": "/images/organized-gallery/living-22-preview.webp",
     "width": 1600,
     "height": 1546,
     "originalWidth": 12044,
-    "originalHeight": 11640
+    "originalHeight": 11640,
+    "originalMime": "image/jpeg",
+    "originalSha256": "d1171086d169dd464aab1cbb738a066a402161106fe4a2eb606bb61acf636fa5",
+    "originalParts": [
+      "/images/gallery-originals/living-22-00.bin",
+      "/images/gallery-originals/living-22-01.bin"
+    ]
   },
   {
     "id": "living-23",
     "category": "living",
     "file": "_A7R8145-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-23.jpg",
+    "original": "/images/organized-gallery/living-23-preview.webp",
     "preview": "/images/organized-gallery/living-23-preview.webp",
     "width": 1600,
     "height": 1291,
     "originalWidth": 13114,
-    "originalHeight": 10576
+    "originalHeight": 10576,
+    "originalMime": "image/jpeg",
+    "originalSha256": "eaa4fc15933d03d9909660ae881df8853b638186849bf95b37fac7ef7d21c74b",
+    "originalParts": [
+      "/images/gallery-originals/living-23-00.bin",
+      "/images/gallery-originals/living-23-01.bin"
+    ]
   },
   {
     "id": "living-24",
     "category": "living",
     "file": "_A7R8221-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-24.jpg",
+    "original": "/images/gallery-originals/living-24.jpg",
     "preview": "/images/organized-gallery/living-24-preview.webp",
     "width": 1600,
     "height": 875,
     "originalWidth": 13615,
-    "originalHeight": 7441
+    "originalHeight": 7441,
+    "originalMime": "image/jpeg",
+    "originalSha256": "e94b74dab677398447b7c60acd2a60c10846cd3f20fb1ee8c56fde6f932c2b53",
+    "originalParts": []
   },
   {
     "id": "living-25",
     "category": "living",
     "file": "_A7R8230-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-25.jpg",
+    "original": "/images/organized-gallery/living-25-preview.webp",
     "preview": "/images/organized-gallery/living-25-preview.webp",
     "width": 1600,
     "height": 765,
     "originalWidth": 22000,
-    "originalHeight": 10518
+    "originalHeight": 10518,
+    "originalMime": "image/jpeg",
+    "originalSha256": "a4471501dcecc1612649ab987d0c43250580e2fe96d5e2c261c950d9ad67a676",
+    "originalParts": [
+      "/images/gallery-originals/living-25-00.bin",
+      "/images/gallery-originals/living-25-01.bin",
+      "/images/gallery-originals/living-25-02.bin"
+    ]
   },
   {
     "id": "living-26",
     "category": "living",
     "file": "_A7R8231-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-26.jpg",
+    "original": "/images/organized-gallery/living-26-preview.webp",
     "preview": "/images/organized-gallery/living-26-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "be4c67dc21844d8f12652513c44ac514d9ed03df21e94e4454eefe1ebb1a063e",
+    "originalParts": [
+      "/images/gallery-originals/living-26-00.bin",
+      "/images/gallery-originals/living-26-01.bin"
+    ]
   },
   {
     "id": "living-27",
     "category": "living",
     "file": "_A7R8236-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-27.jpg",
+    "original": "/images/organized-gallery/living-27-preview.webp",
     "preview": "/images/organized-gallery/living-27-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "2778502c9649f8fead31cc9bb37489fddee32781211603f81c21e77cb5fc1e0c",
+    "originalParts": [
+      "/images/gallery-originals/living-27-00.bin",
+      "/images/gallery-originals/living-27-01.bin"
+    ]
   },
   {
     "id": "living-28",
     "category": "living",
     "file": "_A7R8242-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-28.jpg",
+    "original": "/images/organized-gallery/living-28-preview.webp",
     "preview": "/images/organized-gallery/living-28-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "2ef7c3c99c6c499e13e13513290adbe46ac2f21a8b3717389e0ebe8d0fc9e34f",
+    "originalParts": [
+      "/images/gallery-originals/living-28-00.bin",
+      "/images/gallery-originals/living-28-01.bin",
+      "/images/gallery-originals/living-28-02.bin",
+      "/images/gallery-originals/living-28-03.bin"
+    ]
   },
   {
     "id": "living-29",
     "category": "living",
     "file": "_A7R8245-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-29.jpg",
+    "original": "/images/organized-gallery/living-29-preview.webp",
     "preview": "/images/organized-gallery/living-29-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18734,
-    "originalHeight": 12490
+    "originalHeight": 12490,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8e039520a637e2cb8e9e370e10113efc168c27af13dfe91ff9b59f7a3429bcf9",
+    "originalParts": [
+      "/images/gallery-originals/living-29-00.bin",
+      "/images/gallery-originals/living-29-01.bin",
+      "/images/gallery-originals/living-29-02.bin"
+    ]
   },
   {
     "id": "living-30",
     "category": "living",
     "file": "_A7R8249-HDR-Pano-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-30.jpg",
+    "original": "/images/gallery-originals/living-30.jpg",
     "preview": "/images/organized-gallery/living-30-preview.webp",
     "width": 1600,
     "height": 1561,
     "originalWidth": 6796,
-    "originalHeight": 6632
+    "originalHeight": 6632,
+    "originalMime": "image/jpeg",
+    "originalSha256": "23c059d8dd32eff8b3588c0bc3c6ce1ec668ebfb28c4039e89e8d0901bd21611",
+    "originalParts": []
   },
   {
     "id": "living-31",
     "category": "living",
     "file": "_A7R8293-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/living-31.jpg",
+    "original": "/images/organized-gallery/living-31-preview.webp",
     "preview": "/images/organized-gallery/living-31-preview.webp",
     "width": 1600,
     "height": 1066,
     "originalWidth": 18928,
-    "originalHeight": 12618
+    "originalHeight": 12618,
+    "originalMime": "image/jpeg",
+    "originalSha256": "284790dace08ee842dfa6eb843adb84e05788e0d35eacd65442dc244f28ec71f",
+    "originalParts": [
+      "/images/gallery-originals/living-31-00.bin",
+      "/images/gallery-originals/living-31-01.bin",
+      "/images/gallery-originals/living-31-02.bin"
+    ]
   },
   {
     "id": "living-32",
     "category": "living",
     "file": "Cozy Alpine Lodge with Fireplace and Mountain Views.jpg",
-    "original": "/images/organized-gallery/living-32.jpg",
+    "original": "/images/gallery-originals/living-32.jpg",
     "preview": "/images/organized-gallery/living-32-preview.webp",
     "width": 1525,
     "height": 1031,
     "originalWidth": 1525,
-    "originalHeight": 1031
+    "originalHeight": 1031,
+    "originalMime": "image/jpeg",
+    "originalSha256": "ea2fd7f28b58d362b9318e22aeda55c3bed626482153914d7e5ddfdb1013f486",
+    "originalParts": []
   },
   {
     "id": "living-33",
     "category": "living",
     "file": "Cozy Cabin Telescope Over Snowy Mountains.jpg",
-    "original": "/images/organized-gallery/living-33.jpg",
+    "original": "/images/gallery-originals/living-33.jpg",
     "preview": "/images/organized-gallery/living-33-preview.webp",
     "width": 1536,
     "height": 1024,
     "originalWidth": 1536,
-    "originalHeight": 1024
+    "originalHeight": 1024,
+    "originalMime": "image/jpeg",
+    "originalSha256": "152aa7508ae75c410d93f6fc659c33c35620c93d2b8012c40b5fee6ba6475baf",
+    "originalParts": []
   },
   {
     "id": "living-34",
     "category": "living",
     "file": "Cozy Chalet Dinner by Snowy Mountains1.jpg",
-    "original": "/images/organized-gallery/living-34.jpg",
+    "original": "/images/gallery-originals/living-34.jpg",
     "preview": "/images/organized-gallery/living-34-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18927,
-    "originalHeight": 12618
+    "originalHeight": 12618,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8caa07ae96858da028c4a4836a0a40d89f3b2822058fe01dab55b8fe52583674",
+    "originalParts": []
   },
   {
     "id": "living-35",
     "category": "living",
     "file": "Cozy Rustic Bathroom Laundry Corner (2).jpg",
-    "original": "/images/organized-gallery/living-35.jpg",
+    "original": "/images/gallery-originals/living-35.jpg",
     "preview": "/images/organized-gallery/living-35-preview.webp",
     "width": 1540,
     "height": 1021,
     "originalWidth": 1540,
-    "originalHeight": 1021
+    "originalHeight": 1021,
+    "originalMime": "image/jpeg",
+    "originalSha256": "126dc428e128405970ea30cd2eddab83e9331ef5e0f7819883b6010c049c5e1a",
+    "originalParts": []
   },
   {
     "id": "living-36",
     "category": "living",
     "file": "Modern Rustic Kitchen with Wine Cooler.jpg",
-    "original": "/images/organized-gallery/living-36.jpg",
+    "original": "/images/gallery-originals/living-36.jpg",
     "preview": "/images/organized-gallery/living-36-preview.webp",
     "width": 1536,
     "height": 1024,
     "originalWidth": 1536,
-    "originalHeight": 1024
+    "originalHeight": 1024,
+    "originalMime": "image/jpeg",
+    "originalSha256": "78ff85014d729074772da6d499dcc33cb7d64312826a2da9ce71114e167ae4fd",
+    "originalParts": []
   },
   {
     "id": "living-37",
     "category": "living",
     "file": "Mountain Lodge Living Room with Scenic TV View1.jpg",
-    "original": "/images/organized-gallery/living-37.jpg",
+    "original": "/images/gallery-originals/living-37.jpg",
     "preview": "/images/organized-gallery/living-37-preview.webp",
     "width": 1600,
     "height": 876,
     "originalWidth": 18928,
-    "originalHeight": 10363
+    "originalHeight": 10363,
+    "originalMime": "image/jpeg",
+    "originalSha256": "b21dddaddd1e42d616be883ce450e15c98f4c46d3957b59b5cfa06c65a642487",
+    "originalParts": []
   },
   {
     "id": "living-38",
     "category": "living",
     "file": "Mountain Lodge Living Room with Scenic TV View2.jpg",
-    "original": "/images/organized-gallery/living-38.jpg",
+    "original": "/images/organized-gallery/living-38-preview.webp",
     "preview": "/images/organized-gallery/living-38-preview.webp",
     "width": 1600,
     "height": 876,
     "originalWidth": 18928,
-    "originalHeight": 10363
+    "originalHeight": 10363,
+    "originalMime": "image/jpeg",
+    "originalSha256": "881cc700873bd2da2349216e4474ce0ec7253e28f6546441b6b2872264e297a6",
+    "originalParts": [
+      "/images/gallery-originals/living-38-00.bin",
+      "/images/gallery-originals/living-38-01.bin"
+    ]
   },
   {
     "id": "living-39",
     "category": "living",
     "file": "Rustic Chalet Ski Gear Room.jpg",
-    "original": "/images/organized-gallery/living-39.jpg",
+    "original": "/images/gallery-originals/living-39.jpg",
     "preview": "/images/organized-gallery/living-39-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 1672,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/jpeg",
+    "originalSha256": "8ccd051e42723948b10148e58bc69ac6ee7adee9cd29293c9097d9362083c2c0",
+    "originalParts": []
   },
   {
     "id": "living-40",
     "category": "living",
     "file": "Rustic Lodge with Snowy Mountain Views1.png",
-    "original": "/images/organized-gallery/living-40.png",
+    "original": "/images/organized-gallery/living-40-preview.webp",
     "preview": "/images/organized-gallery/living-40-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18928,
-    "originalHeight": 12619
+    "originalHeight": 12619,
+    "originalMime": "image/png",
+    "originalSha256": "5fb30b04af1812116701f7ee4075a617effca57b1ca98f8adf4541dddbd18d99",
+    "originalParts": [
+      "/images/gallery-originals/living-40-00.bin",
+      "/images/gallery-originals/living-40-01.bin",
+      "/images/gallery-originals/living-40-02.bin",
+      "/images/gallery-originals/living-40-03.bin",
+      "/images/gallery-originals/living-40-04.bin",
+      "/images/gallery-originals/living-40-05.bin"
+    ]
   },
   {
     "id": "living-41",
     "category": "living",
     "file": "Snowy Mountain Boardroom Retreat1.png",
-    "original": "/images/organized-gallery/living-41.png",
+    "original": "/images/organized-gallery/living-41-preview.webp",
     "preview": "/images/organized-gallery/living-41-preview.webp",
     "width": 1600,
     "height": 1199,
     "originalWidth": 18928,
-    "originalHeight": 14186
+    "originalHeight": 14186,
+    "originalMime": "image/png",
+    "originalSha256": "190666c0e533d7e164d6c2913809eb53e7c39408eb122375346c769bc05dadd5",
+    "originalParts": [
+      "/images/gallery-originals/living-41-00.bin",
+      "/images/gallery-originals/living-41-01.bin",
+      "/images/gallery-originals/living-41-02.bin",
+      "/images/gallery-originals/living-41-03.bin",
+      "/images/gallery-originals/living-41-04.bin",
+      "/images/gallery-originals/living-41-05.bin"
+    ]
   },
   {
     "id": "bedrooms-01",
     "category": "bedrooms",
     "file": "01_Cozy Rustic Cabin Bedroom (u etasje).png",
-    "original": "/images/organized-gallery/bedrooms-01.png",
+    "original": "/images/gallery-originals/bedrooms-01.png",
     "preview": "/images/organized-gallery/bedrooms-01-preview.webp",
     "width": 1536,
     "height": 1024,
     "originalWidth": 1536,
-    "originalHeight": 1024
+    "originalHeight": 1024,
+    "originalMime": "image/png",
+    "originalSha256": "30c505997bc947f063277666a313c30c8c06a8ab829ffbd18fb39d0054324789",
+    "originalParts": []
   },
   {
     "id": "bedrooms-02",
     "category": "bedrooms",
     "file": "02_Scandinavian Cabin Bedroom Master Retreat.png",
-    "original": "/images/organized-gallery/bedrooms-02.png",
+    "original": "/images/gallery-originals/bedrooms-02.png",
     "preview": "/images/organized-gallery/bedrooms-02-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 1672,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/png",
+    "originalSha256": "bbdfe276f3315f94733d9bfd1748fe408d028443727343b03641567f70ed8b11",
+    "originalParts": []
   },
   {
     "id": "bedrooms-03",
     "category": "bedrooms",
     "file": "03 Cozy Cabin Bedroom with Layered Bedding.jpg",
-    "original": "/images/organized-gallery/bedrooms-03.jpg",
+    "original": "/images/gallery-originals/bedrooms-03.jpg",
     "preview": "/images/organized-gallery/bedrooms-03-preview.webp",
     "width": 1294,
     "height": 1216,
     "originalWidth": 1294,
-    "originalHeight": 1216
+    "originalHeight": 1216,
+    "originalMime": "image/jpeg",
+    "originalSha256": "5249f43bbcfc2a32790ad21cc6bf0c6a48b0671137ec4c556f06a7940a647b2b",
+    "originalParts": []
   },
   {
     "id": "bedrooms-04",
     "category": "bedrooms",
     "file": "04_Cozy Rustic Cabin Bedroom Retreat loft.png",
-    "original": "/images/organized-gallery/bedrooms-04.png",
+    "original": "/images/gallery-originals/bedrooms-04.png",
     "preview": "/images/organized-gallery/bedrooms-04-preview.webp",
     "width": 1536,
     "height": 1024,
     "originalWidth": 1536,
-    "originalHeight": 1024
+    "originalHeight": 1024,
+    "originalMime": "image/png",
+    "originalSha256": "cc8e26d7d0446e12b8840c58badfc8da868fc2ee81796736a6e1b11ab72d3301",
+    "originalParts": []
   },
   {
     "id": "bedrooms-05",
     "category": "bedrooms",
     "file": "05_Cozy Attic Cabin Bed by the Mountains (loft).png",
-    "original": "/images/organized-gallery/bedrooms-05.png",
+    "original": "/images/gallery-originals/bedrooms-05.png",
     "preview": "/images/organized-gallery/bedrooms-05-preview.webp",
     "width": 1465,
     "height": 1074,
     "originalWidth": 1465,
-    "originalHeight": 1074
+    "originalHeight": 1074,
+    "originalMime": "image/png",
+    "originalSha256": "6e50e164c9e1e0ab9d26467650ea9f086df1787d71b7dbd14c7fd256e04f8186",
+    "originalParts": []
   },
   {
     "id": "bedrooms-06",
     "category": "bedrooms",
     "file": "06_Cozy Alpine Cabin Bunkroom u etasje 5.png",
-    "original": "/images/organized-gallery/bedrooms-06.png",
+    "original": "/images/gallery-originals/bedrooms-06.png",
     "preview": "/images/organized-gallery/bedrooms-06-preview.webp",
     "width": 1600,
     "height": 901,
     "originalWidth": 1671,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/png",
+    "originalSha256": "bcf080c9ddf1f4211fbb96acdd5a0c6efd241837afa9e08cbc9041a6f1344735",
+    "originalParts": []
   },
   {
     "id": "bedrooms-07",
     "category": "bedrooms",
     "file": "07__A7R7930-HDR-denoise-upscale-2x.jpg",
-    "original": "/images/organized-gallery/bedrooms-07.jpg",
+    "original": "/images/organized-gallery/bedrooms-07-preview.webp",
     "preview": "/images/organized-gallery/bedrooms-07-preview.webp",
     "width": 1600,
     "height": 1067,
     "originalWidth": 18990,
-    "originalHeight": 12660
+    "originalHeight": 12660,
+    "originalMime": "image/jpeg",
+    "originalSha256": "3ba812ae9728c30d6818f879993955ee7833014663b85bc88a28801651c0f11b",
+    "originalParts": [
+      "/images/gallery-originals/bedrooms-07-00.bin",
+      "/images/gallery-originals/bedrooms-07-01.bin",
+      "/images/gallery-originals/bedrooms-07-02.bin",
+      "/images/gallery-originals/bedrooms-07-03.bin"
+    ]
   },
   {
     "id": "bedrooms-08",
     "category": "bedrooms",
     "file": "08_Cozy Rustic Cabin Bedroom four single room Retreat.png",
-    "original": "/images/organized-gallery/bedrooms-08.png",
+    "original": "/images/gallery-originals/bedrooms-08.png",
     "preview": "/images/organized-gallery/bedrooms-08-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 1672,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/png",
+    "originalSha256": "7f8d61eb2b7611462d9dcca9823e61042a80fe1739c373092c12ea90a7a3e84d",
+    "originalParts": []
   },
   {
     "id": "bedrooms-09",
     "category": "bedrooms",
     "file": "09_Cozy Rustic Bunk-Bed Chalet Interior.png",
-    "original": "/images/organized-gallery/bedrooms-09.png",
+    "original": "/images/gallery-originals/bedrooms-09.png",
     "preview": "/images/organized-gallery/bedrooms-09-preview.webp",
     "width": 1536,
     "height": 1024,
     "originalWidth": 1536,
-    "originalHeight": 1024
+    "originalHeight": 1024,
+    "originalMime": "image/png",
+    "originalSha256": "364398e60913023b56ce0d403714a85a210a2904e38cef0ec04e4be69ab53ea2",
+    "originalParts": []
   },
   {
     "id": "bedrooms-10",
     "category": "bedrooms",
     "file": "10_Warm Rustic Attic Alkove with Four Beds1.png",
-    "original": "/images/organized-gallery/bedrooms-10.png",
+    "original": "/images/gallery-originals/bedrooms-10.png",
     "preview": "/images/organized-gallery/bedrooms-10-preview.webp",
     "width": 1600,
     "height": 900,
     "originalWidth": 1672,
-    "originalHeight": 941
+    "originalHeight": 941,
+    "originalMime": "image/png",
+    "originalSha256": "22b0d435694e2935e76d2f40d5376038e56e276aea34a256c2a982c495489ab2",
+    "originalParts": []
   }
 ]

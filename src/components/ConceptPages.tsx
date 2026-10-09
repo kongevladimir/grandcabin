@@ -12,6 +12,8 @@ import { CabinFilm } from "@/components/CabinFilm";
 import { CabinFacilities } from "@/components/CabinFacilities";
 import { CraftKitchenPhotos } from "@/components/CraftKitchenPhotos";
 import { OrganizedGallery } from "@/components/OrganizedGallery";
+import { GalleryOriginal } from "@/components/GalleryOriginal";
+import organizedPhotos from "@/content/organized-gallery.json";
 import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.jpg";
 import cabinLivingSpace from "../../public/images/cabin-telescope-mountain-view.jpg";
@@ -26,7 +28,6 @@ import craftOakStepDetail from "../../public/images/craft-oak-step-detail.webp";
 import craftOakRoundLight from "../../public/images/craft-oak-staircase-round-light.png";
 import craftFireplaceGlass from "../../public/images/craft-fireplace-glass.webp";
 import turufjellWinterAerial from "../../public/images/turufjell-winter-aerial.webp";
-import turufjellSunnyCabin from "../../public/images/turufjell-sunny-cabin-original.jpg";
 import turufjellSkiRacks from "../../public/images/turufjell-ski-racks-hq.png";
 import locationNorthernLights from "../../public/images/location-northern-lights.jpg";
 import turufjellCyclingHq from "../../public/images/turufjell-cycling-hq.png";
@@ -920,7 +921,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <TurufjellActivities language={language} />
       <section className="retreat-turufjell-about retreat-turufjell-about-overlay">
         <div className="retreat-turufjell-about-scene">
-          <div className="retreat-turufjell-about-image"><Image src={turufjellSunnyCabin} alt={language === "nb" ? "Grandcabin ved skiløypa i solfylt vinterlandskap på Turufjell" : "Grandcabin beside the ski trail in Turufjell's sunny winter landscape"} fill unoptimized sizes="100vw" /></div>
+          <div className="retreat-turufjell-about-image"><GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-13")!} alt={language === "nb" ? "Grandcabin ved skiløypa i solfylt vinterlandskap på Turufjell" : "Grandcabin beside the ski trail in Turufjell's sunny winter landscape"} nb={language === "nb"} /></div>
           <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger på solsiden av Flå og vender mot sørvest og vest, med lange soldager, rikelig med kveldssol og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell lies on the sunny side of Flå, facing southwest and west, with long sunny days, plenty of evening sun and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p></div>
         </div>
         <div className="retreat-turufjell-about-link"><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>

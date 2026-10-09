@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import photos from "@/content/organized-gallery.json";
 import type { Language } from "@/components/useSiteLanguage";
+import { GalleryOriginal } from "@/components/GalleryOriginal";
 
 type Category = "all" | "cabin" | "living" | "bedrooms";
 
@@ -51,7 +52,7 @@ export function OrganizedGallery({ language }: { language: Language }) {
       }}>
         <header><span>GRANDCABIN</span><button type="button" onClick={() => dialog.current?.close()} aria-label={nb ? "Lukk bildet" : "Close photo"}>{nb ? "Lukk" : "Close"} ×</button></header>
         <div className="retreat-organized-gallery-full-photo">
-          {selected && <Image key={selected.id} src={selected.original} alt={labels[selected.category]} fill unoptimized sizes="100vw" />}
+          {selected && <GalleryOriginal key={selected.id} photo={selected} alt={labels[selected.category]} nb={nb} />}
         </div>
         <footer>
           <button type="button" onClick={() => change(-1)} aria-label={nb ? "Forrige bilde" : "Previous photo"}>←</button>

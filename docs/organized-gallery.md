@@ -16,6 +16,13 @@ Regenerate the local copies, previews and manifest with:
 
 ```powershell
 node scripts/prepare-organized-gallery.mjs 'C:\Users\kalaj\OneDrive\Desktop\GRAND CABIN Pictures'
+node scripts/prepare-gallery-static-originals.mjs
 ```
 
-The original copies total about 2.43 GB. Several individual images exceed GitHub's 100 MB file limit and Cloudflare static asset limits. They remain locally available and are excluded from Git; previews and the manifest are tracked. Before publishing this gallery with unchanged original quality, upload the original files to suitable photo/object storage and update the manifest original URLs. Do not silently resize or recompress the originals to meet deployment limits.
+## Publishing without R2
+
+The original copies total about 2.43 GB. Several individual images exceed GitHub's 100 MB file limit and Cloudflare's 25 MiB static asset limit. `prepare-gallery-static-originals.mjs` copies small originals directly to `public/images/gallery-originals` and divides larger originals into pieces of at most 20 MiB. Every byte is preserved. SHA-256 hashes verify the assembled pieces against the source file. This folder is tracked and deployed using the existing Cloudflare static hosting; no R2 subscription is needed.
+
+The full-screen viewer downloads these pieces only when a visitor opens that photograph, joins them into an image Blob of the original file type, and releases it when the viewer closes or changes photos. A preview remains visible while loading. The original resolution, embedded color profile and compression are untouched. Very large originals can take longer to load and use more browser memory. No original is silently resized or recompressed.
+
+GitHub limits each push to 2 GiB. Publish the asset commits in batches to a temporary staging branch, then push the completed main branch after the assets are present remotely. Monitor the existing Workers Builds: grandcabin check for the final main commit.

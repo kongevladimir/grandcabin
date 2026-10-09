@@ -55,3 +55,6 @@ playwright-report/
 /public/images/organized-gallery/*
 !/public/images/organized-gallery/*-preview.webp
 !/public/images/organized-gallery/cabin-11-sunny.png
+
+# This exact original is deployed as byte pieces in gallery-originals.
+/public/images/turufjell-sunny-cabin-original.jpg
