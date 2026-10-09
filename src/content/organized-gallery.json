@@ -113,12 +113,12 @@
     "id": "cabin-11",
     "category": "cabin",
     "file": "8,5.jpg",
-    "original": "/images/organized-gallery/cabin-11.jpg",
+    "original": "/images/organized-gallery/cabin-11-sunny.png",
     "preview": "/images/organized-gallery/cabin-11-preview.webp",
-    "width": 1600,
-    "height": 1200,
-    "originalWidth": 4032,
-    "originalHeight": 3024
+    "width": 1448,
+    "height": 1086,
+    "originalWidth": 1448,
+    "originalHeight": 1086
   },
   {
     "id": "cabin-12",

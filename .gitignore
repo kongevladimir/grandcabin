@@ -54,3 +54,4 @@ playwright-report/
 # Unchanged gallery originals are kept locally; some exceed GitHub's file limit.
 /public/images/organized-gallery/*
 !/public/images/organized-gallery/*-preview.webp
+!/public/images/organized-gallery/cabin-11-sunny.png

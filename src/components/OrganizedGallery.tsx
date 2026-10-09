@@ -15,12 +15,12 @@ export function OrganizedGallery({ language }: { language: Language }) {
   const visible = category === "all" ? photos : photos.filter(photo => photo.category === category);
   const selected = active === null ? null : visible[active];
   const filters: { id: Category; label: string }[] = [
-    { id: "all", label: "All" },
-    { id: "cabin", label: "Hytta" },
-    { id: "living", label: "Living space" },
-    { id: "bedrooms", label: "Soverom" },
+    { id: "all", label: nb ? "Alle" : "All" },
+    { id: "cabin", label: nb ? "Hytta" : "Cabin" },
+    { id: "living", label: nb ? "Oppholdsrom" : "Living space" },
+    { id: "bedrooms", label: nb ? "Soverom" : "Bedrooms" },
   ];
-  const labels: Record<string, string> = { cabin: nb ? "Hytta utvendig" : "Cabin exterior", living: "Living space", bedrooms: nb ? "Soverom" : "Bedrooms" };
+  const labels: Record<string, string> = { cabin: nb ? "Hytta utvendig" : "Cabin exterior", living: nb ? "Oppholdsrom" : "Living space", bedrooms: nb ? "Soverom" : "Bedrooms" };
   const change = (direction: number) => setActive(current => current === null ? null : (current + direction + visible.length) % visible.length);
 
   useEffect(() => {
