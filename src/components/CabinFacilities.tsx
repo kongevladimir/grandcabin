@@ -4,13 +4,13 @@ const facilities = {
   nb: [
     { title: "Kjøkken", items: ["4 oppvaskmaskiner · 2 på hvert kjøkken", "2 stekeovner", "2 kjøleskap", "2 frysere", "Vinskap"] },
     { title: "Bad & velvære", items: ["4 bad med dusj", "3 toaletter", "2 badstuer", "2 doble servanter · én i hver av to etasjer"] },
-    { title: "Stuer & uteområder", items: ["3 stuer", "TV", "2 peiser", "2 terrasser", "Ski inn / ski ut", "Utvendig kameraovervåking"] },
+    { title: "Stuer & uteområder", items: ["3 stuer", "TV", "2 peiser", "2 terrasser", "Ski inn / ski ut", "Parkering for 10+ biler", "Elbillading ca. 300 m fra hytta", "Utvendig kameraovervåking"] },
     { title: "Komfort & teknologi", items: ["Fiberoptisk internett med Wi-Fi", "Projektor med 100-tommers lerret", "Vaskemaskin", "Integrert støvsuger", "Vannbåren gulvvarme", "Balansert ventilasjon", "Smart strømstyring", "Nøkkelfri adgang"] },
   ],
   en: [
     { title: "Kitchens", items: ["4 dishwashers · 2 in each kitchen", "2 ovens", "2 refrigerators", "2 freezers", "Wine cabinet"] },
     { title: "Bathrooms & wellness", items: ["4 bathrooms with showers", "3 toilets", "2 saunas", "2 double washbasins · one on each of two floors"] },
-    { title: "Living spaces & outdoors", items: ["3 living rooms", "TV", "2 fireplaces", "2 terraces", "Ski-in / ski-out", "Exterior security cameras"] },
+    { title: "Living spaces & outdoors", items: ["3 living rooms", "TV", "2 fireplaces", "2 terraces", "Ski-in / ski-out", "Parking for 10+ cars", "EV charging approx. 300 m from the cabin", "Exterior security cameras"] },
     { title: "Comfort & technology", items: ["Fibre-optic internet with Wi-Fi", "Projector with 100-inch screen", "Washing machine", "Built-in vacuum system", "Underfloor heating", "Balanced ventilation", "Smart energy management", "Keyless entry"] },
   ],
 };
