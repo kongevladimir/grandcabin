@@ -543,7 +543,7 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
       <CabinFilm language={language} description={description} />
       <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>
       <section className="retreat-cabin-video-intro" id="retreat-cabin-video-intro">
-        <div className="retreat-cabin-intro-image"><Image src="/images/cabin-aurora-soft-stone.png" alt={isNorwegian ? "Grandcabin i snøen under nordlys og stjernehimmel" : "Grandcabin in the snow beneath northern lights and a starry sky"} fill unoptimized sizes="100vw" /></div>
+        <div className="retreat-cabin-intro-image"><Image src="/images/cabin-aurora-enhanced.webp" alt={isNorwegian ? "Grandcabin i snøen under nordlys og stjernehimmel" : "Grandcabin in the snow beneath northern lights and a starry sky"} fill unoptimized sizes="100vw" /></div>
         <div className="retreat-cabin-intro-heading">
           <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
           <h2>{isNorwegian ? <>700 moh.<br />Over 340 m²<br />ren fjellglede.</> : <>700 metres above sea level.<br />Over 340 m² of mountain living.</>}</h2>
