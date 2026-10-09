@@ -28,6 +28,7 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/concepts/retreat` — the main entrance.
 - `/concepts/retreat/cabin` — cabin story, room photo gallery with full-screen viewing, FINN and Airbnb review carousels, and facilities overview.
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
+- `/concepts/retreat/gallery` — 66 photos filtered by All, Hytta, Living space and Soverom, with full-screen viewing of unchanged originals. See `docs/organized-gallery.md` for source folders and original-photo hosting requirements.
 - `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.
 - `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.

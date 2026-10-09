@@ -11,6 +11,7 @@ import { TurufjellActivities } from "@/components/TurufjellActivities";
 import { CabinFilm } from "@/components/CabinFilm";
 import { CabinFacilities } from "@/components/CabinFacilities";
 import { CraftKitchenPhotos } from "@/components/CraftKitchenPhotos";
+import { OrganizedGallery } from "@/components/OrganizedGallery";
 import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.jpg";
 import cabinLivingSpace from "../../public/images/cabin-telescope-mountain-view.jpg";
@@ -32,7 +33,6 @@ import turufjellCyclingHq from "../../public/images/turufjell-cycling-hq.png";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
-const galleryPhotos = Array.from({ length: 74 }, (_, index) => `/images/gallery-updated/${(index + 1).toString().padStart(2, "0")}.png`);
 const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
   x: 4310 + (index % 4),
   y: 2355 + Math.floor(index / 4),
@@ -959,11 +959,8 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     return (
       <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
         <RetreatNav language={language} setLanguage={setLanguage} page={page} />
-        <main className="retreat-gallery-all">
-          <div className="retreat-gallery-all-title"><p>{t.number} · GRANDCABIN</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><span>{language === "nb" ? "Den oppdaterte bildesamlingen fra hytta og Turufjell." : "The updated photo collection from the cabin and Turufjell."}</span><b>74</b></div>
-          <div className="retreat-gallery-all-grid">{galleryPhotos.map((photo, index) => <figure className={index % 13 === 0 ? "wide" : index % 9 === 0 ? "tall" : ""} key={photo}><Image src={photo} alt={`${language === "nb" ? "Grandcabin bilde" : "Grandcabin photo"} ${index + 1}`} fill sizes="(max-width: 700px) 50vw, 33vw" /><span>{(index + 1).toString().padStart(2, "0")}</span></figure>)}</div>
-        </main>
-        {moreSections}
+        <OrganizedGallery language={language} />
+        <RetreatBookingFooter language={language} />
       </div>
     );
   }

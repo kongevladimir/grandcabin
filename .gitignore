@@ -50,3 +50,7 @@ playwright-report/
 # Private local booking data and preview credentials
 .booking-data/
 .booking-owner-access.txt
+
+# Unchanged gallery originals are kept locally; some exceed GitHub's file limit.
+/public/images/organized-gallery/*
+!/public/images/organized-gallery/*-preview.webp

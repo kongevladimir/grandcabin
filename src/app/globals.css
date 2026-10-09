@@ -1418,6 +1418,33 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-turufjell-travel-grid strong { display: block; margin-top: 3.2rem; font-size: clamp(2rem, 4vw, 4rem); font-weight: 500; letter-spacing: -.05em; }
 .retreat-turufjell-travel-grid h3 { margin: .7rem 0 1rem; font-size: .75rem; letter-spacing: .09em; text-transform: uppercase; }
 .retreat-turufjell-travel-grid p { color: #67717c; line-height: 1.7; }
+.retreat-organized-gallery { background: #f7f5f0; color: #17202c; }
+.retreat-organized-gallery-hero { position: relative; height: min(76svh, 900px); min-height: 420px; display: flex; align-items: flex-end; padding: clamp(2rem, 6vw, 6rem); isolation: isolate; }
+.retreat-organized-gallery-hero > img { z-index: -2; object-fit: cover; object-position: center 52%; }
+.retreat-organized-gallery-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(transparent 40%, rgb(11 20 30 / 55%)); }
+.retreat-organized-gallery-hero h1 { margin: 0; color: #fff; font-size: clamp(3.6rem, 6.5vw, 7rem); font-weight: 400; letter-spacing: -.035em; line-height: 1; }
+.retreat-organized-gallery-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(1.2rem, 3vw, 3.5rem); padding: 3.5rem 1.4rem 1rem; }
+.retreat-organized-gallery-filters button { padding: .55rem .1rem; border: 0; border-bottom: 1px solid transparent; background: transparent; color: #695d4e; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.2rem; cursor: pointer; }
+.retreat-organized-gallery-filters button[aria-pressed="true"] { border-bottom-color: #17202c; color: #17202c; }
+.retreat-organized-gallery-count { margin: 0; padding: .5rem 1rem 2rem; text-align: center; color: #796e61; font-size: .75rem; letter-spacing: .08em; }
+.retreat-organized-gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0 clamp(1rem, 3vw, 3rem) 4rem; }
+.retreat-organized-gallery-grid > button { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; padding: 0; border: 0; background: #17202c; cursor: pointer; }
+.retreat-organized-gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.retreat-organized-gallery-grid button:hover img { transform: scale(1.025); }
+.retreat-organized-gallery-grid button > span { position: absolute; bottom: .8rem; right: .8rem; color: #fff; background: rgb(15 24 33 / 70%); width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; }
+.retreat-organized-gallery button:focus-visible { outline: 2px solid #ab7c46; outline-offset: 4px; }
+.retreat-organized-gallery-viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 1rem; border: 0; background: #10171e; color: #fff; }
+.retreat-organized-gallery-viewer[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 1rem; }
+.retreat-organized-gallery-viewer::backdrop { background: #10171e; }
+.retreat-organized-gallery-viewer header, .retreat-organized-gallery-viewer footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: .8rem; letter-spacing: .1em; }
+.retreat-organized-gallery-viewer button { min-width: 44px; min-height: 44px; padding: .5rem 1rem; border: 1px solid #bfa37d; background: transparent; color: #fff; cursor: pointer; }
+.retreat-organized-gallery-viewer footer { justify-content: center; }
+.retreat-organized-gallery-full-photo { position: relative; min-height: 0; }
+.retreat-organized-gallery-full-photo img { object-fit: contain; }
+@media (max-width: 900px) { .retreat-organized-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .retreat-organized-gallery-grid { grid-template-columns: 1fr; } .retreat-organized-gallery-hero { min-height: 360px; height: 65svh; } .retreat-organized-gallery-filters { gap: 1.3rem; padding-top: 2rem; } }
+@media (prefers-reduced-motion: reduce) { .retreat-organized-gallery-grid img { transition: none; } }
+
 .retreat-gallery-all { background: #171e28; color: #fff; }
 .retreat-gallery-all-title { position: relative; display: flex; min-height: 520px; flex-direction: column; justify-content: center; padding: clamp(4rem, 8vw, 9rem); }
 .retreat-gallery-all-title > p { color: #d8b687; font-size: .66rem; font-weight: 800; letter-spacing: .15em; }
