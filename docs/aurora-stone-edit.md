@@ -7,7 +7,13 @@ Reference: the owner's daytime photo of the actual lower-floor stone cladding.
 First result: `public/images/cabin-aurora-natural-stone.png` (1448 × 1086).
 Current result after the owner's correction: `public/images/cabin-aurora-small-stone.png` (1448 × 1086).
 
-## Current final prompt
+## Softened version
+
+Current asset: `public/images/cabin-aurora-soft-stone.png` (1448 × 1086). Built-in imagegen.
+
+Precise local photographic retouch of the attached cabin night image. Change ONLY the stone cladding of the lower-floor facade and the stone right column. Make its texture slightly less sharp, less clearly delineated, and more naturally photographic at night: gently reduce microcontrast, soften the hard outlines of individual small stones and mortar joints, suppress the artificially crisp embossed detail, retain subtle irregular natural grey/beige small stacked stone structure. Mild realistic optical softness ONLY on the stone surfaces, not heavy blur or smearing. Preserve existing warm lamp spill and cool ambient shadows. Stone should feel real and softly integrated into the night scene, not stylized, not fake CGI. Do not enlarge stones, do not change masonry pattern, windows, doors, balcony, lights, wood, cabin geometry, snow, trees, sky, aurora or composition. Keep everything outside stone cladding unchanged. Preserve same 4:3 aspect ratio and resolution, no text.
+
+## Smaller stone prompt
 
 Edit target image 1, reference image 2. The stone edit must match image 2 MUCH more closely. Lower floor needs small rectangular brick-sized stone veneer, flat straight horizontal edges, many narrow staggered rows of grey and beige stone. Current image 1 incorrectly has large irregular polygon rocks and thick outlines. REMOVE those large polygon rock shapes entirely. Make each stone about ONE THIRD current height and HALF current width. Stones should look like small rough-cut rectangular strips, almost like thin natural stone bricks, softly varied greys with some cream and beige, tightly stacked with very thin nearly invisible joints. No polygon cobblestone shapes, no round rocks, no dark thick outlines. In the left front basement wall specifically, create 15-20 horizontal rows of small stone strips between balcony and snow, matching reference scale. Same on wall beneath balcony, and right stone column. Integrate night lighting realistically, restrained fine surface texture. Preserve ALL remaining image pixels and composition as closely as possible: cabin, timber, all openings, lamps, roof, snow, sky, trees and aurora unchanged. Image 2 red marks are annotations only, never include them. Highest detail same aspect ratio.
 
