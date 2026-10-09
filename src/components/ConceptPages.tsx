@@ -16,6 +16,7 @@ import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.
 import cabinLivingSpace from "../../public/images/cabin-telescope-mountain-view.jpg";
 import cabinLivingSpaceLoftView from "../../public/images/cabin-living-space-loft-view.webp";
 import suitesIntroduction from "../../public/images/suites-updated/cozy-layered-bedding.jpg";
+import masterSuiteBedroom from "../../public/images/suites-updated/master-suite-bedroom.png";
 import craftSpruceStaircase from "../../public/images/craft-spruce-staircase.webp";
 import craftOakBathroom from "../../public/images/craft-oak-bathroom.webp";
 import craftTimberHallway from "../../public/images/craft-timber-hallway.webp";
@@ -802,7 +803,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         </div>
       </section>
       <section className="retreat-master-suite">
-        <div className="retreat-master-image"><Image src={suitesIntroduction} alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} fill unoptimized sizes="(max-width: 900px) 100vw, 58vw" /></div>
+        <div className="retreat-master-image"><Image src={masterSuiteBedroom} alt={language === "nb" ? "Hovedsoverommet" : "The main bedroom"} unoptimized sizes="(max-width: 900px) 100vw, 58vw" /></div>
         <div>
           <p>{language === "nb" ? "HOVEDSUITEN" : "MASTER SUITE"}</p>
           <h2>{language === "nb" ? "Master suite" : "Master Suite"}</h2>

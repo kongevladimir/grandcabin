@@ -1246,6 +1246,11 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-master-suite > div:last-child > span { color: #c6ccd1; line-height: 1.8; }
 .retreat-master-suite ul { display: grid; margin: 2.5rem 0 0; padding: 0; list-style: none; }
 .retreat-master-suite li { border-top: 1px solid rgba(255,255,255,.2); padding: .9rem 0; color: #d8b687; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+
+/* Keep the bedroom's full height and right edge; trim only the left wall. */
+.retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-master-suite { min-height: 0; }
+.retreat-detail-page[data-page="bedrooms"]:not([data-page="cabin"]) .retreat-master-suite .retreat-master-image { min-height: 0; height: auto; align-self: center; overflow: hidden; }
+.retreat-master-image img { display: block; width: 104.1667%; max-width: none; height: auto; margin-left: -4.1667%; }
 .retreat-master-description { padding: clamp(6rem, 9vw, 9rem) clamp(1.4rem, 6vw, 7rem); color: #17202c; background: #f2f0eb; }
 .retreat-master-description-heading { display: grid; grid-template-columns: .35fr 1.65fr; gap: 3rem; align-items: start; margin-bottom: clamp(3rem, 6vw, 6rem); }
 .retreat-master-description-heading > p { margin: .6rem 0 0; color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
