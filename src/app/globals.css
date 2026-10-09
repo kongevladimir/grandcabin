@@ -980,6 +980,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-story-copy > span { color: #4c4a45; line-height: 1.85; }
 .retreat-cabin-video-hero { position: relative; isolation: isolate; container-type: size; display: grid; place-items: center; width: 100%; height: calc(100svh - 108px); min-height: 620px; max-height: 1200px; overflow: hidden; color: #fff; background: #17202c; }
 .retreat-cabin-video-poster { z-index: 0; object-fit: cover; }
+.retreat-cabin-local-video { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .retreat-cabin-video-frame { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
 .retreat-cabin-video-frame iframe { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; filter: contrast(1.06) saturate(1.04); }
 .retreat-cabin-video-copy { position: relative; z-index: 3; align-self: start; width: 100%; max-width: 1200px; padding: clamp(.75rem, 1.5svh, 1.25rem) 1.5rem 7rem; border: 0; background: none; box-shadow: none; backdrop-filter: none; color: #fff; text-align: center; text-shadow: none; }
@@ -2113,6 +2114,45 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 @media (max-width: 760px) {
   .retreat-cabin-video-intro { scroll-margin-top: 112px; }
+}
+
+/* Keep film captions readable as the footage changes from snow to interiors. */
+.retreat-cabin-video-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(8 17 27 / 70%) 0%, rgb(8 17 27 / 48%) 30%, rgb(8 17 27 / 8%) 54%, rgb(8 17 27 / 58%) 82%, rgb(8 17 27 / 76%) 100%);
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy,
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-statement {
+  text-shadow: 0 2px 6px rgb(0 0 0 / 70%), 0 6px 24px rgb(0 0 0 / 35%);
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy h1 {
+  font-size: clamp(3.5rem, 7vw, 6.75rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-welcome {
+  color: #f4e5cf;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 70%);
+}
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy .retreat-cabin-video-subtitle,
+.retreat-detail-page[data-page="cabin"] .retreat-cabin-video-hero .retreat-cabin-statement-lead {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .005em;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy h1 { font-size: clamp(3.5rem, 14vw, 5rem); }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-welcome { font-size: .65rem; letter-spacing: .12em; }
 }
 
 /* The cabin opening should read as one full-bleed photograph with its copy set over the scene. */

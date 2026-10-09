@@ -39,6 +39,8 @@ yarn-error.log*
 next-env.d.ts
 
 # Local browser verification
+/.video-tools/
+/preview-server*.log
 test-results/
 playwright-report/
 
