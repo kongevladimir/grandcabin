@@ -10,7 +10,7 @@ const output = 'public/images/gallery-originals';
 await mkdir(output, { recursive: true });
 let total = 0;
 for (const photo of photos) {
-  const extension = path.extname(photo.original);
+  const extension = photo.id === 'cabin-11' ? '.png' : path.extname(photo.file).toLowerCase();
   const input = photo.id === 'cabin-11' ? 'cabin-11-sunny.png' : `${photo.id}${extension}`;
   const bytes = await readFile(path.join('public/images/organized-gallery', input));
   photo.originalMime = extension === '.png' ? 'image/png' : extension === '.webp' ? 'image/webp' : 'image/jpeg';
