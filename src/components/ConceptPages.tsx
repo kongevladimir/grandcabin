@@ -891,7 +891,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   );
 
   const gatheringCompanies = page === "meetings" && (
-    <section className="retreat-gathering-types">
+    <section className="retreat-gathering-types retreat-gathering-companies">
       <div className="retreat-company-strip">
         <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT GRANDCABIN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN GRANDCABIN"}</p>
         <div className="retreat-company-wall">

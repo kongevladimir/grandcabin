@@ -1359,6 +1359,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-company-wall .retreat-company-flytoget { border-color: #2f353a; background: #2f353a; }
 .retreat-company-wall .retreat-company-flytoget > small { color: #d9dddf; }
 .retreat-company-wall .retreat-company-rsa { background: #f7f7f7; }
+.retreat-gathering-companies .retreat-company-strip { margin-top: 0; padding-top: 0; border-top: 0; }
+.retreat-gathering-companies .retreat-company-strip > p { margin: 0; }
+.retreat-gathering-companies .retreat-company-wall { margin-top: 1.75rem; }
 .retreat-turufjell-activities { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 6vw, 7rem); background: #e1c9a7; text-align: center; }
 .retreat-turufjell-activities-intro { max-width: 800px; margin: 0 auto 4.5rem; }
 .retreat-turufjell-activities-intro > p { margin-bottom: 1rem; color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
@@ -1843,6 +1846,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 /* Alternate warm and dark story sections across the editorial pages. */
 .retreat-detail-page[data-page="meetings"] .retreat-gathering-types {
   background: #e1c9a7;
+}
+
+.retreat-detail-page[data-page="meetings"] .retreat-gathering-types.retreat-gathering-companies {
+  padding-block: clamp(1.5rem, 2vw, 2rem);
 }
 
 .retreat-detail-page[data-page="meetings"] .retreat-gathering-opening {
