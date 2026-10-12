@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
@@ -469,8 +470,8 @@ const retreatPaths = [
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
-    ? ["Hytta", "Suites", "Samlinger", "Håndverk", "Opplevelser", "Beliggenhet", "Galleri", "3D-visning"]
-    : ["The cabin", "Suites", "Retreats", "Craftsmanship", "Experiences", "Location", "Gallery", "3D tour"];
+    ? ["Hytta", "Rom", "Samlinger", "Håndverk", "Opplevelser", "Beliggenhet", "Galleri", "3D-visning"]
+    : ["The cabin", "Rooms", "Retreats", "Craftsmanship", "Experiences", "Location", "Gallery", "3D tour"];
 
   return (
     <header className="retreat-header retreat-header-pages">
@@ -564,6 +565,9 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
 
 export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const [language, setLanguage] = useSiteLanguage();
+  useEffect(() => {
+    if (page === "bedrooms") document.title = language === "nb" ? "Rom | Grandcabin" : "Rooms | Grandcabin";
+  }, [language, page]);
   const nb = {
     cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living", alt: "Stuen med utsikt", facts: ["Ny fra 2024", "Over 340 m²", "4 bad · 2 badstuer"] },
     bedrooms: { number: "02", title: "10 separate rom for overnatting\n29 sengeplasser", text: "Soveplassene er fordelt over tre nivåer: 16 i underetasjen, fem i hovedetasjen og åtte på loftet. Det gir nærhet for gruppen og rolige soner når dagen er over.", photo: "bedroom", alt: "Et av soverommene", facts: ["16 sengeplasser\nUnderetasje", "5 sengeplasser\nHovedetasje", "8 sengeplasser\nLoft"] },
@@ -973,7 +977,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {gatheringTypes}
       {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : page === "turufjell" ? " retreat-detail-turufjell" : page === "location" ? " retreat-detail-location" : ""}`}>
         <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : page === "bedrooms" ? suitesIntroduction : page === "materials" ? craftTimberHallway : page === "turufjell" ? turufjellWinterAerial : page === "location" ? locationNorthernLights : image(t.photo)} alt={page === "cabin" ? (language === "nb" ? "Teleskop foran panoramavinduet med utsikt mot snødekte fjell" : "Telescope by the panoramic window overlooking snowy mountains") : page === "materials" ? (language === "nb" ? "Gang med naturlig treverk og håndlagde detaljer" : "Hallway with natural timber and handcrafted details") : page === "turufjell" ? (language === "nb" ? "Flyfoto av snødekte Turufjell med hytter, skiløyper og fjellandskapet rundt" : "Aerial photograph of snowy Turufjell, cabins, ski trails and surrounding mountains") : page === "location" ? (language === "nb" ? "Grandcabin under nordlyset på Turufjell" : "Grandcabin beneath the northern lights at Turufjell") : t.alt} fill unoptimized={page === "cabin" || page === "bedrooms" || page === "materials" || page === "turufjell" || page === "location"} priority={page !== "cabin"} sizes={page === "turufjell" || page === "location" ? "100vw" : page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
-        <div className="retreat-detail-copy"><p>{page === "bedrooms" ? "02 · SUITES" : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
+        <div className="retreat-detail-copy"><p>{page === "bedrooms" ? (language === "nb" ? "02 · ROM" : "02 · ROOMS") : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>}
       {page === "meetings" && <section className="retreat-meetings-intro">
         <div className="retreat-meetings-intro-copy">

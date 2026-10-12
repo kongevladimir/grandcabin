@@ -47,7 +47,7 @@ export function BedroomGallery({ language }: { language: Language }) {
   return (
     <section className="retreat-suite-gallery" aria-label={language === "nb" ? "Bildegalleri fra soverommene" : "Bedroom photo gallery"} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="retreat-suite-gallery-heading">
-        <p>SUITES · GRANDCABIN</p>
+        <p>{language === "nb" ? "ROM · GRANDCABIN" : "ROOMS · GRANDCABIN"}</p>
         <h2>{language === "nb" ? "Rom for å falle til ro" : "Rooms to return to"}</h2>
         <span>{language === "nb" ? "Se soverommene, fra luftige dobbeltsuiter til lune rom for familien." : "Explore the bedrooms, from airy double suites to inviting rooms for families."}</span>
       </div>
@@ -63,7 +63,7 @@ export function BedroomGallery({ language }: { language: Language }) {
           changeSlide(event.key === "ArrowLeft" ? -1 : 1);
         }
       }}>
-        <header><span>SUITES · GRANDCABIN</span><button type="button" onClick={() => viewer.current?.close()} aria-label={language === "nb" ? "Lukk fullskjerm" : "Close full screen"}>{language === "nb" ? "Lukk" : "Close"} ×</button></header>
+        <header><span>{language === "nb" ? "ROM · GRANDCABIN" : "ROOMS · GRANDCABIN"}</span><button type="button" onClick={() => viewer.current?.close()} aria-label={language === "nb" ? "Lukk fullskjerm" : "Close full screen"}>{language === "nb" ? "Lukk" : "Close"} ×</button></header>
         <div className="retreat-suite-viewer-image">{expanded && <Image src={`/images/suites-updated/${slides[active]}.webp`} alt={photoAlt} fill unoptimized sizes="100vw" />}</div>
         <footer><button type="button" onClick={() => changeSlide(-1)} aria-label={previousLabel}>←</button><span aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span><button type="button" onClick={() => changeSlide(1)} aria-label={nextLabel}>→</button></footer>
       </dialog>
