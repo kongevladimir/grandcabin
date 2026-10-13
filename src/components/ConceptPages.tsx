@@ -734,7 +734,12 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       )}
 
       {page !== "cabin" && page !== "meetings" && detailBanner}
-      <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>
+      {page === "meetings" ? (
+        <section className="retreat-detail-points retreat-meeting-equipment">
+          <figure><Image src="/images/meetings-updated/projector-long-table-original.jpg" alt={language === "nb" ? "Langbord med projektor og lerret i Grandcabin" : "Grandcabin meeting table with projector and presentation screen"} width={4000} height={3000} unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
+          <div className="retreat-meeting-equipment-copy"><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2><ul>{[more.points[0], language === "nb" ? "Projektor" : "Projector", ...more.points.slice(1)].map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></div>
+        </section>
+      ) : <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>}
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
       {cabinReviews}
       {cabinComfort}

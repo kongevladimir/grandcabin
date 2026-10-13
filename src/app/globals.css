@@ -1852,6 +1852,18 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   padding-block: clamp(1.5rem, 2vw, 2rem);
 }
 
+.retreat-detail-page[data-page="meetings"] .retreat-detail-points.retreat-meeting-equipment {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+}
+.retreat-meeting-equipment figure { margin: 0; }
+.retreat-meeting-equipment figure img { display: block; width: 100%; height: auto; }
+.retreat-detail-page[data-page="meetings"] .retreat-detail-points.retreat-meeting-equipment h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); }
+.retreat-meeting-equipment li { padding-block: 1.15rem; }
+@media (max-width: 900px) {
+  .retreat-detail-page[data-page="meetings"] .retreat-detail-points.retreat-meeting-equipment { grid-template-columns: 1fr; }
+}
+
 .retreat-detail-page[data-page="meetings"] .retreat-gathering-opening {
   background: #fff;
 }
