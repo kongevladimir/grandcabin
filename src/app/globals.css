@@ -1270,6 +1270,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-bedroom-wellness-grid figure { margin: 0; overflow: hidden; background: #17202c; color: #fff; }
 .retreat-bedroom-wellness-grid figure > div { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
 .retreat-bedroom-wellness-grid figure img { object-fit: contain; object-position: center; }
+.retreat-original-photo-link > span { position: absolute; z-index: 1; right: .75rem; bottom: .75rem; display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: #17202cdd; color: #fff; }
+.retreat-original-photo-link:focus-visible > span { outline: 2px solid #d8b687; outline-offset: 3px; }
 .retreat-bedroom-wellness-grid figcaption { display: flex; align-items: center; gap: 1rem; min-height: 88px; padding: 1.25rem 1.4rem; }
 .retreat-bedroom-wellness-grid figcaption span { color: #d8b687; font-size: .65rem; font-weight: 800; }
 .retreat-bedroom-wellness-grid figcaption strong { font-family: var(--font-serif); font-size: clamp(1.15rem, 1.6vw, 1.55rem); font-weight: 500; }
