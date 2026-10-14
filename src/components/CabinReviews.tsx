@@ -71,6 +71,6 @@ export function CabinReviews({ language, reviews, finnUrl }: { language: Languag
     <header className="retreat-reviews-head"><div><p>{nb ? "GJESTENES OPPLEVELSER" : "GUEST EXPERIENCES"}</p><h2>{nb ? "Dette trekker gjestene frem." : "What guests highlight."}</h2></div></header>
     <ReviewRow language={language} reviews={reviews.map(review => ({ ...review, text: finnSummaries[language][review.name] ?? review.text }))} source="FINN.no" href={finnUrl} rating="10/10" />
     <ReviewRow language={language} reviews={airbnbReviews.map(review => ({ name: review.name, date: nb ? review.month : review.enMonth, score: "5", text: review[language] }))} source="Airbnb" href="https://www.airbnb.com/rooms/1062840379999066478" rating="5/5" />
-    <div className="retreat-reviews-source"><span>{nb ? "Utvalgte gjestevurderinger, gjengitt som korte sammendrag. Airbnb-vurderingene gjelder annonsen for underetasjen." : "Selected guest reviews, presented as brief summaries. Airbnb reviews relate to the lower-floor listing."}</span></div>
+    <div className="retreat-reviews-source"><span>{nb ? "Utvalgte gjestevurderinger, gjengitt som korte sammendrag." : "Selected guest reviews, presented as brief summaries."}</span></div>
   </section>;
 }
