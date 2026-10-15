@@ -2259,8 +2259,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-turufjell-about-link { padding: 1.6rem var(--retreat-page-gutter); background: #f2f0eb; }
 .retreat-turufjell-about-link a { display: inline-block; padding-bottom: .4rem; border-bottom: 1px solid #8a6036; color: #17202c; font-size: .75rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-detail-page[data-page="turufjell"] .retreat-banner-caption-above { background: #f2f0eb; }
-.retreat-detail-page[data-page="turufjell"] .retreat-detail-banner-seasonal { min-height: 78svh; }
-.retreat-detail-page[data-page="turufjell"] .retreat-detail-banner-seasonal > img { object-fit: cover; }
+.retreat-detail-page[data-page="turufjell"]:not([data-page="cabin"]) .retreat-detail-banner-seasonal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 0; height: auto; }
+.retreat-seasonal-photo { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
+.retreat-seasonal-photo > img { object-fit: cover; }
+@media (max-width: 700px) {
+  .retreat-detail-page[data-page="turufjell"]:not([data-page="cabin"]) .retreat-detail-banner-seasonal { grid-template-columns: 1fr; }
+}
 @media (max-width: 1100px) {
   .retreat-turufjell-about-scene::before { display: none; }
   .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay .retreat-turufjell-about-image { grid-area: auto; }

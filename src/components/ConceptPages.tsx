@@ -616,7 +616,12 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <>
           <section className="retreat-banner-caption retreat-banner-caption-above"><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></section>
           <section className="retreat-detail-banner retreat-detail-banner-seasonal">
-            <Image src={page === "turufjell" ? turufjellCyclingHq : image(more.bannerPhoto)} alt="" fill unoptimized={page === "turufjell"} sizes="100vw" />
+            <div className="retreat-seasonal-photo">
+              <Image src="/images/turufjell-pumptrack.png" alt={language === "nb" ? "Barn sykler på pumptracken på Turufjell i solskinn" : "Children cycling on the Turufjell pump track in the sunshine"} fill unoptimized sizes="(max-width: 700px) 100vw, 50vw" />
+            </div>
+            <div className="retreat-seasonal-photo">
+              <Image src={turufjellCyclingHq} alt={language === "nb" ? "Stisykling gjennom skogen på Turufjell" : "Trail cycling through the forest at Turufjell"} fill unoptimized sizes="(max-width: 700px) 100vw, 50vw" />
+            </div>
           </section>
         </>
       ) : (
