@@ -27,7 +27,7 @@ The selected website design is the multi-page mountain-retreat presentation:
 
 - `/concepts/retreat` — the main entrance.
 - `/concepts/retreat/cabin` — cabin story, room photo gallery with full-screen viewing, FINN and Airbnb review carousels, and facilities overview.
-- `/concepts/retreat/bedrooms` — Rom in Norwegian and Rooms in English, with bedroom photos and room details. The private sauna photo opens at its unchanged original resolution when clicked.
+- `/concepts/retreat/bedrooms` — Rom in Norwegian and Rooms in English, with bedroom photos and room details.
 - `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
 - `/concepts/retreat/gallery` — 66 photos filtered by Alle, Hytta, Oppholdsrom and Soverom (All, Cabin, Living space and Bedrooms in English), with full-screen viewing. Source originals are unchanged, except for the requested sunny ski photo edit. See `docs/organized-gallery.md` for source folders and original-photo hosting requirements.
 - `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.

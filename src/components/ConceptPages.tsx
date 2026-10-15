@@ -15,7 +15,6 @@ import { CraftKitchenPhotos } from "@/components/CraftKitchenPhotos";
 import { OrganizedGallery } from "@/components/OrganizedGallery";
 import { GalleryOriginal } from "@/components/GalleryOriginal";
 import organizedPhotos from "@/content/organized-gallery.json";
-import privateSaunaPhoto from "@/content/private-sauna-photo.json";
 import { RegionalMap } from "@/components/RegionalMap";
 import cabinMountainView from "../../public/images/cabin-snowy-mountain-village.jpg";
 import cabinLivingSpace from "../../public/images/cabin-telescope-mountain-view.jpg";
@@ -851,7 +850,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <figcaption><span>01</span><strong>{language === "nb" ? "Bad i varme naturmaterialer" : "Bathroom in warm natural materials"}</strong></figcaption>
           </figure>
           <figure>
-            <div><GalleryOriginal photo={privateSaunaPhoto} alt={language === "nb" ? "Privat badstue ved hovedsoverommet" : "Private sauna beside the main bedroom"} nb={language === "nb"} openFullImage /></div>
+            <div><Image src="/images/finn-gallery/25.jpg" alt={language === "nb" ? "Privat badstue ved hovedsoverommet" : "Private sauna beside the main bedroom"} fill unoptimized sizes="(max-width: 900px) 100vw, 34vw" /></div>
             <figcaption><span>02</span><strong>{language === "nb" ? "Privat badstue med utsikt" : "Private sauna with a view"}</strong></figcaption>
           </figure>
           <figure>
