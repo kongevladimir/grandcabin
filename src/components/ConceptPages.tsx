@@ -622,7 +622,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       ) : (
         <>
           {page !== "meetings" && page !== "location" && <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
-            <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />
+            {page === "materials" ? <GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-03")!} alt={language === "nb" ? "Grandcabin i solfylt vinterlandskap, med fasade i tre og naturstein" : "Grandcabin in a sunny winter landscape, with timber and natural stone cladding"} nb={language === "nb"} /> : <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />}
           </section>}
           <section className={`retreat-banner-caption${page === "cabin" ? " retreat-banner-caption-single" : ""}`}><h2>{more.bannerTitle}</h2>{page !== "cabin" && <p>{more.bannerText}</p>}</section>
         </>

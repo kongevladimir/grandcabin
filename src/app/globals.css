@@ -1140,6 +1140,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-material-oil h2 { margin-bottom: 0; }
 .retreat-material-oil > div:last-child { align-self: end; }
 .retreat-material-oil > div:last-child p { color: #c8cdd2; line-height: 1.9; }
+.retreat-detail-page[data-page="materials"] .retreat-material-oil { background: #e9e3d8; color: #17202c; }
+.retreat-detail-page[data-page="materials"] .retreat-material-oil > div:first-child > p { color: #8a6036; }
+.retreat-detail-page[data-page="materials"] .retreat-material-oil > div:last-child p { color: #50565b; }
 .retreat-detail-footer { display: grid; grid-template-columns: .7fr 1.45fr .7fr; gap: clamp(2.5rem, 6vw, 7rem); align-items: start; padding: clamp(5rem, 8vw, 8rem) clamp(1.4rem, 7vw, 8rem); color: #fff; background: #17202c; }
 .retreat-detail-footer p { margin: 0 0 1.25rem; color: #dcc092; font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-detail-footer span { display: block; color: #d8dde1; line-height: 1.75; }
