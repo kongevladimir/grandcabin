@@ -1,6 +1,6 @@
 # Organized gallery
 
-The gallery uses 66 owner photographs from GRAND CABIN Pictures: 15 from Hytta utvendig 1, 41 from Living space 1, and 10 from Bedroom 1. All preserves that group order. Within each folder, numbered filenames sort naturally (including comma decimals); other filenames sort alphabetically.
+The gallery uses 67 owner photographs from GRAND CABIN Pictures: 15 from Hytta utvendig 1, 42 from Living space 1, and 10 from Bedroom 1. All preserves that group order. Within each folder, numbered filenames sort naturally (including comma decimals); other filenames sort alphabetically. On 16 October 2026, Living space 1 was refreshed to match the owner's numbered selection, from 01.jpg through 38.jpg including numbered variants. Unchanged photos retain their existing asset IDs and original bytes; removed selections no longer appear in the gallery.
 
 Full-screen viewing uses exact copies of the source files without resizing or recompression, except for the owner-requested sunny ski edit described below. Only grid previews are generated separately at up to 1600 pixels per edge, WebP quality 96. Full-screen images use contain so the complete photo remains visible. Filters follow the site language: Alle, Hytta, Oppholdsrom, Soverom in Norwegian; All, Cabin, Living space, Bedrooms in English.
 
@@ -12,7 +12,15 @@ Final prompt (built-in tool):
 
 > Use case: lighting-weather. Edit target: the attached original skiing photograph for a premium cabin website gallery. Replace the grey overcast foggy weather with clear sunny winter weather and a natural blue sky. Remove mist to make existing trees and snow clearer; add realistic sunlight and restrained soft blue snow shadows. Keep the same skier, exact airborne pose, face, helmet, goggles, blue-black jacket, orange trousers, skis, distant people, trees, slope, snow tracks, poles and their positions. Preserve the original 4:3 framing with no crop. Photographic realism, crisp natural detail, no excessive HDR, no new mountains or objects, no text. Deliver the highest supported resolution, ideally 4032x3024, to retain detailed high-quality gallery viewing.
 
-Regenerate the local copies, previews and manifest with:
+Refresh only the owner's sorted living-space selection without rebuilding the other categories:
+
+```powershell
+node scripts/sync-living-gallery.mjs 'C:\Users\kalaj\OneDrive\Desktop\GRAND CABIN Pictures\Living space 1'
+```
+
+This reuses hosted originals by SHA-256, preserves the new originals byte for byte, and generates only the new grid previews. It updates both Oppholdsrom and that category's section in Alle.
+
+For a deliberate complete rebuild of all three categories, regenerate local copies, previews and manifest with:
 
 ```powershell
 node scripts/prepare-organized-gallery.mjs 'C:\Users\kalaj\OneDrive\Desktop\GRAND CABIN Pictures'
