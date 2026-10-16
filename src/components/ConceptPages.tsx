@@ -612,6 +612,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const detailBanner = (
     <>
       {page !== "meetings" && page !== "location" && page === "turufjell" ? (
+        <>
           <section className="retreat-seasonal-story">
             <div className="retreat-seasonal-photo">
               <Image src="/images/turufjell-pumptrack.png" alt={language === "nb" ? "Barn sykler på pumptracken på Turufjell i solskinn" : "Children cycling on the Turufjell pump track in the sunshine"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" />
@@ -621,6 +622,16 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
               <span>{more.bannerText}</span>
             </div>
           </section>
+          <section className="retreat-seasonal-story">
+            <div className="retreat-detail-story-copy">
+              <h2>{language === "nb" ? "På to hjul gjennom skogen" : "Through the forest on two wheels"}</h2>
+              <span>{language === "nb" ? "Ta en tur på sykkel og opplev skogen og fjellandskapet i ditt eget tempo." : "Head out by bike and enjoy the forest and mountain landscape at your own pace."}</span>
+            </div>
+            <div className="retreat-seasonal-photo">
+              <Image src="/images/turufjell-cycling-hq.png" alt={language === "nb" ? "Stisykling gjennom skogen på Turufjell" : "Trail cycling through the forest at Turufjell"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" />
+            </div>
+          </section>
+        </>
       ) : (
         <>
           {page !== "meetings" && page !== "location" && <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
