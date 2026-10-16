@@ -731,6 +731,24 @@
     ]
   },
   {
+    "id": "living-18",
+    "category": "living",
+    "file": "25 (1).jpg",
+    "original": "/images/organized-gallery/living-18-preview.webp",
+    "preview": "/images/organized-gallery/living-18-preview.webp",
+    "width": 1600,
+    "height": 978,
+    "originalWidth": 16694,
+    "originalHeight": 10202,
+    "originalMime": "image/jpeg",
+    "originalSha256": "aa695bc0cdc0eb165ef2c9872876bc285836be9065829f37268712396eaf6564",
+    "originalParts": [
+      "/images/gallery-originals/living-18-00.bin",
+      "/images/gallery-originals/living-18-01.bin",
+      "/images/gallery-originals/living-18-02.bin"
+    ]
+  },
+  {
     "id": "living-16",
     "category": "living",
     "file": "26.jpg",
@@ -767,24 +785,6 @@
       "/images/gallery-originals/living-17-01.bin",
       "/images/gallery-originals/living-17-02.bin",
       "/images/gallery-originals/living-17-03.bin"
-    ]
-  },
-  {
-    "id": "living-18",
-    "category": "living",
-    "file": "27.jpg",
-    "original": "/images/organized-gallery/living-18-preview.webp",
-    "preview": "/images/organized-gallery/living-18-preview.webp",
-    "width": 1600,
-    "height": 978,
-    "originalWidth": 16694,
-    "originalHeight": 10202,
-    "originalMime": "image/jpeg",
-    "originalSha256": "aa695bc0cdc0eb165ef2c9872876bc285836be9065829f37268712396eaf6564",
-    "originalParts": [
-      "/images/gallery-originals/living-18-00.bin",
-      "/images/gallery-originals/living-18-01.bin",
-      "/images/gallery-originals/living-18-02.bin"
     ]
   },
   {

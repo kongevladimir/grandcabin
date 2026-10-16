@@ -18,7 +18,7 @@ Refresh only the owner's sorted living-space selection without rebuilding the ot
 node scripts/sync-living-gallery.mjs 'C:\Users\kalaj\OneDrive\Desktop\GRAND CABIN Pictures\Living space 1'
 ```
 
-This reuses hosted originals by SHA-256, preserves the new originals byte for byte, and generates only the new grid previews. It updates both Oppholdsrom and that category's section in Alle.
+This reuses hosted originals by SHA-256, preserves the new originals byte for byte, and generates only the new grid previews. It updates both Oppholdsrom and that category's section in Alle. The owner's display-order exception places billiards (living-18, now named 25 (1).jpg) immediately after table tennis (living-17550623decb, 25.jpg). Stable asset IDs preserve this order when filenames change.
 
 For a deliberate complete rebuild of all three categories, regenerate local copies, previews and manifest with:
 

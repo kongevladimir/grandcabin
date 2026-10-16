@@ -51,6 +51,12 @@ for (const file of files) {
     originalSha256: hash, originalParts });
   console.log(`Added ${file}: original ${metadata.width} × ${metadata.height}, ${bytes.length} bytes preserved`);
 }
+// Owner's display-order exception: billiards follows table tennis.
+const billiardsIndex = living.findIndex(photo => photo.id === 'living-18');
+if (billiardsIndex !== -1 && living.some(photo => photo.id === 'living-17550623decb')) {
+  const [billiards] = living.splice(billiardsIndex, 1);
+  living.splice(living.findIndex(photo => photo.id === 'living-17550623decb') + 1, 0, billiards);
+}
 const updated = [...photos.filter(photo => photo.category === 'cabin'), ...living, ...photos.filter(photo => photo.category === 'bedrooms')];
 await writeFile(manifestPath, JSON.stringify(updated, null, 2) + '\n');
-console.log(`Living space: ${living.length} photos in filename order; other categories unchanged.`);
+console.log(`Living space: ${living.length} photos in filename order with billiards after table tennis; other categories unchanged.`);
