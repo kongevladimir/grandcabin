@@ -1228,6 +1228,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-arrival-notes article b { color: #d8b687; font-size: .68rem; }
 .retreat-arrival-notes article h3 { margin: 3.2rem 0 1.2rem; font-size: clamp(1.4rem, 2.2vw, 2.1rem); font-weight: 500; }
 .retreat-arrival-notes article p { color: #bfc6cc; line-height: 1.75; }
+.retreat-arrival-notes article a { display: inline-block; color: #d8b687; text-decoration: underline; text-underline-offset: .25em; line-height: 1.6; }
 .retreat-floor-plan { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #e1c9a7; }
 .retreat-floor-heading { display: grid; grid-template-columns: .35fr 1.65fr; gap: 3rem; align-items: start; margin-bottom: 4rem; }
 .retreat-floor-heading h2 { margin-top: 0; }
