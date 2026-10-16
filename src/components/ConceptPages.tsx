@@ -31,7 +31,6 @@ import craftFireplaceGlass from "../../public/images/craft-fireplace-glass.webp"
 import turufjellWinterAerial from "../../public/images/turufjell-winter-aerial.webp";
 import turufjellSkiRacks from "../../public/images/turufjell-ski-racks-hq.png";
 import locationNorthernLights from "../../public/images/location-northern-lights.jpg";
-import turufjellCyclingHq from "../../public/images/turufjell-cycling-hq.png";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
 const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
@@ -613,17 +612,15 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const detailBanner = (
     <>
       {page !== "meetings" && page !== "location" && page === "turufjell" ? (
-        <>
-          <section className="retreat-banner-caption retreat-banner-caption-above"><h2>{more.bannerTitle}</h2><p>{more.bannerText}</p></section>
-          <section className="retreat-detail-banner retreat-detail-banner-seasonal">
+          <section className="retreat-seasonal-story">
             <div className="retreat-seasonal-photo">
-              <Image src="/images/turufjell-pumptrack.png" alt={language === "nb" ? "Barn sykler på pumptracken på Turufjell i solskinn" : "Children cycling on the Turufjell pump track in the sunshine"} fill unoptimized sizes="(max-width: 700px) 100vw, 50vw" />
+              <Image src="/images/turufjell-pumptrack.png" alt={language === "nb" ? "Barn sykler på pumptracken på Turufjell i solskinn" : "Children cycling on the Turufjell pump track in the sunshine"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
-            <div className="retreat-seasonal-photo">
-              <Image src={turufjellCyclingHq} alt={language === "nb" ? "Stisykling gjennom skogen på Turufjell" : "Trail cycling through the forest at Turufjell"} fill unoptimized sizes="(max-width: 700px) 100vw, 50vw" />
+            <div className="retreat-detail-story-copy">
+              <h2>{more.bannerTitle}</h2>
+              <span>{more.bannerText}</span>
             </div>
           </section>
-        </>
       ) : (
         <>
           {page !== "meetings" && page !== "location" && <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
