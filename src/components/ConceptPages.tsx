@@ -77,10 +77,10 @@ export function DestinationConcept() {
 
   return (
     <div className="concept-page destination-page">
-      <header className="dest-header"><Link className="dest-brand" href="/">GRANDCABIN <span>TURUFJELL</span></Link><nav>{t.nav.map((item, index) => <a key={item} href={`#dest-${index}`}>{item}</a>)}</nav><LanguageToggle language={language} setLanguage={setLanguage} /></header>
+      <header className="dest-header"><Link className="dest-brand" href="/">TURU CROWN <span>TURUFJELL</span></Link><nav>{t.nav.map((item, index) => <a key={item} href={`#dest-${index}`}>{item}</a>)}</nav><LanguageToggle language={language} setLanguage={setLanguage} /></header>
       <main>
         <section className="dest-hero">
-          <Image src={image("exterior")} alt="Grandcabin at Turufjell" fill priority sizes="100vw" /><div className="dest-hero-shade" />
+          <Image src={image("exterior")} alt="Turu Crown at Turufjell" fill priority sizes="100vw" /><div className="dest-hero-shade" />
           <div className="dest-hero-copy"><p>{t.eyebrow}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><div className="dest-hero-bottom"><p>{t.lead}</p><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <span>↗</span></a></div></div>
           <div className="dest-capacity"><strong>29</strong><span>{language === "nb" ? "gjester" : "guests"}</span></div>
         </section>
@@ -91,7 +91,7 @@ export function DestinationConcept() {
         <section className="dest-base" id="dest-1"><div className="dest-base-image"><Image src={image("living")} alt="Living room" fill sizes="(max-width: 800px) 100vw, 55vw" /></div><div className="dest-base-copy"><p className="concept-kicker">{t.baseLabel}</p><h2>{t.baseTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2><p>{t.baseText}</p><ul><li><strong>9</strong> {language === "nb" ? "soverom" : "bedrooms"}</li><li><strong>4</strong> {language === "nb" ? "bad" : "bathrooms"}</li><li><strong>2</strong> {language === "nb" ? "kjøkken" : "kitchens"}</li><li><strong>2</strong> {language === "nb" ? "badstuer" : "saunas"}</li></ul></div></section>
         <section className="dest-nearby"><h2>{t.nearby}</h2><div>{t.distances.map(([distance, label]) => <article key={distance}><strong>{distance}</strong><span>{label}</span></article>)}</div></section>
         <section className="dest-route" id="dest-2"><div className="dest-route-copy"><p className="concept-kicker">{t.routeLabel}</p><h2>{t.routeTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2><p>{t.routeText}</p></div><div className="dest-route-image"><Image src={image("terrace")} alt="View from the terrace" fill sizes="(max-width: 800px) 100vw, 50vw" /></div></section>
-        <section className="dest-close"><p>GRANDCABIN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <b>↗</b></a></section>
+        <section className="dest-close"><p>TURU CROWN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <b>↗</b></a></section>
       </main>
     </div>
   );
@@ -115,9 +115,9 @@ export function EditorialConcept() {
 
   return (
     <div className="concept-page editorial-page">
-      <header className="ed-header"><Link href="/" className="ed-wordmark">GRAND<br />CABIN</Link><span>TURUFJELL · 60° 25&apos; N</span><LanguageToggle language={language} setLanguage={setLanguage} light /></header>
+      <header className="ed-header"><Link href="/" className="ed-wordmark">TURU<br />CROWN</Link><span>TURUFJELL · 60° 25&apos; N</span><LanguageToggle language={language} setLanguage={setLanguage} light /></header>
       <main>
-        <section className="ed-hero"><div className="ed-hero-image"><Image src={image("exterior")} alt="Grandcabin exterior" fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div><div className="ed-hero-copy"><p>{t.issue}</p><h1>{t.title}</h1><div><span>{t.intro}</span><a href="#chapter-one">{t.enter} ↓</a></div></div></section>
+        <section className="ed-hero"><div className="ed-hero-image"><Image src={image("exterior")} alt="Turu Crown exterior" fill priority sizes="(max-width: 900px) 100vw, 58vw" /></div><div className="ed-hero-copy"><p>{t.issue}</p><h1>{t.title}</h1><div><span>{t.intro}</span><a href="#chapter-one">{t.enter} ↓</a></div></div></section>
         <section className="ed-chapter ed-architecture" id="chapter-one"><div className="ed-chapter-title"><p>{t.chapter1}</p><h2>{t.craft.split("\n").map((line) => <span key={line}>{line}</span>)}</h2></div><div className="ed-chapter-main"><Image src={image("living")} alt="Living room architecture" fill sizes="70vw" /></div><div className="ed-chapter-aside"><Image src={image("dining")} alt="Dining room" fill sizes="30vw" /></div><p className="ed-chapter-text">{t.craftText}</p></section>
         <section className="ed-number"><strong>29</strong><div><span>{language === "nb" ? "sengeplasser" : "beds"}</span><p>{t.roomsText}</p></div></section>
         <section className="ed-chapter ed-rooms"><div className="ed-chapter-title"><p>{t.chapter2}</p><h2>{t.rooms}</h2></div><div className="ed-rooms-strip"><figure><Image src={image("bedroom")} alt="Bedroom" fill sizes="33vw" /></figure><figure><Image src={image("gathering")} alt="Gathering space" fill sizes="33vw" /></figure><figure><Image src={image("sauna")} alt="Sauna" fill sizes="33vw" /></figure></div></section>
@@ -132,13 +132,13 @@ export function EditorialConcept() {
 export function GroupsConcept() {
   const [language, setLanguage] = useSiteLanguage();
   const t = language === "nb" ? {
-    nav: ["For hvem", "Slik bor dere", "Fasiliteter"], eyebrow: "GRANDCABIN · TURUFJELL", title: "Samle alle.\nUten å bo oppå hverandre.", lead: "29 sengeplasser, ni soverom og hele fjellet utenfor. Laget for store familier, vennegjenger og bedrifter.", cta: "Sjekk ledige datoer", note: "Forespørsel og betaling skjer trygt via FINN",
+    nav: ["For hvem", "Slik bor dere", "Fasiliteter"], eyebrow: "TURU CROWN · TURUFJELL", title: "Samle alle.\nUten å bo oppå hverandre.", lead: "29 sengeplasser, ni soverom og hele fjellet utenfor. Laget for store familier, vennegjenger og bedrifter.", cta: "Sjekk ledige datoer", note: "Forespørsel og betaling skjer trygt via FINN",
     forTitle: "Hvem tar du med?", forLead: "Ett hus. Mange måter å bruke det på.", audiences: [["Familien", "Høytider, jubileer og helger der alle faktisk får plass."], ["Vennegjengen", "Aktive dager ute og lange middager når dere kommer hjem."], ["Kollegaene", "Kurs, møter og teambuilding med bredbånd og gode fellesrom."]],
     sleepLabel: "SLIK BOR DERE", sleepTitle: "God plass, fordelt på tre nivåer.", floors: [["Underetasje", "5 soverom · 16 sengeplasser", "Kjøkken, spisestue, stue, 2 bad og badstue"], ["Hovedetasje", "2 soverom · 5 sengeplasser", "Kjøkken, stue, 2 bad og badstue"], ["Loft", "2 soverom + alkove · 8 sengeplasser", "Et roligere nivå for søvn og hvile"]],
     flowTitle: "Møt. Spis. Pust ut.", flow: [["01", "Samle dere", "Store oppholdsrom og bredbånd gir plass til gode samtaler, møter og lek."], ["02", "Dekk langbordet", "To kjøkken og spiseplass for opptil 26–28 personer i underetasjen."], ["03", "Finn varmen", "To badstuer, varme gulv og peis etter dagen ute."]],
     included: "Dette får dere", includedItems: ["Wi-Fi", "Parkering", "4 oppvaskmaskiner", "Vaskemaskin", "TV", "Grill", "Barneseng og barnestol", "Ski inn / ski ut"], close: "Har dere funnet helgen?", closeText: "Se oppdaterte priser, vilkår og ledige datoer på FINN.",
   } : {
-    nav: ["Who it’s for", "Sleeping", "Amenities"], eyebrow: "GRANDCABIN · TURUFJELL", title: "Bring everyone.\nKeep room to breathe.", lead: "29 beds, nine bedrooms and the whole mountain outside. Made for big families, groups of friends and company retreats.", cta: "Check available dates", note: "Enquiries and payment are handled securely through FINN",
+    nav: ["Who it’s for", "Sleeping", "Amenities"], eyebrow: "TURU CROWN · TURUFJELL", title: "Bring everyone.\nKeep room to breathe.", lead: "29 beds, nine bedrooms and the whole mountain outside. Made for big families, groups of friends and company retreats.", cta: "Check available dates", note: "Enquiries and payment are handled securely through FINN",
     forTitle: "Who are you bringing?", forLead: "One house. Many ways to use it.", audiences: [["The family", "Holidays, anniversaries and weekends where everyone has room."], ["Friends", "Active days outside and long dinners when you come home."], ["The team", "Workshops, meetings and team time with broadband and generous shared spaces."]],
     sleepLabel: "WHERE EVERYONE SLEEPS", sleepTitle: "Space across three levels.", floors: [["Lower floor", "5 bedrooms · 16 beds", "Kitchen, dining room, lounge, 2 bathrooms and sauna"], ["Main floor", "2 bedrooms · 5 beds", "Kitchen, lounge, 2 bathrooms and sauna"], ["Loft", "2 bedrooms + alcove · 8 beds", "A quieter level for sleep and rest"]],
     flowTitle: "Meet. Eat. Exhale.", flow: [["01", "Come together", "Large living spaces and broadband make room for conversations, meetings and play."], ["02", "Set the long table", "Two kitchens and dining space for up to 26–28 people downstairs."], ["03", "Warm up", "Two saunas, heated floors and a fire after a day outdoors."]],
@@ -147,14 +147,14 @@ export function GroupsConcept() {
 
   return (
     <div className="concept-page groups-page">
-      <header className="groups-header"><Link href="/" className="groups-brand"><b>Grand</b>cabin<span>Turufjell</span></Link><nav>{t.nav.map((item, index) => <a key={item} href={`#groups-${index}`}>{item}</a>)}</nav><LanguageToggle language={language} setLanguage={setLanguage} /></header>
+      <header className="groups-header"><Link href="/" className="groups-brand"><b>Turu</b> Crown<span>Turufjell</span></Link><nav>{t.nav.map((item, index) => <a key={item} href={`#groups-${index}`}>{item}</a>)}</nav><LanguageToggle language={language} setLanguage={setLanguage} /></header>
       <main>
-        <section className="groups-hero"><div className="groups-hero-copy"><p>{t.eyebrow}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><span>{t.lead}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a><small>{t.note}</small></div><div className="groups-hero-image"><Image src={image("gathering")} alt="Grandcabin gathering space" fill priority sizes="(max-width: 900px) 100vw, 52vw" /><div><strong>29</strong><span>{language === "nb" ? "sengeplasser" : "beds"}</span></div></div></section>
+        <section className="groups-hero"><div className="groups-hero-copy"><p>{t.eyebrow}</p><h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1><span>{t.lead}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a><small>{t.note}</small></div><div className="groups-hero-image"><Image src={image("gathering")} alt="Turu Crown gathering space" fill priority sizes="(max-width: 900px) 100vw, 52vw" /><div><strong>29</strong><span>{language === "nb" ? "sengeplasser" : "beds"}</span></div></div></section>
         <section className="groups-audience" id="groups-0"><div className="groups-section-title"><p>{t.forLead}</p><h2>{t.forTitle}</h2></div><div className="groups-audience-grid">{t.audiences.map(([title, body], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
         <section className="groups-sleep" id="groups-1"><div className="groups-sleep-copy"><p>{t.sleepLabel}</p><h2>{t.sleepTitle}</h2><div>{t.floors.map(([floor, beds, details]) => <article key={floor}><h3>{floor}</h3><strong>{beds}</strong><span>{details}</span></article>)}</div></div><div className="groups-sleep-image"><Image src={image("bedroom")} alt="Bedroom" fill sizes="(max-width: 900px) 100vw, 42vw" /></div></section>
         <section className="groups-flow"><h2>{t.flowTitle}</h2><div className="groups-flow-grid">{["living", "dining", "sauna"].map((photo, index) => <article key={photo}><div><Image src={image(photo)} alt={t.flow[index][1]} fill sizes="33vw" /></div><span>{t.flow[index][0]}</span><h3>{t.flow[index][1]}</h3><p>{t.flow[index][2]}</p></article>)}</div></section>
         <section className="groups-included" id="groups-2"><h2>{t.included}</h2><ul>{t.includedItems.map((item) => <li key={item}><span>✓</span>{item}</li>)}</ul></section>
-        <section className="groups-final"><div><p>GRANDCABIN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></div><Image src={image("exterior")} alt="Grandcabin exterior" fill sizes="100vw" /></section>
+        <section className="groups-final"><div><p>TURU CROWN · TURUFJELL</p><h2>{t.close}</h2><span>{t.closeText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></div><Image src={image("exterior")} alt="Turu Crown exterior" fill sizes="100vw" /></section>
       </main>
     </div>
   );
@@ -181,7 +181,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
     line: "Et fjellhus for store samlinger, med panoramautsikt over Turufjell.",
     introLabel: "SKAPT FOR Å SAMLE MANGE",
     introTitle: "Storslått ute.\nRaus plass inne.",
-    introText: "Grandcabin kombinerer roen fra et eksklusivt fjellhus med kapasiteten en stor gruppe trenger. Her kan 29 gjester bo, spise, møtes og koble av under samme tak.",
+    introText: "Turu Crown kombinerer roen fra et eksklusivt fjellhus med kapasiteten en stor gruppe trenger. Her kan 29 gjester bo, spise, møtes og koble av under samme tak.",
     stats: [["29", "sengeplasser"], ["9", "soverom"], ["over 340 m²", "å leve på"], ["4", "bad"]],
     conferenceLabel: "MØTER OG SAMLINGER",
     conferenceTitle: "Utsikten gjør halve jobben.",
@@ -203,7 +203,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
     line: "A mountain home for large gatherings, with panoramic views across Turufjell.",
     introLabel: "MADE TO BRING PEOPLE TOGETHER",
     introTitle: "Expansive outside.\nGenerous inside.",
-    introText: "Grandcabin combines the calm of an exclusive mountain home with the capacity a large group needs. Here, 29 guests can stay, dine, meet and unwind under one roof.",
+    introText: "Turu Crown combines the calm of an exclusive mountain home with the capacity a large group needs. Here, 29 guests can stay, dine, meet and unwind under one roof.",
     stats: [["29", "beds"], ["9", "bedrooms"], ["over 340 m²", "to enjoy"], ["4", "bathrooms"]],
     conferenceLabel: "MEETINGS AND RETREATS",
     conferenceTitle: "The view does half the work.",
@@ -227,10 +227,10 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
     <div className={`concept-page panorama-page pano-v${variant}`}>
       <main>
         <section className="pano-hero">
-          <Image src={image(heroPhotos[variant - 1])} alt="Grandcabin at Turufjell" fill priority sizes="100vw" />
+          <Image src={image(heroPhotos[variant - 1])} alt="Turu Crown at Turufjell" fill priority sizes="100vw" />
           <div className="pano-hero-shade" />
           <div className="pano-language"><LanguageToggle language={language} setLanguage={setLanguage} light /></div>
-          <div className="pano-hero-copy"><h1>Grandcabin</h1><p>{t.line}</p></div>
+          <div className="pano-hero-copy"><h1>Turu Crown</h1><p>{t.line}</p></div>
           <a className="pano-scroll" href="#pano-intro" aria-label={language === "nb" ? "Se mer" : "Explore"}><span>↓</span></a>
           <PanoramaVersionNav active={variant} />
         </section>
@@ -258,7 +258,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
         <section className="pano-sleep">
           <div className="pano-sleep-heading"><p className="pano-kicker">{t.sleepLabel}</p><h2>{t.sleepTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2></div>
           <div className="pano-sleep-layout">
-            <div className="pano-sleep-image"><Image src={image("bedroom")} alt="A Grandcabin bedroom" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
+            <div className="pano-sleep-image"><Image src={image("bedroom")} alt="A Turu Crown bedroom" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
             <div className="pano-floors">{t.floors.map(([floor, beds], index) => <article key={floor}><span>0{index + 1}</span><h3>{floor}</h3><p>{beds}</p></article>)}</div>
           </div>
         </section>
@@ -269,7 +269,7 @@ export function PanoramaConcept({ variant = 1 }: { variant?: PanoramaVariant }) 
         </section>
 
         <section className="pano-final">
-          <Image src={image("living")} alt="Grandcabin living room" fill sizes="100vw" />
+          <Image src={image("living")} alt="Turu Crown living room" fill sizes="100vw" />
           <div className="pano-final-shade" />
           <div><p className="pano-kicker">{t.ctaLabel}</p><h2>{t.ctaTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h2><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} <b>↗</b></a><small>{t.finnNote}</small></div>
         </section>
@@ -282,9 +282,9 @@ export function ChaletConcept() {
   const [language, setLanguage] = useSiteLanguage();
   const t = language === "nb" ? {
     nav: ["Hytta", "Rommene", "Samlinger", "Velvære", "Beliggenhet"],
-    title: "Grandcabin",
+    title: "Turu Crown",
     subtitle: "RAFFINERT FJELLRO FOR STORE SELSKAP",
-    intro: "Den rolige kraften i fjellandskapet merkes fra første øyeblikk. Grandcabin kombinerer moderne arkitektur, varme trematerialer og store vindusflater med plass til 29 gjester.",
+    intro: "Den rolige kraften i fjellandskapet merkes fra første øyeblikk. Turu Crown kombinerer moderne arkitektur, varme trematerialer og store vindusflater med plass til 29 gjester.",
     architecture: "Moderne fjellhytte i et elegant spill av kontraster",
     architectureText: "Lune treflater møter glass, stein og mørke detaljer. Rommene er åpne mot utsikten, men beholder den varme og nære følelsen man ønsker seg på fjellet.",
     rooms: "Sov godt midt i fjellroen",
@@ -294,15 +294,15 @@ export function ChaletConcept() {
     meetingsText: "Store oppholdsrom, bredbånd og skjerm gjør hytta velegnet for møter, kurs og mindre konferanser. To kjøkken og spiseplass for opptil 26–28 personer gjør det enkelt å fortsette samtalen rundt bordet.",
     wellness: "Varme og ro etter dagen ute",
     wellnessText: "To badstuer, fire bad og gulvvarme gir god flyt når mange bor sammen. Her kan skuldrene senkes etter en dag i løypene eller et langt møte.",
-    gallery: "Oppdag Grandcabin",
+    gallery: "Oppdag Turu Crown",
     closing: "Hele hytta. Bare for dere.",
-    closingText: "Grandcabin leies ut samlet. Se ledige datoer, priser og vilkår på FINN.",
+    closingText: "Turu Crown leies ut samlet. Se ledige datoer, priser og vilkår på FINN.",
     cta: "Se tilgjengelighet på FINN",
   } : {
     nav: ["The cabin", "Bedrooms", "Retreats", "Wellness", "Turufjell"],
-    title: "Grandcabin",
+    title: "Turu Crown",
     subtitle: "REFINED MOUNTAIN CALM FOR LARGE GROUPS",
-    intro: "The quiet power of the mountain landscape can be felt from the first moment. Grandcabin combines modern architecture, warm timber and wide windows with room for 29 guests.",
+    intro: "The quiet power of the mountain landscape can be felt from the first moment. Turu Crown combines modern architecture, warm timber and wide windows with room for 29 guests.",
     architecture: "A modern mountain home in an elegant play of contrasts",
     architectureText: "Warm timber meets glass, stone and dark details. The rooms open towards the view while keeping the intimate warmth of a Norwegian mountain cabin.",
     rooms: "Sleep well in the stillness of the mountains",
@@ -312,25 +312,25 @@ export function ChaletConcept() {
     meetingsText: "Large living spaces, broadband and a screen make the cabin well suited to meetings, workshops and smaller conferences. Two kitchens and dining space for up to 26–28 keep the conversation going around the table.",
     wellness: "Warmth and calm after a day outside",
     wellnessText: "Two saunas, four bathrooms and heated floors keep a large group comfortable. Settle in after a day on the trails or a productive meeting.",
-    gallery: "Discover Grandcabin",
+    gallery: "Discover Turu Crown",
     closing: "The whole cabin. Only for you.",
-    closingText: "Grandcabin is rented as one private property. See available dates, prices and terms on FINN.",
+    closingText: "Turu Crown is rented as one private property. See available dates, prices and terms on FINN.",
     cta: "Check availability on FINN",
   };
 
   return (
     <div className="concept-page chalet-page">
       <header className="chalet-header">
-        <Link href="/" className="chalet-mark"><b>G</b><span>GRANDCABIN<small>TURUFJELL</small></span></Link>
+        <Link href="/" className="chalet-mark"><b>T</b><span>TURU CROWN<small>TURUFJELL</small></span></Link>
         <nav>{t.nav.map((item, index) => <a key={item} href={`#chalet-${index}`}>{item}</a>)}</nav>
         <LanguageToggle language={language} setLanguage={setLanguage} light />
       </header>
       <main>
-        <section className="chalet-hero"><Image src={image("living")} alt="Grandcabin living room overlooking Turufjell" fill priority sizes="100vw" /></section>
+        <section className="chalet-hero"><Image src={image("living")} alt="Turu Crown living room overlooking Turufjell" fill priority sizes="100vw" /></section>
 
         <section className="chalet-intro" id="chalet-0"><h1>{t.title}</h1><p className="chalet-subtitle">{t.subtitle}</p><i /><p>{t.intro}</p></section>
 
-        <section className="chalet-image-wide"><Image src={image("exterior")} alt="Grandcabin exterior in winter" fill sizes="100vw" /></section>
+        <section className="chalet-image-wide"><Image src={image("exterior")} alt="Turu Crown exterior in winter" fill sizes="100vw" /></section>
 
         <section className="chalet-editorial">
           <div className="chalet-editorial-copy"><h2>{t.architecture}</h2><i /><p>{t.architectureText}</p></div>
@@ -339,7 +339,7 @@ export function ChaletConcept() {
 
         <section className="chalet-rooms" id="chalet-1">
           <div className="chalet-center-copy"><h2>{t.rooms}</h2><i /><p>{t.roomsText}</p></div>
-          <div className="chalet-room-gallery"><figure><Image src={image("bedroom")} alt="Grandcabin bedroom" fill sizes="50vw" /></figure><figure><Image src={image("gathering")} alt="Shared living space" fill sizes="50vw" /></figure></div>
+          <div className="chalet-room-gallery"><figure><Image src={image("bedroom")} alt="Turu Crown bedroom" fill sizes="50vw" /></figure><figure><Image src={image("gathering")} alt="Shared living space" fill sizes="50vw" /></figure></div>
           <div className="chalet-room-facts">{t.roomFacts.map(([floor, beds]) => <article key={floor}><h3>{floor}</h3><p>{beds}</p></article>)}</div>
         </section>
 
@@ -349,7 +349,7 @@ export function ChaletConcept() {
 
         <section className="chalet-gallery" id="chalet-4"><h2>{t.gallery}</h2><div><figure><Image src={image("terrace")} alt="Mountain panorama" fill sizes="33vw" /></figure><figure><Image src={image("ski")} alt="Winter at Turufjell" fill sizes="33vw" /></figure><figure><Image src={image("cycling")} alt="Summer at Turufjell" fill sizes="33vw" /></figure></div></section>
 
-        <section className="chalet-closing"><p>GRANDCABIN · TURUFJELL</p><h2>{t.closing}</h2><span>{t.closingText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></section>
+        <section className="chalet-closing"><p>TURU CROWN · TURUFJELL</p><h2>{t.closing}</h2><span>{t.closingText}</span><a href={finnUrl} target="_blank" rel="noreferrer">{t.cta} ↗</a></section>
       </main>
     </div>
   );
@@ -363,7 +363,7 @@ export function RetreatLongConcept() {
     hero: "En uforglemmelig fjellsamling for opptil 29 gjester",
     heroCta: "UTFORSK HYTTA",
     experience: "Den komplette\nfjellopplevelsen",
-    experienceText: "Grandcabin kombinerer moderne komfort, store fellesrom og en storslått beliggenhet på Turufjell. Her får familie, venner og kollegaer plass til å skape gode dager sammen.",
+    experienceText: "Turu Crown kombinerer moderne komfort, store fellesrom og en storslått beliggenhet på Turufjell. Her får familie, venner og kollegaer plass til å skape gode dager sammen.",
     discover: "OPPDAG MER",
     groups: "Samlinger\nmed rom for alle",
     groupsText: "Ni soverom, 29 sengeplasser og fleksible oppholdsrom gjør planleggingen enkel. Bredbånd og stor skjerm legger til rette for møter og kurs, mens fjellet gir naturlige pauser.",
@@ -374,7 +374,7 @@ export function RetreatLongConcept() {
     place: "Turufjell",
     placeText: "Ski inn og ut om vinteren. Sykkel, turstier og fjelluft når snøen forsvinner. Hytta ligger under to timer fra Oslo og 15 minutter fra Flå sentrum.",
     placeLink: "OPPLEV OMRÅDET",
-    gallery: "Grandcabin galleri",
+    gallery: "Turu Crown galleri",
     showGallery: "SE BILDENE",
     final: "Planlegg deres neste opphold",
     finalText: "Se oppdaterte datoer, priser og vilkår i vår FINN-annonse.",
@@ -385,7 +385,7 @@ export function RetreatLongConcept() {
     hero: "An unforgettable mountain retreat for up to 29 guests",
     heroCta: "EXPLORE THE CABIN",
     experience: "The complete\nmountain experience",
-    experienceText: "Grandcabin combines modern comfort, generous shared spaces and a spectacular setting at Turufjell. Families, friends and colleagues have room to create memorable days together.",
+    experienceText: "Turu Crown combines modern comfort, generous shared spaces and a spectacular setting at Turufjell. Families, friends and colleagues have room to create memorable days together.",
     discover: "DISCOVER MORE",
     groups: "Gatherings\nwith room for everyone",
     groupsText: "Nine bedrooms, 29 beds and flexible living spaces make planning easy. Broadband and a large screen support meetings and workshops, while the mountain provides natural breaks.",
@@ -396,7 +396,7 @@ export function RetreatLongConcept() {
     place: "Turufjell",
     placeText: "Ski in and out in winter. Cycling, trails and mountain air when the snow clears. The cabin is under two hours from Oslo and 15 minutes from Flå village.",
     placeLink: "EXPLORE THE AREA",
-    gallery: "Grandcabin gallery",
+    gallery: "Turu Crown gallery",
     showGallery: "VIEW THE PHOTOS",
     final: "Plan your next stay",
     finalText: "See current dates, prices and terms in our FINN listing.",
@@ -406,15 +406,15 @@ export function RetreatLongConcept() {
   return (
     <div className="concept-page retreat-page">
       <header className="retreat-header">
-        <Link href="/" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
+        <Link href="/" className="retreat-logo"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></Link>
         <nav>{t.nav.map((item, index) => <a key={item} href={`#retreat-${index}`}>{item}</a>)}</nav>
         <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><a href={finnUrl} target="_blank" rel="noreferrer">{t.contact}</a></div>
       </header>
       <main>
         <section className="retreat-hero">
-          <Image src={image("exterior")} alt="Grandcabin and the mountains at Turufjell" fill priority sizes="100vw" />
+          <Image src={image("exterior")} alt="Turu Crown and the mountains at Turufjell" fill priority sizes="100vw" />
           <div className="retreat-hero-shade" />
-          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><a href="#retreat-0">{t.heroCta}</a></div>
+          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><a href="#retreat-0">{t.heroCta}</a></div>
         </section>
 
         <section className="retreat-intro" id="retreat-0">
@@ -430,7 +430,7 @@ export function RetreatLongConcept() {
 
         <section className="retreat-sauna" id="retreat-2">
           <div className="retreat-sauna-copy"><p>03</p><h2>{t.sauna}</h2><span>{t.saunaText}</span><a href="#retreat-gallery">{t.saunaLink} →</a></div>
-          <div className="retreat-sauna-image"><Image src={image("sauna")} alt="One of Grandcabin's saunas" fill sizes="(max-width: 900px) 100vw, 62vw" /></div>
+          <div className="retreat-sauna-image"><Image src={image("sauna")} alt="One of Turu Crown's saunas" fill sizes="(max-width: 900px) 100vw, 62vw" /></div>
         </section>
 
         <section className="retreat-place" id="retreat-3">
@@ -474,8 +474,8 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
 
   return (
     <header className="retreat-header retreat-header-pages">
-      <Link href="/concepts/retreat" className="retreat-logo"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></Link>
-      <nav aria-label={language === "nb" ? "Grandcabin-sider" : "Grandcabin pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
+      <Link href="/concepts/retreat" className="retreat-logo"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></Link>
+      <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
     </header>
   );
@@ -485,7 +485,7 @@ export function RetreatBookingFooter({ language, omitHeadingPeriod = false }: { 
   return (
     <section className="retreat-detail-footer">
       <div className="retreat-footer-address">
-        <p>GRANDCABIN</p>
+        <p>TURU CROWN</p>
         <span>Øvre Turusvingen 7<br />3539 Flå<br />{language === "nb" ? "Norge" : "Norway"}</span>
       </div>
       <div className="retreat-footer-booking">
@@ -521,14 +521,14 @@ export function RetreatConcept() {
           <iframe
             className="retreat-home-video-frame"
             src={cabinVideoUrl}
-            title={language === "nb" ? "Video av Grandcabin på Turufjell" : "Video of Grandcabin at Turufjell"}
+            title={language === "nb" ? "Video av Turu Crown på Turufjell" : "Video of Turu Crown at Turufjell"}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             loading="eager"
             referrerPolicy="strict-origin-when-cross-origin"
           />
           <div className="retreat-hero-shade" />
-          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Grand</b><span>cabin</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
+          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
         </section>
       </main>
       <RetreatBookingFooter language={language} />
@@ -542,17 +542,17 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
   return (
     <>
       <CabinFilm language={language} description={description} />
-      <section className="retreat-cabin-ski-access"><div><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>
+      <section className="retreat-cabin-ski-access"><div><p>TURU CROWN · TURUFJELL</p><h2>{language === "nb" ? "Ski fra døren" : "Ski from the doorstep"}</h2></div><p>{language === "nb" ? "Langrennsløypa starter rett utenfor døren. Ta på skistøvlene i gangen, spenn på alpinskiene ved hytta og følg løypa i bare et par minutter til alpinanlegget – helt uten bil." : "The cross-country trail starts just outside the door. Put on your ski boots indoors, clip into your alpine skis beside the cabin and follow the trail for just a couple of minutes to the ski area – no car needed."}</p></section>
       <section className="retreat-cabin-video-intro" id="retreat-cabin-video-intro">
-        <div className="retreat-cabin-intro-image"><Image src="/images/cabin-aurora-enhanced.webp" alt={isNorwegian ? "Grandcabin i snøen under nordlys og stjernehimmel" : "Grandcabin in the snow beneath northern lights and a starry sky"} fill unoptimized sizes="100vw" /></div>
+        <div className="retreat-cabin-intro-image"><Image src="/images/cabin-aurora-enhanced.webp" alt={isNorwegian ? "Turu Crown i snøen under nordlys og stjernehimmel" : "Turu Crown in the snow beneath northern lights and a starry sky"} fill unoptimized sizes="100vw" /></div>
         <div className="retreat-cabin-intro-heading">
           <p>{isNorwegian ? "ET STED Å SAMLES" : "A PLACE TO COME TOGETHER"}</p>
           <h2>{isNorwegian ? <>700 moh.<br />Over 340 m²<br />ren fjellglede.</> : <>700 metres above sea level.<br />Over 340 m² of mountain living.</>}</h2>
         </div>
         <div className="retreat-cabin-intro-copy">
           <p>{isNorwegian
-            ? "Grandcabin er et eksklusivt, privat fjellhjem på Turufjell, skapt for minnerike opphold med familie og venner, og for inspirerende bedriftssamlinger. Her kan opptil 29 gjester nyte et opphold med ski inn og ut, generøse rom og komfort i hver detalj."
-            : "Grandcabin is an exclusive private mountain home at Turufjell, created for memorable stays with family and friends, as well as inspiring company retreats. Up to 29 guests can enjoy ski-in, ski-out access, generous spaces and comfort in every detail."}</p>
+            ? "Turu Crown er et eksklusivt, privat fjellhjem på Turufjell, skapt for minnerike opphold med familie og venner, og for inspirerende bedriftssamlinger. Her kan opptil 29 gjester nyte et opphold med ski inn og ut, generøse rom og komfort i hver detalj."
+            : "Turu Crown is an exclusive private mountain home at Turufjell, created for memorable stays with family and friends, as well as inspiring company retreats. Up to 29 guests can enjoy ski-in, ski-out access, generous spaces and comfort in every detail."}</p>
           <p>{isNorwegian
             ? "Etter en dag på fjellet venter to badstuer, lange måltider og en romslig terrasse med vid utsikt. Her er det plass til å være sammen, og til å finne roen helt for seg selv."
             : "After a day in the mountains, two saunas, unhurried dinners and a spacious terrace with far-reaching views await. There is room to gather, and room to find a quiet moment of your own."}</p>
@@ -565,27 +565,27 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
 export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const [language, setLanguage] = useSiteLanguage();
   useEffect(() => {
-    if (page === "bedrooms") document.title = language === "nb" ? "Rom | Grandcabin" : "Rooms | Grandcabin";
+    if (page === "bedrooms") document.title = language === "nb" ? "Rom | Turu Crown" : "Rooms | Turu Crown";
   }, [language, page]);
   const nb = {
     cabin: { number: "01", title: "En stor hytte.\nEt privat fjellhjem.", text: "En av Norges mest særpregede hytter – og det er lett å forstå hvorfor. Gjennomtenkt arkitektur, solide materialer og høy komfort skaper rammene for et helt spesielt opphold.", photo: "living", alt: "Stuen med utsikt", facts: ["Ny fra 2024", "Over 340 m²", "4 bad · 2 badstuer"] },
     bedrooms: { number: "02", title: "10 separate rom for overnatting\n29 sengeplasser", text: "Soveplassene er fordelt over tre nivåer: 16 i underetasjen, fem i hovedetasjen og åtte på loftet. Det gir nærhet for gruppen og rolige soner når dagen er over.", photo: "bedroom", alt: "Et av soverommene", facts: ["16 sengeplasser\nUnderetasje", "5 sengeplasser\nHovedetasje", "8 sengeplasser\nLoft"] },
     meetings: { number: "03", title: "Samlinger med\nrom for ideer.", text: "En projektor, et 100-tommers lerret, raskt bredbånd og fleksible oppholdsrom gir gode rammer for møter, kurs og mindre konferanser. Fjellandskapet gir naturlige pauser mellom øktene.", photo: "gathering", alt: "Møte- og konferanserom", facts: ["100-tommers lerret", "Raskt bredbånd", "Fleksible rom"] },
-    materials: { number: "04", title: "Raffinert håndverk.\nNaturlige materialer.", text: "Massiv gran, børstet lerk og naturlige oljer gir Grandcabin en varm og moderne identitet. Hver overflate er valgt for å eldes vakkert og bringe naturen inn i rommene.", photo: "dining", alt: "Treverk og materialer i spisestuen", facts: ["4 bad · 2 badstuer", "Balansert ventilasjon", "Vannbåren varme"] },
+    materials: { number: "04", title: "Raffinert håndverk.\nNaturlige materialer.", text: "Massiv gran, børstet lerk og naturlige oljer gir Turu Crown en varm og moderne identitet. Hver overflate er valgt for å eldes vakkert og bringe naturen inn i rommene.", photo: "dining", alt: "Treverk og materialer i spisestuen", facts: ["4 bad · 2 badstuer", "Balansert ventilasjon", "Vannbåren varme"] },
     turufjell: { number: "05", title: "Opplevelser\npå Turufjell", text: "Ski inn og ut om vinteren, og sykkel, turstier og fiskevann når snøen forsvinner. Turufjell ligger under to timer fra Oslo og 15 minutter fra Flå sentrum.", photo: "turufjell-hero-original", alt: "Panoramautsikt over Turufjell og Hallingdal", facts: ["Langrenn ved døren", "150 m via skiløypa til alpint", "Under 2 t fra Oslo"] },
-    location: { number: "06", title: "Nærmere enn\ndere tror.", text: "Grandcabin ligger på solsiden av Turufjell, under to timer fra Oslo og omtrent 15 minutter fra Flå. Kom med bil, eller ta tog eller buss til Flå. Derfra fortsetter dere den siste etappen opp til hytta med taxi eller annen avtalt transport.", photo: "terrace", alt: "Utsikten fra Grandcabin på Turufjell", facts: ["116 km fra Oslo", "15 min fra Flå", "Parkering ved hytta", "Tog og buss til Flå"] },
-    gallery: { number: "07", title: "Grandcabin\ni bilder.", text: "Se rommene, utsikten og fjellet gjennom årstidene i den oppdaterte bildesamlingen.", photo: "exterior", alt: "Grandcabin om vinteren", facts: ["74 bilder", "Fire årstider", "Ett privat opphold"] },
-    tour: { number: "08", title: "Gå gjennom\nGrandcabin.", text: "Utforsk hytta rom for rom i en interaktiv 3D-visning.", photo: "living", alt: "Grandcabin 3D-visning", facts: ["360° visning", "Tre nivåer", "Utforsk i eget tempo"] },
+    location: { number: "06", title: "Nærmere enn\ndere tror.", text: "Turu Crown ligger på solsiden av Turufjell, under to timer fra Oslo og omtrent 15 minutter fra Flå. Kom med bil, eller ta tog eller buss til Flå. Derfra fortsetter dere den siste etappen opp til hytta med taxi eller annen avtalt transport.", photo: "terrace", alt: "Utsikten fra Turu Crown på Turufjell", facts: ["116 km fra Oslo", "15 min fra Flå", "Parkering ved hytta", "Tog og buss til Flå"] },
+    gallery: { number: "07", title: "Turu Crown\ni bilder.", text: "Se rommene, utsikten og fjellet gjennom årstidene i den oppdaterte bildesamlingen.", photo: "exterior", alt: "Turu Crown om vinteren", facts: ["74 bilder", "Fire årstider", "Ett privat opphold"] },
+    tour: { number: "08", title: "Gå gjennom\nTuru Crown.", text: "Utforsk hytta rom for rom i en interaktiv 3D-visning.", photo: "living", alt: "Turu Crown 3D-visning", facts: ["360° visning", "Tre nivåer", "Utforsk i eget tempo"] },
   };
   const en = {
     cabin: { number: "01", title: "A large cabin.\nA private mountain home.", text: "One of Norway’s most distinctive cabins – and it is easy to understand why. Thoughtful architecture, solid materials and exceptional comfort create the setting for a truly special stay.", photo: "living", alt: "Living room with a view", facts: ["New in 2024", "Over 340 m²", "4 bathrooms · 2 saunas"] },
     bedrooms: { number: "02", title: "10 separate sleeping rooms\n29 beds", text: "Sleeping space is arranged across three levels: 16 beds downstairs, five on the main floor and eight in the loft. The group stays close while everyone can still find a quiet place.", photo: "bedroom", alt: "One of the bedrooms", facts: ["16 beds\nLower floor", "5 beds\nMain floor", "8 beds\nLoft"] },
     meetings: { number: "03", title: "Gatherings with\nroom for ideas.", text: "A projector, a 100-inch presentation screen, fast broadband and flexible shared spaces create an inviting setting for meetings, workshops and smaller conferences. The mountain landscape offers natural breaks between sessions.", photo: "gathering", alt: "Meeting and conference room", facts: ["100-inch screen", "Fast broadband", "Flexible rooms"] },
-    materials: { number: "04", title: "Refined craft.\nNatural materials.", text: "Solid spruce, brushed larch and natural oils give Grandcabin its warm, modern identity. Every surface is chosen to age beautifully and bring nature into the rooms.", photo: "dining", alt: "Timber and materials in the dining room", facts: ["4 bathrooms · 2 saunas", "Balanced ventilation", "Underfloor heating"] },
+    materials: { number: "04", title: "Refined craft.\nNatural materials.", text: "Solid spruce, brushed larch and natural oils give Turu Crown its warm, modern identity. Every surface is chosen to age beautifully and bring nature into the rooms.", photo: "dining", alt: "Timber and materials in the dining room", facts: ["4 bathrooms · 2 saunas", "Balanced ventilation", "Underfloor heating"] },
     turufjell: { number: "05", title: "Experiences\nat Turufjell", text: "Ski in and out in winter, with cycling, trails and fishing lakes when the snow clears. Turufjell is under two hours from Oslo and 15 minutes from Flå village.", photo: "turufjell-hero-original", alt: "Panoramic view across Turufjell and Hallingdal", facts: ["Trails at the door", "150 m via the ski trail to the slopes", "Under 2 h from Oslo"] },
-    location: { number: "06", title: "Closer than\nit feels.", text: "Grandcabin sits on the sunny side of Turufjell, under two hours from Oslo and around 15 minutes from Flå. Drive to the cabin, or take a train or bus to Flå. From there, continue the final leg to the cabin by taxi or other pre-arranged transport.", photo: "terrace", alt: "The view from Grandcabin at Turufjell", facts: ["116 km from Oslo", "15 min from Flå", "Parking at the cabin", "Train and bus to Flå"] },
-    gallery: { number: "07", title: "Grandcabin\nin pictures.", text: "See the rooms, views and mountain through the seasons in the updated photo collection.", photo: "exterior", alt: "Grandcabin in winter", facts: ["74 photos", "Four seasons", "One private stay"] },
-    tour: { number: "08", title: "Walk through\nGrandcabin.", text: "Explore the cabin room by room in an interactive 3D experience.", photo: "living", alt: "Grandcabin 3D tour", facts: ["360° view", "Three levels", "Explore at your pace"] },
+    location: { number: "06", title: "Closer than\nit feels.", text: "Turu Crown sits on the sunny side of Turufjell, under two hours from Oslo and around 15 minutes from Flå. Drive to the cabin, or take a train or bus to Flå. From there, continue the final leg to the cabin by taxi or other pre-arranged transport.", photo: "terrace", alt: "The view from Turu Crown at Turufjell", facts: ["116 km from Oslo", "15 min from Flå", "Parking at the cabin", "Train and bus to Flå"] },
+    gallery: { number: "07", title: "Turu Crown\nin pictures.", text: "See the rooms, views and mountain through the seasons in the updated photo collection.", photo: "exterior", alt: "Turu Crown in winter", facts: ["74 photos", "Four seasons", "One private stay"] },
+    tour: { number: "08", title: "Walk through\nTuru Crown.", text: "Explore the cabin room by room in an interactive 3D experience.", photo: "living", alt: "Turu Crown 3D tour", facts: ["360° view", "Three levels", "Explore at your pace"] },
   };
   const t = (language === "nb" ? nb : en)[page];
   const extendedNb = {
@@ -596,7 +596,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     location: { leadTitle: "En enkel reise til fjellet", leadText: "Adressen fører dere helt frem til hytta. Bilreisen fra Oslo er 116 kilometer, mens tog og buss stopper i Flå for en kort videre tur med taxi. Ved ankomst er det god plass til parkering på eiendommen. Kommer dere med elbil, finner dere 10 destinasjonsladere (22 kW) ved skikaféen, bare 150 meter fra hytta. Den korte avstanden gjør det enkelt å legge ladingen inn i oppholdet, med en liten spasertur tilbake til hyttas varme og ro.", leadPhoto: "exterior", bannerTitle: "Fra reisen til roen", bannerText: "Planlegg den siste etappen før avreise, så kan oppholdet begynne idet fjellandskapet åpner seg over Turufjell.", bannerPhoto: "terrace", pointsTitle: "Godt å vite før avreise", points: ["Øvre Turusvingen 7, 3539 Flå", "Bestill taxi fra Flå på forhånd", "10 destinasjonsladere (22 kW) ved skikaféen – bare 150 m fra hytta"] },
     materials: { leadTitle: "Heltre gran, formet av naturen", leadText: "Veggkledningen i massiv gran gir en moderne tolkning av tradisjonelt trehåndverk. Den tilhuggede overflaten skaper dybde og kontrast mot glass, glatte vegger og minimalistiske møbler. Ingen bord gjentar seg – hvert stykke får sitt eget uttrykk.", leadPhoto: "living", bannerTitle: "Børstet lerk med levende dybde", bannerText: "Børstingen fjerner det mykere vårveden og lar den hardere veden og årringene tre tydelig frem. Resultatet er en taktil overflate med naturlige fargevariasjoner, varme og en sterk forbindelse til landskapet.", bannerPhoto: "exterior", pointsTitle: "Materialer som arbeider med rommet", points: ["Massivtre fra Tirol", "Antistatisk og fuktighetsregulerende", "Innvendig og utvendig kledning"] },
     gallery: { leadTitle: "Fra de store rommene til de små detaljene", leadText: "Bildene viser hvordan utsikt, treverk og lys følger dere gjennom hele hytta – fra langbordet og møteplassen til soverommene og badstuen.", leadPhoto: "gathering", bannerTitle: "Samme utsikt. Nye årstider.", bannerText: "Vinteren er dramatisk og lun. Sommeren åpner terrassen og fjellet for lange dager ute.", bannerPhoto: "cycling", pointsTitle: "Se hele historien", points: ["Interiør og rom", "Fjell og aktiviteter", "74 oppdaterte bilder"] },
-    tour: { leadTitle: "Se rommene før dere kommer", leadText: "Den interaktive visningen gir et tydelig inntrykk av planløsning, avstander og de store fellesrommene.", leadPhoto: "living", bannerTitle: "Tre nivåer. Ett fjellhjem.", bannerText: "Beveg dere fritt gjennom Grandcabin og finn rommene som passer gruppen.", bannerPhoto: "exterior", pointsTitle: "Utforsk hele hytta", points: ["Interaktiv 3D-visning", "Alle tre nivåer", "Åpne i fullskjerm"] },
+    tour: { leadTitle: "Se rommene før dere kommer", leadText: "Den interaktive visningen gir et tydelig inntrykk av planløsning, avstander og de store fellesrommene.", leadPhoto: "living", bannerTitle: "Tre nivåer. Ett fjellhjem.", bannerText: "Beveg dere fritt gjennom Turu Crown og finn rommene som passer gruppen.", bannerPhoto: "exterior", pointsTitle: "Utforsk hele hytta", points: ["Interaktiv 3D-visning", "Alle tre nivåer", "Åpne i fullskjerm"] },
   };
   const extendedEn = {
     cabin: { leadTitle: "Made for long days together", leadText: "Two kitchens, two generous dining areas and several living zones make it easy to move between shared meals, quiet conversations and time alone.", leadPhoto: "dining", bannerTitle: "Mountain views from morning to evening", bannerText: "Wide windows bring the changing light and landscape into the interior.", bannerPhoto: "exterior", pointsTitle: "Considered comfort", points: ["Underfloor heating throughout the cabin", "Balanced ventilation", "Parking at the cabin"] },
@@ -606,7 +606,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     location: { leadTitle: "A simple journey to the mountains", leadText: "The address brings you all the way to the cabin. Oslo is 116 kilometres away, while trains and buses stop in Flå for a short onward taxi journey. Ample parking is available at the property when you arrive. For guests travelling by electric car, there are 10 destination chargers (22 kW) by the ski café, just 150 metres from the cabin. With charging so close, it is easy to fit it into your stay and enjoy a short stroll back to the warmth and calm of the cabin.", leadPhoto: "exterior", bannerTitle: "From the journey to the calm", bannerText: "Plan the final leg before departure, then let the stay begin as the mountain landscape opens across Turufjell.", bannerPhoto: "terrace", pointsTitle: "Good to know before you leave", points: ["Øvre Turusvingen 7, 3539 Flå", "Pre-book a taxi from Flå", "10 destination chargers (22 kW) by the ski café – just 150 m from the cabin"] },
     materials: { leadTitle: "Solid spruce, shaped by nature", leadText: "Solid spruce wall cladding gives traditional timber craft a modern expression. The hewn surface creates depth and contrast beside glass, smooth walls and minimal furniture. No board repeats; every piece has its own character.", leadPhoto: "living", bannerTitle: "Brushed larch with living depth", bannerText: "Brushing removes the softer earlywood and reveals the harder latewood and annual rings. The result is a tactile surface with natural colour variation, warmth and a strong connection to the landscape.", bannerPhoto: "exterior", pointsTitle: "Materials that work with the room", points: ["Solid timber from Tyrol", "Antistatic and moisture regulating", "Interior and exterior cladding"] },
     gallery: { leadTitle: "From generous spaces to quiet details", leadText: "The photographs show how views, timber and light follow you through the cabin, from the long table and meeting room to bedrooms and saunas.", leadPhoto: "gathering", bannerTitle: "The same view. New seasons.", bannerText: "Winter feels dramatic and intimate. Summer opens the terrace and mountain for long days outside.", bannerPhoto: "cycling", pointsTitle: "See the full story", points: ["Interiors and rooms", "Mountain and activities", "74 updated photos"] },
-    tour: { leadTitle: "See the rooms before you arrive", leadText: "The interactive view gives a clear sense of the layout, distances and generous shared spaces.", leadPhoto: "living", bannerTitle: "Three levels. One mountain home.", bannerText: "Move freely through Grandcabin and find the rooms that suit your group.", bannerPhoto: "exterior", pointsTitle: "Explore the entire cabin", points: ["Interactive 3D view", "All three levels", "Open full screen"] },
+    tour: { leadTitle: "See the rooms before you arrive", leadText: "The interactive view gives a clear sense of the layout, distances and generous shared spaces.", leadPhoto: "living", bannerTitle: "Three levels. One mountain home.", bannerText: "Move freely through Turu Crown and find the rooms that suit your group.", bannerPhoto: "exterior", pointsTitle: "Explore the entire cabin", points: ["Interactive 3D view", "All three levels", "Open full screen"] },
   };
   const more = (language === "nb" ? extendedNb : extendedEn)[page];
   const detailBanner = (
@@ -635,7 +635,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       ) : (
         <>
           {page !== "meetings" && page !== "location" && <section className={`retreat-detail-banner${page === "cabin" ? " retreat-detail-banner-cabin" : ""}`}>
-            {page === "materials" ? <GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-03")!} alt={language === "nb" ? "Grandcabin i solfylt vinterlandskap, med fasade i tre og naturstein" : "Grandcabin in a sunny winter landscape, with timber and natural stone cladding"} nb={language === "nb"} /> : <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />}
+            {page === "materials" ? <GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-03")!} alt={language === "nb" ? "Turu Crown i solfylt vinterlandskap, med fasade i tre og naturstein" : "Turu Crown in a sunny winter landscape, with timber and natural stone cladding"} nb={language === "nb"} /> : <Image src={image(more.bannerPhoto)} alt="" fill sizes="100vw" />}
           </section>}
           <section className={`retreat-banner-caption${page === "cabin" ? " retreat-banner-caption-single" : ""}`}><h2>{more.bannerTitle}</h2>{page !== "cabin" && <p>{more.bannerText}</p>}</section>
         </>
@@ -682,7 +682,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     <>
       <section className={`retreat-detail-story${page === "cabin" ? " retreat-detail-story-cabin" : page === "materials" ? " retreat-detail-story-materials" : ""}`}>
         <div className="retreat-detail-story-image"><Image src={page === "cabin" ? cabinLivingSpaceLoftView : page === "materials" ? craftSpruceStaircase : page === "turufjell" ? turufjellSkiRacks : page === "location" ? "/images/gallery-originals/cabin-14.jpg" : image(more.leadPhoto)} alt={page === "cabin" ? (language === "nb" ? "Stue og kjøkken sett fra loftet" : "Living room and kitchen viewed from the loft") : page === "materials" ? (language === "nb" ? "Trapp med heltre gran og glassrekkverk" : "Staircase with solid spruce walls and glass balustrade") : page === "turufjell" ? (language === "nb" ? "Langrennsski ved hytta i vinterlandskap" : "Cross-country skis beside the cabin in winter") : page === "location" ? (language === "nb" ? "Utsikt over Turufjell og fjellene fra skibakken" : "View across Turufjell and the mountains from the ski slope") : ""} fill unoptimized={page === "cabin" || page === "materials" || page === "turufjell" || page === "location"} sizes={page === "cabin" || page === "materials" || page === "turufjell" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 52vw"} /></div>
-        <div className="retreat-detail-story-copy"><p>{t.number} · GRANDCABIN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
+        <div className="retreat-detail-story-copy"><p>{t.number} · TURU CROWN</p><h2>{more.leadTitle}</h2><span>{more.leadText}</span></div>
       </section>
       {page === "cabin" && (
         <figure className="retreat-cabin-landscape">
@@ -698,7 +698,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
           <header>
             <p>{language === "nb" ? "SKREDDERSYDD INTERIØR" : "BESPOKE INTERIORS"}</p>
             <h2>{language === "nb" ? "Bygget for hytta. Laget for hånd." : "Built for the cabin. Made by hand."}</h2>
-            <span>{language === "nb" ? "Grandcabin er formet som en helhet, der varme naturmaterialer møter presise, moderne linjer. Mange av møblene og de faste løsningene er tegnet og bygget spesielt for rommene. Resultatet er en rolig luksus som merkes i detaljene." : "Grandcabin is conceived as a whole, where warm natural materials meet precise, modern lines. Many furnishings and fitted solutions were designed and built specifically for the rooms, creating a quiet sense of luxury in every detail."}</span>
+            <span>{language === "nb" ? "Turu Crown er formet som en helhet, der varme naturmaterialer møter presise, moderne linjer. Mange av møblene og de faste løsningene er tegnet og bygget spesielt for rommene. Resultatet er en rolig luksus som merkes i detaljene." : "Turu Crown is conceived as a whole, where warm natural materials meet precise, modern lines. Many furnishings and fitted solutions were designed and built specifically for the rooms, creating a quiet sense of luxury in every detail."}</span>
           </header>
           <article className="retreat-bespoke-feature retreat-bespoke-feature-dark">
             <div className="retreat-bespoke-images">
@@ -726,7 +726,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
               <div>
                 <span>04 · {language === "nb" ? "TRAPPENE" : "THE STAIRCASES"}</span>
                 <h3>{language === "nb" ? "Håndlagde trapper i eik" : "Handmade oak staircases"}</h3>
-                <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Grandcabin og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Grandcabin and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
+                <p>{language === "nb" ? "Eiketrappene er spesialtegnet for Turu Crown og tilpasset hyttas rom og nivåer. Treets naturlige årringer og det presise håndverket knytter etasjene sammen og forener fjelltradisjon med et moderne, eksklusivt uttrykk." : "The oak staircases were designed specifically for Turu Crown and tailored to its rooms and levels. Natural grain and precise craftsmanship link the floors, bringing the warmth of mountain tradition into a contemporary, quietly luxurious interior."}</p>
               </div>
               <section className="retreat-craft-stair-images" aria-label={language === "nb" ? "Håndlagde eiketrapper i bilder" : "Handmade oak staircase photographs"}>
                 <figure><Image src={craftOakStaircase} alt={language === "nb" ? "Håndlaget eiketrapp med glassrekkverk og lysekrone" : "Handmade oak staircase with glass balustrade and chandelier"} fill unoptimized sizes="(max-width: 560px) 100vw, 35vw" /><Image className="retreat-craft-round-light" src={craftOakRoundLight} alt="" aria-hidden="true" fill unoptimized sizes="(max-width: 560px) 100vw, 35vw" /></figure>
@@ -737,7 +737,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
               <div>
                 <span>05 · {language === "nb" ? "PEISENE" : "THE FIREPLACES"}</span>
                 <h3>{language === "nb" ? "To glasspeiser. Én varm atmosfære." : "Two glass-fronted fireplaces. One warm atmosphere."}</h3>
-                <p>{language === "nb" ? "Grandcabin har to glasspeiser – én ved langbordet i underetasjen og én i stuen på hovedetasjen. Begge kan nytes samtidig, slik at varmen og gløden følger huset gjennom hele oppholdet, enten dagen samles rundt et måltid eller fortsetter i sofakroken med utsikt mot fjellet." : "Grandcabin has two glass-fronted fireplaces – one beside the long table downstairs and one in the main-floor living room. Both can be enjoyed at the same time, allowing warmth and firelight to accompany the house throughout the stay, whether the group is gathered around a meal or relaxing in the sitting room with views of the mountains."}</p>
+                <p>{language === "nb" ? "Turu Crown har to glasspeiser – én ved langbordet i underetasjen og én i stuen på hovedetasjen. Begge kan nytes samtidig, slik at varmen og gløden følger huset gjennom hele oppholdet, enten dagen samles rundt et måltid eller fortsetter i sofakroken med utsikt mot fjellet." : "Turu Crown has two glass-fronted fireplaces – one beside the long table downstairs and one in the main-floor living room. Both can be enjoyed at the same time, allowing warmth and firelight to accompany the house throughout the stay, whether the group is gathered around a meal or relaxing in the sitting room with views of the mountains."}</p>
                 <p>{language === "nb" ? "Peisene er utformet med store glassflater som gir flammene et rent og moderne uttrykk. Begge er bygget av lokal stein, som gir rommene en varm og innbydende atmosfære og en naturlig tilknytning til fjellandskapet. Resultatet er en gjennomført balanse mellom moderne luksus og en ekte, tradisjonell hyttefølelse." : "Designed with generous glass panels, the fireplaces give the flames a clean, contemporary presence. Both are built from local stone, creating a warm, inviting atmosphere and a natural connection to the mountain landscape. The result is a considered balance of modern luxury and an authentic, traditional cabin feeling."}</p>
               </div>
               <figure className="retreat-craft-fireplace-image"><Image src={craftFireplaceGlass} alt={language === "nb" ? "Glasspeis med synlige flammer og naturstein, sett fra sofagruppen" : "Glass fireplace with visible flames and natural stone, viewed from the seating area"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
@@ -749,10 +749,10 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page !== "cabin" && page !== "meetings" && detailBanner}
       {page === "meetings" ? (
         <section className="retreat-detail-points retreat-meeting-equipment">
-          <div className="retreat-meeting-equipment-copy"><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2><ul>{[language === "nb" ? "Projektor" : "Projector", ...more.points].map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></div>
-          <figure><Image src="/images/meetings-updated/projector-long-table-original.jpg" alt={language === "nb" ? "Langbord med projektor og lerret i Grandcabin" : "Grandcabin meeting table with projector and presentation screen"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
+          <div className="retreat-meeting-equipment-copy"><p>TURU CROWN · TURUFJELL</p><h2>{more.pointsTitle}</h2><ul>{[language === "nb" ? "Projektor" : "Projector", ...more.points].map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></div>
+          <figure><Image src="/images/meetings-updated/projector-long-table-original.jpg" alt={language === "nb" ? "Langbord med projektor og lerret i Turu Crown" : "Turu Crown meeting table with projector and presentation screen"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></figure>
         </section>
-      ) : page !== "turufjell" && <section className="retreat-detail-points"><div><p>GRANDCABIN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>}
+      ) : page !== "turufjell" && <section className="retreat-detail-points"><div><p>TURU CROWN · TURUFJELL</p><h2>{more.pointsTitle}</h2></div><ul>{more.points.map((point, index) => <li key={point}><span>0{index + 1}</span>{point}</li>)}</ul></section>}
       {page === "materials" && <section className="retreat-material-oil"><div><p>OSMO {language === "nb" ? "OLJEBEIS" : "OIL STAIN"}</p><h2>{language === "nb" ? <>Naturlig beskyttelse.<br />Treet får fortsatt puste.</> : <>Natural protection.<br />The timber still breathes.</>}</h2></div><div>{language === "nb" ? <><p>Overflatene er behandlet med Osmo oljebeis basert på naturlige planteoljer og harde vokser. Behandlingen trekker inn i treet og gir en vann- og smussavvisende overflate uten å legge en tett film over materialet.</p><p>Den diffusjonsåpne behandlingen lar treet ta opp og slippe ut fuktighet. Slik bevares det naturlige uttrykket, samtidig som overflaten blir slitesterk, antistatisk og enklere å holde ren. Osmo er FSC-sertifisert.</p></> : <><p>The surfaces are treated with Osmo oil stain based on natural plant oils and hard waxes. It penetrates the timber to create a water- and dirt-resistant finish without sealing the material beneath a dense film.</p><p>The breathable finish lets timber absorb and release moisture. Its natural appearance remains intact while the surface becomes durable, antistatic and easier to maintain. Osmo is FSC certified.</p></>}</div></section>}
       {cabinReviews}
       {cabinComfort}
@@ -767,9 +767,9 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <div className="retreat-map-tiles" aria-hidden="true">{locationMapTiles.map(({ x, y }) => <span key={`${x}-${y}`} style={{ backgroundImage: `url(https://tile.openstreetmap.org/13/${x}/${y}.png)` }} />)}</div>
         <span className="retreat-map-pin" aria-hidden="true"><i /></span>
         <a className="retreat-map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a>
-        <a className="retreat-map-card" href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer"><span>GRANDCABIN</span><b>Øvre Turusvingen 7</b><small>{language === "nb" ? "KLIKK FOR VEIBESKRIVELSE" : "CLICK FOR DIRECTIONS"} ↗</small></a>
+        <a className="retreat-map-card" href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer"><span>TURU CROWN</span><b>Øvre Turusvingen 7</b><small>{language === "nb" ? "KLIKK FOR VEIBESKRIVELSE" : "CLICK FOR DIRECTIONS"} ↗</small></a>
       </div>
-      <div className="retreat-directions-copy"><p>GRANDCABIN · TURUFJELL</p><h2>{language === "nb" ? "Under to timer fra Oslo." : "Under two hours from Oslo."}</h2><div className="retreat-direction-list">
+      <div className="retreat-directions-copy"><p>TURU CROWN · TURUFJELL</p><h2>{language === "nb" ? "Under to timer fra Oslo." : "Under two hours from Oslo."}</h2><div className="retreat-direction-list">
         <article><b>01</b><h3>{language === "nb" ? "Med bil" : "By car"}</h3><span>{language === "nb" ? "Kjør fra Oslo til Turufjell på under to timer. Google Maps leder dere helt frem til Øvre Turusvingen 7, og det er rikelig med parkering på eiendommen." : "Drive from Oslo to Turufjell in under two hours. Google Maps leads you directly to Øvre Turusvingen 7, with ample parking at the property."}</span><a href="https://www.google.com/maps/dir/?api=1&destination=%C3%98vre%20Turusvingen%207%2C%203539%20Fl%C3%A5" target="_blank" rel="noreferrer">{language === "nb" ? "START VEIBESKRIVELSE" : "START DIRECTIONS"} ↗</a></article>
         <article><b>02</b><h3>{language === "nb" ? "Med tog" : "By train"}</h3><span>{language === "nb" ? "La bilen stå og reis komfortabelt med Bergensbanen. Flere daglige avganger i begge retninger stopper på Flå stasjon. Derfra tar dere taxi eller avtaler annen transport den siste korte etappen opp til Turufjell." : "Leave the car behind and travel comfortably on the Bergen railway. Several daily services in both directions stop at Flå station. From there, take a taxi or arrange transport for the final short journey to Turufjell."}</span><a href="https://www.vy.no/" target="_blank" rel="noreferrer">{language === "nb" ? "SJEKK AVGANGER OG BESTILL TOGBILLETT" : "CHECK TIMES AND BOOK TRAIN TICKETS"} ↗</a></article>
         <article><b>03</b><h3>{language === "nb" ? "Med buss" : "By bus"}</h3><span>{language === "nb" ? "Vy Buss har flere daglige avganger i begge retninger med stopp i Flå. Fra holdeplassen fortsetter dere med taxi eller annen avtalt transport det siste stykket opp til Turufjell." : "Vy Bus operates several daily services in both directions with stops in Flå. Continue from the bus stop by taxi or other arranged transport for the final journey to Turufjell."}</span><a href="https://www.vybuss.no/#!/" target="_blank" rel="noreferrer">{language === "nb" ? "SJEKK RUTETIDER OG BESTILL BUSSBILLETT" : "CHECK TIMES AND BOOK BUS TICKETS"} ↗</a></article>
@@ -906,8 +906,8 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
     <section className="retreat-gathering-types retreat-gathering-opening">
       <div className="retreat-gathering-heading"><p>{language === "nb" ? "TO MÅTER Å SAMLES PÅ" : "TWO WAYS TO GATHER"}</p><h2>{language === "nb" ? "Profesjonelt når det trengs. Personlig når det gjelder." : "Professional when needed. Personal when it matters."}</h2></div>
       <div className="retreat-gathering-grid">
-        <article><div className="retreat-gathering-image"><Image src="/images/meetings-updated/boardroom-enhanced.webp" alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Ta med ledergruppen eller hele teamet til Grandcabin for møter med arbeidsro og rom for nye ideer. En projektor, et 100-tommers lerret, raskt bredbånd og fleksible fellesrom gir profesjonelle rammer, mens fjellet rett utenfor døren åpner for inspirerende pauser, kick-off og teambuilding. Hele hytta er forbeholdt deres gruppe, så samtalene kan fortsette fra arbeidsøkten til middagen rundt langbordet." : "Bring your leadership group or the whole team to Grandcabin for focused meetings and fresh ideas. A projector, a 100-inch presentation screen, fast broadband and flexible shared spaces provide a professional setting, while the mountain just outside invites inspiring breaks, kick-offs and team building. The entire cabin is reserved for your group, so conversations can continue from the working session to dinner around the long table."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
-        <article><div className="retreat-gathering-image"><Image src="/images/meetings-updated/dinner-enhanced.webp" alt={language === "nb" ? "Privat samling" : "Private gathering"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Som et privat fjellhjem for storfamilier og nære venner samler Grandcabin besteforeldre, voksne barn og yngre generasjoner under ett tak. Romslige fellesarealer og en gjennomtenkt planløsning gir naturlige rammer for familiegjenforeninger, med plass til både feiring og rolige stunder. Hele hytta, de ni soverommene og sovealkoven er forbeholdt dere." : "As a private mountain home for extended families and close friends, Grandcabin brings grandparents, adult children and younger generations together under one roof. Generous shared spaces and a considered layout make family reunions feel effortless, with room to celebrate together and quiet corners to retreat to. The entire cabin, with nine bedrooms and a sleeping alcove, is reserved for your group."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Familiegjenforeninger" : "Family reunions"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
+        <article><div className="retreat-gathering-image"><Image src="/images/meetings-updated/boardroom-enhanced.webp" alt={language === "nb" ? "Bedriftssamling" : "Company retreat"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div><div><span>01</span><h3>{language === "nb" ? "Bedriftssamlinger" : "Company retreats"}</h3><p>{language === "nb" ? "Ta med ledergruppen eller hele teamet til Turu Crown for møter med arbeidsro og rom for nye ideer. En projektor, et 100-tommers lerret, raskt bredbånd og fleksible fellesrom gir profesjonelle rammer, mens fjellet rett utenfor døren åpner for inspirerende pauser, kick-off og teambuilding. Hele hytta er forbeholdt deres gruppe, så samtalene kan fortsette fra arbeidsøkten til middagen rundt langbordet." : "Bring your leadership group or the whole team to Turu Crown for focused meetings and fresh ideas. A projector, a 100-inch presentation screen, fast broadband and flexible shared spaces provide a professional setting, while the mountain just outside invites inspiring breaks, kick-offs and team building. The entire cabin is reserved for your group, so conversations can continue from the working session to dinner around the long table."}</p><ul><li>Kick-off</li><li>{language === "nb" ? "Strategi og ledermøter" : "Strategy and leadership meetings"}</li><li>{language === "nb" ? "Kurs og teambuilding" : "Workshops and team building"}</li></ul></div></article>
+        <article><div className="retreat-gathering-image"><Image src="/images/meetings-updated/dinner-enhanced.webp" alt={language === "nb" ? "Privat samling" : "Private gathering"} fill unoptimized sizes="(max-width: 900px) 100vw, 50vw" /></div><div><span>02</span><h3>{language === "nb" ? "Private samlinger" : "Private gatherings"}</h3><p>{language === "nb" ? "Som et privat fjellhjem for storfamilier og nære venner samler Turu Crown besteforeldre, voksne barn og yngre generasjoner under ett tak. Romslige fellesarealer og en gjennomtenkt planløsning gir naturlige rammer for familiegjenforeninger, med plass til både feiring og rolige stunder. Hele hytta, de ni soverommene og sovealkoven er forbeholdt dere." : "As a private mountain home for extended families and close friends, Turu Crown brings grandparents, adult children and younger generations together under one roof. Generous shared spaces and a considered layout make family reunions feel effortless, with room to celebrate together and quiet corners to retreat to. The entire cabin, with nine bedrooms and a sleeping alcove, is reserved for your group."}</p><ul><li>{language === "nb" ? "Jubileer og merkedager" : "Anniversaries and milestones"}</li><li>{language === "nb" ? "Familiegjenforeninger" : "Family reunions"}</li><li>{language === "nb" ? "Storfamilie og venner" : "Extended family and friends"}</li><li>{language === "nb" ? "Eksklusiv bruk av hele hytta" : "Exclusive use of the entire cabin"}</li></ul></div></article>
       </div>
     </section>
   );
@@ -915,7 +915,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
   const gatheringCompanies = page === "meetings" && (
     <section className="retreat-gathering-types retreat-gathering-companies">
       <div className="retreat-company-strip">
-        <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT GRANDCABIN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN GRANDCABIN"}</p>
+        <p>{language === "nb" ? "NOEN AV VIRKSOMHETENE SOM HAR VALGT TURU CROWN" : "SOME OF THE COMPANIES THAT HAVE CHOSEN TURU CROWN"}</p>
         <div className="retreat-company-wall">
           <article className="retreat-company-card retreat-company-kiwi">
             <div className="retreat-company-logo"><Image src="/images/company-logos/kiwi.png" alt="KIWI Minipris" width={385} height={140} /></div>
@@ -947,7 +947,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <TurufjellActivities language={language} />
       <section className="retreat-turufjell-about retreat-turufjell-about-overlay">
         <div className="retreat-turufjell-about-scene">
-          <div className="retreat-turufjell-about-image"><GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-13")!} alt={language === "nb" ? "Grandcabin ved skiløypa i solfylt vinterlandskap på Turufjell" : "Grandcabin beside the ski trail in Turufjell's sunny winter landscape"} nb={language === "nb"} /></div>
+          <div className="retreat-turufjell-about-image"><GalleryOriginal photo={organizedPhotos.find(photo => photo.id === "cabin-13")!} alt={language === "nb" ? "Turu Crown ved skiløypa i solfylt vinterlandskap på Turufjell" : "Turu Crown beside the ski trail in Turufjell's sunny winter landscape"} nb={language === "nb"} /></div>
           <div className="retreat-turufjell-about-copy"><p>{language === "nb" ? "OM TURUFJELL" : "ABOUT TURUFJELL"}</p><h2>{language === "nb" ? "Solsiden av Flå." : "The sunny side of Flå."}</h2><p>{language === "nb" ? "Turufjell ligger på solsiden av Flå og vender mot sørvest og vest, med lange soldager, rikelig med kveldssol og vid utsikt over Hallingdal. Destinasjonen er utviklet med akkurat passe avstand mellom hyttene: nær nok til et levende miljø, med nok luft til å trekke seg tilbake." : "Turufjell lies on the sunny side of Flå, facing southwest and west, with long sunny days, plenty of evening sun and wide views across Hallingdal. The destination is designed with balanced spacing between cabins: close enough for a lively atmosphere, with room to retreat."}</p><p>{language === "nb" ? "Her møtes langrenn, alpint, turstier, pumptrack og fiskevann i ett kompakt helårsområde. Turufjell Kafé er det naturlige samlingspunktet, mens Flå sentrum og Bjørneparken ligger omtrent 15 minutter unna." : "Cross-country skiing, alpine slopes, trails, pump tracks and fishing lakes meet in one compact year-round destination. Turufjell Café is the natural gathering place, while Flå village and Bjørneparken are around 15 minutes away."}</p></div>
         </div>
         <div className="retreat-turufjell-about-link"><a href="https://www.turufjell.no/om-oss/" target="_blank" rel="noreferrer">{language === "nb" ? "LES MER HOS TURUFJELL" : "READ MORE AT TURUFJELL"} ↗</a></div>
@@ -969,11 +969,11 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
         <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-tour-page">
           <section className="retreat-tour-intro">
-            <div><p>08 · GRANDCABIN</p><h1>{language === "nb" ? <>Gå gjennom<br />Grandcabin.</> : <>Walk through<br />Grandcabin.</>}</h1></div>
+            <div><p>08 · TURU CROWN</p><h1>{language === "nb" ? <>Gå gjennom<br />Turu Crown.</> : <>Walk through<br />Turu Crown.</>}</h1></div>
             <div><p>{language === "nb" ? "Utforsk rommene, planløsningen og utsikten i en interaktiv 3D-visning. Beveg deg mellom alle tre nivåer og opplev hvordan hytta henger sammen før dere kommer." : "Explore the rooms, layout and views in an interactive 3D experience. Move through all three levels and discover how the cabin connects before you arrive."}</p><span>{language === "nb" ? "Klikk i visningen og bruk musen eller fingeren for å bevege deg." : "Click inside the tour and use your mouse or finger to move around."}</span></div>
           </section>
           <section className="retreat-tour-stage">
-            <div className="retreat-tour-frame"><iframe title={language === "nb" ? "Interaktiv 3D-visning av Grandcabin" : "Interactive 3D tour of Grandcabin"} src="https://my.matterport.com/show/?m=Cni4Ctd7QSV" allow="autoplay; fullscreen; web-share; xr-spatial-tracking" allowFullScreen /></div>
+            <div className="retreat-tour-frame"><iframe title={language === "nb" ? "Interaktiv 3D-visning av Turu Crown" : "Interactive 3D tour of Turu Crown"} src="https://my.matterport.com/show/?m=Cni4Ctd7QSV" allow="autoplay; fullscreen; web-share; xr-spatial-tracking" allowFullScreen /></div>
             <div className="retreat-tour-caption"><div><span>360°</span><p>{language === "nb" ? "Hele hytta, rom for rom" : "The entire cabin, room by room"}</p></div><a href="https://my.matterport.com/show/?m=Cni4Ctd7QSV" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE 3D-VISNING I FULLSKJERM" : "OPEN 3D TOUR FULL SCREEN"} ↗</a></div>
           </section>
         </main>
@@ -998,14 +998,14 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       {page === "cabin" && <CabinVideoHero language={language} description={t.text} />}
       {gatheringTypes}
       {page !== "meetings" && <main className={`retreat-detail${page === "materials" ? " retreat-detail-materials" : page === "turufjell" ? " retreat-detail-turufjell" : page === "location" ? " retreat-detail-location" : ""}`}>
-        <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : page === "bedrooms" ? suitesIntroduction : page === "materials" ? craftTimberHallway : page === "turufjell" ? turufjellWinterAerial : page === "location" ? locationNorthernLights : image(t.photo)} alt={page === "cabin" ? (language === "nb" ? "Teleskop foran panoramavinduet med utsikt mot snødekte fjell" : "Telescope by the panoramic window overlooking snowy mountains") : page === "materials" ? (language === "nb" ? "Gang med naturlig treverk og håndlagde detaljer" : "Hallway with natural timber and handcrafted details") : page === "turufjell" ? (language === "nb" ? "Flyfoto av snødekte Turufjell med hytter, skiløyper og fjellandskapet rundt" : "Aerial photograph of snowy Turufjell, cabins, ski trails and surrounding mountains") : page === "location" ? (language === "nb" ? "Grandcabin under nordlyset på Turufjell" : "Grandcabin beneath the northern lights at Turufjell") : t.alt} fill unoptimized={page === "cabin" || page === "bedrooms" || page === "materials" || page === "turufjell" || page === "location"} priority={page !== "cabin"} sizes={page === "turufjell" || page === "location" ? "100vw" : page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
+        <div className="retreat-detail-image"><Image src={page === "cabin" ? cabinLivingSpace : page === "bedrooms" ? suitesIntroduction : page === "materials" ? craftTimberHallway : page === "turufjell" ? turufjellWinterAerial : page === "location" ? locationNorthernLights : image(t.photo)} alt={page === "cabin" ? (language === "nb" ? "Teleskop foran panoramavinduet med utsikt mot snødekte fjell" : "Telescope by the panoramic window overlooking snowy mountains") : page === "materials" ? (language === "nb" ? "Gang med naturlig treverk og håndlagde detaljer" : "Hallway with natural timber and handcrafted details") : page === "turufjell" ? (language === "nb" ? "Flyfoto av snødekte Turufjell med hytter, skiløyper og fjellandskapet rundt" : "Aerial photograph of snowy Turufjell, cabins, ski trails and surrounding mountains") : page === "location" ? (language === "nb" ? "Turu Crown under nordlyset på Turufjell" : "Turu Crown beneath the northern lights at Turufjell") : t.alt} fill unoptimized={page === "cabin" || page === "bedrooms" || page === "materials" || page === "turufjell" || page === "location"} priority={page !== "cabin"} sizes={page === "turufjell" || page === "location" ? "100vw" : page === "cabin" || page === "materials" ? "(max-width: 900px) 100vw, 50vw" : "(max-width: 900px) 100vw, 58vw"} /></div>
         <div className="retreat-detail-copy"><p>{page === "bedrooms" ? (language === "nb" ? "02 · ROM" : "02 · ROOMS") : t.number}</p>{page === "cabin" ? <h2>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h2> : <h1>{t.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>}{page === "bedrooms" && <strong className="retreat-suite-intro">{language === "nb" ? "Raffinert luksus møter tradisjonell fjellsjarm" : "Refined luxury meets timeless mountain charm"}</strong>}<div className="retreat-detail-text"><span>{page === "cabin" ? more.bannerText : t.text}</span><ul>{t.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div></div>
       </main>}
       {page === "meetings" && <section className="retreat-meetings-intro">
         <div className="retreat-meetings-intro-copy">
           <p className="retreat-meetings-intro-label">{language === "nb" ? "ET OPPHOLD PÅ DERES PREMISSER" : "A STAY ON YOUR TERMS"}</p>
           <h2>{language === "nb" ? "Et privat fjellhjem. Helt deres." : "A private mountain home. Entirely yours."}</h2>
-          <p>{language === "nb" ? "Alt samles innenfor rammene av ett arkitektonisk gjennomført fjellhjem. Møter, måltider og rolige øyeblikk får utfolde seg i egne rom, mens hele Grandcabin er forbeholdt deres gruppe." : "Everything unfolds within one thoughtfully designed mountain home. Meetings, meals and quiet moments each have their place, while the whole of Grandcabin is reserved for your group."}</p>
+          <p>{language === "nb" ? "Alt samles innenfor rammene av ett arkitektonisk gjennomført fjellhjem. Møter, måltider og rolige øyeblikk får utfolde seg i egne rom, mens hele Turu Crown er forbeholdt deres gruppe." : "Everything unfolds within one thoughtfully designed mountain home. Meetings, meals and quiet moments each have their place, while the whole of Turu Crown is reserved for your group."}</p>
           <p>{language === "nb" ? "Oppholdet formes helt på deres premisser. Nyt friheten til å bestemme tempoet selv, med diskret hjelp etter avtale når dere ønsker det." : "Your stay unfolds entirely on your terms. Enjoy the privacy to set your own pace, with discreet assistance available by arrangement whenever you wish."}</p>
         </div>
         <div className="retreat-meetings-intro-signature">

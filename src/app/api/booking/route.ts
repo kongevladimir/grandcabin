@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       await mutate(state => { state.ownerAuth = { ...state.ownerAuth, resetHash: hash, resetExpires: Date.now() + 30 * 60000 }; });
       const url = `${process.env.BOOKING_SITE_URL!.replace(/\/$/, "")}/reset-password#token=${token}`;
       try {
-        const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: process.env.BOOKING_EMAIL_FROM, to: [process.env.BOOKING_OWNER_USERNAME], subject: "Grandcabin · Tilbakestill passord", text: `Du har bedt om å tilbakestille passordet for Grandcabin. Åpne denne lenken innen 30 minutter:\n\n${url}\n\nHvis du ikke ba om dette, kan du se bort fra e-posten.` }), signal: AbortSignal.timeout(8000) });
+        const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: process.env.BOOKING_EMAIL_FROM, to: [process.env.BOOKING_OWNER_USERNAME], subject: "Turu Crown · Tilbakestill passord", text: `Du har bedt om å tilbakestille passordet for Turu Crown. Åpne denne lenken innen 30 minutter:\n\n${url}\n\nHvis du ikke ba om dette, kan du se bort fra e-posten.` }), signal: AbortSignal.timeout(8000) });
         if (!sent.ok) throw new Error("mail");
       } catch {
         await mutate(state => { if (state.ownerAuth?.resetHash === hash) { state.ownerAuth.resetHash = undefined; state.ownerAuth.resetExpires = undefined; } });

@@ -21,8 +21,8 @@ const sections: GuideSection[] = [
     id: "winter",
     number: "01",
     image: "/images/ski.avif",
-    nb: { label: "VINTER", title: "Når fjellet kler seg i snø", intro: "Fra rolige spor til store fjelldager – finn vinteren som passer dere.", imageAlt: "Løypekart for Turufjell med Grandcabin markert" },
-    en: { label: "WINTER", title: "When the mountains turn white", intro: "From gentle trails to full days on the mountain, make winter your own.", imageAlt: "Turufjell ski map with Grandcabin marked and an English legend" },
+    nb: { label: "VINTER", title: "Når fjellet kler seg i snø", intro: "Fra rolige spor til store fjelldager – finn vinteren som passer dere.", imageAlt: "Løypekart for Turufjell med Turu Crown markert" },
+    en: { label: "WINTER", title: "When the mountains turn white", intro: "From gentle trails to full days on the mountain, make winter your own.", imageAlt: "Turufjell ski map with Turu Crown marked and an English legend" },
     items: [
       { nb: { title: "Langrenn", text: "Preparerte spor starter ved hytta. Velg lune rundløyper eller følg den 125 km lange Eventyrløypa videre gjennom Hallingdal." }, en: { title: "Cross-country skiing", text: "Groomed trails begin by the cabin. Choose sheltered loops or follow the 125 km Eventyrløypa farther into Hallingdal." } },
       { nb: { title: "Alpint", text: "Turufjell Skisenter har bakker for både nybegynnere og erfarne skiløpere, med barneområde, grønne løyper og mer utfordrende nedfarter." }, en: { title: "Alpine skiing", text: "Turufjell Ski Centre has slopes for beginners and experienced skiers, from the children’s area and green runs to more challenging descents." } },
@@ -73,7 +73,7 @@ export function TurufjellActivityGuide() {
       <main className="retreat-activity-guide">
         <header className="retreat-activity-guide-intro">
           <Link href="/concepts/retreat/turufjell">← {language === "nb" ? "TILBAKE TIL OPPLEVELSER" : "BACK TO EXPERIENCES"}</Link>
-          <p>GRANDCABIN · TURUFJELL</p>
+          <p>TURU CROWN · TURUFJELL</p>
           <h1>{language === "nb" ? "Opplevelser, hele året" : "Experiences, all year"}</h1>
           <span>{language === "nb" ? "Vinter og sommer samlet på ett sted. Finn aktivitetene som passer deres opphold, fra ski og fjellturer til fiske, sykkel og opplevelser i Flå." : "Winter and summer together in one place. Find experiences that suit your stay, from skiing and mountain walks to fishing, cycling and days out in Flå."}</span>
           <nav aria-label={language === "nb" ? "Aktiviteter etter årstid" : "Activities by season"}>
@@ -89,9 +89,9 @@ export function TurufjellActivityGuide() {
                 {section.id === "winter" && <>
                   {/* Restore only the former marker area, preserving each translated map. */}
                   <Image className="retreat-ski-map-marker-cleanup" src="/images/turufjell-ski-map-pin-cleanup.png" alt="" fill sizes="100vw" />
-                  <div className="retreat-ski-map-marker" aria-label="Grandcabin">
+                  <div className="retreat-ski-map-marker" aria-label="Turu Crown">
                     <svg viewBox="0 0 32 44" aria-hidden="true"><path d="M16 43C12 37 1 23 1 16a15 15 0 0 1 30 0c0 7-11 21-15 27Z" fill="#bd8e57" stroke="#fff" strokeWidth="2" /><circle cx="16" cy="16" r="10" fill="#17212d" /><path d="m10 15 6-5 6 5v7h-4v-5h-4v5h-4Z" fill="none" stroke="#f4d19a" strokeWidth="1.5" /></svg>
-                    <span>GRANDCABIN</span>
+                    <span>TURU CROWN</span>
                   </div>
                 </>}
               </div>

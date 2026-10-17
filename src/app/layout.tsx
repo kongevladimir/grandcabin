@@ -4,7 +4,7 @@ import "./globals.css";
 import "./booking.css";
 
 export const metadata: Metadata = {
-  title: "Grandcabin · Sammen på Turufjell",
+  title: "Turu Crown · Sammen på Turufjell",
   description: site.description,
   // Remove this restriction when the owner is ready to launch.
   robots: { index: false, follow: false },

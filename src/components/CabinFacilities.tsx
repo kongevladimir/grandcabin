@@ -19,7 +19,7 @@ export function CabinFacilities({ language }: { language: Language }) {
   return (
     <section className="retreat-cabin-facilities" aria-labelledby="cabin-facilities-title">
       <header>
-        <p>GRANDCABIN · {language === "nb" ? "EN PRAKTISK OVERSIKT" : "AT A GLANCE"}</p>
+        <p>TURU CROWN · {language === "nb" ? "EN PRAKTISK OVERSIKT" : "AT A GLANCE"}</p>
         <h2 id="cabin-facilities-title">{language === "nb" ? "Fasiliteter" : "Facilities"}</h2>
       </header>
       <dl className="retreat-cabin-facilities-stats">

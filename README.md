@@ -1,6 +1,6 @@
-# Grandcabin
+# Turu Crown
 
-A Norwegian and English presentation website for the Grandcabin rental property
+A Norwegian and English presentation website for the Turu Crown rental property
 on Turufjell. The direct booking preview lets guests request dates and extras,
 then discuss their stay with the owner in a private conversation. The owner
 approves reservations manually; there is no payment collection.

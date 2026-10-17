@@ -43,7 +43,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
         <source src="/videos/grandcabin-hero.mp4" type="video/mp4" />
       </video>
       <div className="retreat-cabin-video-copy">
-        <span className="retreat-cabin-welcome">{nb ? "Velkommen til Grandcabin på Turufjell | Norge" : "Welcome to Grandcabin at Turufjell | Norway"}</span>
+        <span className="retreat-cabin-welcome">{nb ? "Velkommen til Turu Crown på Turufjell | Norge" : "Welcome to Turu Crown at Turufjell | Norway"}</span>
         <h1 id="retreat-cabin-video-title">{nb ? "Tidløs" : "Timeless"} <em>{nb ? "eleganse" : "Elegance"}</em></h1>
         <p className="retreat-cabin-video-subtitle">{nb ? "Et eksklusivt fjellhjem på Turufjell" : "An exclusive mountain home at Turufjell"}<span>{nb ? "Ski inn, ski ut – en eksklusiv fjellopplevelse" : "Ski-in, ski-out — a refined mountain escape"}</span></p>
       </div>
@@ -53,7 +53,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
       </div>
       <div className="retreat-cabin-video-bottom">
         <span>700 {nb ? "MOH" : "M ABOVE SEA LEVEL"} · TURUFJELL</span>
-        <a href="#retreat-cabin-video-intro">{nb ? "OPPDAG GRANDCABIN" : "DISCOVER GRANDCABIN"}<span aria-hidden="true">↓</span></a>
+        <a href="#retreat-cabin-video-intro">{nb ? "OPPDAG TURU CROWN" : "DISCOVER TURU CROWN"}<span aria-hidden="true">↓</span></a>
         <button disabled={!ready} onClick={() => playing ? player.current?.pause() : player.current?.play().catch(() => setPlaying(false))} aria-label={nb ? (playing ? "Sett bakgrunnsvideo på pause" : "Spill bakgrunnsvideo") : (playing ? "Pause background video" : "Play background video")}><span aria-hidden="true">{playing ? "Ⅱ" : "▷"}</span></button>
       </div>
     </section>

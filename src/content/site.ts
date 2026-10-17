@@ -1,5 +1,5 @@
 export const site = {
-  name: "Grandcabin · Turufjell",
+  name: "Turu Crown · Turufjell",
   language: "nb",
   description:
     "En romslig fjellhytte på Turufjell med 29 sengeplasser, ni soverom, to badstuer og ski inn/ut.",

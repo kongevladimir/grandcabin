@@ -24,7 +24,7 @@ export function ForgotPassword({ emailReady }: { emailReady: boolean }) {
   }
 
   return <div className="concept-page retreat-page bk-page"><RetreatNav language={lang} setLanguage={setLang} /><main className="bk-main bk-owner">
-    <p className="bk-kicker">GRANDCABIN · {w("EIER", "OWNER")}</p>
+    <p className="bk-kicker">TURU CROWN · {w("EIER", "OWNER")}</p>
     <h1>{w("Glemt passord", "Forgot password")}</h1>
     <form className="bk-panel bk-login" onSubmit={requestReset}>
       <h2>{w("Tilbakestill passord", "Reset your password")}</h2>
@@ -68,7 +68,7 @@ export function ResetPassword() {
   }
 
   return <div className="concept-page retreat-page bk-page"><RetreatNav language={lang} setLanguage={setLang} /><main className="bk-main bk-owner">
-    <p className="bk-kicker">GRANDCABIN · {w("EIER", "OWNER")}</p>
+    <p className="bk-kicker">TURU CROWN · {w("EIER", "OWNER")}</p>
     <h1>{w("Nytt passord", "New password")}</h1>
     <div className="bk-panel bk-login">
       {done ? <><h2>{w("Passordet er oppdatert", "Password updated")}</h2><p>{w("Du kan nå logge inn med det nye passordet.", "You can now sign in with your new password.")}</p><Link className="bk-primary" href="/login">{w("Gå til innlogging", "Go to sign in")} →</Link></> : token ? <form onSubmit={reset}>

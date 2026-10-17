@@ -34,8 +34,8 @@ export function OrganizedGallery({ language }: { language: Language }) {
   return (
     <main className="retreat-organized-gallery">
       <section className="retreat-organized-gallery-hero">
-        <Image src={photos[0].preview} alt={nb ? "Grandcabin under nordlyset" : "Grandcabin beneath the northern lights"} fill unoptimized priority sizes="100vw" />
-        <h1>{nb ? "Grandcabin i bilder" : "Grandcabin Gallery"}</h1>
+        <Image src={photos[0].preview} alt={nb ? "Turu Crown under nordlyset" : "Turu Crown beneath the northern lights"} fill unoptimized priority sizes="100vw" />
+        <h1>{nb ? "Turu Crown i bilder" : "Turu Crown Gallery"}</h1>
       </section>
       <div className="retreat-organized-gallery-filters" role="group" aria-label={nb ? "Velg bildekategori" : "Choose photo category"}>
         {filters.map(filter => <button key={filter.id} type="button" aria-pressed={category === filter.id} onClick={() => setCategory(filter.id)}>{filter.label}</button>)}
@@ -50,7 +50,7 @@ export function OrganizedGallery({ language }: { language: Language }) {
       <dialog ref={dialog} className="retreat-organized-gallery-viewer" aria-label={nb ? "Bilde i originalkvalitet" : "Original-quality photo"} onClose={() => setActive(null)} onKeyDown={event => {
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") { event.preventDefault(); change(event.key === "ArrowLeft" ? -1 : 1); }
       }}>
-        <header><span>GRANDCABIN</span><button type="button" onClick={() => dialog.current?.close()} aria-label={nb ? "Lukk bildet" : "Close photo"}>{nb ? "Lukk" : "Close"} ×</button></header>
+        <header><span>TURU CROWN</span><button type="button" onClick={() => dialog.current?.close()} aria-label={nb ? "Lukk bildet" : "Close photo"}>{nb ? "Lukk" : "Close"} ×</button></header>
         <div className="retreat-organized-gallery-full-photo">
           {selected && <GalleryOriginal key={selected.id} photo={selected} alt={labels[selected.category]} nb={nb} />}
         </div>

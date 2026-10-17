@@ -23,7 +23,7 @@ const destinations = [
   { name: "Oslo", lat: 59.91273, lon: 10.74609, priority: .1 },
   { name: "Bergen", lat: 60.39323, lon: 5.3245 },
   { name: "Drammen", lat: 59.74389, lon: 10.20448 },
-  { name: "Turufjell\nGrandcabin", lat: 60.46898363947388, lon: 9.500311105951718, cabin: true },
+  { name: "Turufjell\nTuru Crown", lat: 60.46898363947388, lon: 9.500311105951718, cabin: true },
 ];
 
 const places: FeatureCollection<Point> = {

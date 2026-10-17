@@ -37,7 +37,7 @@ export function OwnerLogin() {
   }
 
   return <div className="concept-page retreat-page bk-page"><RetreatNav language={lang} setLanguage={setLang} /><main className="bk-main bk-owner">
-    <p className="bk-kicker">GRANDCABIN · {w("EIER", "OWNER")}</p>
+    <p className="bk-kicker">TURU CROWN · {w("EIER", "OWNER")}</p>
     <h1>{w("Logg inn", "Sign in")}</h1>
     <form className="bk-panel bk-login" onSubmit={signIn}>
       <h2>{w("Eieradministrasjon", "Owner administration")}</h2>
