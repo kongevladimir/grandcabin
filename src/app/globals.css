@@ -2181,14 +2181,9 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-cabin-video-intro { scroll-margin-top: 112px; }
 }
 
-/* Shade only the upper title area; leave the footage behind the lower statement clear. */
+/* Keep the original film completely clear behind the lettering. */
 .retreat-cabin-video-hero::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgb(8 17 27 / 55%) 0%, rgb(8 17 27 / 28%) 25%, transparent 50%);
+  content: none;
 }
 .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy,
 .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-statement {
