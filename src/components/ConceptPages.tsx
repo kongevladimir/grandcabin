@@ -550,12 +550,12 @@ function CabinVideoHero({ language, description }: { language: Language; descrip
           <h2>{isNorwegian ? <>700 moh.<br />Over 340 m²<br />ren fjellglede.</> : <>700 metres above sea level.<br />Over 340 m² of mountain living.</>}</h2>
         </div>
         <div className="retreat-cabin-intro-copy">
-          <p>{isNorwegian
-            ? "Turu Crown er et eksklusivt, privat fjellhjem på Turufjell, skapt for minnerike opphold med familie og venner, og for inspirerende bedriftssamlinger. Her kan opptil 29 gjester nyte et opphold med ski inn og ut, generøse rom og komfort i hver detalj."
-            : "Turu Crown is an exclusive private mountain home at Turufjell, created for memorable stays with family and friends, as well as inspiring company retreats. Up to 29 guests can enjoy ski-in, ski-out access, generous spaces and comfort in every detail."}</p>
-          <p>{isNorwegian
-            ? "Etter en dag på fjellet venter to badstuer, lange måltider og en romslig terrasse med vid utsikt. Her er det plass til å være sammen, og til å finne roen helt for seg selv."
-            : "After a day in the mountains, two saunas, unhurried dinners and a spacious terrace with far-reaching views await. There is room to gather, and room to find a quiet moment of your own."}</p>
+          <p><span className="retreat-cabin-intro-lead">{isNorwegian ? "Et fjellhjem, helt deres." : "A mountain home, entirely yours."}</span>{isNorwegian
+            ? "På Turufjell samler Turu Crown familie, venner og kollegaer under ett tak. Et privat fjellhjem for opptil 29 gjester, med ski inn og ut, generøse rom og omtanke i hver detalj."
+            : "At Turufjell, Turu Crown brings family, friends and colleagues together under one roof. A private mountain home for up to 29 guests, with ski-in, ski-out access, generous spaces and care in every detail."}</p>
+          <p><span className="retreat-cabin-intro-lead">{isNorwegian ? "Lange dager. Rolige kvelder." : "Long days. Unhurried evenings."}</span>{isNorwegian
+            ? "La dagen fortsette fra skisporet til badstuens varme, fra lange middager til stille øyeblikk på terrassen. To badstuer, vid fjellutsikt og plass til både fellesskap og ro setter rammen."
+            : "Let the day unfold from the ski trail to the warmth of the sauna, from lingering dinners to quiet moments on the terrace. Two saunas, far-reaching mountain views and room for both company and solitude set the scene."}</p>
         </div>
       </section>
     </>

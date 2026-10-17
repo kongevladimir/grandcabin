@@ -2257,9 +2257,20 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro .retreat-cabin-intro-copy p {
   font-family: var(--serif);
-  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
-  line-height: 1.5;
-  letter-spacing: .005em;
+  font-size: clamp(1.15rem, 1.55vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: .01em;
+  text-wrap: pretty;
+}
+.retreat-cabin-intro-lead {
+  display: block;
+  margin-bottom: .7rem;
+  color: #f4e5cf;
+  font-size: 1.4em;
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -.015em;
 }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-detail.retreat-detail-turufjell { min-height: 0; grid-template-columns: 1fr; grid-template-rows: auto auto; }
