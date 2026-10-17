@@ -2220,6 +2220,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-detail-page[data-page="cabin"] .retreat-cabin-welcome { font-size: .65rem; letter-spacing: .12em; }
 }
 .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-statement {
+  bottom: 4.5rem;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
