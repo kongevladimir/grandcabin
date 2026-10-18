@@ -1,11 +1,17 @@
 # Turu Crown logo
 
-The current owner-supplied logo is saved unchanged at `public/images/turu-crown-logo-v2.png` (465 × 242). Its source is `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-79064550-1df1-47b3-8ba2-cd5b365d037c.png`.
+The original owner-supplied logo is saved unchanged at `public/images/turu-crown-logo-v2.png` (465 × 242). Its source is `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-79064550-1df1-47b3-8ba2-cd5b365d037c.png`.
+
+The current logo is `public/images/turu-crown-logo-readable.png` (1738 × 905), generated with the built-in imagegen tool at the owner's request to enlarge the two secondary text lines. It retains a black background for clean edges and uses the screen treatment described below. In the navigation, the crown, mountains and main name come from the image; the two secondary lines are rendered as real text at 9 px and 8.5 px so they remain readable at small sizes. The embedded tiny lines are clipped only in this header presentation; the complete logo file retains both larger lines. Desktop logo width is 200 px; compact navigation uses 150 px.
 
 The site renders the original with CSS `mix-blend-mode: screen`, which removes black visually while preserving the supplied lettering and symbols. This file itself is not an alpha-transparent PNG. The homepage header is transparent and overlays the video at the top left. The duplicate central logo was removed. Other pages keep their existing navigation background.
 
 Two built-in imagegen background-extraction attempts produced speckled edges, so neither generated image is used on the website. No API/CLI fallback was used.
 
-Final built-in prompt:
+Earlier background-extraction prompt (not used on the website):
 
 > Background extraction for supplied logo, clean precise brand asset. The previous extraction attempt was unusably speckled. Work from THIS original attached logo only. Produce pristine SOLID WHITE lettering and mountain strokes and a smooth GOLD crown on a real alpha transparent background. Keep the exact original composition and text: TURU CROWN / EXCLUSIVE MOUNTAIN LODGE / TURUFJELL · NORWAY. Preserve all original silhouettes and exact type shapes. Remove all black background everywhere, including counters of letters and empty mountain shapes. Critical: completely smooth uniform filled strokes, razor-clean antialiased edges. No mottling, no distressed textures, no clouds, no white haze or splatter. The transparent negative space must be totally empty and the white logo strokes fully opaque. No new art or typography changes. A polished clean transparent PNG logo cutout.
+
+Final built-in prompt for the readable logo:
+
+> Precise logo typography edit. Use the supplied ORIGINAL CLEAN logo as edit target, NOT any distressed cutout. Preserve the gold crown, white mountain silhouettes, and TURU CROWN serif main wordmark exactly in style and proportions. Enlarge the secondary line EXCLUSIVE MOUNTAIN LODGE to about 1.7 times its current letter height, and enlarge the bottom TURUFJELL · NORWAY line to about twice its current letter height. Improve both lines to a clear medium-weight uppercase sans-serif with less excessive tracking, so readable when the logo is small. Keep the exact text, centered alignment, tasteful spacing and thin horizontal rules beside the first tagline. Allow a little more vertical space below the wordmark for these larger lines. Solid pure BLACK background, pure WHITE mountain and wordmark strokes, smooth GOLD crown. Razor-sharp clean edges and opaque solid lettering; NO distress, no speckles, no texture, no haze, no glow, no drop shadows. Do not change the logo identity or add anything. Production-quality clean logo artwork on black; the website will handle the black background separately.

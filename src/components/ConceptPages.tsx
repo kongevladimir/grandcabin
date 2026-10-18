@@ -406,7 +406,7 @@ export function RetreatLongConcept() {
   return (
     <div className="concept-page retreat-page">
       <header className="retreat-header">
-        <Link href="/" className="retreat-logo"><Image src="/images/turu-crown-logo-v2.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={465} height={242} unoptimized priority /></Link>
+        <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
         <nav>{t.nav.map((item, index) => <a key={item} href={`#retreat-${index}`}>{item}</a>)}</nav>
         <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><a href={finnUrl} target="_blank" rel="noreferrer">{t.contact}</a></div>
       </header>
@@ -467,6 +467,14 @@ const retreatPaths = [
   "/concepts/retreat/3d-tour",
 ];
 
+function TuruCrownLogo() {
+  return <>
+    <span className="retreat-logo-artwork"><Image src="/images/turu-crown-logo-readable.png" alt="Turu Crown" width={1738} height={905} unoptimized priority /></span>
+    <span className="retreat-logo-tagline">EXCLUSIVE MOUNTAIN LODGE</span>
+    <span className="retreat-logo-location">TURUFJELL · NORWAY</span>
+  </>;
+}
+
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
   const labels = language === "nb"
     ? ["Hytta", "Rom", "Samlinger", "Håndverk", "Opplevelser", "Beliggenhet", "Galleri", "3D-visning"]
@@ -474,7 +482,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
 
   return (
     <header className="retreat-header retreat-header-pages">
-      <Link href="/concepts/retreat" className="retreat-logo"><Image src="/images/turu-crown-logo-v2.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={465} height={242} unoptimized priority /></Link>
+      <Link href="/concepts/retreat" className="retreat-logo"><TuruCrownLogo /></Link>
       <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
     </header>
