@@ -5,25 +5,6 @@ import type { Language } from "@/components/useSiteLanguage";
 
 type Review = { name: string; date: string; score: string; text: string };
 
-const finnSummaries: Record<Language, Record<string, string>> = {
-  nb: {
-    "Elin Haga": "24 gjester opplevde hytta som romslig og gjennomført, med høy kvalitet, lite lyd mellom rommene og flotte bad og badstuer. Enkel ankomst med god veiledning. De kommer gjerne tilbake.",
-    "Ina Vilde L": "En gruppe på 24 fremhever en flott, godt utstyrt hytte med spiseplass til alle i underetasjen. Fire oppvaskmaskiner kom godt med. Hemsen var perfekt for barna, men har ikke dør.",
-    "Pål Berg": "En flott hytte som passet godt til 17 kollegaer. Gjestene fremhever god oppfølging, tydelige instruksjoner og raske svar på spørsmål før oppholdet.",
-    "Anadine": "En fantastisk helg i en stor og vakker hytte, med imponerende utsikt og et stilfullt, gjennomført interiør.",
-    "Anne W.": "16 familiemedlemmer feiret en vellykket jul sammen. De fremhever en lekker hytte, behagelig gulvvarme og svært god kommunikasjon med en hyggelig og hjelpsom vert. Anbefales varmt.",
-    "Alex Iqbal": "Helt utrolig! Anbefales til alle, 10/10!",
-  },
-  en: {
-    "Elin Haga": "A group of 24 found the cabin spacious and thoughtfully finished, with high quality, little sound between rooms and beautiful bathrooms and saunas. Clear arrival guidance. They would gladly return.",
-    "Ina Vilde L": "A group of 24 praised the well-equipped cabin and downstairs dining space for everyone. Four dishwashers proved useful. The loft was perfect for the children, although it has no door.",
-    "Pål Berg": "A beautiful cabin that suited 17 colleagues well. Guests praised attentive follow-up, clear instructions and quick answers to their questions before the stay.",
-    "Anadine": "A wonderful weekend in a large, beautiful cabin, with remarkable views and a stylish, carefully considered interior.",
-    "Anne W.": "Sixteen family members enjoyed Christmas together. They praised the beautiful cabin, comfortable underfloor heating and excellent communication with a friendly, helpful host. Warmly recommended.",
-    "Alex Iqbal": "Absolutely incredible! Recommended to everyone, 10/10!",
-  },
-};
-
 // Verified in the public Airbnb review dialog on 8 October 2026.
 // Concise paraphrases rather than verbatim quotations; all six received 5 stars.
 const airbnbReviews = [
@@ -69,8 +50,8 @@ export function CabinReviews({ language, reviews, finnUrl }: { language: Languag
   const nb = language === "nb";
   return <section className="retreat-reviews retreat-reviews-carousel" aria-label={nb ? "Gjestevurderinger fra FINN og Airbnb" : "Guest reviews from FINN and Airbnb"}>
     <header className="retreat-reviews-head"><div><p>{nb ? "GJESTENES OPPLEVELSER" : "GUEST EXPERIENCES"}</p><h2>{nb ? "Dette trekker gjestene frem." : "What guests highlight."}</h2></div></header>
-    <ReviewRow language={language} reviews={reviews.map(review => ({ ...review, text: finnSummaries[language][review.name] ?? review.text }))} source="FINN.no" href={finnUrl} rating="10/10" />
+    <ReviewRow language={language} reviews={reviews} source="FINN.no" href={finnUrl} rating="10/10" />
     <ReviewRow language={language} reviews={airbnbReviews.map(review => ({ name: review.name, date: nb ? review.month : review.enMonth, score: "5", text: review[language] }))} source="Airbnb" href="https://www.airbnb.com/rooms/1062840379999066478" rating="5/5" />
-    <div className="retreat-reviews-source"><span>{nb ? "Utvalgte gjestevurderinger, gjengitt som korte sammendrag." : "Selected guest reviews, presented as brief summaries."}</span></div>
+    <div className="retreat-reviews-source"><span>{nb ? "FINN: originaltekst. Airbnb: sammendrag." : "FINN: translated from Norwegian. Airbnb: summaries."}</span></div>
   </section>;
 }
