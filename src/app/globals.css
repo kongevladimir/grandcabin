@@ -930,6 +930,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-text li:nth-child(2) { padding-left: .8rem; }
 .retreat-detail-page[data-page="bedrooms"] .retreat-detail-text li { white-space: pre-line; line-height: 1.6; }
 .retreat-detail-page[data-page="location"] .retreat-detail-text ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.retreat-detail-page[data-page="materials"] .retreat-detail-text ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .retreat-detail-page[data-page="location"] .retreat-detail-text li { border: 0; padding: 1rem .8rem; }
 .retreat-detail-page[data-page="location"] .retreat-detail-text li:nth-child(odd) { border-right: 1px solid #c9c8c3; padding-left: 0; }
 .retreat-detail-page[data-page="location"] .retreat-detail-text li:nth-child(-n+2) { border-bottom: 1px solid #c9c8c3; }
@@ -1902,6 +1903,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   background: #17202c;
   color: #fff;
 }
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story-image { min-height: 0; aspect-ratio: 3 / 2; align-self: center; }
+.retreat-detail-page[data-page="meetings"] .retreat-detail-story-image img { object-fit: contain; }
 
 .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-copy h2,
 .retreat-detail-page[data-page="meetings"] .retreat-detail-story-copy h2 {
