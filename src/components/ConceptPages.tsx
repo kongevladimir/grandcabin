@@ -406,7 +406,7 @@ export function RetreatLongConcept() {
   return (
     <div className="concept-page retreat-page">
       <header className="retreat-header">
-        <Link href="/" className="retreat-logo"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></Link>
+        <Link href="/" className="retreat-logo"><Image src="/images/turu-crown-logo.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={596} height={252} unoptimized priority /></Link>
         <nav>{t.nav.map((item, index) => <a key={item} href={`#retreat-${index}`}>{item}</a>)}</nav>
         <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><a href={finnUrl} target="_blank" rel="noreferrer">{t.contact}</a></div>
       </header>
@@ -414,7 +414,7 @@ export function RetreatLongConcept() {
         <section className="retreat-hero">
           <Image src={image("exterior")} alt="Turu Crown and the mountains at Turufjell" fill priority sizes="100vw" />
           <div className="retreat-hero-shade" />
-          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><a href="#retreat-0">{t.heroCta}</a></div>
+          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><Image src="/images/turu-crown-logo.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={596} height={252} unoptimized priority /></div><h1>{t.hero}</h1><a href="#retreat-0">{t.heroCta}</a></div>
         </section>
 
         <section className="retreat-intro" id="retreat-0">
@@ -474,7 +474,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
 
   return (
     <header className="retreat-header retreat-header-pages">
-      <Link href="/concepts/retreat" className="retreat-logo"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></Link>
+      <Link href="/concepts/retreat" className="retreat-logo"><Image src="/images/turu-crown-logo.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={596} height={252} unoptimized priority /></Link>
       <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
     </header>
@@ -528,7 +528,7 @@ export function RetreatConcept() {
             referrerPolicy="strict-origin-when-cross-origin"
           />
           <div className="retreat-hero-shade" />
-          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><b>Turu</b><span>Crown</span><small>TURUFJELL</small></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
+          <div className="retreat-hero-copy"><div className="retreat-hero-mark"><Image src="/images/turu-crown-logo.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={596} height={252} unoptimized priority /></div><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
         </section>
       </main>
       <RetreatBookingFooter language={language} />
