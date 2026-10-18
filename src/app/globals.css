@@ -820,8 +820,8 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-logo > img { display: block; width: 170px; max-width: 100%; height: auto; object-fit: contain; mix-blend-mode: screen; }
 .retreat-logo .retreat-logo-artwork { display: block; width: 100%; aspect-ratio: 1738 / 690; overflow: hidden; margin: 0; }
 .retreat-logo-artwork > img { display: block; width: 100%; height: auto; mix-blend-mode: screen; }
-.retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { display: block; margin: .15rem 0 0; font-family: "DM Sans", Arial, sans-serif; font-size: 9px; font-weight: 600; line-height: 1.25; letter-spacing: .08em; text-align: center; white-space: nowrap; }
-.retreat-logo .retreat-logo-location { font-size: 8.5px; letter-spacing: .16em; }
+.retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { display: block; margin: .15rem 0 0; font-family: "DM Sans", Arial, sans-serif; font-size: 8px; font-weight: 500; line-height: 1.25; letter-spacing: .08em; text-align: center; white-space: nowrap; }
+.retreat-logo .retreat-logo-location { font-size: 7.5px; letter-spacing: .16em; }
 .retreat-hero-mark > img { display: block; width: clamp(230px, 30vw, 380px); max-width: 80vw; height: auto; object-fit: contain; }
 .retreat-header nav { display: flex; justify-content: center; gap: clamp(1rem, 2.1vw, 2.5rem); font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
 .retreat-header nav a:hover { color: #d8b687; }
