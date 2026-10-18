@@ -2101,6 +2101,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-cabin-gallery-navigation > div, .retreat-reviews-navigation { display: flex; gap: .6rem; }
 .retreat-cabin-gallery-navigation button, .retreat-reviews-navigation button { width: 44px; height: 44px; border: 1px solid #bfa37d; border-radius: 50%; background: transparent; color: #f5f1e9; font-size: 1.1rem; }
 .retreat-cabin-gallery-navigation button:hover, .retreat-reviews-navigation button:hover { background: #d8b687; color: #17202c; }
+.retreat-cabin-gallery-navigation button.retreat-gallery-playback { display: inline-flex; align-items: center; gap: .55rem; width: auto; padding: .6rem 1rem; border-radius: 999px; font-size: .75rem; letter-spacing: .02em; }
 @keyframes retreat-cabin-gallery-fade { from { opacity: .3; } to { opacity: 1; } }
 
 /* Three immediately readable cards per platform, with slow automatic navigation. */

@@ -24,18 +24,41 @@ const photos = [
 export function CabinGallery({ language }: { language: Language }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [interacting, setInteracting] = useState(false);
+  const [canRotate, setCanRotate] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const viewer = useRef<HTMLDialogElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
   const nb = language === "nb";
   const photo = photos[active];
-  const changePhoto = (direction: number) => setActive(current => (current + direction + photos.length) % photos.length);
+  const changePhoto = (direction: number) => {
+    setPaused(true);
+    setActive(current => (current + direction + photos.length) % photos.length);
+  };
 
   useEffect(() => {
-    if (paused || interacting || expanded || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setActive(current => (current + 1) % photos.length), 8000);
-    return () => window.clearInterval(timer);
-  }, [paused, interacting, expanded, active]);
+    if (!stage.current) return;
+    let inView = false;
+    const updateVisibility = () => setCanRotate(inView && document.visibilityState === "visible");
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting && entry.intersectionRatio >= .2;
+      updateVisibility();
+    }, { threshold: [0, .2] });
+    observer.observe(stage.current);
+    const resetOnReturn = () => setActive(0);
+    document.addEventListener("visibilitychange", updateVisibility);
+    window.addEventListener("pageshow", resetOnReturn);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", updateVisibility);
+      window.removeEventListener("pageshow", resetOnReturn);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (paused || !canRotate || expanded || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setTimeout(() => setActive(current => (current + 1) % photos.length), 10000);
+    return () => window.clearTimeout(timer);
+  }, [paused, canRotate, expanded, active]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -45,22 +68,22 @@ export function CabinGallery({ language }: { language: Language }) {
   }, [expanded]);
 
   return (
-    <section className="retreat-suite-gallery retreat-cabin-gallery" aria-label={nb ? "Bildegalleri fra hytta" : "Cabin photo gallery"} onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}>
+    <section className="retreat-suite-gallery retreat-cabin-gallery" aria-label={nb ? "Bildegalleri fra hytta" : "Cabin photo gallery"}>
       <div className="retreat-suite-gallery-heading">
         <p>TURU CROWN · {nb ? "I BILDER" : "IN PICTURES"}</p>
         <h2>{nb ? "Et nærmere blikk." : "A closer look."}</h2>
         <span>{nb ? "Utforsk rommene, de varme materialene og utsikten som følger dere gjennom hytta." : "Explore the rooms, warm materials and views that accompany you throughout the cabin."}</span>
       </div>
-      <div className="retreat-suite-gallery-stage">
+      <div className="retreat-suite-gallery-stage" ref={stage}>
         <div className="retreat-cabin-gallery-photo" key={photo.file}><Image src={`/images/cabin-gallery/${photo.file}-view.webp`} alt={photo[language]} fill unoptimized sizes="100vw" /></div>
         <button className="retreat-suite-gallery-open" type="button" onClick={() => { viewer.current?.showModal(); setExpanded(true); }} aria-label={nb ? "Åpne bildet i fullskjerm" : "Open photo full screen"}><span>{nb ? "Se i fullskjerm" : "View full screen"} ↗</span></button>
         <button className="retreat-cabin-gallery-arrow is-previous" type="button" onClick={() => changePhoto(-1)} aria-label={nb ? "Forrige bilde" : "Previous photo"}>←</button>
         <button className="retreat-cabin-gallery-arrow is-next" type="button" onClick={() => changePhoto(1)} aria-label={nb ? "Neste bilde" : "Next photo"}>→</button>
       </div>
       <div className="retreat-cabin-gallery-navigation"><span aria-live="polite">{String(active + 1).padStart(2, "0")} / {photos.length}</span><div>
-        <button type="button" onClick={() => setPaused(current => !current)} aria-label={paused ? (nb ? "Start automatisk bildevisning" : "Start slideshow") : (nb ? "Pause automatisk bildevisning" : "Pause slideshow")}>{paused ? "▶" : "Ⅱ"}</button>
+        <button className="retreat-gallery-playback" type="button" onClick={() => setPaused(current => !current)} aria-pressed={paused}><span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>{paused ? (nb ? "Start bildevisning" : "Start slideshow") : (nb ? "Pause bildevisning" : "Pause slideshow")}</button>
       </div></div>
-      <div className="retreat-suite-thumbs" aria-label={nb ? "Velg bilde" : "Choose a photo"}>{photos.map((item, index) => <button key={item.file} type="button" className={index === active ? "is-active" : ""} onClick={() => setActive(index)} aria-label={`${nb ? "Vis bilde" : "Show photo"} ${index + 1}: ${item[language]}`} aria-current={index === active ? "true" : undefined}><Image src={`/images/cabin-gallery/${item.file}-thumb.webp`} alt="" fill unoptimized sizes="120px" /></button>)}</div>
+      <div className="retreat-suite-thumbs" aria-label={nb ? "Velg bilde" : "Choose a photo"}>{photos.map((item, index) => <button key={item.file} type="button" className={index === active ? "is-active" : ""} onClick={() => { setPaused(true); setActive(index); }} aria-label={`${nb ? "Vis bilde" : "Show photo"} ${index + 1}: ${item[language]}`} aria-current={index === active ? "true" : undefined}><Image src={`/images/cabin-gallery/${item.file}-thumb.webp`} alt="" fill unoptimized sizes="120px" /></button>)}</div>
       <dialog ref={viewer} className="retreat-suite-viewer retreat-cabin-gallery-viewer" aria-label={nb ? "Hyttebilder i fullskjerm" : "Cabin photos full screen"} onClose={() => setExpanded(false)} onKeyDown={event => {
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") { event.preventDefault(); changePhoto(event.key === "ArrowLeft" ? -1 : 1); }
       }}>
