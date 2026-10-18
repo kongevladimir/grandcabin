@@ -5,15 +5,15 @@ import type { Language } from "@/components/useSiteLanguage";
 
 type Review = { name: string; date: string; score: string; text: string };
 
-// Verified in the public Airbnb review dialog on 8 October 2026.
-// Concise paraphrases rather than verbatim quotations; all six received 5 stars.
+// Norwegian wording supplied by the owner in text/screenshots on 19 October 2026.
+// Preserve the displayed wording, including emojis; English is a full translation.
 const airbnbReviews = [
-  { name: "Hans Martin", month: "MARS 2024", enMonth: "MARCH 2024", nb: "En moderne og vakker hytte som passet gruppen godt, med en svært imøtekommende vert.", en: "A beautiful modern cabin suited their group well, with a welcoming host ensuring a comfortable stay." },
-  { name: "Anette", month: "SEPTEMBER 2024", enMonth: "SEPTEMBER 2024", nb: "Romslig, rent og velutstyrt, med god kommunikasjon og en hyggelig, hjelpsom vert.", en: "Spacious, clean and well equipped, with good communication and a friendly, helpful host." },
-  { name: "Ole Christian", month: "MARS 2024", enMonth: "MARCH 2024", nb: "En flott hytte med skimuligheter rett utenfor og en svært imøtekommende vert.", en: "A wonderful cabin with skiing right outside and a very accommodating host." },
-  { name: "Beate", month: "MARS 2024", enMonth: "MARCH 2024", nb: "Stor, ren og velutstyrt hytte. Verten var hyggelig og svarte alltid raskt.", en: "A spacious, clean cabin with good facilities. The friendly host always responded quickly." },
-  { name: "Pia", month: "FEBRUAR 2024", enMonth: "FEBRUARY 2024", nb: "En flott hytte i vakre omgivelser, godt egnet for barnefamilier, med en hjelpsom vert.", en: "A lovely cabin in beautiful surroundings, ideal for families with children, with a helpful host." },
-  { name: "Kristian", month: "OKTOBER 2026", enMonth: "OCTOBER 2026", nb: "Et svært hyggelig opphold, med enkel adkomst og god plass.", en: "An enjoyable stay, with easy access and plenty of space." },
+  { name: "Hans Martin", month: "MARS 2024", enMonth: "MARCH 2024", nb: "Vi hadde en fantastisk opplevelse på denne vakre og moderne hytta som var perfekt egnet for vår store gjeng. Verten var ekstremt imøtekommende og gjorde alt for å sikre at oppholdet vårt var komfortabelt og hyggelig. Anbefales!", en: "We had a fantastic experience at this beautiful and modern cabin, which was perfectly suited to our large group. The host was extremely welcoming and did everything to ensure that our stay was comfortable and pleasant. Recommended!" },
+  { name: "Anette", month: "SEPTEMBER 2024", enMonth: "SEPTEMBER 2024", nb: "Stor og fin hytte, ren og ryddig. Alt var som det skulle være, og vi hadde god kommunikasjon med Katerina hele tiden. Hun var vennlig og hjelpsom. Hytta har det som trengs for at en stor gruppe mennesker kan samles, og vi kunne lage mye god mat. I det fine været gikk vi en tur til en dam og badet, 1,5 km gange fra hytta🌸☀️", en: "A large and lovely cabin, clean and tidy. Everything was as it should be, and we had good communication with Katerina throughout. She was friendly and helpful. The cabin has everything needed for a large group of people to gather, and we were able to cook lots of good food. In the lovely weather, we walked to a pond and went swimming, a 1.5 km walk from the cabin🌸☀️" },
+  { name: "Ole Christian", month: "MARS 2024", enMonth: "MARCH 2024", nb: "Vi hadde en fantastisk opplevelse på denne flotte hytten. Beliggenheten var også perfekt - med skimuligheter rett utenfor. Katerina var veldig imøtekommende.\n\nAnbefales!", en: "We had a fantastic experience at this wonderful cabin. The location was also perfect - with skiing right outside. Katerina was very welcoming.\n\nRecommended!" },
+  { name: "Beate", month: "MARS 2024", enMonth: "MARCH 2024", nb: "Fantastisk fin hytte! Stort, fint, rent og gode fasiliteter. Verten var veldig hyggelig og svarte alltid raskt 😊 Kan virkelig anbefales!", en: "An absolutely lovely cabin! Spacious, beautiful, clean and with good facilities. The host was very friendly and always replied quickly 😊 Highly recommended!" },
+  { name: "Pia", month: "FEBRUAR 2024", enMonth: "FEBRUARY 2024", nb: "Fantastisk hytte på et nydelig sted! Perfekt for barnefamilier. Veldig hyggelig og behjelpelig vert! 😊", en: "A fantastic cabin in a beautiful location! Perfect for families with children. A very friendly and helpful host! 😊" },
+  { name: "Kristian", month: "OKTOBER 2026", enMonth: "OCTOBER 2026", nb: "Vi likte oppholdet vårt godt hos Katerina. Enkel tilgang og rikelig med plass.", en: "We enjoyed our stay with Katerina. Easy access and plenty of space." },
 ];
 
 function ReviewRow({ language, reviews, source, href, rating }: { language: Language; reviews: Review[]; source: string; href: string; rating: string }) {
@@ -52,6 +52,6 @@ export function CabinReviews({ language, reviews, finnUrl }: { language: Languag
     <header className="retreat-reviews-head"><div><p>{nb ? "GJESTENES OPPLEVELSER" : "GUEST EXPERIENCES"}</p><h2>{nb ? "Dette trekker gjestene frem." : "What guests highlight."}</h2></div></header>
     <ReviewRow language={language} reviews={reviews} source="FINN.no" href={finnUrl} rating="10/10" />
     <ReviewRow language={language} reviews={airbnbReviews.map(review => ({ name: review.name, date: nb ? review.month : review.enMonth, score: "5", text: review[language] }))} source="Airbnb" href="https://www.airbnb.com/rooms/1062840379999066478" rating="5/5" />
-    <div className="retreat-reviews-source"><span>{nb ? "FINN: originaltekst. Airbnb: sammendrag." : "FINN: translated from Norwegian. Airbnb: summaries."}</span></div>
+    <div className="retreat-reviews-source"><span>{nb ? "Norsk ordlyd fra FINN og Airbnb. Engelske tekster er oversatt." : "FINN and Airbnb reviews translated from the supplied Norwegian wording."}</span></div>
   </section>;
 }

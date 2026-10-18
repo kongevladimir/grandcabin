@@ -1178,6 +1178,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-reviews-grid article > div span { color: #d8b687; font-size: .78rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-reviews-grid article > div small { color: #aeb7bf; font-size: .7rem; font-weight: 700; letter-spacing: .07em; }
 .retreat-reviews-grid article > p { max-width: 620px; margin: 2rem 0; color: #e5e9ec; font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.75; }
+.retreat-reviews-carousel .retreat-reviews-grid article > p { white-space: pre-line; }
 .retreat-reviews-grid article > strong { margin-top: auto; color: #bfc7cd; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
 .retreat-reviews-source { margin-top: 2.2rem; color: #8f9ba4; font-size: .64rem; }
 .retreat-directions { display: grid; min-height: 800px; grid-template-columns: 54% 46%; background: #d8b687; }
