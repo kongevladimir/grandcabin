@@ -83,7 +83,7 @@ export function TurufjellActivities({ language }: { language: Language }) {
           return <article className={activity.icon === "calm" ? "retreat-turufjell-activity-calm" : undefined} key={activity.icon}><ActivityIcon name={activity.icon} /><h3>{copy.title}</h3><p>{copy.text}</p></article>;
         })}
       </div>
-      <div className="retreat-turufjell-activities-links"><Link className="retreat-turufjell-activities-link" href="/concepts/retreat/turufjell/activities">{language === "nb" ? "SE ALLE VINTER- OG SOMMERAKTIVITETER" : "SEE ALL WINTER AND SUMMER ACTIVITIES"} →</Link></div>
+      <div className="retreat-turufjell-activities-links"><Link className="retreat-turufjell-activities-link" href="/turufjell/activities">{language === "nb" ? "SE ALLE VINTER- OG SOMMERAKTIVITETER" : "SEE ALL WINTER AND SUMMER ACTIVITIES"} →</Link></div>
     </section>
   );
 }

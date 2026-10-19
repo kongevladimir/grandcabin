@@ -1,5 +1,8 @@
-import { permanentRedirect } from "next/navigation";
+import type { Metadata } from "next";
+import { RetreatConcept } from "@/components/ConceptPages";
 
-export default function HomePage() {
-  permanentRedirect("/concepts/retreat");
+export const metadata: Metadata = { title: "Mountain retreat · Turu Crown" };
+
+export default function RetreatPage() {
+  return <RetreatConcept />;
 }

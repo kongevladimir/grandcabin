@@ -25,17 +25,21 @@ On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 The selected website design is the multi-page mountain-retreat presentation:
 
-- `/concepts/retreat` — the main entrance.
-- `/concepts/retreat/cabin` — cabin story, room photo gallery with full-screen viewing, FINN and Airbnb review carousels, and facilities overview.
-- `/concepts/retreat/bedrooms` — Rom in Norwegian and Rooms in English, with bedroom photos and room details.
-- `/concepts/retreat/materials` — wood, surface treatment, and interior material story.
-- `/concepts/retreat/gallery` — 67 photos filtered by Alle, Hytta, Oppholdsrom and Soverom (All, Cabin, Living space and Bedrooms in English), with full-screen viewing. Source originals are unchanged, except for the requested sunny ski photo edit. See `docs/organized-gallery.md` for source folders and original-photo hosting requirements.
-- `/concepts/retreat/location` — maps, driving distances, public transport, and arrival guidance.
-- `/concepts/retreat/3d-tour` — interactive Matterport walkthrough of the cabin.
+- `/` — the main entrance.
+- `/cabin` — cabin story, room photo gallery with full-screen viewing, FINN and Airbnb review carousels, and facilities overview.
+- `/bedrooms` — Rom in Norwegian and Rooms in English, with bedroom photos and room details.
+- `/materials` — wood, surface treatment, and interior material story.
+- `/gallery` — 67 photos filtered by Alle, Hytta, Oppholdsrom and Soverom (All, Cabin, Living space and Bedrooms in English), with full-screen viewing. Source originals are unchanged, except for the requested sunny ski photo edit. See `docs/organized-gallery.md` for source folders and original-photo hosting requirements.
+- `/location` — maps, driving distances, public transport, and arrival guidance.
+- `/3d-tour` — interactive Matterport walkthrough of the cabin.
+- `/meetings` — company retreats and meeting facilities.
+- `/turufjell` — outdoor experiences, with an activity guide at `/turufjell/activities`.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
 - `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
 - `/login` — owner sign-in with username and password.
 - `/forgot-password` — request an owner password reset by email when production email delivery is configured.
+
+Legacy `/concepts/retreat` addresses permanently redirect to the corresponding short addresses. Other retired concept addresses redirect to the homepage.
 
 After signing in, the owner can select one night or a range (both dates included)
 and save a nightly price for up to 24 guests, or restore the original prices.

@@ -166,7 +166,7 @@ function PanoramaVersionNav({ active }: { active: PanoramaVariant }) {
   return (
     <nav className="pano-version-nav" aria-label="Velg panoramaversjon">
       {[1, 2, 3, 4].map((version) => (
-        <Link key={version} className={active === version ? "active" : ""} href={version === 1 ? "/concepts/panorama" : `/concepts/panorama-${version}`}>
+        <Link key={version} className={active === version ? "active" : ""} href="/">
           <span>0{version}</span>
         </Link>
       ))}
@@ -457,14 +457,14 @@ export function RetreatLongConcept() {
 type RetreatPageKey = "cabin" | "bedrooms" | "meetings" | "turufjell" | "location" | "materials" | "gallery" | "tour";
 
 const retreatPaths = [
-  "/concepts/retreat/cabin",
-  "/concepts/retreat/bedrooms",
-  "/concepts/retreat/meetings",
-  "/concepts/retreat/materials",
-  "/concepts/retreat/turufjell",
-  "/concepts/retreat/location",
-  "/concepts/retreat/gallery",
-  "/concepts/retreat/3d-tour",
+  "/cabin",
+  "/bedrooms",
+  "/meetings",
+  "/materials",
+  "/turufjell",
+  "/location",
+  "/gallery",
+  "/3d-tour",
 ];
 
 function TuruCrownLogo() {
@@ -482,7 +482,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
 
   return (
     <header className="retreat-header retreat-header-pages">
-      <Link href="/concepts/retreat" className="retreat-logo"><TuruCrownLogo /></Link>
+      <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
       <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
     </header>
@@ -536,7 +536,7 @@ export function RetreatConcept() {
             referrerPolicy="strict-origin-when-cross-origin"
           />
           <div className="retreat-hero-shade" />
-          <div className="retreat-hero-copy"><h1>{t.hero}</h1><Link href="/concepts/retreat/cabin">{t.cta}</Link></div>
+          <div className="retreat-hero-copy"><h1>{t.hero}</h1><Link href="/cabin">{t.cta}</Link></div>
         </section>
       </main>
       <RetreatBookingFooter language={language} />
