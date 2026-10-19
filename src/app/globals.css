@@ -1108,6 +1108,12 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 }
 /* Keep each handmade piece in focus, with the same crop on every screen size. */
 .retreat-craft-double-vanity img { object-fit: contain; object-position: center; }
+.retreat-craft-bathroom-photos { position: relative; min-width: 0; min-height: 480px; height: 100%; background: #17202c; }
+.retreat-bespoke-images .retreat-craft-bathroom-photos figure { position: absolute; inset: 0; height: 100%; width: 100%; aspect-ratio: auto; }
+.retreat-bespoke-images .retreat-craft-bathroom-photos img { object-fit: contain; }
+.retreat-craft-bathroom-controls { position: absolute; z-index: 3; right: 1rem; bottom: 1rem; left: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem; color: #fff; font-size: .75rem; }
+.retreat-craft-bathroom-controls > span, .retreat-craft-bathroom-controls > button { padding: .55rem .8rem; background: rgb(16 23 30 / 85%); border: 1px solid #d8b687; border-radius: 999px; }
+@media (max-width: 900px) { .retreat-craft-bathroom-photos { min-height: 0; height: auto; aspect-ratio: 1; } }
 .retreat-bespoke-images .retreat-craft-bunks { aspect-ratio: 6 / 5; }
 .retreat-craft-bunks img { object-fit: contain; object-position: center; }
 .retreat-bespoke-more .retreat-craft-single-vanity { aspect-ratio: 4 / 5; }

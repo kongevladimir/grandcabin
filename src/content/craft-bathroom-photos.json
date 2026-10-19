@@ -1,0 +1,43 @@
+[
+  {
+    "id": "bathroom-1",
+    "file": "17 (1).jpg",
+    "original": "/images/craft-bathroom-01.jpg",
+    "preview": "/images/craft-bathroom-01.jpg",
+    "originalParts": [],
+    "originalMime": "image/jpeg",
+    "originalSha256": "88a0afac664c7517392cb64a539eb21302b04d661800aef3ed9398c62b97f210",
+    "originalWidth": 938,
+    "originalHeight": 559
+  },
+  {
+    "id": "bathroom-2",
+    "category": "living",
+    "file": "27 (1).jpg",
+    "original": "/images/organized-gallery/living-17-preview.webp",
+    "preview": "/images/organized-gallery/living-17-preview.webp",
+    "width": 1600,
+    "height": 1585,
+    "originalWidth": 19404,
+    "originalHeight": 19230,
+    "originalMime": "image/jpeg",
+    "originalSha256": "ada88fc1f89dac08d2111b27b820a5c70fe59fd5e2e414d4040050da5bcdc7f4",
+    "originalParts": [
+      "/images/gallery-originals/living-17-00.bin",
+      "/images/gallery-originals/living-17-01.bin",
+      "/images/gallery-originals/living-17-02.bin",
+      "/images/gallery-originals/living-17-03.bin"
+    ]
+  },
+  {
+    "id": "bathroom-3",
+    "file": "_A7R8145-HDR-Pano-denoise-upscale-2x.jpg",
+    "original": "/images/craft-bathroom-03.jpg",
+    "preview": "/images/craft-bathroom-03.jpg",
+    "originalParts": [],
+    "originalMime": "image/jpeg",
+    "originalSha256": "57c96e7c19a72c6785dea5cf211f5f989e1701ac55a5d9ad679da3340cd58201",
+    "originalWidth": 9637,
+    "originalHeight": 7772
+  }
+]
