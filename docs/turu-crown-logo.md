@@ -1,8 +1,12 @@
 # Turu Crown logo
 
+The current logo is the owner-supplied `public/images/turu-crown-logo-owner.png` (667 × 292), copied unchanged from `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-c014998a-ff98-433e-8f08-d198d2499042.png` on 22 October 2026. The complete image, including both taglines, is rendered without clipping or additional text. CSS screen blending makes its black background disappear visually. No image generation, resizing or recompression was used for this replacement.
+
+## Earlier logo versions
+
 The original owner-supplied logo is saved unchanged at `public/images/turu-crown-logo-v2.png` (465 × 242). Its source is `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-79064550-1df1-47b3-8ba2-cd5b365d037c.png`.
 
-The current logo is `public/images/turu-crown-logo-readable.png` (1738 × 905), generated with the built-in imagegen tool at the owner's request to enlarge the two secondary text lines. It retains a black background for clean edges and uses the screen treatment described below. In the navigation, the crown, mountains and main name come from the image; the two secondary lines are rendered as real text at 8 px and 7.5 px so they remain readable at small sizes. The embedded tiny lines are clipped only in this header presentation; the complete logo file retains both larger lines. Desktop logo width is 200 px; compact navigation uses 150 px.
+The earlier readable logo is `public/images/turu-crown-logo-readable.png` (1738 × 905), generated with the built-in imagegen tool at the owner's request to enlarge the two secondary text lines. It retains a black background for clean edges and uses the screen treatment described below. In the navigation, the crown, mountains and main name come from the image; the two secondary lines are rendered as real text at 8 px and 7.5 px so they remain readable at small sizes. The embedded tiny lines are clipped only in this header presentation; the complete logo file retains both larger lines. Desktop logo width is 200 px; compact navigation uses 150 px.
 
 The site renders the original with CSS `mix-blend-mode: screen`, which removes black visually while preserving the supplied lettering and symbols. This file itself is not an alpha-transparent PNG. The homepage header is transparent and overlays the video at the top left. The duplicate central logo was removed. Other pages keep their existing navigation background.
 
