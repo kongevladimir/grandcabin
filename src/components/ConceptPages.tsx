@@ -483,7 +483,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
     <header className="retreat-header retreat-header-pages">
       <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
       <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">{language === "nb" ? "BESTILL NÅ" : "BOOK NOW"} <span aria-hidden="true">↗</span></Link></div>
     </header>
   );
 }
