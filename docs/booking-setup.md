@@ -26,7 +26,7 @@ FINN stay changes; new reservations still require a manual block.
 Run `node scripts/setup-booking-preview.mjs` once, then restart the local server.
 This generates private credentials in `.env.local` and writes the owner's login
 details to `.booking-owner-access.txt`. Neither is committed. Open `/booking`
-for the guest journey or `/login` for the owner sign-in page. The owner area is
+for the guest journey or `/admin` for the owner sign-in page. The owner area is
 at `/booking/owner` after sign-in.
 
 Preview requests, conversations and date blocks persist across restarts in
@@ -61,7 +61,7 @@ do not inspect Cloudflare or verify the live site without an explicit request.
 
 ## Owner workflow
 
-- Sign in at `/login` with the owner email and private password. The
+- Sign in at `/admin` with the owner email and private password. The
   "Forgot password?" link sends a one-time reset link to that email address.
   The link expires after 30 minutes and a reset signs out existing owner
   sessions. Email reset is unavailable in the localhost preview because it

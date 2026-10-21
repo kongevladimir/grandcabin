@@ -17,7 +17,9 @@ export function CabinFilm({ language, description }: { language: Language; descr
     const video = player.current;
     if (!video) return;
     video.muted = true;
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+    } else {
       void video.play().catch(() => { /* The play button remains available if autoplay is blocked. */ });
     }
     return () => video.pause();
@@ -29,6 +31,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
       <video
         className="retreat-cabin-local-video"
         ref={player}
+        autoPlay
         muted
         loop
         playsInline

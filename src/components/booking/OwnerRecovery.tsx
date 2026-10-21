@@ -35,7 +35,7 @@ export function ForgotPassword({ emailReady }: { emailReady: boolean }) {
         <label>{w("E-postadresse", "Email address")}<input type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} /></label>
         <button className="bk-primary" disabled={busy || !emailReady}>{busy ? w("Sender …", "Sending …") : w("Send lenke", "Send link")} →</button>
       </>}
-      <p className="bk-login-help"><Link href="/login">← {w("Tilbake til innlogging", "Back to sign in")}</Link></p>
+      <p className="bk-login-help"><Link href="/admin">← {w("Tilbake til innlogging", "Back to sign in")}</Link></p>
     </form>
   </main></div>;
 }
@@ -71,7 +71,7 @@ export function ResetPassword() {
     <p className="bk-kicker">TURU CROWN · {w("EIER", "OWNER")}</p>
     <h1>{w("Nytt passord", "New password")}</h1>
     <div className="bk-panel bk-login">
-      {done ? <><h2>{w("Passordet er oppdatert", "Password updated")}</h2><p>{w("Du kan nå logge inn med det nye passordet.", "You can now sign in with your new password.")}</p><Link className="bk-primary" href="/login">{w("Gå til innlogging", "Go to sign in")} →</Link></> : token ? <form onSubmit={reset}>
+      {done ? <><h2>{w("Passordet er oppdatert", "Password updated")}</h2><p>{w("Du kan nå logge inn med det nye passordet.", "You can now sign in with your new password.")}</p><Link className="bk-primary" href="/admin">{w("Gå til innlogging", "Go to sign in")} →</Link></> : token ? <form onSubmit={reset}>
         <h2>{w("Velg et nytt passord", "Choose a new password")}</h2>
         <p>{w("Bruk minst 16 tegn. Lenken kan bare brukes én gang.", "Use at least 16 characters. The link can only be used once.")}</p>
         {error && <p className="bk-error" role="alert">{errorText(error, lang)}</p>}

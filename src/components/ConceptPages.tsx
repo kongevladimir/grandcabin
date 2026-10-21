@@ -33,7 +33,6 @@ import turufjellSkiRacks from "../../public/images/turufjell-ski-racks-hq.png";
 import locationNorthernLights from "../../public/images/location-northern-lights.jpg";
 
 const image = (name: string) => name === "ski" ? "/images/turufjell-ski-map-original.png" : `/images/${name}.avif`;
-const cabinVideoUrl = "https://www.youtube.com/embed/6awBZOKkiw8?autoplay=1&mute=1&loop=1&playlist=6awBZOKkiw8&controls=1&playsinline=1&rel=0";
 const locationMapTiles = Array.from({ length: 16 }, (_, index) => ({
   x: 4310 + (index % 4),
   y: 2355 + Math.floor(index / 4),
@@ -484,7 +483,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
     <header className="retreat-header retreat-header-pages">
       <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
       <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link><Link className="retreat-login-link" href="/login">{language === "nb" ? "Logg inn" : "Sign in"}</Link></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">BOOK NOW <span aria-hidden="true">↗</span></Link></div>
     </header>
   );
 }
@@ -526,15 +525,19 @@ export function RetreatConcept() {
       <RetreatNav language={language} setLanguage={setLanguage} />
       <main>
         <section className="retreat-hero retreat-home-hero">
-          <iframe
+          <video
             className="retreat-home-video-frame"
-            src={cabinVideoUrl}
-            title={language === "nb" ? "Video av Turu Crown på Turufjell" : "Video of Turu Crown at Turufjell"}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            loading="eager"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/images/living.avif"
+            aria-hidden="true"
+          >
+            <source src="/videos/grandcabin-hero-hd.webm" type='video/webm; codecs="vp9,opus"' />
+            <source src="/videos/grandcabin-hero.mp4" type="video/mp4" />
+          </video>
           <div className="retreat-hero-shade" />
           <div className="retreat-hero-copy"><h1>{t.hero}</h1><Link href="/cabin">{t.cta}</Link></div>
         </section>
@@ -935,7 +938,7 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-rystad">
-            <div className="retreat-company-logo"><Image src="/images/company-logos/rystad-energy.png" alt="Rystad Energy" width={522} height={185} /></div>
+            <div className="retreat-company-logo"><Image src="/images/company-logos/rystad-energy-transparent.png" alt="Rystad Energy" width={2109} height={746} /></div>
             <small>{language === "nb" ? "BEDRIFTSSAMLING PÅ TURUFJELL" : "COMPANY RETREAT AT TURUFJELL"}</small>
           </article>
           <article className="retreat-company-card retreat-company-kpmg">

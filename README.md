@@ -36,7 +36,7 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/turufjell` — outdoor experiences, with an activity guide at `/turufjell/activities`.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
 - `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
-- `/login` — owner sign-in with username and password.
+- `/admin` — owner sign-in with username and password, accessed directly without a public navigation link. The old `/login` address redirects here.
 - `/forgot-password` — request an owner password reset by email when production email delivery is configured.
 
 Legacy `/concepts/retreat` addresses permanently redirect to the corresponding short addresses. Other retired concept addresses redirect to the homepage.
