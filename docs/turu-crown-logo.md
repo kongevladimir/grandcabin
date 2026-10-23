@@ -1,5 +1,9 @@
 # Turu Crown logo
 
+Latest selection (23 October 2026): `public/images/turu-crown-logo-latest.png` (822 × 380), copied unchanged from the owner attachment `codex-clipboard-90a583d3-a132-4b1a-9485-3c51f140e192.png`. The shared navigation uses the complete logo with screen blending. A CSS polygon clips only the two bottom corners containing screenshot Edit/share controls; the mountain artwork, wordmark and both taglines are retained. No generated image or recompression is used.
+
+## Previous selection
+
 The current logo is the owner-supplied `public/images/turu-crown-logo-owner.png` (667 × 292), copied unchanged from `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-c014998a-ff98-433e-8f08-d198d2499042.png` on 22 October 2026. The complete image, including both taglines, is rendered without clipping or additional text. CSS screen blending makes its black background disappear visually. No image generation, resizing or recompression was used for this replacement.
 
 ## Earlier logo versions

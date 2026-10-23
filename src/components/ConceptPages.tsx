@@ -467,7 +467,7 @@ const retreatPaths = [
 ];
 
 function TuruCrownLogo() {
-  return <Image src="/images/turu-crown-logo-owner.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={667} height={292} unoptimized priority />;
+  return <Image className="retreat-logo-latest" src="/images/turu-crown-logo-latest.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={822} height={380} unoptimized priority />;
 }
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {

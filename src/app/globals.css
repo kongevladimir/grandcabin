@@ -818,6 +818,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-logo small, .retreat-hero-mark small { margin: .55rem 0 0 .25rem; font-size: .44rem; font-weight: 600; letter-spacing: .45em; }
 .retreat-logo { width: 200px; max-width: 100%; }
 .retreat-logo > img { display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; mix-blend-mode: screen; }
+.retreat-logo-latest { clip-path: polygon(0 0, 100% 0, 100% 85%, 88% 85%, 88% 100%, 12% 100%, 12% 85%, 0 85%); }
 .retreat-logo .retreat-logo-artwork { display: block; width: 100%; aspect-ratio: 1738 / 690; overflow: hidden; margin: 0; }
 .retreat-logo-artwork > img { display: block; width: 100%; height: auto; mix-blend-mode: screen; }
 .retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { display: block; margin: .15rem 0 0; font-family: "DM Sans", Arial, sans-serif; font-size: 8px; font-weight: 500; line-height: 1.25; letter-spacing: .08em; text-align: center; white-space: nowrap; }
