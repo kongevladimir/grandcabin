@@ -1,5 +1,35 @@
 # Three floor plans
 
+## English plan labels and slightly larger table, 29 October 2026
+
+`FloorPlans.tsx` now chooses both its plan image and full-image link from the
+active site language. English PNGs are `public/images/floor-plan-main-en.png`,
+`public/images/floor-plan-lower-en.png`, and `public/images/floor-plan-loft-en.png`.
+Norwegian PNGs retain the corresponding names without `-en`. Built-in imagegen
+translated the image labels, including Bathroom, Bedroom, Sleeps, Storage,
+Hallway, Terrace, Sleeping alcove and Mezzanine.
+
+The lower-floor table is slightly wider while keeping its shorter length and
+island clearance. The final Norwegian AND English versions were visually checked
+and raw-pixel sampled: 12 white chair groups on each long side plus one chair at
+each end = 26. Rejected longer-table drafts changed the chair count and are unused.
+
+Final table size prompt:
+
+Use case: precise-object-edit. The supplied plan already has EXACTLY12chairs each long side plus1each end=26, which is correct. Make ONLY the dining TABLETOP a little WIDER, about12percent wider horizontally, keeping its LENGTH and TOP/BOTTOM END POSITIONS EXACTLY UNCHANGED. Do not make table longer; that incorrectly adds chairs. Keep all24existing sidechairs, exactly12left and12right, in their SAME y positions; only shift the left row slightly LEFT and the right row slightly RIGHT to accommodate wider tabletop, without adding or deleting any chair. Keep both endchairs, centered. Result is a visibly slightly larger WIDER table, SAME26chairs. Never add a13th sidechair. Keep all12existing sidechairs per side at their same heights. Keep kitchen-island clearance unchanged and generous. Retain centered plant and rug, widening rug slightly only if needed. All room labels, capacities, geometry, walls, fixtures, kitchen, beds, stairs, doors/windows, fireplace, terrace, colors, materials and whole image/framing remain unchanged. Only horizontal tabletop width and corresponding tiny horizontal chair-row offsets change. No crop, no resize, no annotations.
+
+Main-floor English prompt:
+
+Use case: text-localization ONLY. Translate all Norwegian text in supplied MAIN FLOOR plan to English, leaving all non-text pixels, room geometry, walls, doors, windows, furniture, beds, stairs, layout, colors and full framing unchanged. Exact replacements: 'Soverom 5' -> 'Bedroom 5'; '(2 soveplasser)' -> '(Sleeps 2)'; 'Soverom 6' -> 'Bedroom 6'; '(3 soveplasser)' -> '(Sleeps 3)'; 'Bad' -> 'Bathroom'; 'Sauna' stays 'Sauna'; 'WC' -> 'Toilet'; 'Skibod/Garasjebod' -> 'Ski storage / Garage storage' wrapping inside same room; 'Gang' -> 'Hallway' (both occurrences); 'Bod' -> 'Storage'; 'Spisestue' -> 'Dining room'; 'Stue/Kjøkken' -> 'Living room / Kitchen'; 'Terrasse' -> 'Terrace'; all 'åpen himling' -> 'Open to above'. Preserve all labels in corresponding exact original positions, clean white sans-serif same visible size and subtle dark shadow, wrap longer English labels where necessary without covering walls or changing objects. No Norwegian text should remain. No changes to architecture or furnishings, no crop or resize, full original drawing.
+
+Loft English prompt:
+
+Use case: text-localization ONLY. Translate room labels in supplied complete LOFT floor plan to English. Exact replacements: 'Soverom 9' -> 'Bedroom 9'; 'Soverom 8' -> 'Bedroom 8'; both '(2 soveplasser)' -> '(Sleeps 2)'; 'Bad' -> 'Bathroom'; 'Alkove 10' -> 'Sleeping alcove 10'; '(4 soveplasser)' -> '(Sleeps 4)'; living-room 'Loft' -> 'Loft lounge'; separate upper-right 'Hems' -> 'Mezzanine'. Same clean white sans-serif size and subtle dark shadow, wrap labels so they fit safely. Absolutely no other modifications: preserve full room/wall geometry, four window groups, all beds, doors, bathroom, sofa, table tennis, main stair and short glass railing; preserve separate upper-right mezzanine with completed room and HORIZONTALLY RUNNING stair (vertical tread lines) and OPEN LEFT STAIR ENTRANCE (no short blocking wall). Keep room contents, scale, colors, exact full framing. No added/removed furniture or features, no crop or resize. All labels in English, unchanged plan.
+
+Lower-floor English prompt:
+
+Use case: text-localization ONLY. Translate ALL labels in the supplied LOWER FLOOR plan from Norwegian to English with no changes to any other details. Exact replacements: 'Teknisk rom' -> 'Utility room'; 'Soverom 1' -> 'Bedroom 1', '(3 soveplasser)' -> '(Sleeps 3)'; 'Soverom 2' -> 'Bedroom 2', '(3 soveplasser)' -> '(Sleeps 3)'; 'Soverom 3' -> 'Bedroom 3', '(2 soveplasser)' -> '(Sleeps 2)'; 'Soverom 4' -> 'Bedroom 4', '(4 soveplasser)' -> '(Sleeps 4)'; 'Soverom 5' -> 'Bedroom 5', '(4 soveplasser)' -> '(Sleeps 4)'; BOTH 'Bod' labels -> 'Storage'; BOTH actual 'Bad' labels -> 'Bathroom'; 'Sauna' stays 'Sauna'; 'Toalett' -> 'Toilet'; 'Gang' -> 'Hallway'; 'Terrasse' -> 'Terrace'. Keep same clear white sans-serif lettering size and subtle shadow, original room positions, use line breaks to fit safely. Preserve full drawing, exact walls/windows/doors/stairs, every bed/fixture/furniture, kitchen island and dining table size/position. CRITICAL table currently has exactlyTWELVEchairs each long side plusONEtop+ONEbottom=26; keep every existing chair in exact position, DO NOT redraw table or add/remove/resize any chair, translation is the only task. Keep wider table and generous island gap unchanged. No Norwegian words remain, all room labels English. Same dimensions/full framing, no crop/resize, no new features or annotations.
+
 ## Shorter lower-floor table with 26 seats, 29 October 2026
 
 Built-in imagegen updated `public/images/floor-plan-lower.png` from the owner's
