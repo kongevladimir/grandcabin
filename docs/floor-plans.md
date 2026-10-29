@@ -1,5 +1,50 @@
 # Three floor plans
 
+## Shorter lower-floor table with 26 seats, 29 October 2026
+
+Built-in imagegen updated `public/images/floor-plan-lower.png` from the owner's
+reference `codex-clipboard-e673bf30-181a-4fa2-b675-c32e0b086782.png`.
+The table is shortened at its kitchen end, with more clearance to the island.
+The final image has 12 chairs on each long side and one on each short end (26).
+Visual inspection and raw pixel sampling found 12 separate white chair groups
+on both sides. Two rejected drafts had 13 and 11 chairs per side; neither is used.
+The prior 28-seat source instructions below are historical and superseded.
+
+Initial edit prompt:
+
+Use case: precise-object-edit. IMAGE1 is the complete current lower-floor plan edit target. IMAGE2 is owner's circled table reference only. Change ONLY the dining table and its chairs in the large RIGHT room. Required EXACT chair count: TWELVE separate countable chairs along LEFT long side, TWELVE along RIGHT long side, ONE at TOP short end facing kitchen, ONE at BOTTOM short end facing windows = EXACTLY TWENTY SIX TOTAL. No extra chairs or stools. Shorten the table ONLY FROM THE TOP / KITCHEN-ISLAND SIDE so the top end moves DOWNWARD, leaving visibly MORE OPEN FLOOR GAP between island and dining table. Keep table centerline and width unchanged, and keep its BOTTOM / WINDOW-SIDE end at its existing position. Keep chair size consistent, remove surplus chairs, distribute exactly12 each side at sensible even spacing; do not squeeze more chairs into unchanged length. Keep rug appropriately aligned with shorter table, plant centerpiece remains. Do not move the kitchen island or kitchen cabinetry. Absolutely preserve every other part of full plan, walls, staircases, windows, door swings, fireplace, beds and all room labels/sleep capacities exactly: Soverom1(3soveplasser),2(3),3(2),4(4),5(4), Bod by middle-left stair, Bad bathrooms, Sauna, Toalett, Gang, Teknisk rom, Terrasse. Keep current white label typography and all natural-material colors. Same full framing/scale, no cropping, no added annotation or red circle. Before finalizing count all26 chairs:12left+12right+1top+1bottom. Table's top end must be farther from kitchen island than before; bottom end remains anchored.
+
+Final count correction prompt:
+
+EXACT COUNT CORRECTION. This current supplied draft has ELEVEN sidechairs on the left and ELEVEN on the right, plus the two endchairs =24. Target is26. ADD EXACTLY ONE CHAIR TO EACH LONG SIDE, directly ABOVE the current first chair on each side. Existing11sidechairs on each side must remain fixed. Add the single new left chair centered approximately x1280,y404 and the single new right chair centered approximately x1380,y404, leaving all existing sidechairs at y425,446,468,489,510,531,552,574,596,619,642 untouched. Thus final each side has12centers:404,425,446,468,489,510,531,552,574,596,619,642. Extend the TABLETOP TOP edge upward about22pixels (from y415 to y393) to serve just these two new chairs. Move the single TOP ENDCHAIR upward22pixels to remain at new table head. Keep bottom table edge and bottom endchair fixed. Final exact count:12left+12right+1top+1bottom=26. Do not add2chairs per side or remove any existing chair. Do not redistribute/redraw current11chairs, only append one above. This still leaves much more kitchen-island clearance than the original long table. Preserve ALL other full-plan content and dimensions, every label and sleeping capacity, rooms, kitchen island, walls, furniture, windows, materials. No crop or annotations. Count carefully: there must be TWELVE separate white chairs on EACH side of table, not11 and not13.
+
+## Sleeping capacities and matching labels, 29 October 2026
+
+Updated all three plan PNGs with built-in imagegen. The small stair-side wall
+in the Hems is removed, leaving the left stair entrance open. Main-floor rooms
+are Soverom 5 (2 soveplasser) and Soverom 6 (3 soveplasser). Lower-floor rooms
+1–5 respectively show 3, 3, 2, 4 and 4 soveplasser. The small room beside the
+middle-left stair is now Bod; actual bathroom labels remain Bad. Main/lower
+descriptions use clear white sans-serif lettering with the loft as size/style
+reference. Owner references are `codex-clipboard-b8a8f6ee-a879-4a90-ae86-06610a6e83d1.png`,
+`codex-clipboard-4488021b-b508-4c32-bad3-99a1d6366b20.png` and
+`codex-clipboard-f350ad2d-4698-43d7-bdd2-ebfd061df645.png`.
+
+Saved assets: `public/images/floor-plan-main.png`,
+`public/images/floor-plan-lower.png`, `public/images/floor-plan-loft.png`.
+
+Final hems wall-removal prompt:
+
+Precise object removal edit. IMAGE1 is full current floor plan. IMAGE2 is owner reference: the RED CIRCLE marks the SHORT VERTICAL CHARCOAL WALL IMMEDIATELY LEFT OF THE SMALL STAIR IN THE ISOLATED UPPER-RIGHT HEMS. Remove that wall completely, from its top end to bottom junction (approximately x1298–1330, y277–354 in IMAGE1). Fill its former footprint with matching warm timber floor so the horizontally running small staircase opens freely at its LEFT end directly into the Hems. No post or dark wall remnant should block that left stair entrance. Keep the horizontal bottom exterior wall below the room; remove ONLY the short vertical internal stair-side obstruction. Keep all staircase treads VERTICAL on the page, same footprint, direction, count and material as now. Keep all other details exactly unchanged: isolated room outer top/left/right/bottom walls, Hems label, beanbags and rug; the entire main left connected plan, long stair and glass railing, all numbered bedroom and alcove labels, windows, furniture, doors, bathroom, floors. Same full image/canvas, no crop or zoom, no red marks. Only remove the circled small vertical stair-side wall and fill its footprint with wood floor.
+
+Final main-floor labels prompt:
+
+Use case: text-localization / precise typography edit. IMAGE1 is the MAIN FLOOR plan edit target. IMAGE2 is the LOFT PLAN TYPOGRAPHY REFERENCE ONLY; never copy any room geometry from it. IMAGE3 is owner red numbered location reference for the two main-floor bedrooms. Make TEXT-ONLY changes to IMAGE1. Replace bedroom label in large double-bed room at center-left marked5 with exact two-line 'Soverom 5' / '(2 soveplasser)'. Replace small bedroom label 'Sov' in top-right bunk room marked6 with exact two-line 'Soverom 6' / '(3 soveplasser)'. All other existing descriptions must remain verbatim but use the SAME clear sans-serif type and SAME RELATIVE VISIBLE FONT SIZE as room labels in IMAGE2. Since IMAGE1 is wider, use about 30–33px letter height on its roughly1900px canvas, so text is same visible size when plans are displayed at equal page width. Use legible white lettering with restrained dark outline/shadow like IMAGE2. Apply consistently to Bad, Sauna, WC, Skibod/Garasjebod, Gang, Bod, Spisestue, Stue/Kjøkken, Terrasse and all 'åpen himling' labels. Keep existing text positioning within original rooms, wrapping into lines where needed; don't add duplicate/new labels. Preserve every existing non-bedroom wording, including all åpen himling annotations. Critical: preserve original complete building, furniture, room layout, all walls/door swings/windows, stairs, bed shapes/counts, sauna/bathrooms, kitchen, dining seats, terrace, colors, materials, image framing and scale EXACTLY. No repainting or redesign. Only room label replacements and matching existing label typography. No red annotations in output. Full complete image, no crop.
+
+Final lower-floor labels prompt:
+
+Use case: text-localization / typography only. IMAGE1 is the LOWER FLOOR plan edit target. IMAGE2 is owner circled location reference only. IMAGE3 is loft plan TYPOGRAPHY STYLE reference only, do not copy layout. Update only text on IMAGE1: 'Soverom 1' gets a second line '(3 soveplasser)'; 'Soverom 2' second line '(3 soveplasser)'; 'Soverom 3' second line '(2 soveplasser)'; 'Soverom 4' second line '(4 soveplasser)'; 'Soverom 5' second line '(4 soveplasser)'. In the SMALL ROOM UNDER/ADJACENT TO THE MIDDLE-LEFT STAIR marked circled red in IMAGE2, replace label 'Bad' with 'Bod'. This is the tiny room directly above the hall corridor near x405,y265 in IMAGE1, NOT the actual large bathroom beside sauna and NOT the upper-center bathroom. Keep the other Bad labels unchanged. Match ALL plan descriptions and room labels to the same clearly readable white sans-serif lettering with subtle dark outline/shadow as IMAGE3. On the1723px-wide target use about27–28px label lettering so visible size is equivalent to reference loft when both shown at same page width. Apply this consistently to all existing labels Teknisk rom, Soverom1–5, Bod (both existing top-right storage and newly renamed small room), Bad (actual bathrooms), Sauna, Toalett, Gang, Terrasse and added parenthetical counts. Use line breaks to fit text safely inside each original room, no overlaps over walls. Absolutely preserve all geometry, beds and furniture footprints/counts, walls, door swings, windows, stairs, fixtures, kitchen/island, fireplace, sauna, terrace, all28diningchairs and materials/colors exactly as IMAGE1. No new labels or rooms, no resize/crop/zoom, full complete canvas. Red circle is a guide only, never show it.
+
 ## Stair entrance and hems direction, 29 October 2026
 
 Built-in imagegen updated `public/images/floor-plan-loft.png` using owner marks
