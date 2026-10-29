@@ -1,5 +1,32 @@
 # Three floor plans
 
+## Additional alcove window and room label, 29 October 2026
+
+The owner marked an additional window on the upper part of the sleeping alcove's
+right exterior wall in `codex-clipboard-326ad7a4-fcdf-4bdd-a4cb-d23db52a0cc6.png`.
+Built-in imagegen added that window and replaced the alcove's Loft label with
+`Alkove 10 (4 soveplasser)`, while retaining the three earlier window groups.
+The updated complete plan is saved at `public/images/floor-plan-loft.png`.
+
+Final edit prompt:
+
+Use case: precise-object-edit and text-localization. IMAGE1 is the current complete loft floor plan edit target. IMAGE2 is the owner's red-marked location reference only. Make ONLY TWO changes: (1) Add ONE small window in the RIGHT EXTERIOR VERTICAL WALL of the projecting sleeping alcove at middle right of the main left plan volume, near the UPPER end of that wall as marked red in IMAGE2 (roughly x855–880, y455–505 in IMAGE1). The window must be on the vertical RIGHT wall, not the top horizontal wall. Match existing slim white/light grey frames and pale blue glazing. (2) Replace ONLY the word 'Loft' inside that projecting alcove containing the four sleeping places with the exact readable dark/white outlined label 'Alkove 10' on line one and '(4 soveplasser)' on line two. Use small clean sans serif matching existing room labels, centered so bed shapes remain legible. Do not change 'Loft' in the living/table-tennis room or the isolated upper-right lounge. CRITICAL KEEP ALL THREE EXISTING WINDOW GROUPS: two windows on top bedroom walls and wide three-pane window along bottom loft living room wall. Preserve entire image, full framing, scale and dimensions, all wall outlines, doors, beds, bathroom fixtures, sofa, table tennis, upper-right isolated lounge, triangle white gap, all other text, colors and materials. Do not add/remove any other features or crop anything. Remove reference red circle; it is only a guide. Output the full complete plan with only this extra small right-wall window and this alcove label change.
+
+## Owner window correction, 29 October 2026
+
+Updated `public/images/floor-plan-loft.png` using built-in imagegen and the
+owner's red-marked reference `codex-clipboard-34d4596e-2a4a-43b7-9304-5a1ff4892c8b.png`.
+Added two separate windows in the top bedroom exterior walls near the central
+partition, plus one broad three-pane window in the bottom loft living-room wall.
+The full plan and isolated upper-right lounge are retained. The previous image
+is recoverable from Git. No API/CLI fallback was used.
+
+Final edit prompt:
+
+Use case: precise-object-edit. IMAGE1 is the full loft floor-plan image to edit. IMAGE2 is the owner's cropped red-marked location reference ONLY. Add windows ONLY at the THREE indicated positions. (1) In the TOP exterior wall of the LEFT top bedroom, close to the central bedroom dividing wall, roughly x245–305 at y95–120 in IMAGE1. (2) In the TOP exterior wall of the RIGHT top bedroom, close to the central dividing wall on that room's left side, roughly x335–400 at y95–120. These are TWO SEPARATE windows, with the solid central partition between. (3) A broad horizontal glazed window assembly in the BOTTOM exterior wall of the long LEFT loft living room, roughly x210–495 at y865–890 in IMAGE1. Use realistic slim white/light-grey frames and subtle pale blue glass in top-down architectural cutaway style, integrated into those wall thicknesses. Bottom broad glazing may have vertical mullions, keep all panes inside that single marked wide opening. VERY IMPORTANT: preserve the entire complete IMAGE1 including the separate upper-right lounge exactly as is. Do not crop, zoom, resize the canvas, change plan scale, repaint floors, move walls or doors, add/remove furniture, change beds, change bathroom fixtures, change text, change rug, change triangle gap, add any other windows or alter any other details. Keep original image dimensions and framing. IMAGE2 red marks are guides only and must NOT appear in output. The only intended differences from IMAGE1 are the two top bedroom windows and one bottom wide window.
+
+## Initial three-floor implementation
+
 Shown directly below the introduction on `/3d-tour`, before Matterport.
 `FloorPlans.tsx` has three floor buttons, starts on the main floor, shows the
 whole image with `object-fit: contain`, and links to the full original-size PNG.
