@@ -1,5 +1,26 @@
 # Three floor plans
 
+## Completed hems and main stair, 29 October 2026
+
+Updated `public/images/floor-plan-loft.png` with built-in imagegen, using the
+owner's two additional marked references:
+`codex-clipboard-18ca3275-8e36-47fa-8e09-043e1ae677df.png` and
+`codex-clipboard-c0665675-fab0-42e2-b082-d36db889add0.png`.
+The isolated upper-right room now has a complete floor, the marked right wall,
+an access stair at its lower-right notch, and the label Hems. The main loft now
+has the marked horizontal stair above Alcove 10 and a short glass landing rail.
+Top bedrooms are labelled Soverom 9 (2 soveplasser), left, and Soverom 8
+(2 soveplasser), right. The four window groups and alcove label are retained.
+These owner corrections supersede the earlier interpretation of the scan gap.
+
+Hems edit prompt:
+
+Use case: precise-object-edit. IMAGE1 is the complete current loft floor-plan image to edit. IMAGE2 is the owner's enlarged red-marked reference of ONLY the isolated UPPER-RIGHT room. Correct ONLY that upper-right room according to the owner's marks. This room was incompletely reconstructed: replace its white diagonal missing interior wedge with continuous matching warm timber floor, completing the room interior. Complete the charcoal RIGHT exterior wall vertically downward exactly along the red vertical line, from the existing short top-right wall down to the red horizontal line at the top of the lower-right notch. Add the short horizontal charcoal wall segment at that red horizontal line, retaining an opening for access from the stairs. Add a neat realistic short STRAIGHT wooden staircase in the LOWER-RIGHT NOTCH where the red stair treads are drawn, visibly leading UP INTO the room and attached to its entrance, not floating; follow the marked stair footprint and tread direction, top-down architectural style, matching the warm wood and charcoal wall style. Retain the lower-right notch and existing bottom/left/top perimeter rather than making a bigger arbitrary room. Keep both grey beanbag chairs and the white animal-hide rug in their existing positions. Replace ONLY the label 'Loft' in this isolated upper-right room with 'Hems'. Absolutely no other changes: do not change the main left connected plan, any bedroom, bathroom, sofa, table tennis table, windows, walls, doorways, any labels there including 'Loft' and 'Alkove 10 (4 soveplasser)'. Keep all FOUR current window groups intact. Keep isolated room in the SAME place and scale relative to full image. Preserve full canvas framing, white outside background, no cropping. Red marks are guides only, must not be visible in output. Complete the walls, floor and stairs as requested; do not preserve the earlier erroneous diagonal scan gap.
+
+Final main stair and bedroom label prompt:
+
+Use case: precise-object-edit and text-localization. IMAGE1 is the complete latest plan edit target, already containing the corrected isolated UPPER-RIGHT Hems with its completed floor, walls and small stair. KEEP that Hems untouched. IMAGE2 is owner's red marked cropped reference for the MAIN LEFT connected plan only. Make these precise additional corrections: 1) Add a straight WOODEN STAIR FLIGHT in the white horizontal band DIRECTLY ABOVE the projecting Alcove 10, following the row of red vertical stair treads drawn in IMAGE2. The stair runs horizontally left/right above that alcove's upper wall, with its left end joining the existing hall/landing below the two top bedrooms. The treads are vertical lines across the horizontal stair run, matching red sketch. In IMAGE1 this footprint is approximately x490–880, y345–415. Do not put these stairs inside the alcove beds or inside either bedroom. 2) The SHORT LOWER HORIZONTAL RED LINE in IMAGE2 near the left end of that stair flight is a GLASS BALUSTRADE, not a solid wall. Render a clear glass safety railing with slim posts and pale subtle blue reflections along exactly that marked short landing edge (approximately x490–580 around y420 in IMAGE1), so floor behind it remains visible. Do not replace the entire alcove exterior wall or the bedroom partition with glass. 3) Replace label in LEFT TOP BEDROOM with exact two-line 'Soverom 9' / '(2 soveplasser)'. Replace label in RIGHT TOP BEDROOM with exact two-line 'Soverom 8' / '(2 soveplasser)'. Clean readable matching type. Preserve room contents, doorways, walls, all four current window groups, bed count and positions, bathroom fixtures, sofa, table-tennis, 'Loft' in living room, 'Alkove 10 (4 soveplasser)' unchanged. Preserve isolated upper-right Hems including its new small stair and room label completely. Same warm wood/grey realistic top-down architectural rendering. Full complete image, same framing/scale/canvas, no crop and no red drawing marks. The only changes are the additional horizontal stair above alcove, short clear-glass landing railing, and the two bedroom labels.
+
 ## Additional alcove window and room label, 29 October 2026
 
 The owner marked an additional window on the upper part of the sleeping alcove's
