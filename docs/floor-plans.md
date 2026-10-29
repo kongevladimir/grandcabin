@@ -1,5 +1,22 @@
 # Three floor plans
 
+## Stair entrance and hems direction, 29 October 2026
+
+Built-in imagegen updated `public/images/floor-plan-loft.png` using owner marks
+`codex-clipboard-9e74bca0-434d-4de7-ae2a-0364278bac05.png` and
+`codex-clipboard-7b85c12d-f99a-4fdd-a23a-dc58b25655d3.png`.
+Removed the short vertical wall at the long stair's left entrance, added two
+matching treads in its former landing, retained the glass rail, and turned the
+small hems stair's treads by 90 degrees to match the owner's reference.
+
+Long stair correction prompt:
+
+Use case: precise-object-edit. IMAGE1 is complete current loft floor plan edit target. IMAGE2 is owner red-marked cropped reference. Change ONLY the LEFT END OF THE LONG HORIZONTAL STAIR ABOVE ALKOVE 10. Remove the short CHARCOAL VERTICAL WALL SEGMENT marked red at its left entrance (roughly x468–493, y350–449 in IMAGE1), opening that end directly into the main hall. Replace the now-open left entrance/flat timber landing area with EXACTLY TWO ADDITIONAL wooden STAIR TREADS, extending the existing horizontal stair run leftward into that former entrance/landing area. These two added treads must have the same spacing, depth, wood material, top-down shading and vertical tread-line direction as the rest of the long stair. Existing stair treads must stay, so the completed long stair has two more treads than before. Do not add steps anywhere else. Keep the SHORT CLEAR GLASS RAIL at the bottom edge of this entrance/landing unchanged and visible; it is not the red-marked wall. Keep the long wall below the main stair/above the alcove unchanged. Preserve all remaining plan contents exactly: top bedrooms labelled 'Soverom 9 (2 soveplasser)' left and 'Soverom 8 (2 soveplasser)' right, four window groups, bathroom, doors, beds, sofa, table-tennis, 'Loft', 'Alkove 10 (4 soveplasser)', and complete separate upper-right 'Hems' with its walls and small stair. Same full canvas and framing, no crop, no scale change, no new marks. Owner red stroke is guide only, never render it. Only remove that short stair-entrance wall and add those two matching entrance treads.
+
+Final hems stair direction prompt:
+
+Use case: precise-object-edit. IMAGE1 is the complete current floor-plan image edit target. IMAGE2 is owner reference marking the correct TREAD DIRECTION of the SMALL STAIR IN THE ISOLATED UPPER-RIGHT HEMS. Change ONLY that small Hems stair: rotate its tread orientation NINETY DEGREES so tread lines run VERTICALLY on the page, side by side from left to right, exactly as owner's red strokes. The stair flight therefore runs HORIZONTALLY from the outside RIGHT toward the LEFT into the Hems, instead of running upward from bottom to top. Keep this stair within its SAME LOWER-RIGHT NOTCH footprint, same size/material. Its LEFT end must open naturally into Hems: remove only the blocking part of the short inner left notch wall if needed for that entrance, keeping the outer room perimeter otherwise unchanged. Preserve the Hems name, completed wood floor, two grey beanbags and white rug. Preserve the ENTIRE LARGE LEFT MAIN PLAN EXACTLY: the newly open wall-free left entrance and two extra treads of the LONG HORIZONTAL STAIR above Alkove 10, its short glass railing, Soverom 9 (2 soveplasser), Soverom 8 (2 soveplasser), Alkove 10 (4 soveplasser), all four window groups, bathroom, doorways, beds, sofa, table-tennis, and all other walls/text/floors. Absolutely do not rotate or change the long stair in the main plan. Only change the small Hems stair direction to match the owner reference. Keep full canvas and framing, same scale, no crop. No red marks in output.
+
 ## Completed hems and main stair, 29 October 2026
 
 Updated `public/images/floor-plan-loft.png` with built-in imagegen, using the
