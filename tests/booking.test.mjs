@@ -12,7 +12,11 @@ const authJs = ts.transpileModule(authSource, { compilerOptions: { module: ts.Mo
 const auth = await import(`data:text/javascript;base64,${Buffer.from(authJs).toString('base64')}`);
 const day = offset => new Date(m.dateValue(m.osloToday()) + offset * 86400000).toISOString().slice(0, 10);
 const stay = { arrival: day(10), departure: day(15) };
-const booking = (id, status = 'pending') => ({ id, ...stay, status, messages: [], updatedAt: '' });
+// Status tests need a free stay even when today's relative dates cross a fixed reservation.
+const availableStay = Array.from({ length: 365 }, (_, offset) => ({ arrival: day(10 + offset), departure: day(15 + offset) }))
+  .find(candidate => !m.finnReservations.some(reserved => m.overlaps(candidate, reserved)));
+assert.ok(availableStay);
+const booking = (id, status = 'pending', dates = stay) => ({ id, ...dates, status, messages: [], updatedAt: '' });
 const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
 
 test('password reset replaces the owner password and invalidates prior sessions', () => {
@@ -53,12 +57,12 @@ test('FINN reservations, confirmed stays and manual blocks occupy the public cal
   state.blocks.push({ id: 'block', arrival: day(20), departure: day(22), note: 'PRIVATE' });
   assert.deepEqual(m.unavailable(state), [ ...finnDates, { arrival: day(20), departure: day(22) }, stay ]);
 });
-test('all listed FINN nights are unavailable and the following checkout day is open', () => {
+test('all fixed reserved nights are unavailable and the following checkout day is open', () => {
   const expected = [
     ['2026-11-13', '2026-11-15'], ['2026-11-27', '2026-11-29'],
     ['2026-12-04', '2026-12-06'], ['2026-12-18', '2026-12-20'],
     ['2026-12-23', '2026-12-26'], ['2026-12-30', '2027-01-01'],
-    ['2027-01-22', '2027-01-24'],
+    ['2027-01-12', '2027-01-15'], ['2027-03-11', '2027-03-13'],
   ];
   assert.deepEqual(m.finnReservations.map(({ arrival, departure }) => [arrival, departure]), expected);
   const state = m.emptyState();
@@ -68,8 +72,18 @@ test('all listed FINN nights are unavailable and the following checkout day is o
     assert.doesNotThrow(() => m.assertAvailable(state, { arrival: departure, departure: nextDay }));
   }
 });
+test('owner changes reserve the last requested nights and release 22–23 January', () => {
+  const state = m.emptyState();
+  for (const arrival of ['2027-01-12', '2027-01-13', '2027-01-14', '2027-03-11', '2027-03-12']) {
+    const departure = new Date(m.dateValue(arrival) + 86400000).toISOString().slice(0, 10);
+    assert.throws(() => m.assertAvailable(state, { arrival, departure }), /unavailable/);
+  }
+  assert.doesNotThrow(() => m.assertAvailable(state, { arrival: '2027-01-22', departure: '2027-01-24' }));
+  assert.doesNotThrow(() => m.assertAvailable(state, { arrival: '2027-01-15', departure: '2027-01-16' }));
+  assert.doesNotThrow(() => m.assertAvailable(state, { arrival: '2027-03-13', departure: '2027-03-14' }));
+});
 test('accepting one request rejects overlapping acceptance without changing the second', () => {
-  const state = m.emptyState(); const a = booking('a'), b = booking('b'); state.bookings.push(a, b);
+  const state = m.emptyState(); const a = booking('a', 'pending', availableStay), b = booking('b', 'pending', availableStay); state.bookings.push(a, b);
   m.changeStatus(state, a, 'accepted');
   assert.throws(() => m.changeStatus(state, b, 'accepted'), /unavailable/);
   assert.equal(b.status, 'pending');
@@ -78,9 +92,9 @@ test('accepting one request rejects overlapping acceptance without changing the 
   assert.equal(b.status, 'accepted');
 });
 test('owner blocks prevent confirmation, while pending enquiries do not hold dates', () => {
-  const state = m.emptyState(); const b = booking('a'); state.bookings.push(b);
-  assert.doesNotThrow(() => m.assertAvailable(state, stay));
-  state.blocks.push({ ...stay, id: 'block', note: '' });
+  const state = m.emptyState(); const b = booking('a', 'pending', availableStay); state.bookings.push(b);
+  assert.doesNotThrow(() => m.assertAvailable(state, availableStay));
+  state.blocks.push({ ...availableStay, id: 'block', note: '' });
   assert.throws(() => m.changeStatus(state, b, 'accepted'), /unavailable/);
 });
 test('status transitions cannot silently reactivate cancelled or declined stays', () => {
@@ -202,10 +216,10 @@ test('invalid admin price or range cannot change stored data', () => {
 
 test('editing rates leaves previously submitted and accepted quotes unchanged', () => {
   const state = m.emptyState();
-  state.bookings.push({ ...booking('quoted'), pricing: m.rentalQuote(stay) });
+  state.bookings.push({ ...booking('quoted', 'pending', availableStay), pricing: m.rentalQuote(availableStay) });
   const original = structuredClone(state.bookings[0].pricing);
-  m.setNightlyPrices(state, stay.arrival, stay.departure, 22000);
+  m.setNightlyPrices(state, availableStay.arrival, availableStay.departure, 22000);
   m.changeStatus(state, state.bookings[0], 'accepted');
   assert.deepEqual(state.bookings[0].pricing, original);
-  assert.equal(m.rentalQuote(stay, 0, 2, state.nightlyPrices).rentalTotal, 110000);
+  assert.equal(m.rentalQuote(availableStay, 0, 2, state.nightlyPrices).rentalTotal, 110000);
 });

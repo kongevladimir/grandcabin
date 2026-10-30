@@ -51,9 +51,10 @@ the storage and account setup described below.
 Real online enquiries still require permanent storage and email delivery to be
 connected. See [booking setup](docs/booking-setup.md) for local preview credentials,
 production setup and tests. The booking preview does not synchronize with FINN.
-The owner-provided FINN reservations for November and December 2026 and January
-2027 are recorded as unavailable nights in the booking calendar. New FINN
-reservations must still be added manually.
+The owner-provided FINN reservations for November and December 2026 and owner
+holds for 12–14 January and 11–12 March 2027 are recorded as unavailable nights
+in the booking calendar, including the last listed night. The former 22–23
+January hold has been removed. New reservations must still be added manually.
 
 ## Commands
 

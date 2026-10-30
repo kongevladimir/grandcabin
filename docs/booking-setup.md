@@ -16,10 +16,14 @@ before opening real bookings. Pending enquiries do not reserve dates. Confirmed
 stays and owner blocks make nights unavailable; checkout day can be another
 guest's arrival day. Bookings elsewhere must be blocked manually.
 The owner-provided FINN stays on 13–14 and 27–28 November, 4–5, 18–19,
-23–25 and 30–31 December 2026, and 22–23 January 2027 are built into the
-calendar as unavailable nights. These fixed dates appear in the owner inbox
-as read-only FINN reservations. Update them in `src/lib/booking/model.ts` if a
-FINN stay changes; new reservations still require a manual block.
+23–25 and 30–31 December 2026 are built into the calendar as unavailable nights.
+On 30 October 2026 the owner replaced the 22–23 January 2027 reservation with
+the nights of 12–14 January and added 11–12 March 2027, explicitly including
+the last dates as occupied nights. Their exclusive checkout dates are
+15 January and 13 March. These new fixed holds are labelled Reserved by owner;
+the earlier FINN stays retain their FINN labels. All appear read-only in the
+owner inbox. Update fixed dates in `src/lib/booking/model.ts` when the owner
+changes them; other new reservations still require a manual block.
 
 ## Local preview
 

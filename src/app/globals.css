@@ -1503,13 +1503,23 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-floor-plans-selector button span { color: #d8b687; font-size: .65rem; }
 .retreat-floor-plans-selector button[aria-pressed="true"] { background: #d8b687; color: #171e28; }
 .retreat-floor-plans-selector button[aria-pressed="true"] span { color: #171e28; }
-.retreat-floor-plans-selector button:focus-visible, .retreat-floor-plan-view a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.retreat-floor-plans-selector button:focus-visible, .retreat-floor-plan-view button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 .retreat-floor-plan-view { margin: 0; }
-.retreat-floor-plan-view > a { display: block; padding: clamp(.5rem, 2vw, 1.5rem); background: #fff; }
+.retreat-floor-plan-open { width: 100%; border: 0; color: inherit; cursor: zoom-in; }
+.retreat-floor-plan-view > .retreat-floor-plan-open { display: block; padding: clamp(.5rem, 2vw, 1.5rem); background: #fff; }
 .retreat-floor-plan-view img { display: block; width: 100%; height: auto; max-height: 78svh; object-fit: contain; }
 .retreat-floor-plan-view figcaption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.2rem; }
 .retreat-floor-plan-view figcaption span { font-family: var(--serif); font-size: 1.5rem; }
-.retreat-floor-plan-view figcaption a { color: #d8b687; font-size: .65rem; font-weight: 800; letter-spacing: .08em; }
+.retreat-floor-plan-view figcaption button { border: 0; padding: 0; background: transparent; color: #d8b687; font: inherit; font-size: .65rem; font-weight: 800; letter-spacing: .08em; cursor: pointer; }
+.retreat-floor-plan-viewer { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; border: 0; padding: 0; overflow: hidden; background: #17202c; color: #fff; }
+.retreat-floor-plan-viewer[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.retreat-floor-plan-viewer::backdrop { background: #17202c; }
+.retreat-floor-plan-viewer > header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 3vw, 3rem); }
+.retreat-floor-plan-viewer h2 { margin: 0; font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 500; }
+.retreat-floor-plan-viewer header button { min-height: 44px; border: 1px solid #d8b687; padding: .6rem 1rem; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+.retreat-floor-plan-viewer header button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.retreat-floor-plan-viewer-image { position: relative; min-height: 0; background: #fff; }
+.retreat-floor-plan-viewer-image img { object-fit: contain; }
 @media (max-width: 650px) {
   .retreat-floor-plans-heading { display: block; }
   .retreat-floor-plans-heading > p { margin-top: 1.2rem; }
@@ -1522,7 +1532,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-floor-plans-heading h2 { font-size: clamp(2rem, 3vw, 3rem); }
   .retreat-floor-plans-selector button { padding-block: .8rem; }
   .retreat-floor-plan-view { display: flex; flex-direction: column; min-height: 0; }
-  .retreat-floor-plan-view > a { flex: 1; min-height: 0; padding: .5rem; }
+  .retreat-floor-plan-view > .retreat-floor-plan-open { flex: 1; min-height: 0; padding: .5rem; }
   .retreat-floor-plan-view img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; }
   .retreat-floor-plan-view figcaption { padding-top: .6rem; }
   .retreat-floor-plan-view figcaption span { font-size: 1.2rem; }

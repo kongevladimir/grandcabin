@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Language } from "./useSiteLanguage";
 import mainFloor from "../../public/images/floor-plan-main.png";
 import lowerFloor from "../../public/images/floor-plan-lower.png";
@@ -18,10 +18,23 @@ const floors = [
 
 export function FloorPlans({ language }: { language: Language }) {
   const [selected, setSelected] = useState("main");
+  const [expanded, setExpanded] = useState(false);
+  const viewer = useRef<HTMLDialogElement>(null);
   const floor = floors.find((item) => item.id === selected) ?? floors[1];
   const nb = language === "nb";
   const name = nb ? floor.nb : floor.en;
   const planImage = nb ? floor.image : floor.imageEnglish;
+  const openViewer = () => {
+    viewer.current?.showModal();
+    setExpanded(true);
+  };
+
+  useEffect(() => {
+    if (!expanded) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [expanded]);
 
   return <section className="retreat-floor-plans" aria-labelledby="floor-plans-title">
     <div className="retreat-floor-plans-heading">
@@ -32,10 +45,14 @@ export function FloorPlans({ language }: { language: Language }) {
       {floors.map((item, index) => <button key={item.id} type="button" aria-pressed={selected === item.id} aria-controls="floor-plan-view" onClick={() => setSelected(item.id)}><span>0{index + 1}</span>{nb ? item.nb : item.en}</button>)}
     </div>
     <figure id="floor-plan-view" className="retreat-floor-plan-view">
-      <a href={planImage.src} target="_blank" rel="noreferrer" aria-label={nb ? `Åpne hele plantegningen: ${name}` : `Open full floor plan: ${name}`}>
+      <button className="retreat-floor-plan-open" type="button" onClick={openViewer} aria-haspopup="dialog" aria-label={nb ? `Åpne hele plantegningen: ${name}` : `Open full floor plan: ${name}`}>
         <Image key={`${floor.id}-${language}`} src={planImage} alt={nb ? `Plantegning – ${name}, Turu Crown` : `Floor plan – ${name}, Turu Crown`} unoptimized sizes="(max-width: 900px) 100vw, 90vw" />
-      </a>
-      <figcaption><span aria-live="polite">{name}</span><a href={planImage.src} target="_blank" rel="noreferrer">{nb ? "SE HELE PLANTEGNINGEN" : "VIEW FULL FLOOR PLAN"} ↗</a></figcaption>
+      </button>
+      <figcaption><span aria-live="polite">{name}</span><button type="button" onClick={openViewer} aria-haspopup="dialog">{nb ? "SE HELE PLANTEGNINGEN" : "VIEW FULL FLOOR PLAN"} ↗</button></figcaption>
     </figure>
+    <dialog ref={viewer} className="retreat-floor-plan-viewer" aria-labelledby="floor-plan-viewer-title" onClose={() => setExpanded(false)}>
+      <header><h2 id="floor-plan-viewer-title">{name}</h2><button type="button" onClick={() => viewer.current?.close()}>{nb ? "Lukk og gå tilbake" : "Close and go back"} ×</button></header>
+      <div className="retreat-floor-plan-viewer-image">{expanded && <Image src={planImage} alt={nb ? `Hele plantegningen – ${name}, Turu Crown` : `Full floor plan – ${name}, Turu Crown`} fill unoptimized sizes="100vw" />}</div>
+    </dialog>
   </section>;
 }

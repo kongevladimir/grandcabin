@@ -14,7 +14,8 @@ export type NightlyPrices = Record<string, number>;
 export type OwnerAuth = { passwordHash?: string; passwordSalt?: string; sessionVersion?: string; resetHash?: string; resetExpires?: number };
 export type BookingState = { bookings: Booking[]; blocks: Block[]; limits: Record<string, number[]>; notices: Notice[]; nightlyPrices?: NightlyPrices; ownerAuth?: OwnerAuth };
 export const emptyState = (): BookingState => ({ bookings: [], blocks: [], limits: {}, notices: [], nightlyPrices: {} });
-// Existing FINN reservations, recorded as occupied nights. Departure is exclusive.
+// Fixed reservations supplied by the owner, including existing FINN stays.
+// Departure is exclusive, so the last occupied night is the previous day.
 export const finnReservations: Block[] = [
   { id: "finn-2026-11-13", arrival: "2026-11-13", departure: "2026-11-15", note: "Reservert via FINN", external: true },
   { id: "finn-2026-11-27", arrival: "2026-11-27", departure: "2026-11-29", note: "Reservert via FINN", external: true },
@@ -22,7 +23,8 @@ export const finnReservations: Block[] = [
   { id: "finn-2026-12-18", arrival: "2026-12-18", departure: "2026-12-20", note: "Reservert via FINN", external: true },
   { id: "finn-2026-12-23", arrival: "2026-12-23", departure: "2026-12-26", note: "Reservert via FINN", external: true },
   { id: "finn-2026-12-30", arrival: "2026-12-30", departure: "2027-01-01", note: "Reservert via FINN", external: true },
-  { id: "finn-2027-01-22", arrival: "2027-01-22", departure: "2027-01-24", note: "Reservert via FINN", external: true },
+  { id: "owner-2027-01-12", arrival: "2027-01-12", departure: "2027-01-15", note: "Reservert av eier", external: true },
+  { id: "owner-2027-03-11", arrival: "2027-03-11", departure: "2027-03-13", note: "Reservert av eier", external: true },
 ];
 export class BookingError extends Error {
   status: number;

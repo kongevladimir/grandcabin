@@ -1,5 +1,44 @@
 # Three floor plans
 
+## Narrower lower-floor module and full-screen return, 30 October 2026
+
+The owner marked a narrower right-hand kitchen/dining module. Its right exterior wall, fireplace and adjacent fittings move inward; the bedroom/bathroom/terrace portion remains intact. Front glazing uses the main-floor facade as its visual reference. The table retains26chairs. Final workspace files are `public/images/floor-plan-lower.png` (source `exec-0edca386-5a68-450b-8d76-99e19f101754.png`) and `public/images/floor-plan-lower-en.png` (source `exec-291d1f12-2f6e-4326-93a2-54b62769830b.png`). Built-in imagegen edit mode. Selected results visually inspected.
+
+Both image and full-plan action now open an in-page native dialog rather than another image tab. A bilingual Close and go back button or Escape returns to the same selected floor. Body scrolling is restored on close.
+
+Exact prompt sequence:
+
+### narrowLower-nbPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the current LOWER FLOOR plan edit target. Image2 is MAIN FLOOR reference ONLY for FRONT WINDOW grouping/style on the right-hand module. Image3 is owner red-line reference for desired NARROWER right module. Make ONLY requested architectural correction: narrow the rightmost kitchen/dining module by bringing its entire RIGHT exterior wall LEFT about110pixels in the1721px-wide edit target (new outer-right edge approximatelyx1580 ratherthan1690), matching the red line in Image3. Keep the module's LEFT junction to hallway/terrace fixed and its TOP/BOTTOM levels fixed. Thus remove excess floor width at the right of dining table/island. Move the right-wall fireplace and side windows with that wall. Adapt only far-right kitchen/storage fittings to stay inside the narrower footprint. Keep table,26chairs,island present and realistic; do not squash or scale furniture. The dining table MUST retain EXACTLY26chairs:12eachlongside+1eachend, current table size unchanged. Front/bottom windows of this right module must closely match sequence/grouping/proportions of FRONT/BOTTOM windows in the MAIN-FLOOR right module inImage2, with consistent dark wall piers and bluewhite glazing. Main reference must NOT replace the lower plan or its furniture. Keep the ENTIRE left bedroom/bathroom/stair/terrace portion unchanged, all5bedrooms and counts, all existing text verbatim in samefont/size, all other objects/geometry/materials unchanged. Full canvas same dimensions and framing, white space may increase at right after narrowing. Do NOT crop, resize entire image, add red marks, remove rooms or chairs, change stairs or change labels. Keep recent crisp detail quality. Preserve Norwegian labels: Soverom1(3soveplasser),2(3),3(2),4(4),5(4),Teknisk rom,Bod(two),Bad(two),Sauna,Toalett,Gang,Terrasse.
+```
+
+### narrowLower-enPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the current LOWER FLOOR plan edit target. Image2 is MAIN FLOOR reference ONLY for FRONT WINDOW grouping/style on the right-hand module. Image3 is owner red-line reference for desired NARROWER right module. Make ONLY requested architectural correction: narrow the rightmost kitchen/dining module by bringing its entire RIGHT exterior wall LEFT about110pixels in the1721px-wide edit target (new outer-right edge approximatelyx1580 ratherthan1690), matching the red line in Image3. Keep the module's LEFT junction to hallway/terrace fixed and its TOP/BOTTOM levels fixed. Thus remove excess floor width at the right of dining table/island. Move the right-wall fireplace and side windows with that wall. Adapt only far-right kitchen/storage fittings to stay inside the narrower footprint. Keep table,26chairs,island present and realistic; do not squash or scale furniture. The dining table MUST retain EXACTLY26chairs:12eachlongside+1eachend, current table size unchanged. Front/bottom windows of this right module must closely match sequence/grouping/proportions of FRONT/BOTTOM windows in the MAIN-FLOOR right module inImage2, with consistent dark wall piers and bluewhite glazing. Main reference must NOT replace the lower plan or its furniture. Keep the ENTIRE left bedroom/bathroom/stair/terrace portion unchanged, all5bedrooms and counts, all existing text verbatim in samefont/size, all other objects/geometry/materials unchanged. Full canvas same dimensions and framing, white space may increase at right after narrowing. Do NOT crop, resize entire image, add red marks, remove rooms or chairs, change stairs or change labels. Keep recent crisp detail quality. Preserve English labels: Bedroom1(Sleeps3),2(3),3(2),4(4),5(4),Utility room,Storage(two),Bathroom(two),Sauna,Toilet,Hallway,Terrace.
+```
+
+### narrowWindows-nbPrompt
+
+```text
+Use case: precise-object-edit. Image1 is already narrowed LOWER FLOOR edit target. Image2 is MAIN FLOOR reference only for right-module FRONT/BOTTOM facade glazing. Edit ONLY the bottom/front window strip of the right kitchen/dining module in Image1: it should have FOUR distinct window GROUPS with dark structural piers, closely matching the main-floor front facade sequence in Image2: a wider left group, two narrower central groups, and a wider right group, fitted within the current narrowed module width. The current lower-floor three equal groups are incorrect. Match the blue-white glass/window frame design of Image2. Keep right-module outer footprint and rightwall position EXACTLY as Image1, keep all other windows including sidewindowsunchanged. Preserve ALL rooms,walls,doors,kitchen,storage,island,fireplace,table, EXACTLY26chairs(12eachlongside+1eachend), all5bedrooms and capacities, ALL text verbatim currentlanguagefont/size, materials, canvas and framing. Do not widen rightmodule or crop/changeotherobjects. Only change number/grouping/proportions of frontbottomwindows inrightmodule to4groups like mainfloor.
+```
+
+### narrowWindows-enPrompt
+
+```text
+Use case: precise-object-edit. Image1 is already narrowed LOWER FLOOR edit target. Image2 is MAIN FLOOR reference only for right-module FRONT/BOTTOM facade glazing. Edit ONLY the bottom/front window strip of the right kitchen/dining module in Image1: it should have FOUR distinct window GROUPS with dark structural piers, closely matching the main-floor front facade sequence in Image2: a wider left group, two narrower central groups, and a wider right group, fitted within the current narrowed module width. The current lower-floor three equal groups are incorrect. Match the blue-white glass/window frame design of Image2. Keep right-module outer footprint and rightwall position EXACTLY as Image1, keep all other windows including sidewindowsunchanged. Preserve ALL rooms,walls,doors,kitchen,storage,island,fireplace,table, EXACTLY26chairs(12eachlongside+1eachend), all5bedrooms and capacities, ALL text verbatim currentlanguagefont/size, materials, canvas and framing. Do not widen rightmodule or crop/changeotherobjects. Only change number/grouping/proportions of frontbottomwindows inrightmodule to4groups like mainfloor.
+```
+
+### narrowWindowsEnFinalPrompt
+
+```text
+Use case: precise-object-edit. IMAGE1 English lower-floor plan is EDIT TARGET. IMAGE2 Norwegian lower-floor plan is EXACT front-window grouping reference ONLY. IMAGE1 currently has THREE front/bottom window groups on right dining module; this must be FOUR like IMAGE2. Replace ONLY that short bottom/front facade strip (between terrace junction atx1060 andbottomrightcorner atx1540) with FOUR bluewhite glazed window groups separated by THREE distinct internal dark wall piers with white rectangular caps, plus the existing2cornerpiers. Count FOUR separate glass spans /THREE internalpiers, not3glassspans. Match Image2 grouping but fit current width. Preserve EVERYTHING outside this bottomwindowstrip EXACTLY, especially Englishlabels,currentnarrowfootprint,5bedrooms,26chairs,table,island,kitchen,fireplace,stairs,terraceandallsidewindows. Do not change canvasdimensions, lighting, furniture or text. NevercopyNorwegianlabels. Only correct3windowgroups to4with3internalpiers.
+```
+
+
 ## Sharper floor-plan details, 30 October 2026
 
 Used built-in imagegen edit mode on all six language/floor images to restore clearer material texture, furniture edges and lettering while preserving room layout, label wording and sleeping counts. Requested 4K in prompts, but the tool returned native-sized images (roughly1520–1720px wide), so these files must not be described as4K. No deterministic bitmap enlargement was applied. Selected outputs were visually compared with sources; all26lower-floor diningchairs retained. Full-size PNG viewing remains available without image compression.
