@@ -1,5 +1,45 @@
 # Three floor plans
 
+Final English text cleanup used exec-a25ba29a-1956-40bd-a3f2-a4e56afc9a1a.png as input; selected output exec-ed5e22dc-1349-4499-a8e8-3db265238a84.png replaces floor-plan-lower-en.png to remove a stray parenthesis. Exact built-in edit prompt:
+```text
+Text correction ONLY on supplied English floorplan. Bedroom3 label contains an extra stray closing parenthesis to the right. It must read EXACTLY two lines: 'Bedroom 3' and '(Sleeps 2)' with ONE closing parenthesis only. Remove stray extra ')' to right of that label, restore underlying bed/floor tiny area. Keep font/size/position unchanged. Preserve ALL other pixels/content/geometry, especially Bedroom3 horizontal double bed's current slightly narrower and slightly shorter proportions, all rooms, windows, sauna glass, chairs, other labels, full canvas. No other changes.
+```
+
+
+## Bedroom 3: tiny additional length reduction, 30 October 2026
+
+Final English output `exec-a25ba29a-1956-40bd-a3f2-a4e56afc9a1a.png` saved to `public/images/floor-plan-lower-en.png`. Both final complete drawings visually inspected.
+
+Owner then requested a little shorter as well. Retained the horizontal two-person double-bed design and slight width reduction, shortening the long axis by only approximately5percent. Built-in imagegen edit from exec-4e1ab24e-5dc8-4e5d-878d-829012b8ac67.png. Final Norwegian asset: public/images/floor-plan-lower.png from exec-4eaaf5bf-2877-406d-a475-6347532eecd1.png.
+
+Exact Norwegian prompt:
+```text
+Use case: precise-object-edit. Edit only the horizontal white DOUBLE BED in Bedroom3/Soverom3 on this full lower-floor plan. Keep its current slightly narrower short-axis width, original horizontal orientation, white duvet design, and two-person double-bed identity. Owner now wants its LENGTH just a LITTLE shorter too: shorten long horizontal x-axis by ONLY5percent total (about7pixels on1721canvas), preserving center. Current x435..569 becomes aboutx439..565. Keep current y403..489 unchanged. This is a tiny adjustment, NOT a small single bed, NOT20percent, do not rotate. Keep all Norwegian labels including 'Soverom 3 (2 soveplasser)' exactly as supplied. All other beds, rooms, walls, windows, sauna glass, 26chairs, table, kitchen, stairs, door openings, materials, full canvas/resolution unchanged. No crop/resize/no other edits.
+```
+
+Exact English prompt:
+```text
+undefined
+```
+
+
+## Bedroom 3: original length and design, only narrower, 30 October 2026
+
+Selected English output: `exec-d8395d8a-6771-49f0-93a9-844c4a0565cf.png`, saved to `public/images/floor-plan-lower-en.png`; Norwegian saved to `public/images/floor-plan-lower.png`. Both outputs inspected at full-image view.
+
+Owner clarified that the bed must retain its original design and length, with only a slight reduction in width, still for two people. This supersedes the preceding 20-percent overall reduction. Built-in imagegen edit, using the pre-change Norwegian asset exec-5db4d45c-9f37-4359-abee-01e7fb3f2e07.png as source. Selected Norwegian output exec-4e1ab24e-5dc8-4e5d-878d-829012b8ac67.png. Loft mattress placement remains unchanged.
+
+Exact Norwegian prompt:
+```text
+Use case: precise-object-edit. EDIT TARGET is this ORIGINAL lower-floor plan before a mistaken bed alteration. Owner wants the bed in SOVEROM 3 / BEDROOM3 ONLY to be a LITTLE NARROWER, with SAME ORIGINAL DESIGN and SAME ORIGINAL LENGTH, still a TWO-PERSON DOUBLE BED. Preserve its current horizontal orientation, white bedding and original double-bed appearance. Original bed rectangle around x435..569,y394..504 in1721pxcanvas: keep its horizontal long axis/LENGTH from x435..569 UNCHANGED. Reduce only its short-axis WIDTH (vertical y dimension) gently, about12percent: y401..497 instead of394..504, centered in same place. Do NOT rotate it or turn it into the vertical bed style from rooms1/2. Do NOT shrink its length or make a small single bed. Keep original label 'Soverom 3 (2 soveplasser)' unchanged. Absolutely all other room geometry, beds, text, 26chairs, sauna glass, windows, doors and canvas unchanged. Only a slight narrowing of the original Bedroom3 double bed. Preserve full original resolution/framing; no crop/resize.
+```
+
+Exact English localisation prompt:
+```text
+undefined
+```
+
+
 ## Opposite-wall mattresses and smaller Bedroom 3 bed, 30 October 2026
 
 Selected English outputs: `exec-7b13d63e-3299-412e-bce3-7a7192b8a3e8.png` (loft) and `exec-227af95b-29ee-480b-8ff6-e5b3fc6d7c33.png` (lower), saved to the matching `public/images/floor-plan-*-en.png` assets. All four complete outputs visually inspected.
