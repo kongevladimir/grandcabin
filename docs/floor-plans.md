@@ -1,5 +1,58 @@
 # Three floor plans
 
+## Sharper floor-plan details, 30 October 2026
+
+Used built-in imagegen edit mode on all six language/floor images to restore clearer material texture, furniture edges and lettering while preserving room layout, label wording and sleeping counts. Requested 4K in prompts, but the tool returned native-sized images (roughly1520–1720px wide), so these files must not be described as4K. No deterministic bitmap enlargement was applied. Selected outputs were visually compared with sources; all26lower-floor diningchairs retained. Full-size PNG viewing remains available without image compression.
+
+Desktop presentation now fits the complete selected drawing, floor buttons and full-image link into the first viewport below the header. Verified all three floors at1280×720: the figure bottom is704px, inside the720px viewport. The following walkthrough introduction uses a smaller heading and tighter vertical spacing. Full-image viewing is retained for detailed inspection.
+
+Final workspace assets and generated sources:
+- `public/images/floor-plan-main.png` ← `exec-9eb6f714-6ca4-4082-85a2-c193689f69bd.png`.
+- `public/images/floor-plan-main-en.png` ← `exec-385996b6-84e9-4f56-b129-17bf4319dc95.png`.
+- `public/images/floor-plan-lower.png` ← `exec-4fb9e303-c986-4882-bf6d-1a525d2cffb5.png`.
+- `public/images/floor-plan-lower-en.png` ← `exec-64d6909a-23dd-45a4-8c5c-919139cc4cff.png`.
+- `public/images/floor-plan-loft.png` ← `exec-57e6c1dd-bc4e-4ffd-8fd5-51b99afb9561.png`.
+- `public/images/floor-plan-loft-en.png` ← `exec-059fe8f4-8252-44c5-a4fc-448bb5efaa01.png`.
+
+Final prompt set:
+
+### main
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Main-floor invariants: Bedroom/Soverom5 sleeps2 and6 sleeps3; TWO Hallway/Gang labels and FOUR ceiling annotations (English exact 'Vaulted Ceiling', Norwegian 'åpen himling'); all bathroom/sauna/storage/kitchen/dining/terrace labels preserved.
+```
+
+### main-en
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Main-floor invariants: Bedroom/Soverom5 sleeps2 and6 sleeps3; TWO Hallway/Gang labels and FOUR ceiling annotations (English exact 'Vaulted Ceiling', Norwegian 'åpen himling'); all bathroom/sauna/storage/kitchen/dining/terrace labels preserved.
+```
+
+### lower
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Lower-floor invariants: exactly26diningchairs,12oneachlongside+1eachend; table length/width unchanged. Exactly5bedrooms:1and2sleep3,3sleeps2,4and5sleep4. Two vertical beds in room4 match ivory+taupe bedding design inroom5. Keep two storage rooms(Bod/Storage), two bathrooms,sauna,toilet,utilityroom,hallway,terrace.
+```
+
+### lower-en
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Lower-floor invariants: exactly26diningchairs,12oneachlongside+1eachend; table length/width unchanged. Exactly5bedrooms:1and2sleep3,3sleeps2,4and5sleep4. Two vertical beds in room4 match ivory+taupe bedding design inroom5. Keep two storage rooms(Bod/Storage), two bathrooms,sauna,toilet,utilityroom,hallway,terrace.
+```
+
+### loft
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Loft invariants: bedroom9left and8right eachsleep2; exactly4SHORT mattresses inalcove10 against its UPPER wall with freefloorbelow;2smallcoffee tables with smallgapfromsofa;bluepingpongtable;toplonghorizontalstairwithshortglassrailingandopenentrance;fourwindowgroups;separate upper-right Hems/Mezzanine with2beanbags,whitehideandopenlower-rightstairentrance,verticaltreadlines. Preserve Loftstua/Loft lounge and all room labels.
+```
+
+### loft-en
+
+```text
+Use case: precise-object-edit. Asset: high-resolution architectural floor-plan image for website full-size inspection. The supplied image is the sole EDIT TARGET and exact content/layout source. Perform high-fidelity resolution/clarity restoration only: deliver a true HIGH RESOLUTION 4K image, 3840 pixels on long edge, preserving current exact aspect ratio, full white canvas and framing. Render fine crisp wall and window edges, natural detailed wood-grain floors, clear textiles, sharp furniture and clean readable small white narrow regular-weight labels, without oversharpening halos or painterly blur. This is NOT a redesign. Preserve EVERY object, exact wall footprint and room proportions, doors, windows, staircase tread count/direction, bed counts/orientations, fixtures and furniture positions. Preserve ALL text EXACTLY in its current language, wording, spelling, capitalization, numbers, linebreaks, positions and relative size. Increase pixels and clarity, NOT label size relative to plan. Never add, omit or reinterpret any text/room/object. Preserve lighting and palette. Output high-resolution PNG, no crop, no watermark, no new graphics. Loft invariants: bedroom9left and8right eachsleep2; exactly4SHORT mattresses inalcove10 against its UPPER wall with freefloorbelow;2smallcoffee tables with smallgapfromsofa;bluepingpongtable;toplonghorizontalstairwithshortglassrailingandopenentrance;fourwindowgroups;separate upper-right Hems/Mezzanine with2beanbags,whitehideandopenlower-rightstairentrance,verticaltreadlines. Preserve Loftstua/Loft lounge and all room labels.
+```
+
+
 ## Lower-floor beds, hallway lettering and tour section order, 30 October 2026
 
 Lower-floor bedroom labels use the same font-size reference as Gang/Hallway in the same drawing. Both beds in bedroom4 now use the pale wood frame, ivory bedding, pillows and muted throw design from bedroom5, retaining their two existing vertical footprints and four sleeping places. All room labels, capacities and 26 dining chairs retained. Built-in imagegen edit mode; first font-only drafts rejected because bedroom labels became too large.
