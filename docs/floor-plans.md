@@ -1,5 +1,22 @@
 # Three floor plans
 
+## Bedroom 3 bed direction, 30 October 2026
+
+Owner requested the direction shown in codex-clipboard-3fa54112-30ff-46ea-adf9-386ac1a33860.png: two pillows at north/top wall below corridor and foot toward bottom window. Updated only Bedroom3 double bed in both language assets, retaining two sleeping places and restored sharp style. Built-in imagegen edit mode. Source files: public/images/floor-plan-lower.png and floor-plan-lower-en.png at commit6e6d2c9; annotation source C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-3fa54112-30ff-46ea-adf9-386ac1a33860.png.
+
+Selected outputs under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/: exec-1352fa97-0f4a-412e-a7b1-48f279513650.png(Norwegian) and exec-fe2cf93a-08f7-4745-afd0-ca5354150d3f.png(English), copied to matching public/images/floor-plan-lower[-en].png. Both complete outputs visually inspected.
+
+### rotateBedNb
+```text
+Use case: precise-object-edit. IMAGE1 full lower-floor rendering is the EDIT TARGET. IMAGE2 is owner's annotated reference indicating NEW DIRECTION of Bedroom3 double bed: TWO pillows next to each other at TOP/NORTH wall beneath corridor, bed extends DOWN toward bottom window. Change ONLY bed in Bedroom3, reorient it north-south with headboard/two pillows at top and foot at bottom, matching red drawing. Keep same approximate bed area and modest size: double bed for TWO people, not oversized, fit fully within room with floor clearance, no wall/window/door changes. Preserve original white bedding design and current crisp sharp detailed rendering quality. Keep room label and sleepingcount2 exactly, same font/size. Red marks are instructions, must NOT appear in output. Preserve ALL other content exactly: other4bedrooms and bed dimensions, 26diningchairs, table,kitchen,island,stairs,slimwalls,3frontwindowgroups/currentwidths,saunaglassfront,remainingdoors,2previouslyremoveddoorsstillabsent,terrace,allotherlabels,materials,fullcanvas/resolution. No crop,zoom,globalresize or other edits. Keep ALL NORWEGIAN text verbatim. Bedroom3 label remains 'Soverom 3' and '(2 soveplasser)' on two lines.
+```
+
+### rotateBedEn
+```text
+Use case: precise-object-edit. IMAGE1 full lower-floor rendering is the EDIT TARGET. IMAGE2 is owner's annotated reference indicating NEW DIRECTION of Bedroom3 double bed: TWO pillows next to each other at TOP/NORTH wall beneath corridor, bed extends DOWN toward bottom window. Change ONLY bed in Bedroom3, reorient it north-south with headboard/two pillows at top and foot at bottom, matching red drawing. Keep same approximate bed area and modest size: double bed for TWO people, not oversized, fit fully within room with floor clearance, no wall/window/door changes. Preserve original white bedding design and current crisp sharp detailed rendering quality. Keep room label and sleepingcount2 exactly, same font/size. Red marks are instructions, must NOT appear in output. Preserve ALL other content exactly: other4bedrooms and bed dimensions, 26diningchairs, table,kitchen,island,stairs,slimwalls,3frontwindowgroups/currentwidths,saunaglassfront,remainingdoors,2previouslyremoveddoorsstillabsent,terrace,allotherlabels,materials,fullcanvas/resolution. No crop,zoom,globalresize or other edits. Keep ALL ENGLISH text verbatim. Bedroom3 label remains 'Bedroom 3' and '(Sleeps 2)' on two lines. Do not copy Norwegian labels from reference.
+```
+
+
 ## Lower-floor clarity restoration, 30 October 2026
 
 Owner requested a clearer final lower-floor drawing. Built-in imagegen restoration produced sharper outlines, readable labels, tile grout, wood grain and furniture details, retaining the current layout, beds, windows, sauna glass and26chairs. Requested3442x1828 in prompt; tool returned1721x914 for both, so no resolution increase is claimed. Files copied without additional resizing/recompression. Main and loft unchanged.
