@@ -1,5 +1,56 @@
 # Three floor plans
 
+## Mattresses against wall and loft typography reference, 30 October 2026
+
+The four shortened alcove mattresses now meet the upper inner wall, leaving free floor at their feet. Both languages updated. Main and lower floor labels now use the lighter, smaller lettering of the loft bedroom labels as the explicit reference. All room names, sleeping counts, ceiling annotations and furniture were visually checked. Built-in imagegen edit mode used for all six assets.
+
+Final files and generated sources:
+- `public/images/floor-plan-loft.png`: `exec-031a7066-ff24-4985-8705-eae7b2802c42.png`
+- `public/images/floor-plan-loft-en.png`: `exec-c01b518e-b26a-485a-9554-9e14e2cc7b24.png`
+- `public/images/floor-plan-main.png`: `exec-92a135f9-1760-4faf-9acb-e6820ee59688.png`
+- `public/images/floor-plan-main-en.png`: `exec-532896d6-13b9-4f69-8769-c6b9aab9c8b4.png`
+- `public/images/floor-plan-lower.png`: `exec-87fc714c-5858-4b01-bf9c-515387036179.png`
+- `public/images/floor-plan-lower-en.png`: `exec-d377548f-fd7d-450b-886d-ce13042db88a.png`
+
+Final prompts:
+
+### wallMattressNbPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the full loft floor-plan EDIT TARGET. Only move the FOUR existing single mattresses in sleeping alcove10 UPWARD as a group until their upper/head ends touch the INSIDE of the upper horizontal wall directly below the long staircase (inner wall edge around y442 in this 1522px-wide full image). Eliminate the strip of empty wooden floor BETWEEN the mattress head ends and that upper wall. Keep current SHORT mattress lengths unchanged, widths, four distinct mattresses, ordering, bedding and pillows unchanged. Translation only: do NOT stretch or lengthen mattresses. Leave resulting free floor space BELOW mattress feet towards the lower alcove wall. Do NOT move walls, windows, staircase, glass railing, coffee tables, sofa, pingpong table, bathroom, bedrooms or separate Hems/mezzanine. Preserve all labels exactly, font and size, full canvas/framing/dimensions, materials and room geometry. Do not add red marks or new objects. Norwegian labels must remain: Soverom 9 (2 soveplasser), Soverom 8 (2 soveplasser), Bad, Loftstua, Alkove 10 (4 soveplasser), Hems. Keep the alcove label centered and legible.
+```
+
+### wallMattressEnPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the full loft floor-plan EDIT TARGET. Only move the FOUR existing single mattresses in sleeping alcove10 UPWARD as a group until their upper/head ends touch the INSIDE of the upper horizontal wall directly below the long staircase (inner wall edge around y442 in this 1522px-wide full image). Eliminate the strip of empty wooden floor BETWEEN the mattress head ends and that upper wall. Keep current SHORT mattress lengths unchanged, widths, four distinct mattresses, ordering, bedding and pillows unchanged. Translation only: do NOT stretch or lengthen mattresses. Leave resulting free floor space BELOW mattress feet towards the lower alcove wall. Do NOT move walls, windows, staircase, glass railing, coffee tables, sofa, pingpong table, bathroom, bedrooms or separate Hems/mezzanine. Preserve all labels exactly, font and size, full canvas/framing/dimensions, materials and room geometry. Do not add red marks or new objects. English labels must remain: Bedroom 9 (Sleeps 2), Bedroom 8 (Sleeps 2), Bathroom, Loft lounge, Sleeping alcove 10 (Sleeps 4), Mezzanine. Keep the alcove label centered and legible.
+```
+
+### fontMatch-mainPrompt
+
+```text
+Use case: text-localization. Image1 is the EDIT TARGET floor plan. Image2 is the LOFT TYPOGRAPHY REFERENCE ONLY. Change ONLY typography of ALL existing labels in Image1 to match the regular-weight narrow white sans-serif in 'Soverom 8'/'Bedroom 8' on Image2, same subtle dark shadow and same letter height. Current Image1 labels are too large and too bold. Reduce ALL label lettering by approximately 25percent, use regular weight, consistent size everywhere (room names, sleeping counts, bathrooms, storage, sauna, terrace, ceiling descriptions). Target capital-letter height roughly16pixels in this full-resolution image, font nominally22px. Keep every label's EXACT wording, numbers, sleeping counts, language and location; don't add/remove text. Preserve ALL furniture, beds, 26 dining chairs on lower floor if present, table, walls, windows, stairs, doors, textures, dimensions, canvas and framing EXACTLY. NO changes to floor plan or objects. Image2 is style reference only; never import its rooms/furniture into Image1. Main floor: preserve bedroom5 sleeps2, bedroom6 sleeps3, BOTH hallway labels and FOUR ceiling annotations (English exact 'Vaulted Ceiling'; Norwegian exact 'åpen himling').
+```
+
+### fontMatch-main-enPrompt
+
+```text
+Use case: text-localization. Image1 is the EDIT TARGET floor plan. Image2 is the LOFT TYPOGRAPHY REFERENCE ONLY. Change ONLY typography of ALL existing labels in Image1 to match the regular-weight narrow white sans-serif in 'Soverom 8'/'Bedroom 8' on Image2, same subtle dark shadow and same letter height. Current Image1 labels are too large and too bold. Reduce ALL label lettering by approximately 25percent, use regular weight, consistent size everywhere (room names, sleeping counts, bathrooms, storage, sauna, terrace, ceiling descriptions). Target capital-letter height roughly16pixels in this full-resolution image, font nominally22px. Keep every label's EXACT wording, numbers, sleeping counts, language and location; don't add/remove text. Preserve ALL furniture, beds, 26 dining chairs on lower floor if present, table, walls, windows, stairs, doors, textures, dimensions, canvas and framing EXACTLY. NO changes to floor plan or objects. Image2 is style reference only; never import its rooms/furniture into Image1. Main floor: preserve bedroom5 sleeps2, bedroom6 sleeps3, BOTH hallway labels and FOUR ceiling annotations (English exact 'Vaulted Ceiling'; Norwegian exact 'åpen himling').
+```
+
+### fontMatch-lowerPrompt
+
+```text
+Use case: text-localization. Image1 is the EDIT TARGET floor plan. Image2 is the LOFT TYPOGRAPHY REFERENCE ONLY. Change ONLY typography of ALL existing labels in Image1 to match the regular-weight narrow white sans-serif in 'Soverom 8'/'Bedroom 8' on Image2, same subtle dark shadow and same letter height. Current Image1 labels are too large and too bold. Reduce ALL label lettering by approximately 25percent, use regular weight, consistent size everywhere (room names, sleeping counts, bathrooms, storage, sauna, terrace, ceiling descriptions). Target capital-letter height roughly16pixels in this full-resolution image, font nominally22px. Keep every label's EXACT wording, numbers, sleeping counts, language and location; don't add/remove text. Preserve ALL furniture, beds, 26 dining chairs on lower floor if present, table, walls, windows, stairs, doors, textures, dimensions, canvas and framing EXACTLY. NO changes to floor plan or objects. Image2 is style reference only; never import its rooms/furniture into Image1. Lower floor: preserve bedroom1&2 sleeps3, bedroom3 sleeps2, bedroom4&5 sleeps4, two storages, two bathrooms, sauna, toilet, hallway, utilityroom, terrace and EXACTLY26chairs (12 per long side and1each end).
+```
+
+### fontMatch-lower-enPrompt
+
+```text
+Use case: text-localization. Image1 is the EDIT TARGET floor plan. Image2 is the LOFT TYPOGRAPHY REFERENCE ONLY. Change ONLY typography of ALL existing labels in Image1 to match the regular-weight narrow white sans-serif in 'Soverom 8'/'Bedroom 8' on Image2, same subtle dark shadow and same letter height. Current Image1 labels are too large and too bold. Reduce ALL label lettering by approximately 25percent, use regular weight, consistent size everywhere (room names, sleeping counts, bathrooms, storage, sauna, terrace, ceiling descriptions). Target capital-letter height roughly16pixels in this full-resolution image, font nominally22px. Keep every label's EXACT wording, numbers, sleeping counts, language and location; don't add/remove text. Preserve ALL furniture, beds, 26 dining chairs on lower floor if present, table, walls, windows, stairs, doors, textures, dimensions, canvas and framing EXACTLY. NO changes to floor plan or objects. Image2 is style reference only; never import its rooms/furniture into Image1. Lower floor: preserve bedroom1&2 sleeps3, bedroom3 sleeps2, bedroom4&5 sleeps4, two storages, two bathrooms, sauna, toilet, hallway, utilityroom, terrace and EXACTLY26chairs (12 per long side and1each end).
+```
+
+
 ## Vaulted Ceiling and consistent typography, 30 October 2026
 
 Built-in imagegen updated `public/images/floor-plan-main.png`,
