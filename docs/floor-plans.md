@@ -1,5 +1,26 @@
 # Three floor plans
 
+## Moderate centre-window width, 30 October 2026
+
+The owner found the enlarged centre front window too large. Reduced its clear span from roughly150px to90px, centred between the two piers, still above the earlier roughly65px version. Outer panes gain the freed space symmetrically. Preserve sauna glass, wider bathroom window, removed doors, furniture and labels. English result inspected; Norwegian source request failed with a connection error, so the checked English drawing was localised back to Norwegian to retain the same geometry. Built-in imagegen edit mode.
+
+Final assets:
+- `public/images/floor-plan-lower.png`: `exec-5db4d45c-9f37-4359-abee-01e7fb3f2e07.png`.
+- `public/images/floor-plan-lower-en.png`: `exec-a9430c0f-6a74-4e3c-ac37-54fb52659adf.png`.
+
+Exact width-edit prompt (Keep English labels. appended for selected result):
+
+```text
+Use case: precise-object-edit. The supplied full lower-floor plan is the edit target. ONLY reduce the CENTER front/bottom window of the right dining module. It is currently too wide (about150px in1721pxcanvas). Make its clear glass span about90px wide, approximately40percent narrower than current, but still wider than its old65pxversion. Keep its center fixed. Move its two adjacent dark piers INWARD equally about30pxeach, maintaining their slimthickness; the two OUTER window spans gain the freedspace equally. Keep THREEwindowgroups with a clearlySMALLERmiddlefield, middleaboutHALFthewidthofeitherouterfield. Do not returntoverytinymiddlewindow. Overallfacadeextent,roomfootprint,allotherwindowsanddepthofwindowbandunchanged. Preserve EVERYTHING ELSE EXACTLY: sauna'sglassfrontwall,slightlywiderbathroomwindow,the2removeddoorsstillabsentandpassagesopen,allremainingdoors,allrooms,bedroom4matchingbedwidths,26chairs(12eachlongside+1eachend),kitchen,island,fireplace,table,stairs,walls,labelsverbatimcurrentlanguagefont/size,lighting,materials,fullcanvas. No other edits,no redmarks,crop/zoom/globalresize. Only shrinkcentralglassandshifttwoadjacentpiersinward symmetrically.
+```
+
+Exact Norwegian localisation prompt:
+
+```text
+Use case: text-localization. Edit target is this checked English lower-floor plan. Translate ONLY text to Norwegian, keeping exact geometry and ALL pixels/content outside lettering unchanged. Utility room->Teknisk rom; Storage->Bod(both); Bathroom->Bad(both); Toilet->Toalett; Hallway->Gang; Terrace->Terrasse; Sauna staysSauna. Bedroom 1 (Sleeps 3)->Soverom 1 (3 soveplasser); Bedroom2(Sleeps3)->Soverom 2 (3 soveplasser); Bedroom3(Sleeps2)->Soverom 3 (2 soveplasser); Bedroom4(Sleeps4)->Soverom 4 (4 soveplasser); Bedroom5(Sleeps4)->Soverom 5 (4 soveplasser). Same white narrow regularfont,size,shadowandlabelcenters,2linesperbedroom. CRITICAL preserve the correctedMODERATE90pxCENTREfrontwindow, centeredandsmallerthantheouterwindows; do notwidenitbackorreturntooldtiny65px. Keep sauna glassfront, widerbathwindow,2removeddoorsstillabsent,allotherdoors,26chairs,table,kitchen,island,stairs,allrooms,bedwidths,walls,windows,lighting,canvasexactlyunchanged. OnlytranslateEnglishlabelstoNorwegian.
+```
+
+
 ## Wider centre window, two removed doors and sauna glass front, 30 October 2026
 
 Owner requested a wider middle front window, removal of two marked door leaves (hallway beside rear stairs and top-right storage), clear glazing across the sauna's front partition, and a slightly wider exterior bathroom window below it. Door passages remain open; other doors remain. The middle front glazing was enlarged by moving its two slim piers apart symmetrically. Sauna front is now shown as glass with an entry panel. Both language drawings visually checked, retaining rooms, sleeping counts and26diningchairs.
