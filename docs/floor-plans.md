@@ -1,5 +1,22 @@
 # Three floor plans
 
+## Lower-floor clarity restoration, 30 October 2026
+
+Owner requested a clearer final lower-floor drawing. Built-in imagegen restoration produced sharper outlines, readable labels, tile grout, wood grain and furniture details, retaining the current layout, beds, windows, sauna glass and26chairs. Requested3442x1828 in prompt; tool returned1721x914 for both, so no resolution increase is claimed. Files copied without additional resizing/recompression. Main and loft unchanged.
+
+Inputs: public/images/floor-plan-lower.png and floor-plan-lower-en.png at commit b50c66c. Selected outputs under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/: exec-8fc79a2d-9de5-4fa4-a382-fd6a04758552.png(Norwegian), exec-d76dc0e9-25d7-471a-85fa-d7db12d734e2.png(English). Saved to matching public/images/floor-plan-lower[-en].png.
+
+### qualityLowerNb
+```text
+Use case: high-fidelity image restoration / detail enhancement. The supplied current full LOWER-FLOOR PLAN is the edit target and absolute geometry authority. Owner says it looks blurry. Produce a genuinely crisp high-resolution version, ideally 3442x1828 pixels at same aspect ratio, preserving EVERY architectural feature and label exactly. Restore clean defined edges, fine wood-grain detail, bedding seams, tile grout, glazing/frames, chair silhouettes and readable clean lettering, without changing the design. No global style change, no oversharpen halos, no noise, no invented details. CRITICAL keep exact room footprints, walls, ALL windows and their widths, current small middle front window, sauna glass front, open passages with removed2doors, all remaining doors, stairs, kitchen/island, 26chairs(12eachlongside+1eachend), table, terrace, and all beds. Bedroom3 is a horizontal two-person double bed slightly narrower and just5percent shorter than oldoriginal; keep its CURRENT proportions exactly. Do not resize any object or move furniture. Keep complete white canvas, no crop or zoom. Improve clarity ONLY. Preserve all NORWEGIAN labels exactly, same font/size/centers: Teknisk rom, Bod twice, Bad twice, Sauna, Toalett, Gang, Terrasse, Soverom1(3soveplasser),2(3),3(2),4(4),5(4). Keep proper spaces and two lines for bedrooms.
+```
+
+### qualityLowerEn
+```text
+Use case: high-fidelity image restoration / detail enhancement. The supplied current full LOWER-FLOOR PLAN is the edit target and absolute geometry authority. Owner says it looks blurry. Produce a genuinely crisp high-resolution version, ideally 3442x1828 pixels at same aspect ratio, preserving EVERY architectural feature and label exactly. Restore clean defined edges, fine wood-grain detail, bedding seams, tile grout, glazing/frames, chair silhouettes and readable clean lettering, without changing the design. No global style change, no oversharpen halos, no noise, no invented details. CRITICAL keep exact room footprints, walls, ALL windows and their widths, current small middle front window, sauna glass front, open passages with removed2doors, all remaining doors, stairs, kitchen/island, 26chairs(12eachlongside+1eachend), table, terrace, and all beds. Bedroom3 is a horizontal two-person double bed slightly narrower and just5percent shorter than oldoriginal; keep its CURRENT proportions exactly. Do not resize any object or move furniture. Keep complete white canvas, no crop or zoom. Improve clarity ONLY. Preserve all ENGLISH labels exactly, same font/size/centers: Utility room, Storage twice, Bathroom twice, Sauna, Toilet, Hallway, Terrace, Bedroom1(Sleeps3),2(3),3(2),4(4),5(4). Keep proper spaces and two lines for bedrooms.
+```
+
+
 Final English text cleanup used exec-a25ba29a-1956-40bd-a3f2-a4e56afc9a1a.png as input; selected output exec-ed5e22dc-1349-4499-a8e8-3db265238a84.png replaces floor-plan-lower-en.png to remove a stray parenthesis. Exact built-in edit prompt:
 ```text
 Text correction ONLY on supplied English floorplan. Bedroom3 label contains an extra stray closing parenthesis to the right. It must read EXACTLY two lines: 'Bedroom 3' and '(Sleeps 2)' with ONE closing parenthesis only. Remove stray extra ')' to right of that label, restore underlying bed/floor tiny area. Keep font/size/position unchanged. Preserve ALL other pixels/content/geometry, especially Bedroom3 horizontal double bed's current slightly narrower and slightly shorter proportions, all rooms, windows, sauna glass, chairs, other labels, full canvas. No other changes.
