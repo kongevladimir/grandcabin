@@ -1492,7 +1492,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-tour-intro > div:last-child p { color: #d6dadd; font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.75; }
 .retreat-tour-intro > div:last-child span { display: block; margin-top: 1.5rem; color: #8f9aa4; font-size: .72rem; line-height: 1.6; }
 .retreat-tour-stage { padding: 0 clamp(.5rem, 2vw, 2rem) clamp(7rem, 10vw, 11rem); }
-.retreat-floor-plans { padding: 0 clamp(1.4rem, 7vw, 8rem) clamp(4rem, 7vw, 7rem); }
+.retreat-floor-plans { padding: clamp(2rem, 4vw, 4rem) clamp(1.4rem, 7vw, 8rem) 0; }
 .retreat-floor-plans-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2rem; }
 .retreat-floor-plans-heading > div > p { color: #d8b687; font-size: .65rem; font-weight: 800; letter-spacing: .15em; }
 .retreat-floor-plans-heading h2 { margin: .75rem 0 0; font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 400; line-height: 1.05; }

@@ -970,11 +970,11 @@ export function RetreatDetailPage({ page }: { page: RetreatPageKey }) {
       <div className="concept-page retreat-page retreat-detail-page" data-page={page}>
         <RetreatNav language={language} setLanguage={setLanguage} page={page} />
         <main className="retreat-tour-page">
+          <FloorPlans language={language} />
           <section className="retreat-tour-intro">
-            <div><p>08 · TURU CROWN</p><h1>{language === "nb" ? <>Gå gjennom<br />Turu Crown.</> : <>Walk through<br />Turu Crown.</>}</h1></div>
+            <div><p>Turu Crown</p><h1>{language === "nb" ? <>Gå gjennom<br />Turu Crown.</> : <>Walk through<br />Turu Crown.</>}</h1></div>
             <div><p>{language === "nb" ? "Utforsk rommene, planløsningen og utsikten i en interaktiv 3D-visning. Beveg deg mellom alle tre nivåer og opplev hvordan hytta henger sammen før dere kommer." : "Explore the rooms, layout and views in an interactive 3D experience. Move through all three levels and discover how the cabin connects before you arrive."}</p><span>{language === "nb" ? "Klikk i visningen og bruk musen eller fingeren for å bevege deg." : "Click inside the tour and use your mouse or finger to move around."}</span></div>
           </section>
-          <FloorPlans language={language} />
           <section className="retreat-tour-stage">
             <div className="retreat-tour-frame"><iframe title={language === "nb" ? "Interaktiv 3D-visning av Turu Crown" : "Interactive 3D tour of Turu Crown"} src="https://my.matterport.com/show/?m=Cni4Ctd7QSV" allow="autoplay; fullscreen; web-share; xr-spatial-tracking" allowFullScreen /></div>
             <div className="retreat-tour-caption"><div><span>360°</span><p>{language === "nb" ? "Hele hytta, rom for rom" : "The entire cabin, room by room"}</p></div><a href="https://my.matterport.com/show/?m=Cni4Ctd7QSV" target="_blank" rel="noreferrer">{language === "nb" ? "ÅPNE 3D-VISNING I FULLSKJERM" : "OPEN 3D TOUR FULL SCREEN"} ↗</a></div>

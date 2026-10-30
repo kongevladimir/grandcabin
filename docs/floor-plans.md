@@ -1,5 +1,28 @@
 # Three floor plans
 
+## Lower-floor beds, hallway lettering and tour section order, 30 October 2026
+
+Lower-floor bedroom labels use the same font-size reference as Gang/Hallway in the same drawing. Both beds in bedroom4 now use the pale wood frame, ivory bedding, pillows and muted throw design from bedroom5, retaining their two existing vertical footprints and four sleeping places. All room labels, capacities and 26 dining chairs retained. Built-in imagegen edit mode; first font-only drafts rejected because bedroom labels became too large.
+
+Final assets:
+- `public/images/floor-plan-lower.png`: `exec-513b9c75-9dc3-4911-83d5-2e3a5f8bbc78.png`.
+- `public/images/floor-plan-lower-en.png`: `exec-66132c93-32c7-4d32-acdf-d44c9bd27c9e.png`.
+
+The page now shows floor plans first, followed by the existing Walk through/Gå gjennom introduction, then the interactive Matterport tour. Reduced floor-plan top spacing to move its heading higher. The introduction eyebrow reads only Turu Crown, without the former 08 prefix.
+
+Validation: lint, route types, TypeScript and production build pass. The booking suite has 20 passing tests and three existing failures: the relative test stay (today+10 through today+15) overlaps an imported FINN reservation on the current date. Booking model and tests are unchanged by this presentation update.
+
+Final Norwegian prompt:
+```text
+Use case: precise-object-edit. Full lower-floor plan is edit target. Make only TWO precise changes. (1) BEDROOM4: its TWO existing long beds along far-left exterior wall must have the SAME bed-frame and bedding DESIGN as the two beds in BEDROOM5 directly above: natural pale wood frames, soft ivory duvets, plump white pillows and muted taupe/olive folded throws. Keep bedroom4 bed count exactly2 and existing locations, footprints, sizes and VERTICAL orientations; rotate the bedroom5 design to fit these existing beds. Do not enlarge beds, move walls or change4sleepingplaces. Bedroom5 itself stays untouched. (2) BEDROOM TEXT: all5 bedroom names and parenthesized capacity lines must use the EXACT same regular narrow white sans-serif SIZE as the existing hallway label in THIS drawing. Capital-letter visible height should be about14-16pixels at full1721pxcanvas width; font nominal20px, not24or28px. Preserve the hallway text exactly as reference; DO NOT enlarge it. All bedroom text lines must match each other and hallway letter-height, even if longer. Do not use large/bold lettering. Preserve label centers, two lines each. Every other label stays unchanged. Preserve all geometry, furniture, doors, windows, stairs, walls, table, EXACTLY26chairs(12eachside+1eachend), bathroom fixtures, kitchen, canvas and framing. Reference is 'Gang'. Bedroom labels exactly: Soverom 1 (3 soveplasser), Soverom 2 (3 soveplasser), Soverom 3 (2 soveplasser), Soverom 4 (4 soveplasser), Soverom 5 (4 soveplasser).
+```
+
+Final English prompt:
+```text
+Use case: precise-object-edit. Full lower-floor plan is edit target. Make only TWO precise changes. (1) BEDROOM4: its TWO existing long beds along far-left exterior wall must have the SAME bed-frame and bedding DESIGN as the two beds in BEDROOM5 directly above: natural pale wood frames, soft ivory duvets, plump white pillows and muted taupe/olive folded throws. Keep bedroom4 bed count exactly2 and existing locations, footprints, sizes and VERTICAL orientations; rotate the bedroom5 design to fit these existing beds. Do not enlarge beds, move walls or change4sleepingplaces. Bedroom5 itself stays untouched. (2) BEDROOM TEXT: all5 bedroom names and parenthesized capacity lines must use the EXACT same regular narrow white sans-serif SIZE as the existing hallway label in THIS drawing. Capital-letter visible height should be about14-16pixels at full1721pxcanvas width; font nominal20px, not24or28px. Preserve the hallway text exactly as reference; DO NOT enlarge it. All bedroom text lines must match each other and hallway letter-height, even if longer. Do not use large/bold lettering. Preserve label centers, two lines each. Every other label stays unchanged. Preserve all geometry, furniture, doors, windows, stairs, walls, table, EXACTLY26chairs(12eachside+1eachend), bathroom fixtures, kitchen, canvas and framing. Reference is 'Hallway'. Bedroom labels exactly: Bedroom 1 (Sleeps 3), Bedroom 2 (Sleeps 3), Bedroom 3 (Sleeps 2), Bedroom 4 (Sleeps 4), Bedroom 5 (Sleeps 4).
+```
+
+
 ## Mattresses against wall and loft typography reference, 30 October 2026
 
 The four shortened alcove mattresses now meet the upper inner wall, leaving free floor at their feet. Both languages updated. Main and lower floor labels now use the lighter, smaller lettering of the loft bedroom labels as the explicit reference. All room names, sleeping counts, ceiling annotations and furniture were visually checked. Built-in imagegen edit mode used for all six assets.

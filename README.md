@@ -31,7 +31,7 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/materials` — wood, surface treatment, and interior material story.
 - `/gallery` — 67 photos filtered by Alle, Hytta, Oppholdsrom and Soverom (All, Cabin, Living space and Bedrooms in English), with full-screen viewing. Source originals are unchanged, except for the requested sunny ski photo edit. See `docs/organized-gallery.md` for source folders and original-photo hosting requirements.
 - `/location` — maps, driving distances, public transport, and arrival guidance.
-- `/3d-tour` — three floor plans in a shared natural-material style, with Norwegian/English labels inside the drawings, floor selection and full-image viewing above the interactive Matterport walkthrough. See `docs/floor-plans.md` for sources and rendering notes.
+- `/3d-tour` — three floor plans in a shared natural-material style, with Norwegian/English labels inside the drawings, floor selection and full-image viewing first, followed by the walkthrough introduction and interactive Matterport tour. See `docs/floor-plans.md` for sources and rendering notes.
 - `/meetings` — company retreats and meeting facilities.
 - `/turufjell` — outdoor experiences, with an activity guide at `/turufjell/activities`.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
