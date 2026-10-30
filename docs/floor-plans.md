@@ -1,5 +1,34 @@
 # Three floor plans
 
+## Wider centre window, two removed doors and sauna glass front, 30 October 2026
+
+Owner requested a wider middle front window, removal of two marked door leaves (hallway beside rear stairs and top-right storage), clear glazing across the sauna's front partition, and a slightly wider exterior bathroom window below it. Door passages remain open; other doors remain. The middle front glazing was enlarged by moving its two slim piers apart symmetrically. Sauna front is now shown as glass with an entry panel. Both language drawings visually checked, retaining rooms, sleeping counts and26diningchairs.
+
+Built-in imagegen edit mode. Final assets:
+- `public/images/floor-plan-lower.png`: `exec-5c23bdac-27d5-48dc-832a-e639e053c628.png`.
+- `public/images/floor-plan-lower-en.png`: `exec-5a59cd26-dcf0-46b6-adb6-153f6de34e3f.png`.
+
+Exact first-pass prompts:
+
+### wideMiddleDoors-nbPrompt
+
+```text
+Use case: precise-object-edit. Image1 full lower-floor plan is EDIT TARGET. Image2 marks the center front window to WIDEN. Image3 marks EXACTLY TWO doors to REMOVE. Make ONLY these corrections: (A) Right dining-module bottom/front facade has3windowgroups. Widen CENTER glass span fromaround65px toabout120px in1721pxcanvas (roughlydouble), centered on facadecenteraroundx1328. Shift the2slimdarkinternalpiers outward equally, about25pxeach, retaining their thickness. Shorten outerglazingspans equally tokeepwholefacadebounds fixed: targetleft/rightglasswidthsabout160pxeach,centralabout120px. Keep THREEgroups symmetrical andslimframes unchanged, no enlargementofroom/walls/canvas. (B) Remove doorleaf AND swingarc/hingehardware of the small orange angled door at the HALLWAY'S UPPER RIGHT beside the rear staircase (aroundx1140,y165). Leave the opening/passageto stairs clear; preservehallwaywallandstaircase. (C) Remove doorleaf AND swingarc/hingehardware of orange angled door into top-right Bod/Storage (aroundx1520,y135), exactlyasredcircleinImage3. Leave storageentrance open, storage walls/cabinets/labelunchanged. Removeonlythese2doors; ALLotherdoorsMUSTremain, includingHallway'sLOWERdoor into diningroom. Preserveallothercontent: currentfootprint,slimwalls,rooms,bedroom4matchingbedWIDTHS,allbeds,kitchen,island,fireplace,26diningchairs(12eachlongside+1eachend),table,stairs,otherwindows,materials,labelsverbatiminoriginallanguage,font/size,canvas/framing. No redmarks,crop,zoom,resize,newobjects orclosingdooropeningswithwalls. Keep Norwegian labels exactly.
+```
+
+### wideMiddleDoors-enPrompt
+
+```text
+Use case: precise-object-edit. Image1 full lower-floor plan is EDIT TARGET. Image2 marks the center front window to WIDEN. Image3 marks EXACTLY TWO doors to REMOVE. Make ONLY these corrections: (A) Right dining-module bottom/front facade has3windowgroups. Widen CENTER glass span fromaround65px toabout120px in1721pxcanvas (roughlydouble), centered on facadecenteraroundx1328. Shift the2slimdarkinternalpiers outward equally, about25pxeach, retaining their thickness. Shorten outerglazingspans equally tokeepwholefacadebounds fixed: targetleft/rightglasswidthsabout160pxeach,centralabout120px. Keep THREEgroups symmetrical andslimframes unchanged, no enlargementofroom/walls/canvas. (B) Remove doorleaf AND swingarc/hingehardware of the small orange angled door at the HALLWAY'S UPPER RIGHT beside the rear staircase (aroundx1140,y165). Leave the opening/passageto stairs clear; preservehallwaywallandstaircase. (C) Remove doorleaf AND swingarc/hingehardware of orange angled door into top-right Bod/Storage (aroundx1520,y135), exactlyasredcircleinImage3. Leave storageentrance open, storage walls/cabinets/labelunchanged. Removeonlythese2doors; ALLotherdoorsMUSTremain, includingHallway'sLOWERdoor into diningroom. Preserveallothercontent: currentfootprint,slimwalls,rooms,bedroom4matchingbedWIDTHS,allbeds,kitchen,island,fireplace,26diningchairs(12eachlongside+1eachend),table,stairs,otherwindows,materials,labelsverbatiminoriginallanguage,font/size,canvas/framing. No redmarks,crop,zoom,resize,newobjects orclosingdooropeningswithwalls. Keep English labels exactly; reference images must not introduce Norwegian labels.
+```
+
+Exact sauna/window follow-up prompt (with `Keep Norwegian labels unchanged.` / `Keep English labels unchanged.` appended respectively):
+
+```text
+Use case: precise-object-edit. Image1 full lower-floor plan is EDIT TARGET. Image2 shows red circles marking SAUNA FRONT GLASS WALL and the BATHROOM EXTERIOR WINDOW BELOW IT. Make ONLY these2small changes. (1) Replace the opaque horizontal FRONT/BOTTOM sauna partition (aroundx162–311,y573 in1721pxwidefullplan) with a CLEAR GLASS WALL across that same fullwidth. Render a thin pale bluegrey transparent glass edge with subtle fittings, visibly glass ratherthan thickblackwall. Preserve sauna's rear/sidewalls,woodbenches,labelandfootprint. Existing doorway in this frontpartition should become a glassdoor in the glasswall, keepingitsopening/swinglocation, thin transparentpanelandminimalframe ratherthan wood. Do not remove the sauna enclosure or invent a newroom. (2) Widen the single horizontal BATHROOM FRONT WINDOW directly below sauna (currentaroundx174–265,y644), byabout20percent, centeredinsameposition: targetspanapproximatelyx165–274, samewindowdepthandframe design. Shorten adjoiningwallsegments a little; do NOT change neighboring small bedroom4window atfarleft or terrace doors. Preserve ALL other content EXACTLY, particularly alreadyWIDERcenterfrontwindowinrightdiningmodule, THREEfrontglassgroups, TWOalreadyREMOVEDdoors(byrearstairsandtoprightstorage)withopenpassages, lowerhallwaydoorstillpresent, allotherdoors,slimwalls,currentrightmodulewidth,bedroom4equalbedwidths,all5bedroomscounts,26diningchairs(12eachside+1eachend),table,kitchen,island,fireplace,labelsverbatiminoriginallanguagefont/size,stairs,materials,fullcanvas/framing. No redmarks,crop,globalresize ornewobjects. Only sauna frontglasspartition/door and slightlywiderbathwindow.
+```
+
+
 ## Main-floor facade alignment and equal bedroom4 bed widths, 30 October 2026
 
 The owner's close-up establishes THREE front window groups (wide–narrow–wide), superseding the earlier mistaken four-group interpretation. Lower-floor right living/dining module is slightly wider, with symmetric outer glazing spans, slimmer window-frame depth and narrower dark piers. Oversized square white post caps removed; overall wall weights brought closer to the main-floor reference. Upper bed in bedroom4 widened to match the lower bed. Rooms, sleeping counts and26tablechairs retained. English labels translated from the selected Norwegian drawing so both use the same corrected geometry.
