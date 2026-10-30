@@ -1,5 +1,40 @@
 # Three floor plans
 
+## Main-floor facade alignment and equal bedroom4 bed widths, 30 October 2026
+
+The owner's close-up establishes THREE front window groups (wide–narrow–wide), superseding the earlier mistaken four-group interpretation. Lower-floor right living/dining module is slightly wider, with symmetric outer glazing spans, slimmer window-frame depth and narrower dark piers. Oversized square white post caps removed; overall wall weights brought closer to the main-floor reference. Upper bed in bedroom4 widened to match the lower bed. Rooms, sleeping counts and26tablechairs retained. English labels translated from the selected Norwegian drawing so both use the same corrected geometry.
+
+Final assets, built-in imagegen edit mode:
+- `public/images/floor-plan-lower.png`: `exec-155799d4-5c4e-49ae-a10f-f3ee5a9a13e1.png`.
+- `public/images/floor-plan-lower-en.png`: `exec-8af42fcc-55cf-4208-aadd-8c701241fdcf.png`.
+
+Exact final prompt sequence:
+
+### alignedLower-nbPrompt
+
+```text
+Use case: precise-object-edit. Image1 LOWER FLOOR is EDIT TARGET. Image2 MAIN FLOOR is exact architectural style/scale reference. Image3 CLOSE-UP of main-floor FRONT WINDOWS is the decisive reference for count,widths,symmetry and slender wall/frame thickness. Image4 marks the UPPER of TWO beds in BEDROOM4 that must match the other bed. Make these requested corrections only. A) RIGHT MODULE: make the kitchen/dining room slightly wider than Image1 by moving its RIGHT exterior wall about50–60px right in the1721pxcanvas, to outeredgearoundx1600; leftjunction fixed, rear/frontlevels fixed. Shift right-wallfireplace andsidewindowswithwall. Furniture must not stretch; retain kitchen,island,tableand EXACTLY26chairs(12eachlongside+1eachend). B) FRONT/BOTTOM WINDOWS OF RIGHT MODULE: match Image3 EXACT pattern, THREE window GROUPS with WIDE LEFT + NARROW CENTER + WIDE RIGHT; left/right widths EQUAL, central aboutHALFwidth of eitheroutergroup. Place these3groups symmetrically across entirefrontfacade. ExactlyTWO SLIM DARK PIERS between3glassgroups; slimcornerwallendseachside. Remove currenthuge white squarepostcaps andoverlythickblackpiers, replacewith slender dark wallpiers like Image3. Thin windowdepth/whiteblueframeband to about20–24px at1721pxcanvas, rather than current40px. Broad glazing spans with delicate frames, not thick blueblocks. C) WALL ALIGNMENT: lower-floor wall thickness should correspond to MAIN FLOOR reference Image2 normalized tosameoverallscale. Slim overlybulkyexteriorwallstoabout25–30px andinteriorpartitionstoabout18–24px atfull1721pxwidth, keepingwallcenterlines and all roomconnectivity fixed. Do not shrink roomsor moveleftbedroom/bathroomlayout. Match windowframe/wall visualweight acrossfloors; preserve all otherwindowlocations. D) BEDROOM4 UPPER VERTICAL BED alongfarleftwall: make this markedUPPERbed the EXACT SAME WIDTH AND LENGTH as the LOWERverticalbed in SAMEroom, matching frame,ivorybedding,pillow,taupeblanketdesign. Keepupperbed'shead anchored nearupperwall, extenditsrightedgeandfootendonlyto matchlowerbed dimensions. Lowerbedunchanged,2bedsremaining4sleepingplaces. PreserveALL otherfurniture,beds,roomnumbers,textlabelswording/font/size/positions,bathroomfixtures,stairs,terrace,materialpalette,canvasdimensionsandframing. No redmarks,newrooms,missingchairs,cropping,orresizeofwholeimage. Recentcrispdetailqualitymustremain. Preserve all Norwegian labels verbatim, especially Soverom1(3soveplasser),2(3),3(2),4(4),5(4),Teknisk rom,Bod,Bad,Sauna,Toalett,Gang,Terrasse.
+```
+
+### alignedBedNbFinalPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the complete Norwegian lower-floor EDIT TARGET. Image2 identifies the UPPER bed in Soverom4. Make ONLY this one small furniture correction: COPY the exact dimensions and design of the LOWER vertical bed in Soverom4 to the UPPER vertical bed in SAME room. The lower bed is approximately50pixelswide and120pixelslong in this1721pxcanvas. Upper bed must also be50pixelswide and120pixelslong, with SAME rightedge, sameframewidth, samepillow, ivoryduvet,taupefoldedthrow, sameorientation. Keep upperbed's top/head atitscurrentupperwallnearY377, extendrightedge tolowerbed'srightedgearoundx91 and extendfootend toaroundY497. Lowerbed remains atY508–628 unchanged, leaving smallgapbetweenbeds. Do NOT make the upperbed short/narrow again. Keep ALL other pixels/content conceptually unchanged: exactroomgeometry,slimmerwalls,slimwindowframes,THREEsymmetricalfrontwindowgroupswide-narrow-wide,slightlywider rightmodule atouterx1600,26diningchairs,kitchen,island,fireplace,bedrooms1,2,3,5,labelsverbatim,fontandcanvas. No redraworrearrangementoutsideupperbed. No redmarks.
+```
+
+### equalBedNbPrompt
+
+```text
+Edit only the UPPER bed in Soverom 4, the leftmost vertical bed immediately below Soverom 5. It is visibly narrower and shorter than the LOWER bed in Soverom 4. Enlarge this upper bed by about 20% in width and 12% in length, extending to the RIGHT and DOWN while keeping its top-left fixed. It must end up the SAME width and length as that lower bed. Both bed right edges must align vertically. There is room to enlarge it. Do not keep the upper bed's old narrow dimensions. Do not change anything else in the full plan: preserve all text, all rooms, wall thickness, windows,26chairs, other furniture and the entire canvas.
+```
+
+### alignedLowerEnTranslationPrompt
+
+```text
+Use case: text-localization. The supplied Norwegian lower-floor plan is the EXACT EDIT TARGET. Change ONLY its Norwegian text labels to English; preserve ALL geometry and image content precisely. Exact replacements: 'Teknisk rom' -> 'Utility room'; BOTH 'Bod' -> 'Storage'; BOTH 'Bad' -> 'Bathroom'; 'Toalett' -> 'Toilet'; 'Gang' -> 'Hallway'; 'Sauna' stays 'Sauna'; 'Terrasse' -> 'Terrace'; 'Soverom 1' plus '(3 soveplasser)' -> 'Bedroom 1' plus '(Sleeps 3)'; Soverom2 -> Bedroom2(Sleeps3); Soverom3 -> Bedroom3(Sleeps2); Soverom4 -> Bedroom4(Sleeps4); Soverom5 -> Bedroom5(Sleeps4). Keep spaces between word andnumber. Keep samefontfamily,size,whitecolor,subtledarkshadow,positionsandtwolinesperbedroom. Nothing else changes: MUST preserve widenedrightmodule,currentthinwallsandwindowframes,THREEsymmetricalfrontwindowgroups(wide-narrow-wide)with2slimdarkpiers,EXACTLY26chairs,table,kitchen,island,fireplace,5bedrooms,matchedWIDTHofBOTHbedsinBedroom4andtheirrightedges,allstairs,doors,windows,fixtures,materialsandframing. No geometry from any other plan. No resize/crop/rearrangement. Only translate labels.
+```
+
+
 ## Narrower lower-floor module and full-screen return, 30 October 2026
 
 The owner marked a narrower right-hand kitchen/dining module. Its right exterior wall, fireplace and adjacent fittings move inward; the bedroom/bathroom/terrace portion remains intact. Front glazing uses the main-floor facade as its visual reference. The table retains26chairs. Final workspace files are `public/images/floor-plan-lower.png` (source `exec-0edca386-5a68-450b-8d76-99e19f101754.png`) and `public/images/floor-plan-lower-en.png` (source `exec-291d1f12-2f6e-4326-93a2-54b62769830b.png`). Built-in imagegen edit mode. Selected results visually inspected.
