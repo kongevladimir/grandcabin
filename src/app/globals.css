@@ -1836,6 +1836,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   grid-template-columns: minmax(110px, .25fr) minmax(0, 1fr) minmax(210px, .65fr);
   gap: clamp(1.5rem, 4vw, 4rem);
 }
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="bedrooms"] .retreat-suite-four header > h2 { grid-column: 2; grid-row: 1; }
+  .retreat-detail-page[data-page="bedrooms"] .retreat-suite-four header > span { grid-column: 3; grid-row: 1; }
+}
 
 .retreat-detail-page[data-page]:not([data-page="cabin"]) :is(
   .retreat-detail-story-copy h2,
