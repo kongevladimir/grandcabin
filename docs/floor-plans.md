@@ -1,5 +1,42 @@
 # Three floor plans
 
+## Opposite-wall mattresses and smaller Bedroom 3 bed, 30 October 2026
+
+Selected English outputs: `exec-7b13d63e-3299-412e-bce3-7a7192b8a3e8.png` (loft) and `exec-227af95b-29ee-480b-8ff6-e5b3fc6d7c33.png` (lower), saved to the matching `public/images/floor-plan-*-en.png` assets. All four complete outputs visually inspected.
+
+Built-in imagegen edit mode. Moved the four short Alcove 10 mattresses to the opposite lower wall, with pillow ends against that wall. Reduced the Bedroom 3 bed by approximately 20 percent while retaining two sleeping places. English drawings localised from the selected Norwegian results to retain matching geometry. Main-floor assets unchanged.
+
+Norwegian sources: public/images/floor-plan-loft.png and public/images/floor-plan-lower.png from preceding commit d4298a6. Owner references: codex-clipboard-1ca2a6d9-9a6f-4c35-b6d3-8efff65449c6.png and codex-clipboard-291081ae-a937-4c9d-86cd-7c09b8dc90c9.png in C:/Users/kalaj/AppData/Local/Temp/.
+
+Selected Norwegian outputs: exec-5dfd8b4f-3976-4fad-8e11-f85cdbcaeae0.png (loft), exec-cb313c9d-51e5-4434-ac42-7176492a8679.png (lower), under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/.
+
+Exact prompts:
+
+### oppositeLoftNb
+
+```text
+Use case: precise-object-edit. Image1 is the full Norwegian loft-floor EDIT TARGET. Image2 identifies the FOUR mattresses in Alcove10. Move all FOUR mattresses from the UPPER wall under the staircase to the OPPOSITE LOWER wall of this same alcove. Their new head/pillow ends should touch the inside of the bottom wall aroundy658, with free wooden floor between mattresses and the upper wall. Keep each mattress's current short LENGTH and WIDTH, exactcount4, same side-by-side order and horizontal x positions. Translate them downward about80pixels and turn each mattress180degrees so headends face the new lowerwall; do not stretch or lengthen them. Preserve alcove walls, sidewindow, entrance, allstairsandglassrail, bothbedrooms8/9, bathroom, sofa,two smallcoffeetables,pingpongtable,separateHems,allfourwindowgroups, ALLlabelsverbatimNorwegianfont/size/position, textures, lighting, fullcanvas/framing. Only move/turn these4mattresses inside Alcove10 to oppositebottomwall; do not move any other furniture or redraw rooms. No redmarks/crop/resize.
+```
+
+### smallerRoom3Nb
+
+```text
+Use case: precise-object-edit. Image1 is full Norwegian lower-floor EDIT TARGET. Image2 marks the bed in BEDROOM3/SOVEROM3 only. Make this one bed visibly smaller: reduce its WIDTH and LENGTH by about20percent, retaining its center, orientation, pillow/duvet design and double-bed identity. Existingbed approximately138x110pixels should becomeabout110x88pixels in1721pxcanvas, revealing more floor around it. Keep label 'Soverom 3 (2 soveplasser)' exactly unchanged in samefont,sizeandposition; two sleeping places remain. Do NOT shrink roomwalls or change otherbeds. Preserve everyothercontentexactly:all5bedrooms/counts,bedroom4matchedbedwidths,saunaglassfront,widerbathroomwindow,MODERATE90pxmiddlefrontwindow,2removeddoorsremainabsent,allremainingdoors,slimwalls,rightmodulewidth,kitchen,island,table,EXACTLY26chairs(12eachlongside+1eachend),fireplace,stairs,terrace,otherlabelsverbatim,fontandmaterials,fullcanvas/framing. Only resize bed inBedroom3, not labels/room/canvas. No redmarks,newobjects,crop/zoom.
+```
+
+### oppositeLoftEn
+
+```text
+Use case: text-localization. Edit target is the supplied completed Norwegian loft floor plan. Change ONLY Norwegian room text into English: 'Soverom 9 (2 soveplasser)' to 'Bedroom 9 (Sleeps 2)', 'Soverom 8 (2 soveplasser)' to 'Bedroom 8 (Sleeps 2)', 'Bad' to 'Bathroom', 'Loftstua' to 'Loft lounge', 'Alkove 10 (4 soveplasser)' to 'Sleeping alcove 10 (Sleeps 4)', 'Hems' to 'Mezzanine'. Preserve font family, size, white lettering and shadow. Keep all geometry, furniture, floor texture, windows, both stairs and glass railing identical. In particular keep all FOUR short mattresses at the BOTTOM wall of alcove, with pillows at bottom, and empty floor above them. Keep two coffee tables slightly separated from sofa. Same full canvas, framing, resolution, no crop or resizing, no other changes.
+```
+
+### smallerRoom3En
+
+```text
+Use case: text-localization. Edit target is completed Norwegian lower floor plan. Translate ONLY the text: 'Teknisk rom'→'Utility room'; both 'Bod'→'Storage'; both 'Bad'→'Bathroom'; 'Toalett'→'Toilet'; 'Gang'→'Hallway'; 'Terrasse'→'Terrace'; 'Sauna' unchanged. 'Soverom 1 (3 soveplasser)'→'Bedroom 1 (Sleeps 3)'; room2→'Bedroom 2 (Sleeps 3)'; room3→'Bedroom 3 (Sleeps 2)'; room4→'Bedroom 4 (Sleeps 4)'; room5→'Bedroom 5 (Sleeps 4)'. Preserve current font/size/white-shadow lettering and centers, two lines for bedrooms. Everything except text must remain identical: especially the newly SMALLER centered bed in Bedroom3, all other beds, walls/windows/doors, sauna front glass wall, kitchen, 26 dining chairs, current three front window groups with moderate narrow central group. Same full canvas/resolution, no crop/zoom/resize, no other changes.
+```
+
+
 ## Moderate centre-window width, 30 October 2026
 
 The owner found the enlarged centre front window too large. Reduced its clear span from roughly150px to90px, centred between the two piers, still above the earlier roughly65px version. Outer panes gain the freed space symmetrically. Preserve sauna glass, wider bathroom window, removed doors, furniture and labels. English result inspected; Norwegian source request failed with a connection error, so the checked English drawing was localised back to Norwegian to retain the same geometry. Built-in imagegen edit mode.
