@@ -1,5 +1,25 @@
 # Three floor plans
 
+## Bedroom 3 against left wall, 31 October 2026
+
+Moved Bedroom3 doublebed horizontally against its left/bathroom wall, keeping north-south direction, two pillows at top and two sleepingplaces. Built-in imagegen edit mode. Inputs were the Norwegian/English lowerfloor assets at db2ad19. Final NB exec-b1c62ce3-6289-4309-8ee5-3e73b5ecd4c1.png. Initial EN exec-e466f0df-1615-4db7-bb28-1487c0960258.png altered bedding, so rejected. Final EN localised from selected NB: exec-804f8a6a-75a3-439b-8217-8ac38bf4f66d.png. Outputs in C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/, copied to public/images/floor-plan-lower.png and floor-plan-lower-en.png. Both visually checked.
+
+### bedLeftNb
+```text
+Use case: precise-object-edit. Full lower-floor plan is edit target. Change ONLY the position of the double bed in Bedroom3/Soverom3: translate it horizontally LEFT until its LEFT EDGE touches the INSIDE LEFT WALL of Bedroom3, the wall shared with bathroom. Current leftedge aboutx469; targetleftedge aboutx435 in1721pxcanvas. Keep its current vertical north-south orientation, TWO pillows atTOP wall beneath corridor, foot towardbottomwindow; keep EXACT current bed width/length, bedding design and two sleepingplaces. Do NOT rotate, shrink, enlarge or move vertically. Restore woodfloor where bed usedto be, with extra floorclearance on RIGHT. Room label may stay centered in room; preserve exact wording/font/size. Everything else in entire plan unchanged: every room/wall/window/door, sauna glass, otherbeds,26chairs,table,kitchen,stairs,materials,crispquality,fullcanvas/resolution. Only slide Bedroom3 doublebed allthewayLEFT againstitswall. No redmarks,crop,zoom,resize,newobjects. Preserve ALL Norwegian labels, in particular 'Soverom 3 (2 soveplasser)'.
+```
+
+### bedLeftEn
+```text
+Use case: precise-object-edit. Full lower-floor plan is edit target. Change ONLY the position of the double bed in Bedroom3/Soverom3: translate it horizontally LEFT until its LEFT EDGE touches the INSIDE LEFT WALL of Bedroom3, the wall shared with bathroom. Current leftedge aboutx469; targetleftedge aboutx435 in1721pxcanvas. Keep its current vertical north-south orientation, TWO pillows atTOP wall beneath corridor, foot towardbottomwindow; keep EXACT current bed width/length, bedding design and two sleepingplaces. Do NOT rotate, shrink, enlarge or move vertically. Restore woodfloor where bed usedto be, with extra floorclearance on RIGHT. Room label may stay centered in room; preserve exact wording/font/size. Everything else in entire plan unchanged: every room/wall/window/door, sauna glass, otherbeds,26chairs,table,kitchen,stairs,materials,crispquality,fullcanvas/resolution. Only slide Bedroom3 doublebed allthewayLEFT againstitswall. No redmarks,crop,zoom,resize,newobjects. Preserve ALL English labels, in particular 'Bedroom 3 (Sleeps 2)'.
+```
+
+### bedLeftEnFinal
+```text
+Use case: text-localization ONLY. Input is final Norwegian floorplan with Bedroom3 DOUBLE BED touching LEFTwall and TWO pillows sidebyside atTOP. Translate text only to English, keep ALL furniture and geometry exactly. 'Teknisk rom'->'Utility room'; BOTH 'Bod'->'Storage'; BOTH 'Bad'->'Bathroom';'Toalett'->'Toilet';'Gang'->'Hallway';'Terrasse'->'Terrace';'Sauna'unchanged. Bedrooms: 'Soverom 1 (3 soveplasser)'->'Bedroom 1 (Sleeps 3)', room2Sleeps3, room3Sleeps2, room4Sleeps4, room5Sleeps4. Same whitefont,size,shadow,textcenters. IMPORTANT do not redraw/change the bed in Bedroom3: TWO equallysized pillows sidebyside atTOP, horizontal seam of duvet, north-south doublebed pressedLEFTagainstbathroomwall, openfloorRIGHT, NOT narrow singlebed/stackedpillows. All pixels outside lettering unchanged, fullcanvas,resolution,no crop/resize.
+```
+
+
 ## Bedroom 3 bed direction, 30 October 2026
 
 Owner requested the direction shown in codex-clipboard-3fa54112-30ff-46ea-adf9-386ac1a33860.png: two pillows at north/top wall below corridor and foot toward bottom window. Updated only Bedroom3 double bed in both language assets, retaining two sleeping places and restored sharp style. Built-in imagegen edit mode. Source files: public/images/floor-plan-lower.png and floor-plan-lower-en.png at commit6e6d2c9; annotation source C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-3fa54112-30ff-46ea-adf9-386ac1a33860.png.
