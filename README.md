@@ -84,6 +84,28 @@ launch.
 
 ## Cloudflare deployment
 
-Cloudflare currently generates the Next.js deployment configuration during its
-build. Keep the package name `grandcabin` aligned with the Cloudflare Worker name:
-the generated `WORKER_SELF_REFERENCE` binding derives from this package name.
+Cloudflare deployment uses the committed `wrangler.jsonc`, `open-next.config.ts`
+and exact OpenNext/Wrangler versions in `package-lock.json`. This avoids running
+an automatic migration and downloading an unpinned adapter during deployment.
+OpenNext 1.20.6 supports this project's Next.js 16.3.5; update and verify them
+together when changing versions.
+
+Workers Builds settings for the connected repository:
+
+- Build command: `npm run build:cloudflare`
+- Deploy command: `npm run deploy`
+- Non-production version command: `npm run upload`
+- Root directory: `/`
+
+`npm ci` installs the locked dependencies. The Cloudflare build command runs the
+normal Next.js build and packages its output into `.open-next/`; deploy and
+upload use that prepared output. `npm run preview:cloudflare` previews the
+prepared Worker locally. Generated Worker output is excluded from Git, lint
+and TypeScript source checks. Keep `grandcabin` as both the Worker name and
+`WORKER_SELF_REFERENCE` service; the existing Images binding is retained.
+`public/.assetsignore` also excludes the local-only, oversized source photos
+from direct uploads; tracked previews and byte-preserving original pieces stay
+available as described in `docs/organized-gallery.md`.
+
+Do not add preview credentials to Wrangler or enable real booking as part of
+deployment maintenance. Production booking still needs the setup above.

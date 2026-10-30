@@ -1,0 +1,5 @@
+# Local source originals are served through the tracked gallery-originals pieces.
+images/organized-gallery/*
+!images/organized-gallery/*-preview.webp
+!images/organized-gallery/cabin-11-sunny.png
+images/turufjell-sunny-cabin-original.jpg
