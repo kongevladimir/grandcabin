@@ -1,5 +1,39 @@
 # Three floor plans
 
+## Original three-sleeper bunks and loft details, 1 November 2026
+
+Owner corrected the first bunk-bed draft: bedrooms 1 and 2 must keep their original three-sleeper bunk appearance, only slightly wider. The initial draft files exec-817a7711-0ae5-478b-996f-91cb6102e328.png and exec-5c221150-87ef-4ba8-9aeb-257463d8c5d4.png were discarded. Final lower-floor files: exec-8feee42e-1576-44e6-af11-a51a1434e0eb.png (NO) and exec-4390bd3c-27c6-4ff9-9867-50ae5331f4a6.png (EN), copied to public/images/floor-plan-lower.png and public/images/floor-plan-lower-en.png.
+
+Owner references for loft: C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-ce9cc1dd-a406-454e-a8a6-d0203c47ed19.png (landing and two top steps) and codex-clipboard-415aa486-2158-4b1e-943c-efb506f9baeb.png (visible pillows/bedding in bedrooms 8/9). Built-in imagegen edit mode. The loft output first adds a square landing and two stair treads at left of the long run, then refines pillows/bedding. Final loft files: exec-6fa22afa-6869-4d04-9404-9123e66f95b7.png (NO) and exec-cf9ec273-7fe2-4031-be7d-fa1eecf03342.png (EN), copied to public/images/floor-plan-loft.png and public/images/floor-plan-loft-en.png. All generated files are under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/. Final assets were visually inspected, copied at native size, and not recompressed.
+
+### restoreBunksNbPrompt
+
+```text
+Use case: precise-object-edit. Edit image1 original lower-floor plan. Bedrooms 1 and 2 are ORIGINAL THREE-SLEEPER BUNK BEDS, not double beds. KEEP exactly their original recognizable bunk-bed appearance: two adjacent narrow white sleeping surfaces seen from above, distinct lengthwise central division, three total sleeping places via upper/lower bunks, original top orientation and edge silhouette. Make each existing bunk assembly ONLY SLIGHTLY wider than it currently is (about 5-8% or 5-8px). Improve visible pillows and white duvet/sheet folds WITHOUT blending two narrow sleeping surfaces into one double mattress. Make each bunk ladder discernible with small rungs along the same ORIGINAL bed edge, rather than changing bed type. Bedroom3 double bed unchanged. Image2 user's crop marks two bunk beds. ALL other plan elements/labels exactly unchanged, in native full canvas, no crop/globalresize, no other changes. Preserve input language text exactly.
+```
+
+### loftLandingNbPrompt
+
+```text
+Use case: precise-object-edit. Image1 is the existing detailed loft floorplan edit target. Image2 red markup is reference only; red mark must not appear. In the long horizontal staircase above Alcove10, at its LEFT/start near x470..550,y350..415, make a distinct square wooden stair LANDING/PLATFORM approximately x475..530, matching existing oak materials. Add precisely TWO clearly visible stair treads immediately adjacent at the TOP/upper end of this stair, connecting the loft floor to its long stair run. The rest of the existing long staircase and glass railing stays where it is. Do not change overall stair length, Alcove10 width, the four mattress positions or the gap between mattress2and3. All other plan elements must remain identical: bedroom8/9, bathroom, loft living room, sofa, squaretables, pingpong, windows, detached mezzanine, all text exact original language/position/font, colors, white canvas dimensions. No crop, globalresize, addedwalls or redesign. Only local x470..550,y350..425 stair landing plus two treads.
+```
+
+### loftPillowsNbPrompt
+
+```text
+Use case: precise-object-edit. Edit image1, the full detailed loft floorplan with the NEW square landing at the left of the long stair. Image2 red circles indicate pillow locations only; do not draw red marks. Edit ONLY bedding in top LEFT Bedroom9 and top RIGHT Bedroom8. In Bedroom9, make TWO WHITE pillows clearly and separately visible across the TOP/head edge of the existing bed (just below top wall); retain the orange small cushion/cabinet. In Bedroom8, make TWO WHITE pillows clearly and separately visible across the BOTTOM/foot edge of its existing bed nearest the doorway, exactly where red reference marks them. Add crisp soft pale/white duvet and sheet textures with natural folds on both beds, keeping beds same size, shape and locations. Keep all white room labels, fonts, text perfectly readable and unchanged. Lock every other element unchanged, especially new square landing+two treads and long stair, alcove10 four aligned mattresses with gap between pair2and3, loft living room, mezzanine, bathroom, doors, windows, furniture, wood colors, white canvas and native resolution. No global resize or crop.
+```
+
+## Wider beds and clearer ladders in bedrooms 1 and 2, 1 November 2026
+
+Owner reference: C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-d53a82f3-5c78-4121-9086-3fe205dd38af.png. Used the built-in imagegen edit mode on both lower-floor language assets from e99da90. Widened bedroom 1 and 2 beds slightly, added more visible pillows and white duvet details, and made their bed ladders clear. Selected generated files: exec-817a7711-0ae5-478b-996f-91cb6102e328.png (Norwegian), exec-5c221150-87ef-4ba8-9aeb-257463d8c5d4.png (English), both under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/. Copied unchanged to public/images/floor-plan-lower.png and public/images/floor-plan-lower-en.png; no additional resize or recompression.
+
+### Built-in image edit prompt
+
+```text
+Use case: precise-object-edit. Image1 is the target high-quality top-down lower-floor plan; image2 is user's crop marking Bedroom1 and Bedroom2 beds. Edit ONLY the existing beds in Bedroom 1 and Bedroom 2, the two narrow vertical beds just to the right of Bedroom3. Make each mattress modestly WIDER by ~10-12% within its SAME bedroom, keeping their head at the NORTH/top wall and foot at SOUTH/bottom. Add clearly recognizable pillows at the TOP of each, soft high-quality white duvet/sengetøy and subtle natural textile folds. They represent 3 sleeping spaces each as already labelled. Make the existing ladders on these two bunk beds MORE VISIBLE: a slim light-wood or dark metal vertical ladder with discernible rungs along the mattress edge toward room center, realistically integrated, not a new free-standing object, without obscuring text. Keep Bedroom3 double bed unchanged. Keep EVERY other pixel/composition as close to original as possible: walls, widths, all other beds, floors, windows, sauna glass and door, bathrooms/fixtures, text, kitchen, 26 chairs, terrace, full white canvas native resolution. No global resizing, cropping, new rooms, moving furniture. Exact same labels and language.
+```
+
 ## Wider loft alcove with a gap between mattress pairs, 31 October 2026
 
 Owner reference: C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-cf26df3a-1aad-47bd-939d-c948bbd4f635.png. Built-in imagegen edit mode from the committed Norwegian and English loft plans at ffb1ad2. Alcove 10 widened slightly to the right, with visible wooden floor between mattresses two and three. Four mattresses retain matching lengths and aligned ends. Other loft rooms and the detached mezzanine retained. Initial drafts were too wide; final local correction reduced the gap and alcove extension. Selected outputs in C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/: exec-4d0281ef-6740-43c8-8112-f0a0affb5228.png and exec-5159f280-f09e-46d1-8e17-4266232cb713.png. Copied unchanged to public/images/floor-plan-loft.png and public/images/floor-plan-loft-en.png without additional resizing/recompression. Both images reviewed, including all four mattresses, labels and retained rooms.
