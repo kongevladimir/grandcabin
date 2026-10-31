@@ -1,5 +1,43 @@
 # Three floor plans
 
+## Small Bedroom 3 foot clearance and longer Alcove 10 mattresses, 31 October 2026
+
+Shortened Bedroom3 doublebed slightly at foot to leave a small strip of floor before bottom windowwall, retaining leftside/north-south direction/two pillows/two sleepingplaces. Lengthened all four Alcove10 mattresses UPWARD per owner's redextensions while keeping their bottom pillowends anchored. Mainfloor unchanged. Built-in imagegen edit mode. Owner references: C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-860cb2b1-88cb-4cdc-9e57-087b48627b8f.png and codex-clipboard-57748ef1-fca9-4543-8fd8-56e477f75950.png. Inputs were public/images/floor-plan-lower.png and floor-plan-loft.png at b90de39; English localised from selected Norwegian outputs for matching geometry.
+
+Final outputs under C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/:
+- lower Norwegian: exec-a7ee495b-7135-4cc0-af6c-ae716e126dc1.png -> public/images/floor-plan-lower.png.
+- lower English: exec-8f999ba1-4b25-430e-ae3a-a13177ff54a1.png -> public/images/floor-plan-lower-en.png, after textcleanup of initial exec-74c94a4e-3ade-494d-8b55-b3fab89da42e.png.
+- loft Norwegian: exec-aa00ce0d-f7f0-4ec3-ab7a-740eef0faf77.png -> public/images/floor-plan-loft.png.
+- loft English: exec-fb95cad0-b87a-4d1d-8472-5aaead6d8f38.png -> public/images/floor-plan-loft-en.png.
+
+All four complete images inspected and selected local drawings checked in full-screen viewer. No code changes; production build checked by the connected Cloudflare build before publication.
+
+### bedSmallFootGapNb
+```text
+Use case: precise-object-edit. IMAGE1 full Norwegian lowerfloor plan is EDIT TARGET. IMAGE2 owner's redoutline shows Bedroom3 bed just A LITTLE SHORTER with a small floorstrip at FOOT/bottom between bed and windowwall. Change ONLY this bed in Soverom3: keep its north-south direction, two pillows sidebyside at TOP, position on LEFTside of room and EXACT current WIDTH. Shorten LENGTH about8–10percent by pulling FOOT/bottom end UP around10–12pixels in1721pxcanvas (currenty503 toabouty491). Keep pillow/head end atcurrenty385. Reveal a small clear woodfloorstrip between foot and lowerwindowwall; not a large gap. Preserve leftside placement, beddingdesign and two-person doublebed identity. Do NOT rotate, narrow, move to center/right or change room. Preserve Norwegian label 'Soverom 3 (2 soveplasser)' and allother text font/size. Everything else EXACTLY unchanged:allwalls/windows/doors/saunaglass,allotherbeds,26chairs,table,kitchen,stairs,sharp materials,wholecanvas/resolution. No redmarks/crop/globalresize. Only subtly shorten Bedroom3 bed at footend.
+```
+
+### alcoveLongerNb
+```text
+Use case: precise-object-edit. IMAGE1 full Norwegian loft plan is EDIT TARGET. IMAGE2 owner's redoutlines specify LONGER mattresses in Alkove10. Exactly FOUR mattresses sidebyside in projectingRIGHTalcove: extend each mattress UPWARD by about30–35pixels in1523pxcanvas, from currenttopy550 toaroundy515, matching redextensions. Keep each BOTTOM end/pillow againstBOTTOMwall aty660 FIXED, same widths,xpositions,gaps,order,count4 and beddingcolors. Keep pillows atBOTTOM; extend FOOT ends UPWARD, do NOT translate whole mattresses or rotate. New mattresses should be about25–30percent longer, still clearfloor between upperends and staircasewall. Preserve room label 'Alkove 10 (4 soveplasser)' legible in samefont/size; may shift it slightlyUP into clearfloor immediatelyabove mattresses if required, never remove or change wording. Preserve ALL other plan contents:bedrooms8/9,allwindows,doors,bathroom,sofa,twocoffeetables,pingpong,bothstairs,glassrail,separateHems,otherlabels,textures,quality,fullcanvas/resolution. No redmarks,crop,zoom,globalresize,newobjects. Only lengthen these FOUR existing mattresses towardTOP according to reference.
+```
+
+### bedFootGapEn
+```text
+Use case: text-localization ONLY. Translate Norwegian labels of this corrected full lower-floor drawing into English. Preserve ALL geometry/furniture/pixels except text. Preserve especially Bedroom3 vertical DOUBLE bed LEFTside with TWO pillows atTOP and the NEW SMALL WOODFLOOR GAP below its foot, above lowerwindowwall: do not lengthen back or move/resize. Translation: Teknisk rom->Utility room; Bod twice->Storage; Bad twice->Bathroom; Toalett->Toilet;Gang->Hallway;Terrasse->Terrace;Sauna unchanged. Bedrooms two lines exactly: Bedroom 1 (Sleeps 3), Bedroom 2 (Sleeps 3), Bedroom 3 (Sleeps 2), Bedroom 4 (Sleeps 4), Bedroom 5 (Sleeps 4). Same white font,size,shadow and textcenters. Keep all26chairs,windows,walls,saunaglass,doors,stairs,fullcanvas/resolution/quality unchanged. Only texttranslation.
+```
+
+### alcoveLongerEn
+```text
+Use case: text-localization ONLY. Translate Norwegian labels on this corrected full loft plan into English. 'Soverom 9 (2 soveplasser)'->'Bedroom 9 (Sleeps 2)';'Soverom 8 (2 soveplasser)'->'Bedroom 8 (Sleeps 2)';'Bad'->'Bathroom';'Loftstua'->'Loft lounge';'Alkove 10 (4 soveplasser)'->'Sleeping alcove 10 (Sleeps 4)';'Hems'->'Mezzanine'. Same white font,size,shadow,labelcenters. ABSOLUTELY preserve all furniture/geometry/materials especially FOUR newlyLONGERmattresses inrightalcove, topsaroundy510,bottom/pillowendsaty660: donotshorten,move,rotateorchange widths. Count4, pillowsatBOTTOM,clearfloorabove. Keep bothbedrooms,windows,bothstairs,glassrail,pingpong,sofa,coffeetables,separateHems identical. Same fullcanvas/resolution/sharpness, no crop/resize. Only translate labels.
+```
+
+### bedFootGapEnCleanup
+```text
+Use case: precise text artifact cleanup. Edit target full English lowerfloor plan. In Bedroom3 ONLY, there is a faint leftover Norwegian '(2' text ghost on white bed, immediately LEFT of correct '(Sleeps 2)' text. Erase only that faint '(2' remnant aroundx475–503,y451–478 in1721pxcanvas and restore white beddingtexture beneath. Keep correct complete two-line label 'Bedroom 3' / '(Sleeps 2)' unchanged at its presentposition, same font/size/shadow. Do not change ANY other pixel/content: bed's TWO pillows atTOP, doublebed north-south LEFTside, slightlyshorterlengthwithsmallWOODSTRIPatFOOT before bottomwindowwall, allwalls/windows/otherlabels/furniture/26chairs/fullcanvas/resolution remainexactly. Only remove stray '(2' text to left of correctlabel.
+```
+
+
 ## Bedroom 3 against left wall, 31 October 2026
 
 Moved Bedroom3 doublebed horizontally against its left/bathroom wall, keeping north-south direction, two pillows at top and two sleepingplaces. Built-in imagegen edit mode. Inputs were the Norwegian/English lowerfloor assets at db2ad19. Final NB exec-b1c62ce3-6289-4309-8ee5-3e73b5ecd4c1.png. Initial EN exec-e466f0df-1615-4db7-bb28-1487c0960258.png altered bedding, so rejected. Final EN localised from selected NB: exec-804f8a6a-75a3-439b-8217-8ac38bf4f66d.png. Outputs in C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/, copied to public/images/floor-plan-lower.png and floor-plan-lower-en.png. Both visually checked.
