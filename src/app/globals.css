@@ -1167,7 +1167,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-footer a { color: inherit; }
 .retreat-footer-booking a { display: inline-flex; align-items: center; min-height: 54px; margin-top: 2rem; border: 1px solid #dcc092; padding: 0 1.5rem; color: #17202c; background: #dcc092; font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-footer-contact { display: grid; grid-template-columns: max-content; align-content: start; justify-items: stretch; }
-.retreat-footer-contact a { margin: 0 0 .2rem; border-bottom: 1px solid rgba(220,192,146,.45); padding-bottom: .15rem; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: clamp(1.25rem, 1.65vw, 1.75rem); font-variant-numeric: tabular-nums; text-align: left; white-space: nowrap; }
+.retreat-footer-contact a { margin: 0 0 .4rem; border-bottom: 1px solid rgba(220,192,146,.45); padding-bottom: .15rem; font-family: Arial, Helvetica, sans-serif; font-size: clamp(.9rem, 1.1vw, 1rem); font-weight: 400; line-height: 1.5; text-align: left; white-space: nowrap; }
 .retreat-cabin-ski-access { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 6vw, 7rem); align-items: end; padding: clamp(5rem, 8vw, 8rem) clamp(1.4rem, 6vw, 7rem); background: #e1c9a7; }
 .retreat-cabin-ski-access > div > p { margin: 0 0 1.3rem; color: #8a6036; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
 .retreat-cabin-ski-access h2 { margin: 0; font-size: clamp(3.4rem, 6vw, 7rem); font-weight: 500; line-height: .94; letter-spacing: -.06em; }

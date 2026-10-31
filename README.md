@@ -4,6 +4,8 @@ A Norwegian and English presentation website for the Turu Crown rental property
 on Turufjell. The direct booking preview lets guests request dates and extras,
 then discuss their stay with the owner in a private conversation. The owner
 approves reservations manually; there is no payment collection.
+The shared footer lists both phone numbers and info@turucrown.no under Contact us,
+with compact labelled phone and email links in both languages.
 Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24
 adds NOK 750 per day, up to 29 guests. Easter 22–30 March 2027 starts at
 NOK 16,000 per day with the same extra-guest rule. Mandatory final cleaning is

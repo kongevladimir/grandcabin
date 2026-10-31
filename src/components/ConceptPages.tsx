@@ -500,8 +500,9 @@ export function RetreatBookingFooter({ language, omitHeadingPeriod = false }: { 
       </div>
       <div className="retreat-footer-contact">
         <p>{language === "nb" ? "KONTAKT OSS" : "CONTACT US"}</p>
-        <a href="tel:+4797816981">+47 978 16 981</a>
-        <a href="tel:+4796878888">+47 968 78 888</a>
+        <a href="tel:+4797816981">Tel.: +47 978 16 981</a>
+        <a href="tel:+4796878888">Tel.: +47 968 78 888</a>
+        <a href="mailto:info@turucrown.no">{language === "nb" ? "E-post" : "Email"}: info@turucrown.no</a>
       </div>
     </section>
   );
