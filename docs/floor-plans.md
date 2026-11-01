@@ -1,5 +1,21 @@
 # Three floor plans
 
+## Final owner refinements, 1 November 2026
+
+On the loft, the upper-left brown cushion in bedroom 9 became two white pillows; the upper brown cushion in bedroom 8 was removed to show oak parquet. The first loft outputs were `exec-27f65d4e-5273-43f0-be50-cc8f5bb8d106.png` (NO) and `exec-69536f0f-fda2-4224-b87c-d4110064f0e4.png` (EN). A second local correction removed the remaining brown cushion from the NO bedroom 8, giving final NO `exec-51fe8fdc-7416-4bf4-8d82-18510875dd58.png`. The final EN is `exec-69536f0f-fda2-4224-b87c-d4110064f0e4.png`.
+
+On the lower floor, the owner marked a small wall stub at the bathroom-to-terrace junction and the thick solid wall along the terrace front for removal. The sauna glass and its door remain. Exterior wall and window-frame visual thickness now matches the main-floor reference, while the furniture and labels remain. Final lower NO/EN outputs are `exec-ef5df4e8-7e20-416d-b8a7-5d2238f39cba.png` and `exec-6be76595-23fc-4bbb-8418-02aed373d9d3.png`. These four final generated images, under `C:/Users/kalaj/.codex/generated_images/01a0dca7-09e8-7432-9c4d-03c13b499591/`, were copied at native size without recompression to the corresponding public assets. The main-floor files were not modified.
+
+Loft reference images: `C:/Users/kalaj/AppData/Local/Temp/codex-clipboard-7d5e589a-e54e-490e-a8e2-f8bd63986781.png` and `codex-clipboard-2d78bee0-0980-46e8-bf04-3e3882a3c576.png`. Lower-floor reference: `codex-clipboard-e8254a91-ad19-4516-9ac5-047b34cc029e.png`. The edits used built-in imagegen edit mode, preserving the prior high-quality floor-plan rendering.
+
+## Match lower and loft rendering to main floor, 1 November 2026
+
+The owner requested that the lower and loft plans match the main floor's color, materials, rendering style and clarity. The main floor assets were visual references only and were not edited. The built-in imagegen edit mode was used separately for Norwegian and English. Final generated PNGs, respectively lower NO/EN and loft NO/EN, are `exec-22739041-5815-4949-a8cf-209ecb308f7f.png`, `exec-afc95730-3b89-4eea-bea5-0ed8cd8e8103.png`, `exec-fbb75eb2-0b09-4e80-9e8f-d0e9cdaaf5f0.png` and `exec-28bb2d59-9e89-4cbd-9e0c-f186ca88f4fe.png`. They were copied without recompression to the four corresponding `public/images/floor-plan-{lower,loft}[-en].png` assets. Source revision: `b104d1139e47581585e425e4b01199e59f89ecb9`. The existing main floor PNGs remain unchanged.
+
+```text
+Use case: style-transfer and faithful image restoration. Image 1 is the EDIT TARGET, existing detailed architectural floor plan. Image 2 MAIN FLOOR is VISUAL STYLE REFERENCE ONLY; do not copy its room layout or furniture. Bring target toward main-floor rendering: softly natural light oak floors (less saturated orange), subtle floor grain, warm beige and cream fabrics, realistic gentle shadows, finely textured muted gray bathroom surfaces, dark charcoal walls, slim cyan-blue glazed windows, clear crisp tile/wood edges. Sharpen small details, white labels and furniture while avoiding halos, excessive contrast or noise. Preserve IMAGE 1 EXACT floor geometry and ALL contents: every room dimension and position, walls, windows, stairs, beds, furniture, fixture count, written labels and their language/text/position, doors, number of chairs, terrace, sauna glass, full canvas and aspect ratio. No redesign, additions, deletion, crop or global resize. Only style/color/detail clarity to match Image 2. Retain local natural lighting and readable white text.
+```
+
 ## Original three-sleeper bunks and loft details, 1 November 2026
 
 Owner corrected the first bunk-bed draft: bedrooms 1 and 2 must keep their original three-sleeper bunk appearance, only slightly wider. The initial draft files exec-817a7711-0ae5-478b-996f-91cb6102e328.png and exec-5c221150-87ef-4ba8-9aeb-257463d8c5d4.png were discarded. Final lower-floor files: exec-8feee42e-1576-44e6-af11-a51a1434e0eb.png (NO) and exec-4390bd3c-27c6-4ff9-9867-50ae5331f4a6.png (EN), copied to public/images/floor-plan-lower.png and public/images/floor-plan-lower-en.png.
