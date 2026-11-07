@@ -24,6 +24,7 @@ export function errorText(code: string, lang: Lang) {
     reset: ["Lenken er utløpt eller allerede brukt. Be om en ny lenke.", "The link has expired or has already been used. Request a new link."],
     resetUnavailable: ["Tilbakestilling via e-post er ikke aktivert i denne forhåndsvisningen.", "Email password reset is not available in this preview."],
     access: ["Åpne den private lenken til samtalen for å få tilgang.", "Open your private conversation link to access this enquiry."],
+    origin: ["Forespørselen kunne ikke sendes fra denne nettadressen. Åpne turucrown.no/booking i en ny fane og prøv igjen.", "Your enquiry could not be sent from this web address. Open turucrown.no/booking in a new tab and try again."],
     rate: ["For mange forsøk. Vent litt før du prøver igjen.", "Too many attempts. Please wait before trying again."],
     setup: ["Nettbestilling er ikke åpnet ennå. Ring oss på 978 16 981 for en forespørsel.", "Online enquiries are not open yet. Call +47 978 16 981 to enquire."],
     storage: ["Vi fikk ikke kontakt med bookingtjenesten. Prøv igjen. Du får en bekreftelse på skjermen når forespørselen er registrert.", "We could not reach the booking service. Please retry. You will see a confirmation when your enquiry is saved."],

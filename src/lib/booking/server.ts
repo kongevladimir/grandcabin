@@ -2,6 +2,7 @@ import { createHash, createHmac, randomUUID, timingSafeEqual } from "node:crypto
 import { NextRequest, NextResponse } from "next/server";
 import { BookingError, type Booking, type BookingState, type Notice } from "./model";
 import { configured, isLocalPreview, mutate, readState } from "./store";
+import { allowedBookingOrigin } from "./origins";
 
 export const cookieName = (role: "owner" | "guest") => `grandcabin-${role}`;
 export function signature(value: string) { return createHmac("sha256", process.env.BOOKING_SESSION_SECRET!).update(value).digest("base64url"); }
@@ -40,7 +41,9 @@ export async function ownerOnly(request: NextRequest) { if (!(await ownerSession
 export async function guestOrOwner(request: NextRequest, id: string) { if (session(request, "guest") !== id && !(await ownerSession(request))) throw new BookingError("access", 401); }
 export async function body(request: NextRequest): Promise<Record<string, unknown>> {
   const expected = isLocalPreview() ? request.nextUrl.origin : new URL(process.env.BOOKING_SITE_URL!).origin;
-  if (request.headers.get("origin") !== expected || !request.headers.get("content-type")?.startsWith("application/json")) throw new BookingError("access", 403);
+  const origin = request.headers.get("origin");
+  if (isLocalPreview() ? origin !== expected : !allowedBookingOrigin(origin, expected)) throw new BookingError("origin", 403);
+  if (!request.headers.get("content-type")?.startsWith("application/json")) throw new BookingError("details", 400);
   const reader = request.body?.getReader();
   if (!reader) throw new BookingError("details");
   const chunks: Uint8Array[] = []; let size = 0;

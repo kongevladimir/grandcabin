@@ -103,6 +103,11 @@ do not inspect Cloudflare or verify the live site without an explicit request.
 
 ## Privacy and delivery
 
+Production POST requests accept the configured HTTPS website origin and its
+exact www/non-www counterpart. Other subdomains, sites, protocols and ports are
+rejected. Local preview accepts only its exact origin. An address rejection is
+reported separately from access to private enquiry details.
+
 Owner sessions last eight hours. Changing the session secret or owner password invalidates owner sessions. Public availability contains dates only, never guest names, prices or messages.
 
 Each new enquiry queues an email to the owner via Zoho Mail; no automatic email is sent to guests. Failed notifications remain in a saved outbox, retried on the next owner inbox visit or with its retry button. There is no background scheduler, so check the inbox if delivery fails. An ambiguous delivery failure may result in a duplicate notification. Preview mode sends no email.
