@@ -11,8 +11,8 @@ arrival and departure (checkout day is excluded), including mixed-rate stays.
 Final cleaning is mandatory at NOK 5,000 per stay. The optional combined bed
 linen/towel package costs NOK 350 per person selected. The server saves the
 quoted nightly breakdown and full total with each enquiry and ignores any
-client-supplied price. Deposit amount and terms still need the owner's details
-before opening real bookings. Pending enquiries do not reserve dates. Confirmed
+client-supplied price. Deposit amount and terms remain unspecified; the form only
+collects enquiries and does not collect payments or confirm stays. Pending enquiries do not reserve dates. Confirmed
 stays and owner blocks make nights unavailable; checkout day can be another
 guest's arrival day. Bookings elsewhere must be blocked manually.
 The owner-provided FINN stays on 13–14 and 27–28 November, 4–5, 18–19,
@@ -33,33 +33,43 @@ details to `.booking-owner-access.txt`. Neither is committed. Open `/booking`
 for the guest journey or `/admin` for the owner sign-in page. The owner area is
 at `/booking/owner` after sign-in.
 
-Preview requests, conversations and date blocks persist across restarts in
+Preview requests and date blocks persist across restarts in
 `.booking-data/state.json`. Preview mode is restricted to localhost requests and
 sends no emails. Never copy this data or these credentials into production.
 The inbox allows deleting test enquiries; cancel accepted test stays first.
 
-## Before accepting real requests
+## Production setup and verification
 
-Production is **not configured yet**. The page disables submission when required
-settings are missing. It must not be advertised as accepting real enquiries until
-the following is completed:
+Production uses the owner's private Supabase project, Zoho Mail EU and Cloudflare
+secrets. On 7 November 2026 the connected setup passed durable writes, stale-write
+rejection, owner login, enquiry submission, idempotency, owner-only notification,
+manual reservations and overlap checks. Only the generated test enquiry and test
+block were removed. The owner confirmed receiving the initial Zoho test email.
+The known FINN/owner dates listed above remain in the public availability rules.
+No local preview guest records or credentials are copied into production.
+
+Keep these requirements when maintaining or replacing the setup:
 
 1. Confirm the owner's receiving email address and existing reserved dates.
 2. Connect a private Supabase project, preferably in an EU region, and run
    `supabase/booking.sql`. Enable suitable database backups. The table and atomic
    update function are accessible only with the server-side service key.
-3. Connect Resend with a verified sending domain. Configure the variables shown
+3. Connect the Zoho Mail EU account using its account ID and an OAuth client with the `ZohoMail.messages.CREATE` scope. Store the client ID, client secret and refresh token as private deployment secrets; set `BOOKING_EMAIL_FROM` to an address permitted to send from that account. Configure the variables shown
    in `booking.env.example` through the deployment environment, keeping all keys
    private. Use the site's canonical HTTPS origin without a path. Generate a new
    session secret (at least 32 characters), owner email as the login username,
    and owner password (at least 16 characters).
 4. Keep `BOOKING_LOCAL_PREVIEW=false`. Test durable writes against the production
-   storage, email delivery to owner and guest, private link access, conversation
-   replies, blocking dates and overlapping approvals. Remove only test records.
+   storage, email delivery to the owner only, manual reservations, blocking dates
+   and overlapping approvals. Verify that guests receive no automatic email. Remove only test records.
 5. Review the privacy information with the owner, including provider disclosures,
    access and retention arrangements. Add all existing reservations to the inbox.
 
-No deployment account has been changed or connected by the local setup script.
+The localhost preview script does not change deployment accounts. Production
+credentials were entered through private loopback forms and installed as
+Cloudflare secrets; they are not committed. Local owner access details are kept
+in the ignored `.booking-data/owner-production-access.txt` file. Password reset
+uses the owner's info@turucrown.no mailbox.
 Publishing follows AGENTS.md: use the GitHub check as the deployment signal;
 do not inspect Cloudflare or verify the live site without an explicit request.
 
@@ -83,8 +93,8 @@ do not inspect Cloudflare or verify the live site without an explicit request.
   Existing storage records without `nightlyPrices` work without a migration;
   local preview changes stay on this computer until production storage is set up.
 - Choose **Enquiries & dates / Forespørsler & datoer** to manage requests and blocks.
-- Open an enquiry and use its conversation to arrange practical details.
-- Confirm at the displayed total price. Dates are blocked atomically; two overlapping
+- Open an enquiry and contact the guest manually using their email address or phone.
+- Record an agreed stay using guest name, total price, arrival and checkout; its dates are blocked. Alternatively, confirm an enquiry at its displayed total. Dates are blocked atomically; two overlapping
   enquiries cannot both be accepted. Declining leaves dates available.
 - Cancel a confirmed reservation to release its dates. Delete obsolete personal
   records from the inbox when no longer needed; deletion is permanent.
@@ -93,27 +103,33 @@ do not inspect Cloudflare or verify the live site without an explicit request.
 
 ## Privacy and delivery
 
-The guest's private link grants access to that enquiry, like a password. Its
-token is exchanged for an HTTP-only cookie and removed from the visible URL.
-Do not share it. Owner sessions last eight hours; guest cookies last 180 days.
-Changing the session secret invalidates all sessions and guest links. Changing
-the owner password invalidates owner sessions. Deleting an enquiry revokes its
-link. Public availability contains dates only, never guest names or messages.
+Owner sessions last eight hours. Changing the session secret or owner password invalidates owner sessions. Public availability contains dates only, never guest names, prices or messages.
 
-Email is a notification with a link; conversation replies are made on the site.
-Failed emails remain in a saved outbox, retried on the next owner inbox visit or
-with its retry button. There is no background mail scheduler yet; the owner must
-check the inbox if an email provider is unavailable. Retries use idempotency keys.
-The inbox shows pending deliveries. Preview mode does not create email notices.
+Each new enquiry queues an email to the owner via Zoho Mail; no automatic email is sent to guests. Failed notifications remain in a saved outbox, retried on the next owner inbox visit or with its retry button. There is no background scheduler, so check the inbox if delivery fails. An ambiguous delivery failure may result in a duplicate notification. Preview mode sends no email.
 
 The data adapter uses one versioned JSON state record for this single property,
 with compare-and-swap updates for conflicts. For larger traffic or multiple
 properties, move to normalized tables and indexed queries before scaling.
 
+## Separate backup
+
+`backup/worker.mjs` is a separate scheduled Worker. It copies the private booking
+state into the `turucrown-booking-backup` D1 database at 02:00 UTC each day, with
+30 days of snapshots. The Worker, database, tables and private connection have
+been configured. On 7 November 2026 the same backup implementation saved an actual
+snapshot into remote D1, read it back and restored the exact state into an isolated
+database. The daily schedule remains 02:00 UTC; scheduled execution should still
+be monitored independently of this manual backup/restore verification.
+Snapshots contain guest information and account authentication data. Keep the D1
+database private, grant access only to the owner, and monitor scheduled runs for
+failures. A daily snapshot can lose up to a day of changes after a failure; it is
+not a real-time replica. The free Supabase project may pause when inactive, so
+confirm its availability and suitable monitoring before relying on it.
+
 ## Verification
 
 `npm run check` includes booking domain tests, lint, types and a production build.
 With the local preview server running, `node scripts/test-booking-api.mjs` tests
-authentication, private conversations, idempotency, concurrent approvals and date
+authentication, enquiry submission, idempotency, concurrent approvals and date
 blocking. It refuses a non-local or non-preview target and deletes its own test
 records afterwards. It does not send emails or test remote providers.

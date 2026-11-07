@@ -26,7 +26,7 @@ export function errorText(code: string, lang: Lang) {
     access: ["Åpne den private lenken til samtalen for å få tilgang.", "Open your private conversation link to access this enquiry."],
     rate: ["For mange forsøk. Vent litt før du prøver igjen.", "Too many attempts. Please wait before trying again."],
     setup: ["Nettbestilling er ikke åpnet ennå. Ring oss på 978 16 981 for en forespørsel.", "Online enquiries are not open yet. Call +47 978 16 981 to enquire."],
-    storage: ["Vi fikk ikke kontakt med bookingtjenesten. Prøv igjen. Forespørselen er først registrert når du ser samtalen.", "We could not reach the booking service. Please retry. Your enquiry is registered when the conversation appears."],
+    storage: ["Vi fikk ikke kontakt med bookingtjenesten. Prøv igjen. Du får en bekreftelse på skjermen når forespørselen er registrert.", "We could not reach the booking service. Please retry. You will see a confirmation when your enquiry is saved."],
     busy: ["En annen oppdatering pågår. Prøv igjen.", "Another update is in progress. Please retry."],
     missing: ["Denne forespørselen finnes ikke lenger.", "This enquiry is no longer available."],
     status: ["Statusen har endret seg. Oppdater siden før du prøver igjen.", "The status has changed. Refresh before trying again."],

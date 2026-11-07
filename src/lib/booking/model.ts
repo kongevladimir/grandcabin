@@ -8,7 +8,7 @@ export type Booking = Stay & {
   messages: Message[];
   pricing?: BookingQuote | { dailyRate: number; rentalTotal: number; currency: "NOK" };
 };
-export type Block = Stay & { id: string; note: string; external?: true };
+export type Block = Stay & { id: string; note: string; external?: true; guestName?: string; agreedPrice?: number; guestCount?: number };
 export type Notice = { id: string; bookingId: string; recipient: "owner" | "guest"; attempts: number; lastAttempt: number };
 export type NightlyPrices = Record<string, number>;
 export type OwnerAuth = { passwordHash?: string; passwordSalt?: string; sessionVersion?: string; resetHash?: string; resetExpires?: number };

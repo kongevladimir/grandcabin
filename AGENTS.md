@@ -22,9 +22,10 @@ The owner is non-technical, uses Windows, and communicates in English.
   GitHub check as publication complete and simply say "Published". Do not open
   the Cloudflare dashboard, inspect Cloudflare directly, verify the live website,
   or provide a live link unless the owner explicitly asks for one.
-- Direct booking is currently a local preview. Before enabling real enquiries,
-  complete `docs/booking-setup.md`, confirm the owner's receiving email and
-  existing reserved dates, and verify durable storage and email delivery.
+- Direct booking uses private Supabase storage and Zoho Mail EU. Production
+  setup and connected tests are recorded in `docs/booking-setup.md`. Keep the
+  owner's receiving email and existing reserved dates correct, and verify
+  durable storage, email and backup/restore after changing provider settings.
   Never publish preview credentials or guest data, or describe local requests
   as delivered to the owner by email.
 

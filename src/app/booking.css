@@ -22,6 +22,7 @@
 .bk-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-bottom: 44px; }
 .bk-heading > p { max-width: 315px; color: var(--bk-muted); font-size: .95rem; margin: 0 0 5px; }
 .bk-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 30px; align-items: start; }
+.bk-layout[hidden] { display: none; }
 .bk-panel, .bk-conversation { background: var(--bk-paper); border: 1px solid var(--bk-line); padding: 32px; }
 .bk-panel > p { font-size: .87rem; color: var(--bk-muted); margin-bottom: 24px; }
 .bk-panel h2:focus { outline: none; }

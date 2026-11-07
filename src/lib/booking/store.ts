@@ -8,13 +8,13 @@ export type Stored = { version: number; state: BookingState };
 const localDirectory = () => path.join(process.cwd(), ".booking-data");
 export function isLocalPreview() { return process.env.BOOKING_LOCAL_PREVIEW === "true"; }
 export function configured() {
-  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= (isLocalPreview() ? 8 : 16) && (isLocalPreview() || (process.env.BOOKING_OWNER_USERNAME && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.BOOKING_OWNER_USERNAME) && process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.RESEND_API_KEY)));
+  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= (isLocalPreview() ? 8 : 16) && (isLocalPreview() || (process.env.BOOKING_OWNER_USERNAME && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.BOOKING_OWNER_USERNAME) && process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.ZOHO_ACCOUNT_ID && process.env.ZOHO_CLIENT_ID && process.env.ZOHO_CLIENT_SECRET && process.env.ZOHO_REFRESH_TOKEN)));
 }
 async function database(endpoint: string, init?: RequestInit) {
   const base = process.env.BOOKING_SUPABASE_URL;
   const key = process.env.BOOKING_SUPABASE_SERVICE_KEY;
   if (!base || !key || !base.startsWith("https://")) throw new BookingError("setup", 503);
-  const response = await fetch(`${base.replace(/\/$/, "")}/rest/v1/${endpoint}`, { ...init, headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", ...init?.headers }, cache: "no-store", signal: AbortSignal.timeout(12000) });
+  const response = await fetch(`${base.replace(/\/$/, "")}/rest/v1/${endpoint}`, { ...init, headers: { apikey: key, "Content-Type": "application/json", ...init?.headers }, cache: "no-store", signal: AbortSignal.timeout(12000) });
   if (!response.ok) throw new BookingError("storage", 503);
   return response.json();
 }

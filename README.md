@@ -1,9 +1,10 @@
 # Turu Crown
 
 A Norwegian and English presentation website for the Turu Crown rental property
-on Turufjell. The direct booking preview lets guests request dates and extras,
-then discuss their stay with the owner in a private conversation. The owner
-approves reservations manually; there is no payment collection.
+on Turufjell. The direct booking form lets guests request dates and extras,
+then receive a personal reply from the owner by email or phone. Only the owner
+receives an automated email notification. The owner records agreed stays and
+blocks their dates manually; there is no payment collection.
 The shared footer lists both phone numbers and info@turucrown.no under Contact us,
 with compact labelled phone and email links in both languages.
 Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24
@@ -50,9 +51,11 @@ Guest totals use these prices plus the existing extra-person and extras charges;
 already submitted enquiries keep their quoted prices. Production use still needs
 the storage and account setup described below.
 
-Real online enquiries still require permanent storage and email delivery to be
-connected. See [booking setup](docs/booking-setup.md) for local preview credentials,
-production setup and tests. The booking preview does not synchronize with FINN.
+Online enquiries use private Supabase storage and Zoho Mail EU notifications to
+info@turucrown.no. Storage, owner email delivery, manual reservations and a private
+Cloudflare backup/isolated restore were verified on 7 November 2026.
+See [booking setup](docs/booking-setup.md) for local preview, production maintenance
+and tests. The booking calendar does not synchronize with FINN.
 The owner-provided FINN reservations for November and December 2026 and owner
 holds for 12–14 January and 11–12 March 2027 are recorded as unavailable nights
 in the booking calendar, including the last listed night. The former 22–23

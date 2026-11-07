@@ -1,0 +1,8 @@
+{
+  "name": "turucrown-booking-backup",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-23",
+  "triggers": { "crons": ["0 2 * * *"] },
+  "d1_databases": [{ "binding": "BACKUP_DB", "database_name": "turucrown-booking-backup", "database_id": "f73a1018-e763-40c9-be4f-ec7711ab6184" }],
+  "observability": { "enabled": true }
+}

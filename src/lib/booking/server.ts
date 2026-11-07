@@ -70,11 +70,23 @@ export function publicBooking(booking: Booking) {
   return safe;
 }
 export function notify(state: BookingState, bookingId: string, recipient: Notice["recipient"]) {
-  if (!isLocalPreview()) state.notices.push({ id: randomUUID(), bookingId, recipient, attempts: 0, lastAttempt: 0 });
+  if (!isLocalPreview() && recipient === "owner") state.notices.push({ id: randomUUID(), bookingId, recipient, attempts: 0, lastAttempt: 0 });
+}
+// Zoho Mail EU uses OAuth. Secrets stay server-side and are never sent to guests.
+export async function sendOwnerMail(subject: string, content: string, mailFormat: "plaintext" | "html" = "plaintext") {
+  const form = new URLSearchParams({ grant_type: "refresh_token", client_id: process.env.ZOHO_CLIENT_ID!, client_secret: process.env.ZOHO_CLIENT_SECRET!, refresh_token: process.env.ZOHO_REFRESH_TOKEN! });
+  const refreshed = await fetch("https://accounts.zoho.eu/oauth/v2/token", { method: "POST", body: form, signal: AbortSignal.timeout(12000) });
+  if (!refreshed.ok) throw new Error("mail authentication");
+  const auth = await refreshed.json() as { access_token?: string };
+  if (!auth.access_token) throw new Error("mail authentication");
+  const sent = await fetch(`https://mail.zoho.eu/api/accounts/${encodeURIComponent(process.env.ZOHO_ACCOUNT_ID!)}/messages`, { method: "POST", headers: { Authorization: `Zoho-oauthtoken ${auth.access_token}`, "Content-Type": "application/json" }, body: JSON.stringify({ fromAddress: process.env.BOOKING_EMAIL_FROM, toAddress: process.env.BOOKING_OWNER_EMAIL, subject, content, mailFormat }), signal: AbortSignal.timeout(12000) });
+  if (!sent.ok) throw new Error("mail delivery");
+  const result = await sent.json() as { status?: { code?: number } };
+  if (result.status?.code !== 200) throw new Error("mail delivery");
 }
 export async function deliverNotices() {
   if (isLocalPreview()) return;
-  const notices = (await readState()).state.notices.filter(n => Date.now() - n.lastAttempt > 60000).slice(0, 4);
+  const notices = (await readState()).state.notices.filter(n => n.recipient === "owner" && Date.now() - n.lastAttempt > 60000).slice(0, 4);
   for (const notice of notices) {
     const claimed = await mutate(state => {
       const current = state.notices.find(n => n.id === notice.id);
@@ -84,11 +96,16 @@ export async function deliverNotices() {
     });
     if (!claimed) continue;
     const base = process.env.BOOKING_SITE_URL!.replace(/\/$/, "");
-    const url = notice.recipient === "owner" ? `${base}/booking/owner` : `${base}/booking/conversation/${claimed.id}#access=${guestToken(claimed.id)}`;
-    const nb = notice.recipient === "owner" || claimed.language === "nb";
+    const url = `${base}/booking/owner`;
     try {
-      const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json", "Idempotency-Key": `booking-${notice.id}` }, body: JSON.stringify({ from: process.env.BOOKING_EMAIL_FROM, to: [notice.recipient === "owner" ? process.env.BOOKING_OWNER_EMAIL : claimed.email], subject: nb ? "Turu Crown · Oppdatering på forespørselen" : "Turu Crown · Your enquiry has an update", text: nb ? `Det er en ny forespørsel, melding eller statusoppdatering for ${claimed.arrival}–${claimed.departure}.\n\nÅpne samtalen for detaljer:\n${url}\n\nEn forespørsel er ikke en bekreftet reservasjon. Lenken til gjestesamtalen er privat. Svar i samtalen på nettsiden.` : `There is a new enquiry, message or status update for ${claimed.arrival}–${claimed.departure}.\n\nOpen the conversation for details:\n${url}\n\nAn enquiry is not a confirmed reservation. The guest conversation link is private. Please reply in the conversation on the website.` }), signal: AbortSignal.timeout(8000) });
-      if (sent.ok) await mutate(state => { state.notices = state.notices.filter(n => n.id !== notice.id); });
+      const date = (day: string) => new Date(`${day}T12:00:00Z`).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" });
+      const total = claimed.pricing && "total" in claimed.pricing ? claimed.pricing.total : null;
+      const price = total === null || total === undefined ? "pris ikke tilgjengelig" : `${new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(total)} kr`;
+      const escape = (value: string | number) => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
+      const message = claimed.messages.filter(m => m.author === "guest").map(m => m.text).join("\n\n") || "—";
+      const content = `<div style="font-family:Arial,sans-serif;color:#17212c;max-width:640px;margin:auto;line-height:1.5"><h2 style="text-align:center">Du har fått en ny forespørsel</h2><p style="font-size:18px;text-align:center">${escape(claimed.name)} ønsker å leie Turu Crown i perioden ${escape(date(claimed.arrival))} – ${escape(date(claimed.departure))} for ${escape(price)}.</p><p>Forespørselen er ikke en bekreftet reservasjon. Kontakt gjesten direkte for å avtale oppholdet.</p><hr><p><strong>E-post:</strong> ${escape(claimed.email)}<br><strong>Telefon:</strong> ${escape(claimed.phone || "—")}<br><strong>Antall gjester:</strong> ${escape(claimed.guests)}<br><strong>Sengetøy og håndklær:</strong> ${escape(claimed.linenTowels ?? 0)}<br><strong>Anledning:</strong> ${escape(claimed.occasion)}</p><p><strong>Melding:</strong><br>${escape(message).replace(/\n/g, "<br>")}</p><p><a href="${escape(url)}">Åpne administrasjonen</a></p></div>`;
+      await sendOwnerMail("Du har fått en ny forespørsel · Turu Crown", content, "html");
+      await mutate(state => { state.notices = state.notices.filter(n => n.id !== notice.id); });
     } catch { /* The saved outbox is retried on the next owner visit or retry action. */ }
   }
 }

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { RetreatNav, RetreatBookingFooter } from "@/components/ConceptPages";
 import { useSiteLanguage } from "@/components/useSiteLanguage";
@@ -49,7 +48,6 @@ function Calendar({ stay, onChange, occupied, lang, onError, today }: { stay: St
 }
 
 export function BookingForm() {
-  const router = useRouter();
   const [lang, setLang] = useSiteLanguage();
   const w = (nb: string, en: string) => words(lang, nb, en);
   const [availability, setAvailability] = useState<Availability | null>(null);
@@ -63,6 +61,7 @@ export function BookingForm() {
   const [occasion, setOccasion] = useState("private"), [message, setMessage] = useState(""), [consent, setConsent] = useState(false);
   const detailsReady = Boolean(name.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) && consent);
   const [busy, setBusy] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const submissionKey = useRef("");
   const formHeading = useRef<HTMLHeadingElement>(null);
   const load = () => bookingApi<Availability>().then(setAvailability).catch(e => setError(e.message));
@@ -88,8 +87,8 @@ export function BookingForm() {
     try {
       if (!submissionKey.current) submissionKey.current = crypto.randomUUID();
       const website = new FormData(event.currentTarget).get("website") ?? "";
-      const result = await bookingApi<{ id: string; token: string }>("", { action: "enquire", expectedTotal: quote.total, ...stay, guests, linenTowels, name, email, phone, occasion, message, consent, language: lang, website, requestKey: submissionKey.current });
-      router.push(`/booking/conversation/${result.id}#access=${result.token}`);
+      await bookingApi<{ ok: boolean }>("", { action: "enquire", expectedTotal: quote.total, ...stay, guests, linenTowels, name, email, phone, occasion, message, consent, language: lang, website, requestKey: submissionKey.current });
+      setSubmitted(true);
     } catch (e) { setError((e as Error).message); if (["unavailable", "priceChanged", "pricing"].includes((e as Error).message)) { setStep(0); await load(); } }
     finally { setBusy(false); }
   }
@@ -98,7 +97,8 @@ export function BookingForm() {
     <main className="bk-main">
       <div className="bk-heading"><div><p className="bk-kicker">TURU CROWN · {w("ET OPPHOLD BARE FOR DERE", "A STAY OF YOUR OWN")}</p><h1>{w("Deres neste", "Your next")}<br /><em>{w("fjelløyeblikk.", "mountain moment.")}</em></h1></div><p>{w("Samle menneskene som betyr noe. Velg når dere vil komme, så planlegger vi resten sammen.", "Bring your favourite people together. Choose when you’d like to visit, and we’ll plan the rest together.")}</p></div>
       {availability?.preview && <p className="bk-preview">{w("Forhåndsvisning · Forespørsler og meldinger lagres bare på denne datamaskinen. E-post sendes ikke.", "Preview · Enquiries and messages are saved only on this computer. No email is sent.")}</p>}
-      <div className="bk-layout"><form onSubmit={submit} className="bk-panel">
+      {submitted && <section className="bk-panel" role="status"><h2>{w("Takk for forespørselen.", "Thank you for your enquiry.")}</h2><p>{w("Vi har mottatt forespørselen og tar kontakt med deg direkte. Oppholdet er ikke reservert før vi bekrefter det.", "We have received your enquiry and will contact you directly. Your stay is not reserved until we confirm it.")}</p></section>}
+      <div className="bk-layout" hidden={submitted}><form onSubmit={submit} className="bk-panel">
         <ol className="bk-steps" aria-label={w("Forespørsel, steg", "Enquiry steps")}>{[w("Opphold", "Your stay"), w("Det lille ekstra", "The little extras"), w("Forespørsel", "Your enquiry")].map((label, i) => <li key={label} aria-current={step === i ? "step" : undefined}><button type="button" disabled={i > step} onClick={() => changeStep(i)}><span>{`0${i + 1}`}</span>{label}</button></li>)}</ol>
         <h2 ref={formHeading} tabIndex={-1}>{[w("Når vil dere komme?", "When will you visit?"), w("Gjør oppholdet deres.", "Make yourselves at home."), w("Fortell oss litt om dere.", "Tell us a little about yourselves.")][step]}</h2>
         {!availability && !error && <p role="status">{w("Henter kalender …", "Loading calendar …")}</p>}
@@ -111,9 +111,9 @@ export function BookingForm() {
         </>}
         {step === 1 && <><p>{w("Velg hvor mange gjester som ønsker sengetøy og håndklær samlet. Én pakke koster 350 kr per person.", "Choose how many guests would like the combined bed linen and towel package. It costs NOK 350 per person.")}</p>
           <div className="bk-extra"><span className="bk-extra-icon" aria-hidden="true">▤</span><div><h3>{w("Sengetøy og håndklær", "Bed linen and towels")}</h3><p>{w(`${money(LINEN_TOWELS_RATE_NOK, lang)} per person · én samlet pakke`, `${money(LINEN_TOWELS_RATE_NOK, lang)} per person · one combined package`)}</p></div><label>{w("Antall personer", "Number of people")}<select aria-label={w("Antall personer med sengetøy og håndklær", "People with bed linen and towels")} value={linenTowels} onChange={e => setLinenTowels(Number(e.target.value))}>{Array.from({ length: guests + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}</select></label></div>
-          <p className="bk-note">{w("Velg 0 dersom dere tar med eget. Dere kan også avklare ønskene i samtalen etterpå.", "Choose 0 if you are bringing your own. You can also discuss your preferences in the conversation afterwards.")}</p>
+          <p className="bk-note">{w("Velg 0 dersom dere tar med eget. Dere kan også avklare ønskene direkte med oss.", "Choose 0 if you are bringing your own. You can also discuss your preferences with us directly.")}</p>
         </>}
-        {step === 2 && <><p>{w("Forespørselen går direkte til oss. Dere får en privat samtale for spørsmål og praktiske detaljer om oppholdet.", "Your enquiry goes directly to us. Your private conversation is the place for questions and practical details about your stay.")}</p>
+        {step === 2 && <><p>{w("Forespørselen går direkte til oss. Vi svarer deg på e-post eller telefon.", "Your enquiry goes directly to us. We will reply by email or phone.")}</p>
           <div className="bk-fields"><label><span>{w("Fullt navn", "Full name")} <span className="bk-required-mark" aria-hidden="true">*</span></span><input autoComplete="name" required maxLength={120} value={name} onChange={e => setName(e.target.value)} /></label><label><span>{w("E-post", "Email")} <span className="bk-required-mark" aria-hidden="true">*</span></span><input type="email" autoComplete="email" required maxLength={254} value={email} onChange={e => setEmail(e.target.value)} /></label><label>{w("Telefon (valgfritt)", "Phone (optional)")}<input type="tel" autoComplete="tel" maxLength={40} value={phone} onChange={e => setPhone(e.target.value)} /></label></div>
           <label className="bk-message-label">{w("Ønsker for oppholdet (valgfritt)", "Your plans for the stay (optional)")}<textarea rows={5} maxLength={5000} value={message} onChange={e => setMessage(e.target.value)} placeholder={w("En helg med storfamilien, kick-off med kollegaer eller noe helt annet …", "A weekend with family, a team retreat or something else entirely …")} /></label>
           <div className="bk-trap" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
@@ -125,7 +125,7 @@ export function BookingForm() {
           <button className="bk-primary" type="submit" disabled={!availability?.ready || busy || (step === 2 && !detailsReady)}>{busy ? w("Sender …", "Sending …") : step === 2 ? w("Send forespørsel", "Send enquiry") : w("Fortsett", "Continue")} <span aria-hidden="true">→</span></button></div>
         <p className="bk-no-payment">{w("Uforpliktende forespørsel · Ingen betaling nå", "No-obligation enquiry · No payment now")}</p>
       </form><aside className="bk-summary"><div className="bk-summary-photo"><Image src="/images/exterior.avif" alt={w("Turu Crown i vinterlandskap", "Turu Crown in the winter landscape")} fill sizes="(max-width: 1000px) 100vw, 380px" /></div><div className="bk-summary-copy"><p className="bk-kicker">{w("HELE HYTTA. BARE DERE.", "THE WHOLE CABIN. ALL YOURS.")}</p><h2>Turu Crown</h2><p>Turufjell · Flå · {w("Under to timer fra Oslo", "Under two hours from Oslo")}</p><div className="bk-summary-facts"><span>29 {w("gjester", "guests")}</span><span>9 {w("soverom", "bedrooms")}</span><span>Over 340 m²</span></div><dl><div><dt>{w("Ankomst", "Arrival")}</dt><dd>{formatDay(stay.arrival, lang)}</dd></div><div><dt>{w("Avreise", "Departure")}</dt><dd>{formatDay(stay.departure, lang)}</dd></div>{stay.arrival && stay.departure && nights(stay) > 0 && <div><dt>{w("Netter", "Nights")}</dt><dd>{nights(stay)}</dd></div>}<div><dt>{w("Gjester", "Guests")}</dt><dd>{guests}</dd></div><div><dt>{w("Sengetøy og håndklær", "Bed linen and towels")}</dt><dd>{linenTowels} × {money(LINEN_TOWELS_RATE_NOK, lang)}</dd></div></dl><div className="bk-total"><span>{w("Prisoversikt", "Price breakdown")}</span>{quote.extraGuests > 0 && <small className="bk-guest-surcharge">{w(`${quote.extraGuests} ekstra ${quote.extraGuests === 1 ? "gjest" : "gjester"} × ${money(EXTRA_GUEST_RATE_NOK, lang)} per døgn er inkludert i døgnprisene under.`, `${quote.extraGuests} extra ${quote.extraGuests === 1 ? "guest" : "guests"} × ${money(EXTRA_GUEST_RATE_NOK, lang)} per day are included in the nightly rates below.`)}</small>}{quote.lines.length ? quote.lines.map(line => <div className="bk-price-row" key={`${line.season}-${line.rate}`}><span>{priceSeasonLabel(lang, line.season)} · {line.days} {w("døgn", "days")} × {line.rate === null ? "—" : money(line.rate, lang)}</span><b>{line.subtotal === null ? "—" : money(line.subtotal, lang)}</b></div>) : <div className="bk-price-row"><span>{w("Leiepris fra", "Rental price from")}</span><b>{money(DAILY_RATE_NOK + quote.guestSurchargePerNight, lang)} {w("per døgn", "per day")}</b></div>}<div className="bk-price-row"><span>{w("Obligatorisk utvask", "Mandatory final cleaning")}</span><b>{money(CLEANING_FEE_NOK, lang)}</b></div><div className="bk-price-row"><span>{w("Sengetøy og håndklær", "Bed linen and towels")} · {linenTowels} × {money(LINEN_TOWELS_RATE_NOK, lang)}</span><b>{money(quote.linenTowelsTotal, lang)}</b></div>{quote.total !== null && <div className="bk-price-row grand"><span>{w("Totalpris", "Total price")}</span><strong>{money(quote.total, lang)}</strong></div>}{quote.lines.some(line => line.rate === null) && <small className="bk-pricing-pending">{errorText("pricing", lang)}</small>}</div><section className="bk-deposit"><h3>{w("Depositum", "Deposit")}</h3><p>{w("Informasjon om beløp og vilkår legges inn før bestilling åpnes.", "The deposit amount and terms will be added before bookings open.")}</p></section></div><div className="bk-contact"><span>{w("Vi hjelper dere gjerne", "We’re happy to help")}</span><a href="tel:+4797816981">+47 978 16 981</a><a href="tel:+4796878888">+47 968 78 888</a></div></aside></div>
-      <div className="bk-how">{[["01", w("Send oss ønskene", "Share your plans"), w("Velg datoer, gjester og det lille ekstra.", "Choose dates, guests and your extras.")], ["02", w("Planlegg sammen", "Plan together"), w("Still spørsmål og planlegg detaljene i deres private samtale.", "Ask questions and plan the details in your private conversation.")], ["03", w("Velkommen til fjells", "See you in the mountains"), w("Vi bekrefter reservasjonen når alt er avklart.", "We confirm your reservation once everything is agreed.")]].map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+      <div className="bk-how">{[["01", w("Send oss ønskene", "Share your plans"), w("Velg datoer, gjester og det lille ekstra.", "Choose dates, guests and your extras.")], ["02", w("Planlegg sammen", "Plan together"), w("Vi kontakter deg på e-post eller telefon for å planlegge detaljene.", "We will contact you by email or phone to plan the details.")], ["03", w("Velkommen til fjells", "See you in the mountains"), w("Vi bekrefter reservasjonen når alt er avklart.", "We confirm your reservation once everything is agreed.")]].map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
     </main><RetreatBookingFooter language={lang} />
   </div>;
 }

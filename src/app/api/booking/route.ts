@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { BookingError, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
 import { newPasswordAuth, ownerPasswordMatches, tokenHash } from "@/lib/booking/auth";
 import { configured, isLocalPreview, mutate, readState } from "@/lib/booking/store";
-import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, ownerSession, publicBooking, rateLimit, reply, session, withSession } from "@/lib/booking/server";
+import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, ownerSession, publicBooking, rateLimit, reply, sendOwnerMail, session, withSession } from "@/lib/booking/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     if (view === "conversation") await guestOrOwner(request, id);
     if (!["availability", "owner", "conversation"].includes(view)) throw new BookingError("missing", 404);
     const { state } = await readState();
-    if (view === "owner") return reply({ bookings: state.bookings.map(publicBooking).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)), blocks: [...finnReservations, ...state.blocks], pendingEmails: state.notices.length, preview: isLocalPreview(), nightlyPrices: state.nightlyPrices ?? {}, today: osloToday() });
+    if (view === "owner") return reply({ bookings: state.bookings.map(publicBooking).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)), blocks: [...finnReservations, ...state.blocks], pendingEmails: state.notices.filter(n => n.recipient === "owner").length, preview: isLocalPreview(), nightlyPrices: state.nightlyPrices ?? {}, today: osloToday() });
     if (view === "conversation") {
       const booking = state.bookings.find(b => b.id === id);
       if (!booking) throw new BookingError("missing", 404);
@@ -52,8 +52,8 @@ export async function POST(request: NextRequest) {
       await mutate(state => { state.ownerAuth = { ...state.ownerAuth, resetHash: hash, resetExpires: Date.now() + 30 * 60000 }; });
       const url = `${process.env.BOOKING_SITE_URL!.replace(/\/$/, "")}/reset-password#token=${token}`;
       try {
-        const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: process.env.BOOKING_EMAIL_FROM, to: [process.env.BOOKING_OWNER_USERNAME], subject: "Turu Crown · Tilbakestill passord", text: `Du har bedt om å tilbakestille passordet for Turu Crown. Åpne denne lenken innen 30 minutter:\n\n${url}\n\nHvis du ikke ba om dette, kan du se bort fra e-posten.` }), signal: AbortSignal.timeout(8000) });
-        if (!sent.ok) throw new Error("mail");
+        if (!equal(process.env.BOOKING_OWNER_USERNAME!.toLowerCase(), process.env.BOOKING_OWNER_EMAIL!.toLowerCase())) throw new Error("mail recipient");
+        await sendOwnerMail("Turu Crown · Tilbakestill passord", `Du har bedt om å tilbakestille passordet for Turu Crown. Åpne denne lenken innen 30 minutter:\n\n${url}\n\nHvis du ikke ba om dette, kan du se bort fra e-posten.`);
       } catch {
         await mutate(state => { if (state.ownerAuth?.resetHash === hash) { state.ownerAuth.resetHash = undefined; state.ownerAuth.resetExpires = undefined; } });
         throw new BookingError("resetUnavailable", 503);
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       const existing = current.bookings.find(b => b.requestKey === details.requestKey);
       if (existing) {
         if (existing.email !== details.email) throw new BookingError("details");
-        return withSession(reply({ id: existing.id, token: guestToken(existing.id), preview: isLocalPreview() }), "guest", existing.id);
+        return reply({ ok: true, id: existing.id, preview: isLocalPreview() });
       }
       await rateLimit(request, "enquire", 5, 3600000);
       await rateLimit(request, "email", 3, 86400000, details.email);
@@ -99,14 +99,14 @@ export async function POST(request: NextRequest) {
         if (pricing.total === null) throw new BookingError("pricing");
         if (data.expectedTotal !== undefined && data.expectedTotal !== pricing.total) throw new BookingError("priceChanged", 409);
         const booking: Booking = { ...fields, id, pricing, status: "pending", createdAt: now, updatedAt: now, messages: message ? [{ id: randomUUID(), author: "guest", text: message, createdAt: now }] : [] };
-        state.bookings.push(booking); notify(state, id, "owner"); notify(state, id, "guest");
+        state.bookings.push(booking); notify(state, id, "owner");
         return booking;
       });
       await deliverNotices();
-      return withSession(reply({ id: saved.id, token: guestToken(saved.id), preview: isLocalPreview() }, 201), "guest", saved.id);
+      return reply({ ok: true, id: saved.id, preview: isLocalPreview() }, 201);
     }
     if (action === "message") {
-      const id = String(data.id ?? ""); await guestOrOwner(request, id);
+      const id = String(data.id ?? ""); await ownerOnly(request);
       const author = await ownerSession(request) ? "owner" : "guest";
       await rateLimit(request, "message", 30, 10 * 60000, `${author}:${id}`);
       const text = typeof data.text === "string" ? data.text.trim() : "";
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
         if (booking.messages.some(m => m.id === messageId)) return;
         if (booking.messages.length >= 1000) throw new BookingError("rate", 429);
         booking.updatedAt = new Date().toISOString();
-        booking.messages.push({ id: messageId, author, text, createdAt: booking.updatedAt }); notify(state, id, author === "owner" ? "guest" : "owner");
+        booking.messages.push({ id: messageId, author, text, createdAt: booking.updatedAt });
       });
       await deliverNotices(); return reply({ ok: true });
     }
@@ -135,7 +135,6 @@ export async function POST(request: NextRequest) {
         if (booking.status === data.status) return;
         changeStatus(state, booking, data.status as BookingStatus);
         booking.messages.push({ id: randomUUID(), author: "system", text: booking.status, createdAt: booking.updatedAt });
-        notify(state, booking.id, "guest");
       });
       await deliverNotices(); return reply({ ok: true });
     }
@@ -143,7 +142,11 @@ export async function POST(request: NextRequest) {
       const stay = { arrival: String(data.arrival ?? ""), departure: String(data.departure ?? "") }; validateStay(stay);
       const note = typeof data.note === "string" ? data.note.trim() : "";
       if (note.length > 300) throw new BookingError("details");
-      await mutate(state => { assertAvailable(state, stay); state.blocks.push({ ...stay, id: randomUUID(), note }); }); return reply({ ok: true });
+      const guestName = typeof data.guestName === "string" ? data.guestName.trim() : undefined;
+      const agreedPrice = data.agreedPrice;
+      const guestCount = data.guestCount;
+      if (guestName !== undefined && (!guestName || guestName.length > 120 || typeof agreedPrice !== "number" || !Number.isInteger(agreedPrice) || agreedPrice < 0 || agreedPrice > 10000000 || typeof guestCount !== "number" || !Number.isInteger(guestCount) || guestCount < 1 || guestCount > 29)) throw new BookingError("details");
+      await mutate(state => { assertAvailable(state, stay); state.blocks.push({ ...stay, id: randomUUID(), note, ...(guestName ? { guestName, agreedPrice: agreedPrice as number, guestCount: guestCount as number } : {}) }); }); return reply({ ok: true });
     }
     if (action === "unblock") { await mutate(state => { state.blocks = state.blocks.filter(b => b.id !== data.id); }); return reply({ ok: true }); }
     if (action === "delete") {
