@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { OWNER_PASSWORD_MIN_LENGTH } from "@/lib/booking/model";
 import { useEffect, useState } from "react";
 import { RetreatNav } from "@/components/ConceptPages";
 import { useSiteLanguage } from "@/components/useSiteLanguage";
@@ -73,9 +74,9 @@ export function ResetPassword() {
     <div className="bk-panel bk-login">
       {done ? <><h2>{w("Passordet er oppdatert", "Password updated")}</h2><p>{w("Du kan nå logge inn med det nye passordet.", "You can now sign in with your new password.")}</p><Link className="bk-primary" href="/admin">{w("Gå til innlogging", "Go to sign in")} →</Link></> : token ? <form onSubmit={reset}>
         <h2>{w("Velg et nytt passord", "Choose a new password")}</h2>
-        <p>{w("Bruk minst 16 tegn. Lenken kan bare brukes én gang.", "Use at least 16 characters. The link can only be used once.")}</p>
+        <p>{w(`Bruk minst ${OWNER_PASSWORD_MIN_LENGTH} tegn. Lenken kan bare brukes én gang.`, `Use at least ${OWNER_PASSWORD_MIN_LENGTH} characters. The link can only be used once.`)}</p>
         {error && <p className="bk-error" role="alert">{errorText(error, lang)}</p>}
-        <label>{w("Nytt passord", "New password")}<input type="password" autoComplete="new-password" minLength={16} required value={password} onChange={event => setPassword(event.target.value)} /></label>
+        <label>{w("Nytt passord", "New password")}<input type="password" autoComplete="new-password" minLength={OWNER_PASSWORD_MIN_LENGTH} required value={password} onChange={event => setPassword(event.target.value)} /></label>
         <button className="bk-primary" disabled={busy}>{busy ? w("Lagrer …", "Saving …") : w("Lagre passord", "Save password")} →</button>
       </form> : <><h2>{w("Lenken er ikke gyldig", "The link is invalid")}</h2><p>{w("Be om en ny lenke for tilbakestilling.", "Request a new reset link.")}</p><Link className="bk-primary" href="/forgot-password">{w("Glemt passord", "Forgot password")} →</Link></>}
     </div>

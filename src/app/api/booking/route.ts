@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
-import { BookingError, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
+import { BookingError, validOwnerPassword, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
 import { newPasswordAuth, ownerPasswordMatches, tokenHash } from "@/lib/booking/auth";
 import { configured, isLocalPreview, mutate, readState } from "@/lib/booking/store";
 import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, ownerSession, publicBooking, rateLimit, reply, sendOwnerMail, session, withSession } from "@/lib/booking/server";
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       await rateLimit(request, "reset-password", 10, 3600000);
       const token = typeof data.token === "string" ? data.token : "";
       const password = typeof data.password === "string" ? data.password : "";
-      if (!/^[A-Za-z0-9_-]{40,60}$/.test(token) || password.length < 16 || password.length > 200) throw new BookingError("reset", 400);
+      if (!/^[A-Za-z0-9_-]{40,60}$/.test(token) || !validOwnerPassword(password)) throw new BookingError("reset", 400);
       await mutate(state => {
         const auth = state.ownerAuth;
         if (!auth?.resetHash || !auth.resetExpires || auth.resetExpires < Date.now() || !equal(tokenHash(token), auth.resetHash)) throw new BookingError("reset", 400);

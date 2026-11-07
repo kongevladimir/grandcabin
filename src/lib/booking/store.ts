@@ -2,13 +2,13 @@
 import { randomUUID } from "node:crypto";
 import { mkdir, open, readFile, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { BookingError, emptyState, type BookingState } from "./model";
+import { BookingError, OWNER_PASSWORD_MIN_LENGTH, emptyState, type BookingState } from "./model";
 
 export type Stored = { version: number; state: BookingState };
 const localDirectory = () => path.join(process.cwd(), ".booking-data");
 export function isLocalPreview() { return process.env.BOOKING_LOCAL_PREVIEW === "true"; }
 export function configured() {
-  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= (isLocalPreview() ? 8 : 16) && (isLocalPreview() || (process.env.BOOKING_OWNER_USERNAME && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.BOOKING_OWNER_USERNAME) && process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.ZOHO_ACCOUNT_ID && process.env.ZOHO_CLIENT_ID && process.env.ZOHO_CLIENT_SECRET && process.env.ZOHO_REFRESH_TOKEN)));
+  return !!(process.env.BOOKING_SESSION_SECRET && process.env.BOOKING_SESSION_SECRET.length >= 32 && process.env.BOOKING_OWNER_PASSWORD && process.env.BOOKING_OWNER_PASSWORD.length >= (isLocalPreview() ? 8 : OWNER_PASSWORD_MIN_LENGTH) && (isLocalPreview() || (process.env.BOOKING_OWNER_USERNAME && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(process.env.BOOKING_OWNER_USERNAME) && process.env.BOOKING_SUPABASE_URL && process.env.BOOKING_SUPABASE_SERVICE_KEY && process.env.BOOKING_SITE_URL && process.env.BOOKING_OWNER_EMAIL && process.env.BOOKING_EMAIL_FROM && process.env.ZOHO_ACCOUNT_ID && process.env.ZOHO_CLIENT_ID && process.env.ZOHO_CLIENT_SECRET && process.env.ZOHO_REFRESH_TOKEN)));
 }
 async function database(endpoint: string, init?: RequestInit) {
   const base = process.env.BOOKING_SUPABASE_URL;

@@ -1,3 +1,6 @@
+export const OWNER_PASSWORD_MIN_LENGTH = 9;
+export function validOwnerPassword(password: string) { return password.length >= OWNER_PASSWORD_MIN_LENGTH && password.length <= 200; }
+
 export type BookingStatus = "pending" | "accepted" | "declined" | "cancelled";
 export type Stay = { arrival: string; departure: string };
 export type Message = { id: string; author: "guest" | "owner" | "system"; text: string; createdAt: string };

@@ -19,6 +19,14 @@ assert.ok(availableStay);
 const booking = (id, status = 'pending', dates = stay) => ({ id, ...dates, status, messages: [], updatedAt: '' });
 const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '+47 123 45 678', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
 
+test('owner password permits nine characters and keeps its upper bound', () => {
+  assert.equal(m.validOwnerPassword('x'.repeat(8)), false);
+  assert.equal(m.validOwnerPassword('x'.repeat(9)), true);
+  assert.equal(m.validOwnerPassword('x'.repeat(16)), true);
+  assert.equal(m.validOwnerPassword('x'.repeat(200)), true);
+  assert.equal(m.validOwnerPassword('x'.repeat(201)), false);
+});
+
 test('password reset replaces the owner password and invalidates prior sessions', () => {
   const previous = { sessionVersion: 'previous-session', resetHash: auth.tokenHash('one-time-link'), resetExpires: Date.now() + 60000 };
   const updated = auth.newPasswordAuth('a-new-private-password', previous);

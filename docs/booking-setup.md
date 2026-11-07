@@ -58,7 +58,7 @@ Keep these requirements when maintaining or replacing the setup:
    in `booking.env.example` through the deployment environment, keeping all keys
    private. Use the site's canonical HTTPS origin without a path. Generate a new
    session secret (at least 32 characters), owner email as the login username,
-   and owner password (at least 16 characters).
+   and owner password (at least 9 characters).
 4. Keep `BOOKING_LOCAL_PREVIEW=false`. Test durable writes against the production
    storage, email delivery to the owner only, manual reservations, blocking dates
    and overlapping approvals. Verify that guests receive no automatic email. Remove only test records.
