@@ -18,7 +18,7 @@ export function errorText(code: string, lang: Lang) {
     dates: ["Velg ankomst og avreise, med minst én natt mellom.", "Choose arrival and departure, with at least one night between."],
     guests: ["Velg 1–29 gjester. Antall sett kan ikke være større enn antall gjester.", "Choose 1–29 guests. Extras cannot exceed the number of guests."],
     pricing: ["Prisen for vinterferien er ikke lagt inn ennå. Velg andre datoer foreløpig.", "The winter holiday price is not set yet. Please choose other dates for now."],
-    details: ["Kontroller navn, e-post og at du har godkjent behandling av forespørselen.", "Check your name, email and enquiry consent."],
+    details: ["Kontroller navn, e-post, telefonnummer og at du har godkjent behandling av forespørselen.", "Check your name, email, phone number and enquiry consent."],
     unavailable: ["Disse datoene er ikke lenger ledige. Velg en annen periode.", "These dates are no longer available. Please choose another stay."],
     login: ["Brukernavn eller passord er feil.", "The username or password is incorrect."],
     reset: ["Lenken er utløpt eller allerede brukt. Be om en ny lenke.", "The link has expired or has already been used. Request a new link."],

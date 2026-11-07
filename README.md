@@ -2,7 +2,8 @@
 
 A Norwegian and English presentation website for the Turu Crown rental property
 on Turufjell. The direct booking form lets guests request dates and extras,
-then receive a personal reply from the owner by email or phone. Only the owner
+then receive a personal reply from the owner by email or phone. Guest name,
+email and phone number are required when submitting an enquiry. Only the owner
 receives an automated email notification. The owner records agreed stays and
 blocks their dates manually; there is no payment collection.
 The shared footer lists both phone numbers and info@turucrown.no under Contact us,

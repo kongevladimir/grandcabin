@@ -132,7 +132,7 @@ export function validateRequest(value: Record<string, unknown>, prices: NightlyP
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || value.consent !== true || text("website", 200)) throw new BookingError("details");
   const requestKey = text("requestKey", 50, true);
   if (!/^[a-f0-9-]{36}$/.test(requestKey)) throw new BookingError("details");
-  return { ...stay, guests, linenTowels, email, requestKey, name: text("name", 120, true), phone: text("phone", 40), occasion: text("occasion", 120), message: text("message", 5000), language: value.language === "en" ? "en" as const : "nb" as const };
+  return { ...stay, guests, linenTowels, email, requestKey, name: text("name", 120, true), phone: text("phone", 40, true), occasion: text("occasion", 120), message: text("message", 5000), language: value.language === "en" ? "en" as const : "nb" as const };
 }
 export function changeStatus(state: BookingState, booking: Booking, status: BookingStatus) {
   if (booking.status === status) return;

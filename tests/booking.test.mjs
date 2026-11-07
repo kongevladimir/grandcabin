@@ -17,7 +17,7 @@ const availableStay = Array.from({ length: 365 }, (_, offset) => ({ arrival: day
   .find(candidate => !m.finnReservations.some(reserved => m.overlaps(candidate, reserved)));
 assert.ok(availableStay);
 const booking = (id, status = 'pending', dates = stay) => ({ id, ...dates, status, messages: [], updatedAt: '' });
-const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
+const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '+47 123 45 678', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
 
 test('password reset replaces the owner password and invalidates prior sessions', () => {
   const previous = { sessionVersion: 'previous-session', resetHash: auth.tokenHash('one-time-link'), resetExpires: Date.now() + 60000 };
@@ -160,8 +160,8 @@ test('guest and extras validation includes lower, upper and integer bounds', () 
   for (const patch of [{ guests: 0 }, { guests: 30 }, { guests: 2.5 }, { guests: '8' }, { linenTowels: 9 }, { linenTowels: -1 }, { linenTowels: 0.5 }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /guests/);
   assert.doesNotThrow(() => m.validateRequest({ ...request(), guests: 29, linenTowels: 29 }));
 });
-test('request requires consent, valid email and name and rejects honeypot spam', () => {
-  for (const patch of [{ name: '' }, { consent: false }, { email: 'invalid' }, { website: 'spam' }, { name: ['object'] }, { message: 'x'.repeat(5001) }, { requestKey: '' }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /details/);
+test('request requires consent, valid email, name and phone and rejects honeypot spam', () => {
+  for (const patch of [{ name: '' }, { phone: '' }, { phone: '   ' }, { phone: undefined }, { consent: false }, { email: 'invalid' }, { website: 'spam' }, { name: ['object'] }, { message: 'x'.repeat(5001) }, { requestKey: '' }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /details/);
 });
 
 test('owner prices cover both selected nights, can overlap, and persist alongside legacy state', () => {

@@ -29,7 +29,7 @@ let offset = 40;
 while (availability.body.unavailable.some(b => day(offset) < b.departure && b.arrival < day(offset + 10)) || Object.keys(availability.body.nightlyPrices ?? {}).some(d => d >= day(offset) && d <= day(offset + 10))) offset += 12;
 assert.ok(offset < 650, 'No safe empty range to test.');
 const stay = { arrival: day(offset), departure: day(offset + 3) };
-const request = () => ({ action: 'enquire', ...stay, guests: 6, linenTowels: 3, name: prefix, email: `test-${randomUUID()}@example.com`, phone: '', message: 'Local automated test only.', occasion: 'company', language: 'en', consent: true, website: '', requestKey: randomUUID() });
+const request = () => ({ action: 'enquire', ...stay, guests: 6, linenTowels: 3, name: prefix, email: `test-${randomUUID()}@example.com`, phone: '+47 123 45 678', message: 'Local automated test only.', occasion: 'company', language: 'en', consent: true, website: '', requestKey: randomUUID() });
 try {
   await expect(undefined, 401, '', '?view=owner');
   await expect({ action: 'request-reset', email: username }, 503);
