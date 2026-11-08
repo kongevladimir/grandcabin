@@ -23,6 +23,12 @@
 .bk-heading > p { max-width: 315px; color: var(--bk-muted); font-size: .95rem; margin: 0 0 5px; }
 .bk-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 30px; align-items: start; }
 .bk-layout[hidden] { display: none; }
+.bk-arrival-times { color: var(--bk-muted); font-size: .82rem; margin: 12px 0 20px; }
+.bk-booking-rules { margin: 24px 0 18px; padding: 14px 0; border-top: 1px solid var(--bk-line); border-bottom: 1px solid var(--bk-line); font-size: .82rem; line-height: 1.7; }
+.bk-booking-rules summary { cursor: pointer; font-size: .85rem; font-weight: 400; text-transform: none; letter-spacing: normal; }
+.bk-booking-rules > div { padding-top: 10px; }
+.bk-booking-rules ul { padding-left: 20px; }
+.bk-booking-rules li { margin: 8px 0; }
 .bk-panel, .bk-conversation { background: var(--bk-paper); border: 1px solid var(--bk-line); padding: 32px; }
 .bk-panel > p { font-size: .87rem; color: var(--bk-muted); margin-bottom: 24px; }
 .bk-panel h2:focus { outline: none; }

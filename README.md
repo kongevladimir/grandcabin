@@ -6,6 +6,11 @@ then receive a personal reply from the owner by email or phone. Guest name,
 email and phone number are required when submitting an enquiry. Only the owner
 receives an automated email notification. The owner records agreed stays and
 blocks their dates manually; there is no payment collection.
+The last enquiry step has a collapsed, sentence-case booking-terms section and
+one required checkbox accepting both the terms and contact/message processing.
+New enquiries retain the accepted terms version. Check-in is from 16:00 and
+checkout by 12:00. Owner-supplied cancellation terms are full refund more than
+60 days before check-in, 50% at 30–60 days, and none below 30 days.
 The shared footer lists both phone numbers and info@turucrown.no under Contact us,
 with compact labelled phone and email links in both languages.
 Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24

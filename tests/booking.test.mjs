@@ -17,7 +17,7 @@ const availableStay = Array.from({ length: 365 }, (_, offset) => ({ arrival: day
   .find(candidate => !m.finnReservations.some(reserved => m.overlaps(candidate, reserved)));
 assert.ok(availableStay);
 const booking = (id, status = 'pending', dates = stay) => ({ id, ...dates, status, messages: [], updatedAt: '' });
-const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '+47 123 45 678', occasion: 'private', language: 'en', message: '', consent: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
+const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '+47 123 45 678', occasion: 'private', language: 'en', message: '', consent: true, bookingRulesAccepted: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
 
 test('owner password permits nine characters and keeps its upper bound', () => {
   assert.equal(m.validOwnerPassword('x'.repeat(8)), false);
@@ -115,6 +115,7 @@ test('status transitions cannot silently reactivate cancelled or declined stays'
 test('request normalizes contact details and preserves chosen extras', () => {
   const clean = m.validateRequest(request());
   assert.equal(clean.name, 'Guest Name'); assert.equal(clean.email, 'guest@example.com');
+  assert.equal(clean.bookingRulesVersion, m.BOOKING_RULES_VERSION);
   assert.equal(clean.guests, 8); assert.equal(clean.linenTowels, 3);
 });
 test('standard price includes mandatory cleaning and one combined package per selected person', () => {
@@ -169,7 +170,7 @@ test('guest and extras validation includes lower, upper and integer bounds', () 
   assert.doesNotThrow(() => m.validateRequest({ ...request(), guests: 29, linenTowels: 29 }));
 });
 test('request requires consent, valid email, name and phone and rejects honeypot spam', () => {
-  for (const patch of [{ name: '' }, { phone: '' }, { phone: '   ' }, { phone: undefined }, { consent: false }, { email: 'invalid' }, { website: 'spam' }, { name: ['object'] }, { message: 'x'.repeat(5001) }, { requestKey: '' }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /details/);
+  for (const patch of [{ name: '' }, { phone: '' }, { phone: '   ' }, { phone: undefined }, { consent: false }, { bookingRulesAccepted: false }, { bookingRulesAccepted: undefined }, { email: 'invalid' }, { website: 'spam' }, { name: ['object'] }, { message: 'x'.repeat(5001) }, { requestKey: '' }]) assert.throws(() => m.validateRequest({ ...request(), ...patch }), /details/);
 });
 
 test('owner prices cover both selected nights, can overlap, and persist alongside legacy state', () => {

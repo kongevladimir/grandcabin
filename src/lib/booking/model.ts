@@ -1,6 +1,8 @@
 export const OWNER_PASSWORD_MIN_LENGTH = 9;
 export function validOwnerPassword(password: string) { return password.length >= OWNER_PASSWORD_MIN_LENGTH && password.length <= 200; }
 
+export const BOOKING_RULES_VERSION = "2026-11-08";
+
 export type BookingStatus = "pending" | "accepted" | "declined" | "cancelled";
 export type Stay = { arrival: string; departure: string };
 export type Message = { id: string; author: "guest" | "owner" | "system"; text: string; createdAt: string };
@@ -8,7 +10,7 @@ export type Booking = Stay & {
   id: string; requestKey: string; name: string; email: string; phone: string;
   guests: number; linenTowels?: number; linen?: number; towels?: number; occasion: string;
   language: "nb" | "en"; status: BookingStatus; createdAt: string; updatedAt: string;
-  messages: Message[];
+  messages: Message[]; bookingRulesVersion?: string;
   pricing?: BookingQuote | { dailyRate: number; rentalTotal: number; currency: "NOK" };
 };
 export type Block = Stay & { id: string; note: string; external?: true; guestName?: string; agreedPrice?: number; guestCount?: number };
@@ -132,10 +134,10 @@ export function validateRequest(value: Record<string, unknown>, prices: NightlyP
   if (typeof guests !== "number" || !Number.isInteger(guests) || guests < 1 || guests > 29 || typeof linenTowels !== "number" || !Number.isInteger(linenTowels) || linenTowels < 0 || linenTowels > guests) throw new BookingError("guests");
   if (rentalQuote(stay, linenTowels, guests, prices).total === null) throw new BookingError("pricing");
   const email = text("email", 254, true).toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || value.consent !== true || text("website", 200)) throw new BookingError("details");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || value.consent !== true || value.bookingRulesAccepted !== true || text("website", 200)) throw new BookingError("details");
   const requestKey = text("requestKey", 50, true);
   if (!/^[a-f0-9-]{36}$/.test(requestKey)) throw new BookingError("details");
-  return { ...stay, guests, linenTowels, email, requestKey, name: text("name", 120, true), phone: text("phone", 40, true), occasion: text("occasion", 120), message: text("message", 5000), language: value.language === "en" ? "en" as const : "nb" as const };
+  return { ...stay, guests, linenTowels, email, requestKey, bookingRulesVersion: BOOKING_RULES_VERSION, name: text("name", 120, true), phone: text("phone", 40, true), occasion: text("occasion", 120), message: text("message", 5000), language: value.language === "en" ? "en" as const : "nb" as const };
 }
 export function changeStatus(state: BookingState, booking: Booking, status: BookingStatus) {
   if (booking.status === status) return;
