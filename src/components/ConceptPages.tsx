@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { preload } from "react-dom";
 import { useEffect } from "react";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
@@ -509,6 +510,7 @@ export function RetreatBookingFooter({ language, omitHeadingPeriod = false }: { 
 }
 
 export function RetreatConcept() {
+  preload("/images/cabin-film-opening.webp", { as: "image", fetchPriority: "high" });
   const [language, setLanguage] = useSiteLanguage();
   const t = language === "nb" ? {
     hero: "En uforglemmelig fjellsamling for opptil 29 gjester",
@@ -530,7 +532,7 @@ export function RetreatConcept() {
             loop
             playsInline
             preload="auto"
-            poster="/images/living.avif"
+            poster="/images/cabin-film-opening.webp"
             aria-hidden="true"
           >
             <source src="/videos/grandcabin-hero-hd.webm" type='video/webm; codecs="vp9,opus"' />

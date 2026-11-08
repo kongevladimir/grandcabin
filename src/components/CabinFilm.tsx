@@ -27,7 +27,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
 
   return <>
     <section className="retreat-cabin-video-hero" aria-labelledby="retreat-cabin-video-title">
-      <Image className="retreat-cabin-video-poster" src="/images/living.avif" alt="" fill priority sizes="100vw" />
+      <Image className="retreat-cabin-video-poster" src="/images/cabin-film-opening.webp" alt="" fill priority unoptimized sizes="100vw" />
       <video
         className="retreat-cabin-local-video"
         ref={player}
@@ -36,6 +36,7 @@ export function CabinFilm({ language, description }: { language: Language; descr
         loop
         playsInline
         preload="auto"
+        poster="/images/cabin-film-opening.webp"
         aria-hidden="true"
         onCanPlay={() => setReady(true)}
         onPlay={() => setPlaying(true)}

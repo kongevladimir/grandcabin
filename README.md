@@ -29,7 +29,9 @@ On Windows, use `npm.cmd` if PowerShell blocks `npm.ps1`.
 
 The selected website design is the multi-page mountain-retreat presentation:
 
-- `/` — the main entrance.
+- `/` — the main entrance. The background film uses a preloaded still extracted
+  from its first frame, so loading does not briefly show the living-room photo.
+  The cabin page uses the same opening still; the video files are unchanged.
 - `/cabin` — cabin story, room photo gallery with full-screen viewing, FINN and Airbnb review carousels, and facilities overview.
 - `/bedrooms` — Rom in Norwegian and Rooms in English, with bedroom photos and room details.
 - `/materials` — wood, surface treatment, and interior material story.
