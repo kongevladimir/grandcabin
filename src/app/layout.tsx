@@ -1,3 +1,4 @@
+import { VisitTracker } from "@/components/VisitTracker";
 import type { Metadata } from "next";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang={site.language}><body>{children}</body></html>;
+  return <html lang={site.language}><body><VisitTracker />{children}</body></html>;
 }

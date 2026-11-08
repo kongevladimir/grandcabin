@@ -17,6 +17,13 @@
   "images": {
     "binding": "IMAGES"
   },
+  "d1_databases": [
+    {
+      "binding": "ANALYTICS_DB",
+      "database_name": "turucrown-analytics",
+      "database_id": "d4934098-75a1-4063-8b25-681cc6cffee5"
+    }
+  ],
   "observability": {
     "enabled": true
   }

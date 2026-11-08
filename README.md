@@ -40,6 +40,9 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/turufjell` — outdoor experiences, with an activity guide at `/turufjell/activities`.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
 - `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
+- The owner's **Statistikk / Statistics** tab shows approximate browser sessions,
+  page views, daily totals, popular pages and booking/phone/email/navigation clicks
+  for the last 7, 30, 90 or 365 days. Only the authenticated owner can read it.
 - `/admin` — owner sign-in with username and password, accessed directly without a public navigation link. The old `/login` address redirects here.
 - `/forgot-password` — request an owner password reset by email when production email delivery is configured.
 
@@ -61,6 +64,21 @@ The owner-provided FINN reservations for November and December 2026 and owner
 holds for 12–14 January and 11–12 March 2027 are recorded as unavailable nights
 in the booking calendar, including the last listed night. The former 22–23
 January hold has been removed. New reservations must still be added manually.
+
+## Private statistics
+
+Visitor statistics start when tracking is published; previous visits cannot be
+reconstructed. The separate private Cloudflare D1 database is configured through
+the `ANALYTICS_DB` binding in `wrangler.jsonc`; initialize it with
+`analytics/schema.sql`. It stores only a random per-event retry ID, Norwegian
+calendar date, allowlisted public page, click category and session-start flag.
+No names, emails, IP addresses, query strings or referrers are stored. Events are
+kept for up to 365 days and older events are removed on the next recorded visit.
+A browser-tab timestamp estimates sessions with a 30-minute inactivity boundary;
+it is not a count of unique people. New tabs can count separately. Signed-in owner
+traffic and known bot user agents are excluded, while blocked tracking can cause
+undercounting. Local preview data stays in memory and clears on server restart.
+The statistics database is independent of booking records and backup storage.
 
 ## Commands
 

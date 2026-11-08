@@ -10,7 +10,9 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     ".open-next/**",
-    ".wrangler/**",
+    "**/.wrangler/**",
+    // Private local test state and generated integration-test bundles.
+    ".booking-data/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

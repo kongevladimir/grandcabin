@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { OwnerPriceCalendar } from "./OwnerPriceCalendar";
 import { OwnerReservationForm } from "./OwnerReservationForm";
+import { OwnerAnalytics } from "./OwnerAnalytics";
 import { OwnerStays } from "./OwnerStays";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { RetreatNav } from "@/components/ConceptPages";
@@ -57,7 +58,7 @@ export function GuestConversation({ id }: { id: string }) {
 }
 
 export function OwnerInbox() {
-  const [view, setView] = useState<"prices" | "enquiries">("prices");
+  const [view, setView] = useState<"prices" | "enquiries" | "analytics">("prices");
   const [lang, setLang] = useSiteLanguage(); const w = (nb: string, en: string) => words(lang, nb, en);
   const [data, setData] = useState<OwnerData | null>(null), [error, setError] = useState("");
   const [selected, setSelected] = useState("");
@@ -79,8 +80,8 @@ export function OwnerInbox() {
     {!data ? loading ? <p role="status">{w("Laster inn …", "Loading …")}</p> : <section className="bk-panel bk-login"><h2>{w("Logg inn som eier", "Owner sign in")}</h2><p>{w("Logg inn for å administrere priser og kalender.", "Sign in to manage prices and the calendar.")}</p><Link className="bk-primary" href="/admin">{w("Gå til innlogging", "Go to sign in")} →</Link></section> : <>
       {data.preview && <p className="bk-preview">{w("Eierforhåndsvisning · Kun lokale testforespørsler. E-post sendes ikke.", "Owner preview · Local test enquiries only. No email is sent.")}</p>}
       {data.pendingEmails > 0 && <p className="bk-error">{w(`${data.pendingEmails} e-postvarsler venter på sending. Forespørslene er lagret.`, `${data.pendingEmails} email notifications are awaiting delivery. The enquiries are saved.`)} <button disabled={busy} onClick={() => void action({ action: "retry" })}>{w("Prøv sending igjen", "Retry delivery")}</button></p>}
-      <div className="bk-owner-tabs" aria-label={w("Administrasjon", "Administration")}><button type="button" className={view === "prices" ? "active" : ""} aria-pressed={view === "prices"} onClick={() => setView("prices")}>{w("Priskalender", "Price calendar")}</button><button type="button" className={view === "enquiries" ? "active" : ""} aria-pressed={view === "enquiries"} onClick={() => setView("enquiries")}>{w("Forespørsler & datoer", "Enquiries & dates")}</button></div>
-      {view === "prices" ? <OwnerPriceCalendar prices={data.nightlyPrices} today={data.today} occupied={[...data.blocks, ...data.bookings.filter(b => b.status === "accepted")]} lang={lang} onSaved={reload} /> : <>
+      <div className="bk-owner-tabs" aria-label={w("Administrasjon", "Administration")}><button type="button" className={view === "prices" ? "active" : ""} aria-pressed={view === "prices"} onClick={() => setView("prices")}>{w("Priskalender", "Price calendar")}</button><button type="button" className={view === "enquiries" ? "active" : ""} aria-pressed={view === "enquiries"} onClick={() => setView("enquiries")}>{w("Forespørsler & datoer", "Enquiries & dates")}</button><button type="button" className={view === "analytics" ? "active" : ""} aria-pressed={view === "analytics"} onClick={() => setView("analytics")}>{w("Statistikk", "Statistics")}</button></div>
+      {view === "prices" ? <OwnerPriceCalendar prices={data.nightlyPrices} today={data.today} occupied={[...data.blocks, ...data.bookings.filter(b => b.status === "accepted")]} lang={lang} onSaved={reload} /> : view === "analytics" ? <OwnerAnalytics lang={lang} /> : <>
       <OwnerReservationForm lang={lang} busy={busy} save={action} />
       <OwnerStays blocks={data.blocks} bookings={data.bookings} today={data.today} lang={lang} />
       <div className="bk-owner-stats"><span><b>{data.bookings.filter(b => b.status === "pending").length}</b>{w("Nye forespørsler", "Pending enquiries")}</span><span><b>{data.bookings.filter(b => b.status === "accepted").length}</b>{w("Bekreftede opphold", "Confirmed stays")}</span><span><b>{data.blocks.length}</b>{w("Blokkerte perioder", "Blocked periods")}</span></div>

@@ -185,6 +185,22 @@
 .bk-owner-tabs { display: flex; gap: 12px; margin: 24px 0; flex-wrap: wrap; }
 .bk-owner-tabs button { padding: 14px 20px; border: 1px solid var(--bk-line); background: var(--bk-paper); color: var(--bk-ink); font-size: .85rem; }
 .bk-owner-tabs button.active { background: var(--bk-ink); color: #fff; border-color: var(--bk-ink); }
+.bk-analytics-heading, .bk-analytics-controls { display: flex; gap: 20px; align-items: end; justify-content: space-between; flex-wrap: wrap; }
+.bk-analytics-heading p { font-size: .85rem; color: var(--bk-muted); }
+.bk-analytics-totals { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 30px 0; }
+.bk-analytics-totals > div { border: 1px solid var(--bk-line); padding: 20px; }
+.bk-analytics-totals strong { display: block; font-size: 2rem; font-weight: 500; }
+.bk-analytics-totals span { font-size: .8rem; color: var(--bk-muted); }
+.bk-analytics-chart { height: 150px; display: flex; gap: 3px; align-items: end; overflow-x: auto; border-bottom: 1px solid var(--bk-line); }
+.bk-analytics-chart > div { flex: 1; min-width: 2px; height: 100%; display: flex; align-items: end; }
+.bk-analytics-chart span { display: block; width: 100%; background: #a47c45; }
+.bk-analytics-range { display: flex; justify-content: space-between; font-size: .75rem; margin: 8px 0 20px; }
+.bk-analytics-table { overflow: auto; max-height: 450px; margin: 16px 0 24px; }
+.bk-analytics table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.bk-analytics td, .bk-analytics th { padding: 12px; border-bottom: 1px solid var(--bk-line); text-align: right; }
+.bk-analytics td:first-child, .bk-analytics th:first-child { text-align: left; }
+.bk-analytics h3 { margin-top: 28px; }
+@media(max-width:560px) { .bk-analytics-totals { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; } .bk-analytics-totals > div { padding: 12px; } .bk-analytics-totals strong { font-size: 1.6rem; } }
 .bk-price-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start; }
 .bk-prices .bk-calendar-toolbar h3 { font-size: 1.65rem; text-transform: capitalize; margin: 0; }
 .bk-price-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; margin-top: 24px; }
