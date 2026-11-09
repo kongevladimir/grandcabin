@@ -35,10 +35,15 @@
   .retreat-header-pages[data-menu-open="true"] nav { display: grid; }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 48px; white-space: normal; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 4px; }
-  .retreat-home-page .retreat-header-pages { mix-blend-mode: normal; background: #171e28; }
+  .retreat-home-page .retreat-header-pages { position: sticky; inset: auto; top: 0; mix-blend-mode: normal; background: #171e28; }
   .retreat-home-page { height: auto; min-height: 100svh; overflow: clip; }
-  .retreat-home-hero .retreat-hero-copy { padding-top: 120px; }
+  /* A landscape film keeps its complete frame on a portrait screen. */
+  .retreat-home-page .retreat-home-hero { height: auto; min-height: 0; background: #17202c; }
+  .retreat-home-hero .retreat-home-video-frame { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+  .retreat-home-hero .retreat-hero-shade { display: none; }
+  .retreat-home-hero .retreat-hero-copy { position: relative; inset: auto; padding: 2.25rem 1.25rem 3rem; }
   .retreat-home-hero .retreat-hero-copy h1 { font-size: clamp(1.9rem, 8vw, 3rem); }
+  .retreat-home-hero .retreat-hero-copy > a { margin-top: 1.5rem; }
 
   .retreat-detail-page[data-page] { --retreat-page-gutter: var(--mobile-gutter); --retreat-page-space: 3rem; }
   .retreat-page :is(section, article, figure, header, nav, main, dl, .retreat-detail-text) { min-width: 0; }
@@ -62,7 +67,23 @@
   .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay .retreat-turufjell-about-image { height: auto; aspect-ratio: auto; }
   .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay .retreat-turufjell-about-copy { padding: 3rem var(--mobile-gutter); }
   .retreat-detail-page[data-page="cabin"] .retreat-detail { grid-template-rows: auto auto; min-height: 0; }
-  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-hero { height: calc(100svh - 88px); min-height: 680px; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-hero {
+    container-type: normal; height: auto; min-height: 0; max-height: none;
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto;
+  }
+  .retreat-detail-page[data-page="cabin"] :is(.retreat-cabin-local-video, .retreat-cabin-video-poster) {
+    position: relative !important; inset: auto !important; grid-area: 1 / 1;
+    display: block; width: 100% !important; height: auto !important;
+    aspect-ratio: 16 / 9; object-fit: contain;
+  }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy { grid-area: 2 / 1; padding: 2rem var(--mobile-gutter) 1.5rem; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy h1 { font-size: clamp(2.8rem, 12vw, 4.5rem); }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy .retreat-cabin-video-subtitle { font-size: 1.1rem; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-statement { position: relative; inset: auto; grid-area: 3 / 1; padding: 0 var(--mobile-gutter) 1.5rem; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-statement :is(.retreat-cabin-statement-lead, .retreat-cabin-statement-detail),
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy :is(h1, .retreat-cabin-video-subtitle),
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-welcome { text-shadow: none; }
+  .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-bottom { position: relative; inset: auto; grid-area: 4 / 1; width: 100%; padding: 0 var(--mobile-gutter) 1.5rem; }
   .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro { scroll-margin-top: 88px; width: 100%; margin-inline: 0; }
   .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-intro .retreat-cabin-intro-copy { padding-inline: var(--mobile-gutter); }
   .retreat-detail-page[data-page="cabin"] .retreat-cabin-landscape img { height: auto; }
