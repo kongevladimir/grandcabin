@@ -55,6 +55,12 @@ The selected website design is the multi-page mountain-retreat presentation:
 
 Legacy `/concepts/retreat` addresses permanently redirect to the corresponding short addresses. Other retired concept addresses redirect to the homepage.
 
+Phone and tablet layouts use `src/app/mobile.css`, loaded after the desktop and
+booking styles. Below 900px, the shared header has an accessible expandable menu
+while language selection and booking remain visible. Editorial photographs keep
+their full proportions, image/text sections stack, and the booking fields use one
+column on phones. Content, typefaces, colours and original image assets are retained.
+
 After signing in, the owner can select one night or a range (both dates included)
 and save a nightly price for up to 24 guests, or restore the original prices.
 Changes are stored in booking storage and require no website edit or deployment.

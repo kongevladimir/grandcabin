@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
 import { BedroomGallery } from "@/components/BedroomGallery";
@@ -473,15 +473,24 @@ function TuruCrownLogo() {
 }
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
+  const menuButton = useRef<HTMLButtonElement>(null);
   const labels = language === "nb"
     ? ["Hytta", "Rom", "Samlinger", "Håndverk", "Opplevelser", "Beliggenhet", "Galleri", "3D-visning"]
     : ["The cabin", "Rooms", "Retreats", "Craftsmanship", "Experiences", "Location", "Gallery", "3D tour"];
 
   return (
-    <header className="retreat-header retreat-header-pages">
+    <header className="retreat-header retreat-header-pages" data-menu-open={menuOpen} onKeyDown={(event) => {
+      if (event.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+        menuButton.current?.focus();
+      }
+    }}>
       <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
-      <nav aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
+      <nav id={menuId} aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} onClick={() => setMenuOpen(false)} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
       <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">{language === "nb" ? "BESTILL NÅ" : "BOOK NOW"} <span aria-hidden="true">↗</span></Link></div>
+      <button ref={menuButton} className="retreat-menu-toggle" type="button" aria-controls={menuId} aria-expanded={menuOpen} aria-label={language === "nb" ? (menuOpen ? "Lukk meny" : "Åpne meny") : (menuOpen ? "Close menu" : "Open menu")} onClick={() => setMenuOpen(!menuOpen)}><span aria-hidden="true">{menuOpen ? "×" : "☰"}</span></button>
     </header>
   );
 }
