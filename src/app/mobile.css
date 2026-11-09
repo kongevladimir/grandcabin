@@ -5,6 +5,7 @@
 .retreat-floor-plan-drawing.is-full { position: absolute; inset: 0; }
 .retreat-floor-plan-mobile { display: none; }
 .retreat-floor-plan-swipe { display: none; }
+.retreat-floor-plan-zoom { display: none; }
 
 @media (max-width: 900px) {
   html { scroll-padding-top: 88px; }
@@ -106,7 +107,8 @@
   .retreat-floor-plan-mobile { display: grid; gap: 1rem; width: 100%; }
   .retreat-floor-plan-mobile svg { display: block; width: 100%; height: auto; }
   .retreat-floor-plan-drawing[data-floor="loft"] { overflow: auto; }
-  .retreat-floor-plan-drawing[data-floor="loft"] .retreat-floor-plan-mobile { width: 160%; }
+  .retreat-floor-plan-drawing[data-floor="loft"].is-zoomed .retreat-floor-plan-mobile { width: 160%; }
+  .retreat-page .retreat-floor-plan-zoom { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem .75rem; border: 1px solid #d8b687; background: transparent; color: #d8b687; font-size: .85rem; letter-spacing: normal; font-weight: 400; }
   .retreat-floor-plan-swipe { display: block; margin: .5rem 0 0; color: #bfc7cd; font-size: .85rem; }
   .retreat-floor-plan-drawing.is-full { overflow: auto; }
   .retreat-floor-plan-drawing.is-full .retreat-floor-plan-mobile { padding: .75rem; }

@@ -63,8 +63,9 @@ column on phones. Content, typefaces, colours and original image assets are reta
 The homepage and cabin films retain their complete 16:9 frame on phones and
 tablets, with the existing copy underneath so it cannot obscure the cabin.
 Mobile floor-plan views use the original PNGs with tighter viewports around the
-lower floor and loft. The loft is enlarged with horizontal scrolling, preserving
-the mezzanine's position alongside it. The main-floor and desktop views stay unchanged.
+lower floor and loft. The loft initially shows the entire drawing, including the
+mezzanine in its original position. An explicit mobile enlarge/show-whole button
+enables horizontal scrolling only when requested. The main-floor and desktop views stay unchanged.
 
 After signing in, the owner can select one night or a range (both dates included)
 and save a nightly price for up to 24 guests, or restore the original prices.
