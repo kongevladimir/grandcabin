@@ -6,7 +6,7 @@ then receive a personal reply from the owner by email or phone. Guest name,
 email and phone number are required when submitting an enquiry. Only the owner
 receives an automated email notification. The owner records agreed stays and
 blocks their dates manually; there is no payment collection.
-The last enquiry step has a collapsed, sentence-case booking-terms section and
+The last enquiry step displays a compact, sentence-case cancellation-policy section and
 one required checkbox accepting both the terms and contact/message processing.
 New enquiries retain the accepted terms version. Check-in is from 16:00 and
 checkout by 12:00. Owner-supplied cancellation terms are full refund more than
