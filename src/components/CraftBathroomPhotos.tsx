@@ -17,6 +17,15 @@ export function CraftBathroomPhotos({ language }: { language: Language }) {
   const stage = useRef<HTMLElement>(null);
   const nb = language === "nb";
 
+  // These three photos are a short sequence; preload them so manual navigation
+  // can display the next frame immediately instead of starting a cold request.
+  useEffect(() => {
+    for (const photo of photos) {
+      const image = new window.Image();
+      image.src = photo.preview;
+    }
+  }, []);
+
   useEffect(() => {
     if (!stage.current) return;
     let inView = false;

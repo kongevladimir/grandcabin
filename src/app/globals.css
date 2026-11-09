@@ -2148,7 +2148,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 
 /* The cabin gallery retains the complete image, including portrait photographs. */
 .retreat-cabin-gallery .retreat-suite-gallery-stage { width: min(996px, calc(100% - 2.8rem)); aspect-ratio: 16 / 9; height: auto; min-height: 0; margin-inline: auto; border: 1px solid rgb(216 182 135 / 35%); background: #10171e; }
-.retreat-cabin-gallery-photo { position: absolute; inset: clamp(.5rem, 1.3vw, 1rem); animation: retreat-cabin-gallery-fade .9s ease; }
+.retreat-cabin-gallery-photo { position: absolute; inset: clamp(.5rem, 1.3vw, 1rem); }
 .retreat-cabin-gallery-photo img { object-fit: contain; }
 .retreat-cabin-gallery .retreat-cabin-gallery-photo img { object-fit: contain; }
 .retreat-cabin-gallery-arrow { position: absolute; z-index: 3; top: 50%; width: 48px; height: 48px; transform: translateY(-50%); border: 1px solid #d8b687; border-radius: 50%; background: rgb(16 23 30 / 85%); color: #fff; font-size: 1.4rem; }

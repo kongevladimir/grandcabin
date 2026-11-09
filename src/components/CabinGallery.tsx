@@ -35,6 +35,15 @@ export function CabinGallery({ language }: { language: Language }) {
     setActive(current => (current + direction + photos.length) % photos.length);
   };
 
+  // Keep the adjacent slides warm in the browser cache so arrow clicks do not
+  // have to wait for the next full-size gallery image to begin downloading.
+  useEffect(() => {
+    for (const index of [(active + 1) % photos.length, (active - 1 + photos.length) % photos.length]) {
+      const image = new window.Image();
+      image.src = `/images/cabin-gallery/${photos[index].file}-view.webp`;
+    }
+  }, [active]);
+
   useEffect(() => {
     if (!stage.current) return;
     let inView = false;
@@ -75,7 +84,7 @@ export function CabinGallery({ language }: { language: Language }) {
         <span>{nb ? "Utforsk rommene, de varme materialene og utsikten som følger dere gjennom hytta." : "Explore the rooms, warm materials and views that accompany you throughout the cabin."}</span>
       </div>
       <div className="retreat-suite-gallery-stage" ref={stage}>
-        <div className="retreat-cabin-gallery-photo" key={photo.file}><Image src={`/images/cabin-gallery/${photo.file}-view.webp`} alt={photo[language]} fill unoptimized sizes="100vw" /></div>
+        <div className="retreat-cabin-gallery-photo"><Image src={`/images/cabin-gallery/${photo.file}-view.webp`} alt={photo[language]} fill unoptimized sizes="100vw" /></div>
         <button className="retreat-suite-gallery-open" type="button" onClick={() => { viewer.current?.showModal(); setExpanded(true); }} aria-label={nb ? "Åpne bildet i fullskjerm" : "Open photo full screen"}><span>{nb ? "Se i fullskjerm" : "View full screen"} ↗</span></button>
         <button className="retreat-cabin-gallery-arrow is-previous" type="button" onClick={() => changePhoto(-1)} aria-label={nb ? "Forrige bilde" : "Previous photo"}>←</button>
         <button className="retreat-cabin-gallery-arrow is-next" type="button" onClick={() => changePhoto(1)} aria-label={nb ? "Neste bilde" : "Next photo"}>→</button>

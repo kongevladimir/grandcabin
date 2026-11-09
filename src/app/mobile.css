@@ -25,7 +25,7 @@
 
 @media (min-width: 901px) {
   .retreat-header-pages { grid-template-columns: 180px minmax(0, 1fr) auto; }
-  .retreat-header-pages nav { font-size: clamp(1.2rem, 1.55vw, 1.5rem); line-height: 1.2; gap: clamp(.65rem, 1.1vw, 1.1rem); }
+  .retreat-header-pages nav { font-size: clamp(1.85rem, 2.4vw, 2.4rem); line-height: 1.2; gap: clamp(1.1rem, 1.5vw, 1.6rem); }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
 }
