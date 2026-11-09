@@ -15,6 +15,8 @@ The shared footer lists both phone numbers and info@turucrown.no under Contact u
 with compact labelled phone and email links in both languages.
 The header keeps the original mountain/wordmark artwork and renders its two
 subtitles as larger, crisp live text for readability on phones and desktops.
+Desktop navigation uses larger lettering and wraps within the header on smaller
+laptop screens, keeping every page link accessible.
 Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24
 adds NOK 750 per day, up to 29 guests. Easter 22–30 March 2027 starts at
 NOK 16,000 per day with the same extra-guest rule. Mandatory final cleaning is

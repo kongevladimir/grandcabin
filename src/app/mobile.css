@@ -15,6 +15,15 @@
 .retreat-logo .retreat-logo-location { font-size: 8.5px; letter-spacing: .09em; }
 .retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { white-space: normal; text-wrap: balance; }
 
+@media (min-width: 901px) {
+  .retreat-header-pages nav { font-size: clamp(.75rem, .9vw, .875rem); gap: clamp(.65rem, 1.1vw, 1.1rem); }
+  .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
+  .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
+}
+@media (min-width: 901px) and (max-width: 1300px) {
+  .retreat-header-pages nav { flex-wrap: wrap; justify-content: center; gap: .15rem .8rem; overflow: visible; }
+}
+
 @media (max-width: 900px) {
   html { scroll-padding-top: 88px; }
   .retreat-page { --mobile-gutter: clamp(1.25rem, 4vw, 2rem); }
