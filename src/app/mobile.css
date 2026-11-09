@@ -1,4 +1,12 @@
 /* Responsive layout only: retain the desktop palette, typefaces and original assets. */
+@font-face {
+  font-family: "Turu Crown Menu";
+  src: url("/fonts/cormorant-garamond-menu.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+.retreat-header-pages nav { font-family: "Turu Crown Menu", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: normal; text-transform: none; }
 .retreat-menu-toggle { display: none; }
 .retreat-floor-plan-drawing { width: 100%; }
 .retreat-floor-plan-open > .retreat-floor-plan-drawing { height: 100%; min-height: 0; }
@@ -17,7 +25,7 @@
 
 @media (min-width: 901px) {
   .retreat-header-pages { grid-template-columns: 180px minmax(0, 1fr) auto; }
-  .retreat-header-pages nav { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1rem, 1.1vw, 1.1rem); font-weight: 500; line-height: 1.2; letter-spacing: .045em; gap: clamp(.65rem, 1.1vw, 1.1rem); }
+  .retreat-header-pages nav { font-size: clamp(1.2rem, 1.55vw, 1.5rem); line-height: 1.2; gap: clamp(.65rem, 1.1vw, 1.1rem); }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
 }
@@ -54,13 +62,13 @@
   .retreat-header-pages nav {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     width: 100%; max-height: calc(100dvh - 88px); margin: 0; padding: 1rem var(--mobile-gutter) 1.5rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .25rem 1rem;
-    overflow: auto; background: #171e28; font-size: .8rem;
+    grid-template-columns: minmax(0, 1fr); gap: .25rem 1rem;
+    overflow: auto; background: #171e28; font-size: clamp(1.75rem, 5vw, 2.25rem);
     border-top: 1px solid rgb(216 182 135 / 25%);
     box-shadow: 0 14px 24px rgb(9 14 20 / 18%);
   }
   .retreat-header-pages[data-menu-open="true"] nav { display: grid; }
-  .retreat-header-pages nav a { display: flex; align-items: center; min-height: 48px; white-space: normal; }
+  .retreat-header-pages nav a { display: flex; align-items: center; justify-content: center; min-height: 50px; white-space: normal; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 4px; }
   .retreat-home-page .retreat-header-pages { position: sticky; inset: auto; top: 0; mix-blend-mode: normal; background: #171e28; }
   .retreat-home-page { height: auto; min-height: 100svh; overflow: clip; }

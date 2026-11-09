@@ -18,6 +18,10 @@ subtitles as larger, crisp live text for readability on phones and desktops.
 Desktop navigation uses larger Cormorant Garamond lettering and wraps within the
 header on smaller laptop screens, keeping every page link accessible. The logo
 keeps “EXCLUSIVE MOUNTAIN LODGE” on one line and “TURUFJELL · NORWAY” below it.
+Menu typography matches the owner's Chalet 1551 reference: regular-weight
+Cormorant Garamond, natural letter case and normal tracking. Its official Latin
+font is hosted locally in `public/fonts` with the SIL Open Font License; the phone
+menu presents the same links as a centred vertical list.
 Rent starts at NOK 15,000 per day for up to 24 guests. Each guest above 24
 adds NOK 750 per day, up to 29 guests. Easter 22–30 March 2027 starts at
 NOK 16,000 per day with the same extra-guest rule. Mandatory final cleaning is
