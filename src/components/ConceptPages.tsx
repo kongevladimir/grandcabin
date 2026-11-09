@@ -469,7 +469,11 @@ const retreatPaths = [
 ];
 
 function TuruCrownLogo() {
-  return <Image className="retreat-logo-latest" src="/images/turu-crown-logo-latest.png" alt="Turu Crown · Exclusive Mountain Lodge · Turufjell, Norway" width={822} height={380} unoptimized priority />;
+  return <>
+    <span className="retreat-logo-artwork"><svg viewBox="50 35 700 272" role="img" aria-label="Turu Crown"><image href="/images/turu-crown-logo-latest.png" width="822" height="380" /></svg></span>
+    <span className="retreat-logo-tagline">EXCLUSIVE MOUNTAIN LODGE</span>
+    <span className="retreat-logo-location">TURUFJELL · NORWAY</span>
+  </>;
 }
 
 export function RetreatNav({ language, setLanguage, page }: { language: Language; setLanguage: (language: Language) => void; page?: RetreatPageKey }) {
