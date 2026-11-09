@@ -62,6 +62,9 @@ their full proportions, image/text sections stack, and the booking fields use on
 column on phones. Content, typefaces, colours and original image assets are retained.
 The homepage and cabin films retain their complete 16:9 frame on phones and
 tablets, with the existing copy underneath so it cannot obscure the cabin.
+Mobile floor-plan views use the original PNGs with tighter viewports around the
+lower floor and loft. The loft is enlarged with horizontal scrolling, preserving
+the mezzanine's position alongside it. The main-floor and desktop views stay unchanged.
 
 After signing in, the owner can select one night or a range (both dates included)
 and save a nightly price for up to 24 guests, or restore the original prices.

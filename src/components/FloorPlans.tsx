@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { Language } from "./useSiteLanguage";
 import mainFloor from "../../public/images/floor-plan-main.png";
@@ -15,6 +15,19 @@ const floors = [
   { id: "main", nb: "Hovedetasjen", en: "Main floor", image: mainFloor, imageEnglish: mainFloorEnglish },
   { id: "loft", nb: "Loftet", en: "Loft", image: loftFloor, imageEnglish: loftFloorEnglish },
 ];
+
+function FloorPlanDrawing({ id, image, alt, full = false }: { id: string; image: StaticImageData; alt: string; full?: boolean }) {
+  // Viewports exclude only unused canvas. Both views reference the unchanged PNG.
+  const views = id === "lower" ? ["0 40 1375 785"] : id === "loft" ? ["75 45 1425 885"] : [];
+  return <div className={`retreat-floor-plan-drawing${full ? " is-full" : ""}`} data-floor={id}>
+    <Image className="retreat-floor-plan-original" src={image} alt={alt} fill={full || undefined} unoptimized sizes={full ? "100vw" : "(max-width: 900px) 100vw, 90vw"} />
+    {views.length > 0 && <div className="retreat-floor-plan-mobile">
+      {views.map((view) => <svg key={view} viewBox={view} role="img" aria-label={alt}>
+        <image href={image.src} width={image.width} height={image.height} />
+      </svg>)}
+    </div>}
+  </div>;
+}
 
 export function FloorPlans({ language }: { language: Language }) {
   const [selected, setSelected] = useState("main");
@@ -46,13 +59,14 @@ export function FloorPlans({ language }: { language: Language }) {
     </div>
     <figure id="floor-plan-view" className="retreat-floor-plan-view">
       <button className="retreat-floor-plan-open" type="button" onClick={openViewer} aria-haspopup="dialog" aria-label={nb ? `Åpne hele plantegningen: ${name}` : `Open full floor plan: ${name}`}>
-        <Image key={`${floor.id}-${language}`} src={planImage} alt={nb ? `Plantegning – ${name}, Turu Crown` : `Floor plan – ${name}, Turu Crown`} unoptimized sizes="(max-width: 900px) 100vw, 90vw" />
+        <FloorPlanDrawing key={`${floor.id}-${language}`} id={floor.id} image={planImage} alt={nb ? `Plantegning – ${name}, Turu Crown` : `Floor plan – ${name}, Turu Crown`} />
       </button>
       <figcaption><span aria-live="polite">{name}</span><button type="button" onClick={openViewer} aria-haspopup="dialog">{nb ? "SE HELE PLANTEGNINGEN" : "VIEW FULL FLOOR PLAN"} ↗</button></figcaption>
+      {floor.id === "loft" && <p className="retreat-floor-plan-swipe">{nb ? "Sveip sidelengs for å se hele tegningen." : "Swipe sideways to see the whole drawing."}</p>}
     </figure>
     <dialog ref={viewer} className="retreat-floor-plan-viewer" aria-labelledby="floor-plan-viewer-title" onClose={() => setExpanded(false)}>
       <header><h2 id="floor-plan-viewer-title">{name}</h2><button type="button" onClick={() => viewer.current?.close()}>{nb ? "Lukk og gå tilbake" : "Close and go back"} ×</button></header>
-      <div className="retreat-floor-plan-viewer-image">{expanded && <Image src={planImage} alt={nb ? `Hele plantegningen – ${name}, Turu Crown` : `Full floor plan – ${name}, Turu Crown`} fill unoptimized sizes="100vw" />}</div>
+      <div className="retreat-floor-plan-viewer-image">{expanded && <FloorPlanDrawing id={floor.id} image={planImage} alt={nb ? `Hele plantegningen – ${name}, Turu Crown` : `Full floor plan – ${name}, Turu Crown`} full />}</div>
     </dialog>
   </section>;
 }

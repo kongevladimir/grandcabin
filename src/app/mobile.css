@@ -1,5 +1,10 @@
 /* Responsive layout only: retain the desktop palette, typefaces and original assets. */
 .retreat-menu-toggle { display: none; }
+.retreat-floor-plan-drawing { width: 100%; }
+.retreat-floor-plan-open > .retreat-floor-plan-drawing { height: 100%; min-height: 0; }
+.retreat-floor-plan-drawing.is-full { position: absolute; inset: 0; }
+.retreat-floor-plan-mobile { display: none; }
+.retreat-floor-plan-swipe { display: none; }
 
 @media (max-width: 900px) {
   html { scroll-padding-top: 88px; }
@@ -96,10 +101,22 @@
   .retreat-floor-plan-viewer > header { flex-wrap: wrap; gap: .5rem; }
   .retreat-floor-plan-viewer header button { font-size: .85rem; }
   .retreat-floor-plan-view figcaption button { min-height: 44px; text-align: left; }
+  .retreat-floor-plan-drawing[data-floor="lower"] > .retreat-floor-plan-original,
+  .retreat-floor-plan-drawing[data-floor="loft"] > .retreat-floor-plan-original { display: none; }
+  .retreat-floor-plan-mobile { display: grid; gap: 1rem; width: 100%; }
+  .retreat-floor-plan-mobile svg { display: block; width: 100%; height: auto; }
+  .retreat-floor-plan-drawing[data-floor="loft"] { overflow: auto; }
+  .retreat-floor-plan-drawing[data-floor="loft"] .retreat-floor-plan-mobile { width: 160%; }
+  .retreat-floor-plan-swipe { display: block; margin: .5rem 0 0; color: #bfc7cd; font-size: .85rem; }
+  .retreat-floor-plan-drawing.is-full { overflow: auto; }
+  .retreat-floor-plan-drawing.is-full .retreat-floor-plan-mobile { padding: .75rem; }
+  .retreat-floor-plan-drawing.is-full[data-floor="lower"] .retreat-floor-plan-mobile { height: 100%; }
+  .retreat-floor-plan-drawing.is-full[data-floor="lower"] svg { height: 100%; min-height: 0; }
   .retreat-tour-frame { min-height: 360px; height: 65svh; }
   .retreat-page .retreat-detail-banner { width: 100%; margin-inline: 0; }
   .bk-panel h2 { scroll-margin-top: 16px; }
 }
+
 
 @media (max-width: 600px) {
   .retreat-detail-page[data-page]:not([data-page="cabin"]) :is(h1, h2) { font-size: clamp(2rem, 9vw, 2.75rem); line-height: 1.08; }
