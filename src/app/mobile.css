@@ -13,14 +13,15 @@
   line-height: 1.3; letter-spacing: .015em;
 }
 .retreat-logo .retreat-logo-location { font-size: 8.5px; letter-spacing: .09em; }
-.retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { white-space: normal; text-wrap: balance; }
+.retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { white-space: nowrap; text-wrap: nowrap; }
 
 @media (min-width: 901px) {
-  .retreat-header-pages nav { font-size: clamp(.75rem, .9vw, .875rem); gap: clamp(.65rem, 1.1vw, 1.1rem); }
+  .retreat-header-pages { grid-template-columns: 180px minmax(0, 1fr) auto; }
+  .retreat-header-pages nav { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1rem, 1.1vw, 1.1rem); font-weight: 500; line-height: 1.2; letter-spacing: .045em; gap: clamp(.65rem, 1.1vw, 1.1rem); }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
 }
-@media (min-width: 901px) and (max-width: 1300px) {
+@media (min-width: 901px) and (max-width: 1400px) {
   .retreat-header-pages nav { flex-wrap: wrap; justify-content: center; gap: .15rem .8rem; overflow: visible; }
 }
 
@@ -36,8 +37,8 @@
   }
   .retreat-header-pages .retreat-logo { grid-column: 1; width: clamp(94px, 32vw, 180px); }
   .retreat-logo .retreat-logo-artwork { max-height: 50px; }
-  .retreat-logo .retreat-logo-tagline { font-size: clamp(7.5px, 2.15vw, 9.5px); }
-  .retreat-logo .retreat-logo-location { font-size: clamp(7.5px, 2.1vw, 9px); }
+  .retreat-logo .retreat-logo-tagline { font-size: clamp(6.25px, calc(3vw - 4px), 8.5px); }
+  .retreat-logo .retreat-logo-location { font-size: clamp(6.5px, 2vw, 8.5px); }
   .retreat-header-pages .retreat-actions { grid-row: 1; grid-column: 2; gap: .5rem; }
   .retreat-header-pages .concept-language { gap: .2rem; }
   .retreat-header-pages .concept-language button { min-height: 44px; padding-inline: .2rem; }
@@ -141,6 +142,7 @@
 
 
 @media (max-width: 600px) {
+  .retreat-header-pages .retreat-booking-link > span { display: none; }
   .retreat-detail-page[data-page]:not([data-page="cabin"]) :is(h1, h2) { font-size: clamp(2rem, 9vw, 2.75rem); line-height: 1.08; }
   .retreat-detail-page[data-page="cabin"] { --cabin-title-size: clamp(2rem, 9vw, 2.6rem); --cabin-body-size: 1rem; }
   .retreat-detail-page[data-page] :is(.retreat-detail-text > span, .retreat-detail-story-copy > span, .retreat-suite-editorial-copy > span, .retreat-suite-four header > span) { font-size: 1rem; line-height: 1.75; }
