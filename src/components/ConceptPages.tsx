@@ -469,8 +469,12 @@ const retreatPaths = [
 ];
 
 function TuruCrownLogo() {
+  const transparencyId = useId();
   return <>
-    <span className="retreat-logo-artwork"><svg viewBox="50 35 700 272" role="img" aria-label="Turu Crown"><image href="/images/turu-crown-logo-latest.png" width="822" height="380" /></svg></span>
+    <span className="retreat-logo-artwork"><svg viewBox="50 35 700 272" role="img" aria-label="Turu Crown">
+      <defs><filter id={transparencyId} colorInterpolationFilters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .2126 .7152 .0722 0 0" /></filter></defs>
+      <image href="/images/turu-crown-logo-latest.png" width="822" height="380" filter={`url(#${transparencyId})`} />
+    </svg></span>
     <span className="retreat-logo-tagline">EXCLUSIVE MOUNTAIN LODGE</span>
     <span className="retreat-logo-location">TURUFJELL · NORWAY</span>
   </>;

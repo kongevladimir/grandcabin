@@ -19,7 +19,7 @@
 .retreat-floor-plan-swipe { display: none; }
 .retreat-floor-plan-zoom { display: none; }
 .retreat-logo .retreat-logo-artwork { aspect-ratio: 700 / 272; }
-.retreat-logo-artwork > svg { display: block; width: 100%; height: 100%; mix-blend-mode: screen; }
+.retreat-logo-artwork > svg { display: block; width: 100%; height: 100%; }
 .retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location {
   margin: .15rem 0 0; color: #fff; font-size: 9px; font-weight: 600;
   line-height: 1.3; letter-spacing: .015em;
@@ -28,8 +28,12 @@
 .retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { white-space: nowrap; text-wrap: nowrap; }
 
 @media (min-width: 901px) {
+  .retreat-home-page .retreat-header-pages nav,
+  .retreat-home-page .retreat-header-pages nav a:hover,
+  .retreat-home-page .retreat-header-pages nav a[aria-current="page"] { color: #000; }
+  .retreat-home-page .retreat-header-pages nav a[aria-current="page"]::after { background: #000; }
   .retreat-header-pages { grid-template-columns: 180px minmax(0, 1fr) auto; }
-  .retreat-header-pages nav { font-size: clamp(1.125rem, 1.3vw, 1.3rem); line-height: 1.2; gap: clamp(1.1rem, 1.5vw, 1.6rem); }
+  .retreat-header-pages nav { font-size: clamp(1.3rem, 1.55vw, 1.5rem); line-height: 1.2; gap: clamp(1.1rem, 1.5vw, 1.6rem); }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
 }
