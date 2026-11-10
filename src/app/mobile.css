@@ -28,17 +28,13 @@
 .retreat-logo .retreat-logo-tagline, .retreat-logo .retreat-logo-location { white-space: nowrap; text-wrap: nowrap; }
 
 @media (min-width: 901px) {
-  .retreat-home-page .retreat-header-pages nav,
-  .retreat-home-page .retreat-header-pages nav a:hover,
-  .retreat-home-page .retreat-header-pages nav a[aria-current="page"] { color: #000; }
-  .retreat-home-page .retreat-header-pages nav a[aria-current="page"]::after { background: #000; }
   .retreat-header-pages { grid-template-columns: 180px minmax(0, 1fr) auto; }
-  .retreat-header-pages nav { font-size: clamp(1.3rem, 1.55vw, 1.5rem); line-height: 1.2; gap: clamp(1.1rem, 1.5vw, 1.6rem); }
+  .retreat-header-pages nav { font-size: clamp(1.4rem, 1.75vw, 1.65rem); line-height: 1.2; gap: clamp(1.3rem, 1.7vw, 1.9rem); }
   .retreat-header-pages nav a { display: flex; align-items: center; min-height: 40px; }
   .retreat-header-pages nav a[aria-current="page"]::after { bottom: 3px; }
 }
 @media (min-width: 901px) and (max-width: 1400px) {
-  .retreat-header-pages nav { flex-wrap: wrap; justify-content: center; gap: .15rem .8rem; overflow: visible; }
+  .retreat-header-pages nav { flex-wrap: wrap; justify-content: center; gap: .35rem 1.05rem; overflow: visible; }
 }
 
 @media (max-width: 900px) {
@@ -70,8 +66,8 @@
   .retreat-header-pages nav {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     width: 100%; max-height: calc(100dvh - 88px); margin: 0; padding: 1rem var(--mobile-gutter) 1.5rem;
-    grid-template-columns: minmax(0, 1fr); gap: .25rem 1rem;
-    overflow: auto; background: #171e28; color: #fff; font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    grid-template-columns: minmax(0, 1fr); gap: .45rem 1rem;
+    overflow: auto; background: #171e28; color: #fff; font-size: clamp(1.375rem, 3.75vw, 1.65rem);
     border-top: 1px solid rgb(216 182 135 / 25%);
     box-shadow: 0 14px 24px rgb(9 14 20 / 18%);
   }

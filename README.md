@@ -15,8 +15,8 @@ The shared footer lists both phone numbers and info@turucrown.no under Contact u
 with compact labelled phone and email links in both languages.
 The header keeps the original mountain/wordmark artwork and renders its two
 subtitles as larger, crisp live text for readability on phones and desktops.
-Desktop navigation uses Cormorant Garamond lettering (21–24px), with black text
-directly on the homepage video and light text on dark interior-page headers,
+Desktop navigation uses white Cormorant Garamond lettering (22–26px), with a little
+more space between links, directly on the homepage video and interior-page headers
 without a separate menu panel. It wraps on smaller laptop screens,
 keeping every page link accessible. The logo
 keeps “EXCLUSIVE MOUNTAIN LODGE” on one line and “TURUFJELL · NORWAY” below it.
