@@ -6,10 +6,10 @@
   font-weight: 400;
   font-display: swap;
 }
-.retreat-header-pages nav { font-family: "Turu Crown Menu", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: normal; text-transform: none; color: #171e28; background: #f2f0eb; padding: .2rem .7rem; }
-.retreat-header-pages nav a, .retreat-header-pages nav a[aria-current="page"] { color: #171e28; }
-.retreat-header-pages nav a:hover { color: #79562f; }
-.retreat-header-pages nav a[aria-current="page"]::after { background: #79562f; }
+.retreat-header-pages nav { font-family: "Turu Crown Menu", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: normal; text-transform: none; color: #fff; background: transparent; padding: .2rem .7rem; }
+.retreat-header-pages nav a { color: inherit; }
+.retreat-header-pages nav a:hover, .retreat-header-pages nav a[aria-current="page"] { color: #d8b687; }
+.retreat-header-pages nav a[aria-current="page"]::after { background: #d8b687; }
 .retreat-home-page .retreat-header-pages { mix-blend-mode: normal; }
 .retreat-menu-toggle { display: none; }
 .retreat-floor-plan-drawing { width: 100%; }
@@ -67,7 +67,7 @@
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     width: 100%; max-height: calc(100dvh - 88px); margin: 0; padding: 1rem var(--mobile-gutter) 1.5rem;
     grid-template-columns: minmax(0, 1fr); gap: .25rem 1rem;
-    overflow: auto; background: #f2f0eb; color: #171e28; font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    overflow: auto; background: #171e28; color: #fff; font-size: clamp(1.25rem, 3.5vw, 1.5rem);
     border-top: 1px solid rgb(216 182 135 / 25%);
     box-shadow: 0 14px 24px rgb(9 14 20 / 18%);
   }

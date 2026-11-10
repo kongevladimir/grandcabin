@@ -1,5 +1,34 @@
 # Three floor plans
 
+## Main-floor style and sharper rendering, 10 November 2026
+
+Owner requested a further quality improvement after the local sauna/bedding fixes.
+Built-in imagegen used the current lower-floor plan as the layout authority and
+the main-floor plan as a material/rendering reference. Selected Norwegian output:
+`exec-0ddbf6e4-2ae4-474f-a505-24e82b6f4ecc.png`; English:
+`exec-6e3e8040-bdc6-4170-9ddc-23e63c53f47d.png`, in the generated-images directory
+listed below. Copied directly to the two existing lower-floor public assets.
+The outputs retain 1721 × 914 pixels; they improve rendered detail rather than
+increasing pixel dimensions. No post-generation scaling or lossy encoding.
+The main-floor and loft assets remain unchanged. Reviewed both outputs for room
+numbers, bunk arrangements, single bedding, sauna tiles/glass door, windows,
+cabinet access gap, furniture and overall layout.
+
+### Final image prompt
+
+```text
+Use case: style-transfer and faithful high-detail restoration.
+IMAGE 1 is the LOWER FLOOR edit target. IMAGE 2 is MAIN FLOOR STYLE AND QUALITY REFERENCE ONLY, not a layout reference.
+Re-render image1 in very high definition, preferably 3442 x 1828 pixels, same aspect ratio and complete canvas. Match image2's refined architectural render: natural muted honey oak parquet with fine visible grain and individual plank joints, crisp gray bathroom tile grid, softly realistic cream-white bedding and pillow folds, finely detailed white ceramic sinks/toilets with taps, clean charcoal walls with subtle bevels/shadows, slim blue glazed windows with clear frames, warm natural shadows, crisp readable white labels. Remove image1's blur, smudged edges, excessively saturated orange tones and flat pasted-texture areas. Sharp fine detail without sharpening halos or noise. The lower plan must look like the SAME illustrator/rendering style as the main-floor reference.
+HARD CONTENT LOCK: image1 room and furniture geometry is authoritative. Retain the exact full outline, proportions, door and window positions and widths, internal walls, bathrooms, two staircases, kitchen and island, exact cabinet row and single-cabinet-width gap at upper right to storage, terrace, fireplace, dining table and exactly twelve chairs per long side plus one each end (26 total).
+Retain five numbered bedrooms and all current sleeping furniture. Bedroom 4 TWO visible SINGLE BEDS each with ONE white pillow and ONE white duvet, not double beds. Bedroom 5 beds as input. Bedroom 3 double bed, Bedrooms1/2 recognizable three-sleeper bunk-bed arrangements as input. Sauna front is glass with ONE clear glass door; floor south of sauna is matching bathroom GRAY TILES continuing into the bathroom, no blue floor and no partition wall in this open area. Keep current widened sauna-front exterior window.
+All labels remain in Norwegian, VERBATIM at same positions with same consistent readable font. Specifically the three center bedrooms from left to right are 'Soverom 3 (2 soveplasser)', 'Soverom 2 (3 soveplasser)', 'Soverom 1 (3 soveplasser)'; do not misnumber them. Retain all other labels from image1 exactly. No text from image2 may be copied.
+Do not add/remove/move any content, no layout redesign, no crop, no furniture changes. ONLY higher quality rendering, finer detail and main-floor-matching color/material style. Render the FULL target lower-floor canvas at high resolution.
+```
+
+The English run uses the identical prompt with English labels and the explicit
+center-room text “Bedroom 3 (Sleeps 2)”, “Bedroom 2 (Sleeps 3)”, “Bedroom 1 (Sleeps 3)”.
+
 ## Sauna tiles and bedroom 4 single bedding, 10 November 2026
 
 Updated both `public/images/floor-plan-lower.png` and
