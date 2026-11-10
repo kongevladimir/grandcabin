@@ -1,5 +1,29 @@
 # Three floor plans
 
+## Sauna tiles and bedroom 4 single bedding, 10 November 2026
+
+Updated both `public/images/floor-plan-lower.png` and
+`public/images/floor-plan-lower-en.png` at their existing 1721 × 914 resolution.
+The sauna-front floor now continues the bathroom's gray tiles; the glass front,
+glass door and wider exterior window remain. Each of bedroom 4's two visible
+single beds has one white pillow and one white duvet.
+
+Built-in imagegen refined the bedding and tile rendering. Only the two bed
+rectangles and sauna-front rectangle were composited into the existing assets,
+so regenerated labels and incidental changes elsewhere were excluded. The main
+floor and loft assets were not edited. No global resize or lossy encoding was used.
+Generated sources: `exec-a4290232-67a4-4bb2-9e1f-88cdb19073c3.png` (NO) and
+`exec-32fa36fc-4e30-46e6-bda7-e1a82a49df90.png` (EN), under
+`C:/Users/kalaj/.codex/generated_images/01a1a234-33e5-7ce1-8382-8b7784bd34df/`.
+
+Final edit prompt specification for both languages: precise object edit of only
+the two single beds in bedroom 4 (one natural white pillow at the north head end,
+one continuous white single duvet, no orange stripes or artificial pasted seams)
+and the floor directly south of the sauna glass (continuous matching gray bathroom
+tiles, retaining the glass door and window). Preserve every other label, fixture,
+bed, room, kitchen cabinet gap, chair, wall, window, color and full native canvas.
+The Norwegian and English variants retain their respective original labels.
+
 ## Final owner refinements, 1 November 2026
 
 On the loft, the upper-left brown cushion in bedroom 9 became two white pillows; the upper brown cushion in bedroom 8 was removed to show oak parquet. The first loft outputs were `exec-27f65d4e-5273-43f0-be50-cc8f5bb8d106.png` (NO) and `exec-69536f0f-fda2-4224-b87c-d4110064f0e4.png` (EN). A second local correction removed the remaining brown cushion from the NO bedroom 8, giving final NO `exec-51fe8fdc-7416-4bf4-8d82-18510875dd58.png`. The final EN is `exec-69536f0f-fda2-4224-b87c-d4110064f0e4.png`.

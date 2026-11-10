@@ -15,8 +15,9 @@ The shared footer lists both phone numbers and info@turucrown.no under Contact u
 with compact labelled phone and email links in both languages.
 The header keeps the original mountain/wordmark artwork and renders its two
 subtitles as larger, crisp live text for readability on phones and desktops.
-Desktop navigation uses larger Cormorant Garamond lettering and wraps within the
-header on smaller laptop screens, keeping every page link accessible. The logo
+Desktop navigation uses compact Cormorant Garamond lettering (18–21px), with dark
+text on a light panel, and wraps within the header on smaller laptop screens,
+keeping every page link accessible. The logo
 keeps “EXCLUSIVE MOUNTAIN LODGE” on one line and “TURUFJELL · NORWAY” below it.
 Menu typography matches the owner's Chalet 1551 reference: regular-weight
 Cormorant Garamond, natural letter case and normal tracking. Its official Latin
