@@ -31,6 +31,7 @@ export function errorText(code: string, lang: Lang) {
     busy: ["En annen oppdatering pågår. Prøv igjen.", "Another update is in progress. Please retry."],
     missing: ["Denne forespørselen finnes ikke lenger.", "This enquiry is no longer available."],
     status: ["Statusen har endret seg. Oppdater siden før du prøver igjen.", "The status has changed. Refresh before trying again."],
+    stayDetails: ["Kontroller navn, datoer, antall gjester og avtalt pris.", "Check the name, dates, guest count and agreed price."],
     message: ["Skriv en melding på opptil 5 000 tegn.", "Write a message of up to 5,000 characters."],
   };
   return (errors[code] ?? errors.storage)[lang === "nb" ? 0 : 1];

@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
-import { BookingError, validOwnerPassword, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
+import { BookingError, validOwnerPassword, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, updateOwnerStay, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
 import { newPasswordAuth, ownerPasswordMatches, tokenHash } from "@/lib/booking/auth";
 import { configured, isLocalPreview, mutate, readState } from "@/lib/booking/store";
 import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, ownerSession, publicBooking, rateLimit, reply, sendOwnerMail, session, withSession } from "@/lib/booking/server";
@@ -123,6 +123,10 @@ export async function POST(request: NextRequest) {
       await deliverNotices(); return reply({ ok: true });
     }
     await ownerOnly(request);
+    if (action === "update-stay") {
+      await mutate(state => updateOwnerStay(state, data));
+      return reply({ ok: true });
+    }
     if (action === "set-prices") {
       await mutate(state => setNightlyPrices(state, data.from, data.through, data.amount));
       return reply({ ok: true });

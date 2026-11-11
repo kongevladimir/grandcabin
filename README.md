@@ -60,6 +60,8 @@ The selected website design is the multi-page mountain-retreat presentation:
 - `/turufjell` — outdoor experiences, with an activity guide at `/turufjell/activities`.
 - `/booking` — calendar, combined linen and towels, price breakdown and direct enquiry.
 - `/booking/owner` — private price calendar, owner inbox, approval and date blocking.
+  Upcoming recorded stays and confirmed bookings can be edited there, including
+  their name, dates, guest count and agreed total price.
 - The owner's **Statistikk / Statistics** tab shows approximate browser sessions,
   page views, daily totals, popular pages and booking/phone/email/navigation clicks
   for the last 7, 30, 90 or 365 days. Only the authenticated owner can read it.

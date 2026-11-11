@@ -105,6 +105,31 @@ test('owner blocks prevent confirmation, while pending enquiries do not hold dat
   state.blocks.push({ ...availableStay, id: 'block', note: '' });
   assert.throws(() => m.changeStatus(state, b, 'accepted'), /unavailable/);
 });
+test('owner can edit a future recorded stay without moving it over another reservation', () => {
+  const state = m.emptyState();
+  const reserved = Array.from({ length: 365 }, (_, offset) => ({ arrival: day(40 + offset), departure: day(44 + offset) }))
+    .find(candidate => !m.finnReservations.some(other => m.overlaps(candidate, other)));
+  assert.ok(reserved);
+  state.blocks.push({ ...reserved, id: 'owner-block', note: 'Old name', guestName: 'Old name', guestCount: 12, agreedPrice: 25000 });
+  const next = { arrival: day(450), departure: day(454) };
+  assert.doesNotThrow(() => m.updateOwnerStay(state, { id: 'owner-block', kind: 'block', ...next, name: 'Firma', guests: 20, price: 30000 }));
+  assert.deepEqual({ arrival: state.blocks[0].arrival, departure: state.blocks[0].departure, guestName: state.blocks[0].guestName, guestCount: state.blocks[0].guestCount, agreedPrice: state.blocks[0].agreedPrice }, { ...next, guestName: 'Firma', guestCount: 20, agreedPrice: 30000 });
+  const other = { arrival: day(460), departure: day(462) };
+  state.blocks.push({ ...other, id: 'another', note: 'Other stay' });
+  assert.throws(() => m.updateOwnerStay(state, { id: 'owner-block', kind: 'block', ...other, name: 'Firma', guests: 20, price: 30000 }), /unavailable/);
+  assert.equal(state.blocks[0].arrival, next.arrival);
+});
+test('owner can update accepted future bookings and an agreed price while preserving overlap safety', () => {
+  const state = m.emptyState();
+  const dates = Array.from({ length: 365 }, (_, offset) => ({ arrival: day(100 + offset), departure: day(103 + offset) }))
+    .find(candidate => !m.finnReservations.some(other => m.overlaps(candidate, other)));
+  assert.ok(dates);
+  const accepted = { ...booking('confirmed', 'accepted', dates), name: 'Old name', guests: 8, pricing: m.rentalQuote(dates), updatedAt: '' };
+  state.bookings.push(accepted);
+  const next = { arrival: day(500), departure: day(503) };
+  assert.doesNotThrow(() => m.updateOwnerStay(state, { id: accepted.id, kind: 'booking', ...next, name: 'Firma', guests: 20, price: 45000 }));
+  assert.deepEqual({ arrival: accepted.arrival, departure: accepted.departure, name: accepted.name, guests: accepted.guests, agreedTotal: accepted.agreedTotal }, { ...next, name: 'Firma', guests: 20, agreedTotal: 45000 });
+});
 test('status transitions cannot silently reactivate cancelled or declined stays', () => {
   const state = m.emptyState(); const b = booking('b'); state.bookings.push(b);
   m.changeStatus(state, b, 'declined');

@@ -187,6 +187,9 @@
 .bk-blocks ul { list-style: none; padding: 0; margin: 0; grid-column: 1 / -1; }
 .bk-blocks li { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 20px 0; border-top: 1px solid var(--bk-line); font-size: .8rem; }
 .bk-blocks li small { display: block; color: var(--bk-muted); margin-top: 8px; }
+.bk-stay-editor { grid-column: 1 / -1; padding: 24px; border: 1px solid var(--bk-line); background: #fffdf8; }
+.bk-stay-editor h3 { margin: 0 0 18px; font: 1.5rem Georgia, serif; }
+.bk-stay-editor .bk-fields { margin-top: 0; }
 .bk-privacy p { margin: 28px 0; color: var(--bk-muted); }
 .bk-owner-tabs { display: flex; gap: 12px; margin: 24px 0; flex-wrap: wrap; }
 .bk-owner-tabs button { padding: 14px 20px; border: 1px solid var(--bk-line); background: var(--bk-paper); color: var(--bk-ink); font-size: .85rem; }

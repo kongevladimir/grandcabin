@@ -93,6 +93,10 @@ do not inspect Cloudflare or verify the live site without an explicit request.
   Existing storage records without `nightlyPrices` work without a migration;
   local preview changes stay on this computer until production storage is set up.
 - Choose **Enquiries & dates / Forespørsler & datoer** to manage requests and blocks.
+- Edit an upcoming recorded stay or confirmed booking from the Upcoming stays
+  list. The owner can change its name, dates, guest count and agreed total price;
+  changes that overlap another reservation are rejected. Past stays and fixed
+  external reservations remain read-only.
 - Open an enquiry and contact the guest manually using their email address or phone.
 - Record an agreed stay using guest name, total price, arrival and checkout; its dates are blocked. Alternatively, confirm an enquiry at its displayed total. Dates are blocked atomically; two overlapping
   enquiries cannot both be accepted. Declining leaves dates available.

@@ -10,7 +10,7 @@ export type Booking = Stay & {
   id: string; requestKey: string; name: string; email: string; phone: string;
   guests: number; linenTowels?: number; linen?: number; towels?: number; occasion: string;
   language: "nb" | "en"; status: BookingStatus; createdAt: string; updatedAt: string;
-  messages: Message[]; bookingRulesVersion?: string;
+  messages: Message[]; bookingRulesVersion?: string; agreedTotal?: number;
   pricing?: BookingQuote | { dailyRate: number; rentalTotal: number; currency: "NOK" };
 };
 export type Block = Stay & { id: string; note: string; external?: true; guestName?: string; agreedPrice?: number; guestCount?: number };
@@ -119,6 +119,34 @@ export function unavailable(state: BookingState): Stay[] {
 export function assertAvailable(state: BookingState, stay: Stay, exceptId?: string) {
   const occupied = [...finnReservations, ...state.blocks, ...state.bookings.filter(b => b.status === "accepted" && b.id !== exceptId)];
   if (occupied.some(other => overlaps(stay, other))) throw new BookingError("unavailable", 409);
+}
+export function updateOwnerStay(state: BookingState, update: Record<string, unknown>) {
+  const id = typeof update.id === "string" ? update.id : "";
+  const kind = update.kind;
+  const arrival = typeof update.arrival === "string" ? update.arrival : "";
+  const departure = typeof update.departure === "string" ? update.departure : "";
+  const name = typeof update.name === "string" ? update.name.trim() : "";
+  const guests = update.guests;
+  const price = update.price;
+  if (!id || !name || name.length > 120 || typeof guests !== "number" || !Number.isInteger(guests) || guests < 1 || guests > 29 || typeof price !== "number" || !Number.isSafeInteger(price) || price < 0 || price > 10000000) throw new BookingError("stayDetails");
+  const stay = { arrival, departure };
+  validateStay(stay);
+  const otherBlocks = state.blocks.filter(block => !(kind === "block" && block.id === id));
+  const otherBookings = state.bookings.filter(booking => booking.status === "accepted" && !(kind === "booking" && booking.id === id));
+  if ([...finnReservations, ...otherBlocks, ...otherBookings].some(other => overlaps(stay, other))) throw new BookingError("unavailable", 409);
+  if (kind === "block") {
+    const block = state.blocks.find(item => item.id === id && !item.external && item.guestName);
+    if (!block || block.departure <= osloToday()) throw new BookingError("status", 409);
+    Object.assign(block, { ...stay, guestName: name, guestCount: guests, agreedPrice: price, note: `${name} · ${price} NOK` });
+    return;
+  }
+  if (kind === "booking") {
+    const booking = state.bookings.find(item => item.id === id && item.status === "accepted");
+    if (!booking || booking.departure <= osloToday()) throw new BookingError("status", 409);
+    Object.assign(booking, { ...stay, name, guests, agreedTotal: price, updatedAt: new Date().toISOString() });
+    return;
+  }
+  throw new BookingError("stayDetails");
 }
 export function validateRequest(value: Record<string, unknown>, prices: NightlyPrices = {}) {
   const text = (key: string, max: number, required = false) => {
