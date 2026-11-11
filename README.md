@@ -22,7 +22,7 @@ keeping every page link accessible. The logo
 keeps “EXCLUSIVE MOUNTAIN LODGE” on one line and “TURUFJELL · NORWAY” below it.
 An SVG luminance-to-alpha filter removes the source logo's black backing without
 changing its artwork, so the video remains visible around its white symbols.
-Menu typography matches the owner's Chalet 1551 reference: medium-weight
+Menu typography matches the owner's Chalet 1551 reference: semi-bold
 Cormorant Garamond, natural letter case and normal tracking. Its official Latin
 font is hosted locally in `public/fonts` with the SIL Open Font License; the phone
 menu presents the same links as a centred vertical list.
