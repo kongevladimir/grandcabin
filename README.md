@@ -114,6 +114,10 @@ traffic and known bot user agents are excluded, while blocked tracking can cause
 undercounting. Local preview data stays in memory and clears on server restart.
 The statistics database is independent of booking records and backup storage.
 
+Google Analytics is separately controlled by visitor consent. See
+`docs/google-analytics.md` for the booking funnel, privacy safeguards, required
+Google account settings and local verification before publication.
+
 ## Commands
 
 - `npm run dev` — local development with live updates.

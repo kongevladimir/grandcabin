@@ -6,6 +6,8 @@ import { preload } from "react-dom";
 import { useEffect, useId, useRef, useState } from "react";
 import { finnUrl } from "@/content/site";
 import { useSiteLanguage, type Language } from "@/components/useSiteLanguage";
+import { ConsentSettingsButton } from "@/components/GoogleAnalytics";
+import { trackBooking } from "@/lib/analytics/google";
 import { BedroomGallery } from "@/components/BedroomGallery";
 import { CabinGallery } from "@/components/CabinGallery";
 import { CabinReviews } from "@/components/CabinReviews";
@@ -497,7 +499,7 @@ export function RetreatNav({ language, setLanguage, page }: { language: Language
     }}>
       <Link href="/" className="retreat-logo"><TuruCrownLogo /></Link>
       <nav id={menuId} aria-label={language === "nb" ? "Turu Crown-sider" : "Turu Crown pages"}>{labels.map((label, index) => <Link key={label} href={retreatPaths[index]} onClick={() => setMenuOpen(false)} aria-current={page && retreatPaths[index].endsWith(`/${page === "tour" ? "3d-tour" : page}`) ? "page" : undefined}>{label}</Link>)}</nav>
-      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking">{language === "nb" ? "BESTILL NÅ" : "BOOK NOW"} <span aria-hidden="true">↗</span></Link></div>
+      <div className="retreat-actions"><LanguageToggle language={language} setLanguage={setLanguage} light /><Link className="retreat-booking-link" href="/booking" onClick={() => { trackBooking("booking_button_click"); }}>{language === "nb" ? "BESTILL NÅ" : "BOOK NOW"} <span aria-hidden="true">↗</span></Link></div>
       <button ref={menuButton} className="retreat-menu-toggle" type="button" aria-controls={menuId} aria-expanded={menuOpen} aria-label={language === "nb" ? (menuOpen ? "Lukk meny" : "Åpne meny") : (menuOpen ? "Close menu" : "Open menu")} onClick={() => setMenuOpen(!menuOpen)}><span aria-hidden="true">{menuOpen ? "×" : "☰"}</span></button>
     </header>
   );
@@ -521,6 +523,7 @@ export function RetreatBookingFooter({ language, omitHeadingPeriod = false }: { 
         <a href="tel:+4797816981">Tel.: +47 978 16 981</a>
         <a href="tel:+4796878888">Tel.: +47 968 78 888</a>
         <a href="mailto:info@turucrown.no">{language === "nb" ? "E-post" : "Email"}: info@turucrown.no</a>
+        <ConsentSettingsButton language={language} />
       </div>
     </section>
   );

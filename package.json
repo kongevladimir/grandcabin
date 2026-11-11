@@ -14,7 +14,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "test:booking": "node --test tests/booking.test.mjs tests/booking-origins.test.mjs tests/backup.test.mjs tests/analytics.test.mjs",
+    "test:booking": "node --test tests/booking.test.mjs tests/booking-origins.test.mjs tests/backup.test.mjs tests/analytics.test.mjs tests/google-analytics.test.mjs",
     "check": "npm run lint && npm run test:booking && npm run typecheck && npm run build"
   },
   "dependencies": {
