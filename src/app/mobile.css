@@ -6,7 +6,7 @@
   font-weight: 400;
   font-display: swap;
 }
-.retreat-header-pages nav { font-family: "Turu Crown Menu", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: normal; text-transform: none; color: #fff; background: transparent; padding: .2rem .7rem; }
+.retreat-header-pages nav { font-family: "Turu Crown Menu", "Cormorant Garamond", Georgia, serif; font-weight: 500; letter-spacing: normal; text-transform: none; color: #fff; background: transparent; padding: .2rem .7rem; }
 .retreat-header-pages nav a { color: inherit; }
 .retreat-header-pages nav a:hover, .retreat-header-pages nav a[aria-current="page"] { color: #d8b687; }
 .retreat-header-pages nav a[aria-current="page"]::after { background: #d8b687; }
