@@ -1303,7 +1303,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-suite-gallery-stage { position: relative; height: min(72vw, 760px); min-height: 440px; overflow: hidden; background: #0c121a; }
 .retreat-suite-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
 .retreat-suite-slide.is-active { opacity: 1; }
-.retreat-suite-slide img { object-fit: cover; object-position: center; }
+.retreat-suite-slide img { object-fit: contain; object-position: center; }
 .retreat-suite-gallery-open { position: absolute; z-index: 1; inset: 0; width: 100%; border: 0; padding: 0; background: transparent; color: white; cursor: zoom-in; }
 .retreat-suite-gallery-open span { position: absolute; top: 1.4rem; right: clamp(1.4rem, 5vw, 5rem); padding: .8rem 1rem; background: rgba(16,23,30,.7); font-size: .75rem; }
 .retreat-suite-gallery-open:focus-visible { outline: 3px solid #d8b687; outline-offset: -5px; }
