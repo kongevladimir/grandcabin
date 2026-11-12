@@ -165,6 +165,12 @@ upload use that prepared output. `npm run preview:cloudflare` previews the
 prepared Worker locally. Generated Worker output is excluded from Git, lint
 and TypeScript source checks. Keep `grandcabin` as both the Worker name and
 `WORKER_SELF_REFERENCE` service; the existing Images binding is retained.
+Next.js explicitly excludes `.booking-data` and the local owner-access file
+from server traces. Build, preview, upload and deploy commands also inspect the
+prepared package and stop before publication if either private path is present.
+Cloudflare builds additionally refuse local `.env` files because OpenNext would
+embed their values. Use a clean checkout for manual production builds and keep
+production configuration in Cloudflare bindings and secrets.
 `public/.assetsignore` also excludes the local-only, oversized source photos
 from direct uploads; tracked previews and byte-preserving original pieces stay
 available as described in `docs/organized-gallery.md`.
