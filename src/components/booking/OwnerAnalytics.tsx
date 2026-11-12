@@ -1,25 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
-import type { summarizeStats } from "@/lib/analytics/model";
+import { analyticsCountingStart, analyticsDayPeriods, type summarizeStats } from "@/lib/analytics/model";
 import { words, type Lang } from "./shared";
 type Stats = ReturnType<typeof summarizeStats> & { ready: boolean; today: string; days: number };
+type Period = "since" | "7" | "30" | "90" | "365";
 const pageNames: Record<string, [string, string]> = { "/": ["Forsiden", "Home"], "/cabin": ["Hytta", "The cabin"], "/bedrooms": ["Rom", "Rooms"], "/materials": ["Håndverk", "Craftsmanship"], "/gallery": ["Galleri", "Gallery"], "/location": ["Beliggenhet", "Location"], "/3d-tour": ["3D-visning", "3D tour"], "/meetings": ["Samlinger", "Gatherings"], "/turufjell": ["Opplevelser", "Experiences"], "/turufjell/activities": ["Aktiviteter", "Activities"], "/booking": ["Booking", "Booking"] };
 export function OwnerAnalytics({ lang }: { lang: Lang }) {
   const w = (nb: string, en: string) => words(lang, nb, en);
-  const [days, setDays] = useState(30), [refresh, setRefresh] = useState(0);
+  const [period, setPeriod] = useState<Period>("since"), [refresh, setRefresh] = useState(0);
   const [data, setData] = useState<Stats | null>(null), [error, setError] = useState("");
   useEffect(() => {
     let alive = true;
-    void fetch(`/api/analytics?days=${days}`, { cache: "no-store" }).then(async response => {
+    const query = period === "since" ? `since=${analyticsCountingStart}` : `days=${period}`;
+    void fetch(`/api/analytics?${query}`, { cache: "no-store" }).then(async response => {
       if (!response.ok) throw new Error(response.status === 401 ? "login" : "storage");
       return response.json() as Promise<Stats>;
     }).then(result => { if (alive) { setData(result); setError(""); } }).catch(caught => { if (alive) setError(caught.message); });
     return () => { alive = false; };
-  }, [days, refresh]);
+  }, [period, refresh]);
   const date = (day: string) => new Date(`${day}T12:00:00Z`).toLocaleDateString(lang === "nb" ? "nb-NO" : "en-GB", { day: "2-digit", month: "short" });
   const number = (value: number) => value.toLocaleString(lang === "nb" ? "nb-NO" : "en-GB");
   return <section className="bk-panel bk-analytics">
-    <div className="bk-analytics-heading"><div><h2>{w("Besøksstatistikk", "Website statistics")}</h2><p>{w("Kun synlig for deg som er logget inn som eier.", "Visible only when you are signed in as the owner.")}</p></div><div className="bk-analytics-controls"><label>{w("Periode", "Period")}<select value={days} onChange={event => { setDays(Number(event.target.value)); setData(null); setError(""); }}>{[7, 30, 90, 365].map(value => <option key={value} value={value}>{w(`Siste ${value} dager`, `Last ${value} days`)}</option>)}</select></label><button className="bk-secondary" onClick={() => { setData(null); setError(""); setRefresh(value => value + 1); }}>{w("Oppdater", "Refresh")}</button></div></div>
+    <div className="bk-analytics-heading"><div><h2>{w("Besøksstatistikk", "Website statistics")}</h2><p>{w("Kun synlig for deg som er logget inn som eier.", "Visible only when you are signed in as the owner.")}</p></div><div className="bk-analytics-controls"><label>{w("Periode", "Period")}<select value={period} onChange={event => { setPeriod(event.target.value as Period); setData(null); setError(""); }}><option value="since">{w("Fra 12.11.2026", "Since 12 Nov 2026")}</option>{analyticsDayPeriods.map(value => <option key={value} value={value}>{w(`Siste ${value} dager`, `Last ${value} days`)}</option>)}</select></label><button className="bk-secondary" onClick={() => { setData(null); setError(""); setRefresh(value => value + 1); }}>{w("Oppdater", "Refresh")}</button></div></div>
     {error ? <p className="bk-error" role="alert">{error === "login" ? w("Logg inn på nytt for å se statistikken.", "Sign in again to view statistics.") : w("Statistikken kunne ikke lastes. Prøv Oppdater.", "Statistics could not be loaded. Try Refresh.")}</p> : !data ? <p role="status">{w("Laster statistikk …", "Loading statistics …")}</p> : !data.ready ? <p role="status">{w("Statistikklageret er ikke koblet til ennå.", "Statistics storage is not connected yet.")}</p> : <>
       <div className="bk-analytics-totals">{([
         ["visits", w("Besøk (økter)", "Visits (sessions)")], ["views", w("Sidevisninger", "Page views")], ["booking", w("Klikk til booking", "Booking clicks")], ["phone", w("Telefonklikk", "Phone clicks")], ["email", w("E-postklikk", "Email clicks")], ["navigation", w("Andre sideklikk", "Other page clicks")],
