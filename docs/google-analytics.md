@@ -1,7 +1,8 @@
 # Google Analytics and the booking funnel
 
 The Google tag uses GA4 web stream `G-9LBLJXN92D`. It loads only on the public
-pages listed in `src/lib/analytics/model.ts`, on the production domain, after
+pages listed in `src/lib/analytics/model.ts`, on the production domain or the
+exact HTTPS branch preview `feat-ga4-booking-funnel-grandcabin.vladimirk81.workers.dev`, after
 analytics consent. Marketing consent controls Google's ad consent fields;
 marketing consent alone does not start the Analytics tag. Consent is stored in
 the browser and can be changed using the footer or privacy page. Basic consent
@@ -119,6 +120,13 @@ this integration:
 ## Local verification before release
 
 Use a separate GA4 test stream or take care not to contaminate production data.
+The named Cloudflare branch preview uses the same measurement ID after consent;
+it is explicitly allowed without an environment variable. Other Workers previews
+are blocked. The previous version allowed only production hosts and optional
+localhost, so it never loaded Google on the branch preview, even after consent.
+Rebuild/update the branch preview after this fix; changing Worker runtime
+variables alone cannot replace the existing client JavaScript. There is no
+second GTM container to install and no CSP change is needed for this fix.
 Tracking on localhost is disabled unless `NEXT_PUBLIC_GA4_PREVIEW=true` is set
 before starting the dev server or build. With this setting it uses the production
 measurement ID, so use Tag Assistant/debug filtering and remove test data where

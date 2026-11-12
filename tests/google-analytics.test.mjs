@@ -84,6 +84,42 @@ test('analytics-only strips ad click IDs, duplicates and private campaign labels
   navigate('/booking'); assert.equal(ga.trackPage('/booking'), false);
   assert.equal(events().length, count);
 });
+test('the exact HTTPS Cloudflare branch preview requires consent and sends each funnel event once', async () => {
+  const { google: ga, scripts, navigate, events } = await setup();
+  const origin = 'https://feat-ga4-booking-funnel-grandcabin.vladimirk81.workers.dev';
+  navigate(origin + '/');
+  assert.equal(ga.trackPage('/'), false);
+  ga.saveChoice(false, true);
+  assert.equal(ga.trackPage('/'), false);
+  assert.equal(scripts.length, 0);
+  ga.saveChoice(true, true);
+  assert.equal(ga.trackPage('/'), true);
+  assert.equal(ga.trackPage('/'), false);
+  assert.equal(ga.trackBooking('booking_button_click'), true);
+  navigate(origin + '/booking');
+  assert.equal(ga.trackPage('/booking'), true);
+  for (const name of ['booking_step_1', 'booking_step_2', 'booking_step_3', 'booking_terms_accepted']) assert.equal(ga.trackBooking(name), true);
+  const result = {ok:true,id:'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e'};
+  assert.equal(ga.trackLead(result), true);
+  assert.equal(ga.trackLead(result), false);
+  assert.equal(scripts.length, 1);
+  assert.equal(scripts[0].src, 'https://www.googletagmanager.com/gtag/js?id=G-9LBLJXN92D');
+  assert.deepEqual(events().map(c => c[1]), ['page_view', 'booking_button_click', 'page_view', 'booking_step_1', 'booking_step_2', 'booking_step_3', 'booking_terms_accepted', 'generate_lead']);
+  ga.saveChoice(false, false);
+  assert.equal(ga.trackBooking('booking_step_1'), false);
+});
+
+test('other preview hosts, misleading host suffixes and non-HTTPS public origins never load Google', async () => {
+  for (const origin of ['https://other-grandcabin.vladimirk81.workers.dev', 'https://grandcabin.vladimirk81.workers.dev', 'https://feat-ga4-booking-funnel-grandcabin.vladimirk81.workers.dev.example.org', 'http://feat-ga4-booking-funnel-grandcabin.vladimirk81.workers.dev', 'http://turucrown.no', 'https://turucrown.no:8443', 'http://localhost:3000']) {
+    const { google: ga, scripts, navigate } = await setup();
+    navigate(origin + '/booking');
+    ga.saveChoice(true, true);
+    assert.equal(ga.trackPage('/booking'), false, origin);
+    assert.equal(ga.trackBooking('booking_step_1'), false, origin);
+    assert.equal(scripts.length, 0, origin);
+  }
+});
+
 test('private pages never load Google', async () => {
   const { google: ga, scripts, navigate } = await setup();
   navigate('/admin?email=private@example.com'); ga.saveChoice(true, true);

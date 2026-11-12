@@ -89,7 +89,8 @@ function prepareAddress() {
   return address;
 }
 function eligibleHost() {
-  return ["turucrown.no", "www.turucrown.no"].includes(location.hostname) || (process.env.NEXT_PUBLIC_GA4_PREVIEW === "true" && ["localhost", "127.0.0.1"].includes(location.hostname));
+  // Allow only this reviewed branch preview, never arbitrary workers.dev sites.
+  return ["https://turucrown.no", "https://www.turucrown.no", "https://feat-ga4-booking-funnel-grandcabin.vladimirk81.workers.dev"].includes(location.origin) || (process.env.NEXT_PUBLIC_GA4_PREVIEW === "true" && ["localhost", "127.0.0.1"].includes(location.hostname));
 }
 function safeReferrer() {
   try { const url = new URL(document.referrer); return `${url.origin}/`; } catch { return ""; }
