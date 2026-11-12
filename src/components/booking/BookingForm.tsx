@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { RetreatNav, RetreatBookingFooter } from "@/components/ConceptPages";
 import { useSiteLanguage } from "@/components/useSiteLanguage";
 import { CLEANING_FEE_NOK, DAILY_RATE_NOK, EXTRA_GUEST_RATE_NOK, INCLUDED_GUESTS, LINEN_TOWELS_RATE_NOK, dateValue, nights, osloToday, overlaps, rentalQuote, validateStay, type Stay, type NightlyPrices } from "@/lib/booking/model";
 import { bookingApi, errorText, formatDay, money, priceSeasonLabel, words, type Lang } from "./shared";
+import { getChoice, serverChoice, subscribeChoice, trackBooking, trackLead, type BookingEvent } from "@/lib/analytics/google";
 
 type Availability = { ready: boolean; preview: boolean; unavailable: Stay[]; today: string; nightlyPrices?: NightlyPrices };
 function Calendar({ stay, onChange, occupied, lang, onError, today }: { stay: Stay; onChange: (stay: Stay) => void; occupied: Stay[]; lang: Lang; onError: (code: string) => void; today: string }) {
@@ -63,7 +64,14 @@ export function BookingForm() {
   const [busy, setBusy] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const submissionKey = useRef("");
+  const tracked = useRef(new Set<BookingEvent>());
+  const googleChoice = useSyncExternalStore(subscribeChoice, getChoice, serverChoice);
   const formHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (submitted) return;
+    const name = (["booking_step_1", "booking_step_2", "booking_step_3"] as const)[step];
+    if (!tracked.current.has(name) && trackBooking(name)) tracked.current.add(name);
+  }, [step, submitted, googleChoice]);
   const load = () => bookingApi<Availability>().then(setAvailability).catch(e => setError(e.message));
   useEffect(() => {
     let active = true;
@@ -87,7 +95,8 @@ export function BookingForm() {
     try {
       if (!submissionKey.current) submissionKey.current = crypto.randomUUID();
       const website = new FormData(event.currentTarget).get("website") ?? "";
-      await bookingApi<{ ok: boolean }>("", { action: "enquire", expectedTotal: quote.total, ...stay, guests, linenTowels, name, email, phone, occasion, message, consent, bookingRulesAccepted: consent, language: lang, website, requestKey: submissionKey.current });
+      const result = await bookingApi<{ ok: boolean; id: string }>("", { action: "enquire", expectedTotal: quote.total, ...stay, guests, linenTowels, name, email, phone, occasion, message, consent, bookingRulesAccepted: consent, language: lang, website, requestKey: submissionKey.current });
+      trackLead(result);
       setSubmitted(true);
     } catch (e) { setError((e as Error).message); if (["unavailable", "priceChanged", "pricing"].includes((e as Error).message)) { setStep(0); await load(); } }
     finally { setBusy(false); }
@@ -119,7 +128,7 @@ export function BookingForm() {
           <label className="bk-message-label">{w("Ønsker for oppholdet (valgfritt)", "Your plans for the stay (optional)")}<textarea rows={5} maxLength={5000} value={message} onChange={e => setMessage(e.target.value)} placeholder={w("En helg med storfamilien, kick-off med kollegaer eller noe helt annet …", "A weekend with family, a team retreat or something else entirely …")} /></label>
           <div className="bk-trap" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
           <section className="bk-booking-rules" aria-labelledby="cancellation-rules-heading"><h3 id="cancellation-rules-heading">{w("Avbestillingsregler", "Cancellation policy")}</h3><div><p>{w("Innsjekk fra kl. 16.00. Utsjekk senest kl. 12.00.", "Check-in from 16:00. Check-out by 12:00.")}</p><p>{w("En forespørsel er ikke en bekreftet reservasjon. Vi bekrefter oppholdet når alt er avklart.", "An enquiry is not a confirmed reservation. We confirm your stay once everything is agreed.")}</p><ul><li>{w("Leietaker får full refusjon hvis avbestillingen skjer mer enn 60 dager før innsjekksdato.", "The renter receives a full refund if cancellation is made more than 60 days before the check-in date.")}</li><li>{w("Leietaker får 50 % refusjon hvis avbestillingen skjer 30–60 dager før innsjekksdato.", "The renter receives a 50% refund if cancellation is made 30–60 days before the check-in date.")}</li><li>{w("Leietaker får ingen refusjon hvis avbestillingen skjer mindre enn 30 dager før innsjekksdato.", "The renter receives no refund if cancellation is made less than 30 days before the check-in date.")}</li></ul></div></section>
-          <label className="bk-consent"><input type="checkbox" checked={consent} required onChange={e => setConsent(e.target.checked)} /><span>{w("Jeg godtar avbestillingsreglene og at kontaktopplysninger og meldinger lagres for å behandle forespørselen, og at jeg kontaktes om oppholdet.", "I agree to the cancellation policy and to my contact details and messages being stored to handle this enquiry, and to being contacted about the stay.")} <span className="bk-required-mark" aria-hidden="true">*</span> <Link href="/booking/privacy">{w("Om personvern", "Privacy details")}</Link></span></label>
+          <label className="bk-consent"><input type="checkbox" checked={consent} required onChange={e => { const checked = e.target.checked; setConsent(checked); if (checked && !tracked.current.has("booking_terms_accepted") && trackBooking("booking_terms_accepted")) tracked.current.add("booking_terms_accepted"); }} /><span>{w("Jeg godtar avbestillingsreglene og at kontaktopplysninger og meldinger lagres for å behandle forespørselen, og at jeg kontaktes om oppholdet.", "I agree to the cancellation policy and to my contact details and messages being stored to handle this enquiry, and to being contacted about the stay.")} <span className="bk-required-mark" aria-hidden="true">*</span> <Link href="/booking/privacy">{w("Om personvern", "Privacy details")}</Link></span></label>
           {!detailsReady && <p className="bk-required-note" role="status">{w("Fyll ut navn, gyldig e-post og telefonnummer, og godta avbestillingsreglene og samtykket før du sender forespørselen.", "Enter your name, a valid email address and phone number, then accept the cancellation policy and consent before sending your enquiry.")}</p>}
         </>}
         {error && <p role="alert" className="bk-error">{errorText(error, lang)}{!availability && <button type="button" onClick={() => { setError(""); void load(); }}>{w("Prøv igjen", "Retry")}</button>}</p>}
