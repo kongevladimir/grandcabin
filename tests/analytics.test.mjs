@@ -14,6 +14,14 @@ test('statistics only accept public pages and predefined clicks; guest details a
 });
 test('daily summaries use Norwegian dates, include empty days and separate visits/views/clicks', () => {
   assert.equal(model.analyticsDay(new Date('2026-11-07T23:30:00Z')),'2026-11-08');
+  assert.equal(model.analyticsDaysFrom('2026-11-12','2026-11-12'),1);
+  assert.equal(model.analyticsDaysFrom('2026-11-12','2026-11-14'),3);
+  assert.equal(model.analyticsDaysFrom('2026-11-14','2026-11-12'),0);
+  assert.deepEqual(model.parseAnalyticsPeriod(null,'2026-11-12','2026-11-12'),{days:1,since:'2026-11-12'});
+  assert.deepEqual(model.parseAnalyticsPeriod('7',null,'2026-11-12'),{days:7,since:null});
+  assert.deepEqual(model.parseAnalyticsPeriod(null,null,'2026-11-12'),{days:30,since:null});
+  assert.equal(model.parseAnalyticsPeriod('1',null,'2026-11-12'),null);
+  assert.equal(model.parseAnalyticsPeriod(null,'2026-11-11','2026-11-12'),null);
   const row={day:'2026-11-07',path:'/cabin',views:3,visits:1,booking:2,phone:1,email:1,navigation:4};
   const result=model.summarizeStats([row,{...row,day:'2026-10-01'},{...row,path:'/admin'}],7,'2026-11-07');
   assert.equal(result.daily.length,7);assert.equal(result.daily[0].day,'2026-11-01');

@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Language } from "@/components/useSiteLanguage";
 
 const slides = [
-  "lower-floor-double",
   "master-suite",
+  "lower-floor-double",
   "loft-double",
   "loft-mountain-bedroom",
   "lower-floor-bunk",

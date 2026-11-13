@@ -64,7 +64,9 @@ The selected website design is the multi-page mountain-retreat presentation:
   their name, dates, guest count and agreed total price.
 - The owner's **Statistikk / Statistics** tab shows approximate browser sessions,
   page views, daily totals, popular pages and booking/phone/email/navigation clicks
-  for the last 7, 30, 90 or 365 days. Only the authenticated owner can read it.
+  from 12 November 2026 or for the last 7, 30, 90 or 365 days. Existing statistics
+  remain available through the previous period choices. Only the authenticated
+  owner can read it.
 - `/admin` — owner sign-in with username and password, accessed directly without a public navigation link. The old `/login` address redirects here.
 - `/forgot-password` — request an owner password reset by email when production email delivery is configured.
 

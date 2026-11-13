@@ -1,16 +1,17 @@
 import { NextRequest } from "next/server";
 import { body, cookieName, failure, guard, ownerOnly, ownerSession, reply } from "@/lib/booking/server";
-import { analyticsDay, parseVisitEvent, summarizeStats } from "@/lib/analytics/model";
+import { analyticsDay, parseAnalyticsPeriod, parseVisitEvent, summarizeStats } from "@/lib/analytics/model";
 import { readVisitStats, recordVisit } from "@/lib/analytics/store";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
     guard(request); await ownerOnly(request);
-    const days = Number(request.nextUrl.searchParams.get("days") ?? 30);
-    if (![7, 30, 90, 365].includes(days)) return reply({ error: "details" }, 400);
-    const { ready, rows } = await readVisitStats(days);
-    return reply({ ready, today: analyticsDay(), days, ...summarizeStats(rows, days) });
+    const today = analyticsDay();
+    const period = parseAnalyticsPeriod(request.nextUrl.searchParams.get("days"), request.nextUrl.searchParams.get("since"), today);
+    if (!period) return reply({ error: "details" }, 400);
+    const { ready, rows } = await readVisitStats(period.days);
+    return reply({ ready, today, ...period, ...summarizeStats(rows, period.days, today) });
   } catch (error) { return failure(error); }
 }
 export async function POST(request: NextRequest) {
