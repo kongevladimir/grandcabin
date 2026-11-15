@@ -14,9 +14,10 @@ quoted nightly breakdown and full total with each enquiry and ignores any
 client-supplied price. Deposit amount and terms remain unspecified; the form only
 collects enquiries and does not collect payments or confirm stays. Pending enquiries do not reserve dates. Confirmed
 stays and owner blocks make nights unavailable; checkout day can be another
-guest's arrival day. Bookings elsewhere must be blocked manually.
+guest's arrival day. Guest arrival and departure cannot be on occupied calendar
+days, and a stay cannot cross them. Bookings elsewhere must be blocked manually.
 The owner-provided FINN stays on 13–14 and 27–28 November, 4–5, 18–19,
-23–25 and 30–31 December 2026 are built into the calendar as unavailable nights.
+23–26 and 30–31 December 2026 are built into the calendar as unavailable nights.
 On 30 October 2026 the owner replaced the 22–23 January 2027 reservation with
 the nights of 12–14 January and added 11–12 March 2027, explicitly including
 the last dates as occupied nights. Their exclusive checkout dates are

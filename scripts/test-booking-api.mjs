@@ -23,7 +23,7 @@ const availability = await expect();
 assert.equal(availability.body.preview, true, 'Refusing to test a non-preview server.');
 assert.equal(availability.body.ready, true);
 assert.match(availability.headers.get('cache-control'), /no-store/);
-assert.ok(availability.body.unavailable.some(b => b.arrival === '2026-12-23' && b.departure === '2026-12-26'), 'Known FINN reservations must appear as occupied nights.');
+assert.ok(availability.body.unavailable.some(b => b.arrival === '2026-12-23' && b.departure === '2026-12-27'), 'Known FINN reservations must appear as occupied nights.');
 const day = n => new Date(Date.parse(`${availability.body.today}T12:00:00Z`) + n * 86400000).toISOString().slice(0, 10);
 let offset = 40;
 while (availability.body.unavailable.some(b => day(offset) < b.departure && b.arrival < day(offset + 10)) || Object.keys(availability.body.nightlyPrices ?? {}).some(d => d >= day(offset) && d <= day(offset + 10))) offset += 12;
@@ -71,6 +71,11 @@ try {
   assert.equal(manualStay.guestName, prefix); assert.equal(manualStay.agreedPrice, 45000); assert.equal(manualStay.guestCount, 6);
   blockId = manualStay.id;
   assert.ok((await expect()).body.unavailable.some(b => b.arrival === block.arrival && b.departure === block.departure), 'Manual confirmed stay must block dates.');
+  for (const candidate of [
+    { arrival: day(offset + 6), departure: block.arrival },
+    { arrival: day(offset + 6), departure: day(offset + 10) },
+    { arrival: day(offset + 8), departure: day(offset + 10) },
+  ]) await expect({ ...request(), ...candidate }, 409, '', '', { 'X-Forwarded-For': `test-${randomUUID()}` });
   assert.equal(inbox.body.pendingEmails, 0, 'Local preview never queues email.');
   await expect({ action: 'status', id: acceptedId, status: 'cancelled' }, 200, ownerCookie);
   const released = await expect();

@@ -14,7 +14,7 @@ const day = offset => new Date(m.dateValue(m.osloToday()) + offset * 86400000).t
 const stay = { arrival: day(10), departure: day(15) };
 // Status tests need a free stay even when today's relative dates cross a fixed reservation.
 const availableStay = Array.from({ length: 365 }, (_, offset) => ({ arrival: day(10 + offset), departure: day(15 + offset) }))
-  .find(candidate => !m.finnReservations.some(reserved => m.overlaps(candidate, reserved)));
+  .find(candidate => !m.finnReservations.some(reserved => m.conflictsWithOccupied(candidate, reserved)));
 assert.ok(availableStay);
 const booking = (id, status = 'pending', dates = stay) => ({ id, ...dates, status, messages: [], updatedAt: '' });
 const request = () => ({ ...stay, guests: 8, linenTowels: 3, email: 'Guest@Example.com', name: ' Guest Name ', phone: '+47 123 45 678', occasion: 'private', language: 'en', message: '', consent: true, bookingRulesAccepted: true, website: '', requestKey: 'a12a2c73-fd88-43ce-bd3a-d57333bd2e6e' });
@@ -69,7 +69,7 @@ test('all fixed reserved nights are unavailable and the following checkout day i
   const expected = [
     ['2026-11-13', '2026-11-15'], ['2026-11-27', '2026-11-29'],
     ['2026-12-04', '2026-12-06'], ['2026-12-18', '2026-12-20'],
-    ['2026-12-23', '2026-12-26'], ['2026-12-30', '2027-01-01'],
+    ['2026-12-23', '2026-12-27'], ['2026-12-30', '2027-01-01'],
     ['2027-01-12', '2027-01-15'], ['2027-03-11', '2027-03-13'],
   ];
   assert.deepEqual(m.finnReservations.map(({ arrival, departure }) => [arrival, departure]), expected);
@@ -78,6 +78,24 @@ test('all fixed reserved nights are unavailable and the following checkout day i
     assert.throws(() => m.assertAvailable(state, { arrival, departure }), /unavailable/);
     const nextDay = new Date(m.dateValue(departure) + 86400000).toISOString().slice(0, 10);
     assert.doesNotThrow(() => m.assertAvailable(state, { arrival: departure, departure: nextDay }));
+  }
+});
+test('guest dates and the entire stay cannot touch occupied calendar days', () => {
+  const state = m.emptyState();
+  const reserved = { arrival: '2026-12-23', departure: '2026-12-27' };
+  for (const candidate of [
+    { arrival: '2026-12-23', departure: '2026-12-26' },
+    { arrival: '2026-12-22', departure: '2026-12-23' },
+    { arrival: '2026-12-22', departure: '2026-12-26' },
+    { arrival: '2026-12-26', departure: '2026-12-28' },
+    { arrival: '2026-12-22', departure: '2026-12-28' },
+  ]) {
+    assert.equal(m.conflictsWithOccupied(candidate, reserved), true);
+    assert.throws(() => m.assertGuestAvailable(state, candidate), /unavailable/);
+  }
+  for (const candidate of [{ arrival: '2026-12-21', departure: '2026-12-22' }, { arrival: '2026-12-27', departure: '2026-12-28' }]) {
+    assert.equal(m.conflictsWithOccupied(candidate, reserved), false);
+    assert.doesNotThrow(() => m.assertGuestAvailable(state, candidate));
   }
 });
 test('owner changes reserve the last requested nights and release 22–23 January', () => {

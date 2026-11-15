@@ -4,22 +4,22 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { RetreatNav, RetreatBookingFooter } from "@/components/ConceptPages";
 import { useSiteLanguage } from "@/components/useSiteLanguage";
-import { CLEANING_FEE_NOK, DAILY_RATE_NOK, EXTRA_GUEST_RATE_NOK, INCLUDED_GUESTS, LINEN_TOWELS_RATE_NOK, dateValue, nights, osloToday, overlaps, rentalQuote, validateStay, type Stay, type NightlyPrices } from "@/lib/booking/model";
+import { CLEANING_FEE_NOK, DAILY_RATE_NOK, EXTRA_GUEST_RATE_NOK, INCLUDED_GUESTS, LINEN_TOWELS_RATE_NOK, dateValue, nights, conflictsWithOccupied, rentalQuote, validateStay, type Stay, type NightlyPrices } from "@/lib/booking/model";
 import { bookingApi, errorText, formatDay, money, priceSeasonLabel, words, type Lang } from "./shared";
 import { getChoice, serverChoice, subscribeChoice, trackBooking, trackLead, type BookingEvent } from "@/lib/analytics/google";
 
 type Availability = { ready: boolean; preview: boolean; unavailable: Stay[]; today: string; nightlyPrices?: NightlyPrices };
-function Calendar({ stay, onChange, occupied, lang, onError, today }: { stay: Stay; onChange: (stay: Stay) => void; occupied: Stay[]; lang: Lang; onError: (code: string) => void; today: string }) {
+function Calendar({ stay, onChange, occupied, lang, onError, today, choosing, setChoosing }: { stay: Stay; onChange: (stay: Stay) => void; occupied: Stay[]; lang: Lang; onError: (code: string) => void; today: string; choosing: "arrival" | "departure"; setChoosing: (value: "arrival" | "departure") => void }) {
   const [offset, setOffset] = useState(0);
   const base = new Date(`${today.slice(0, 7)}-01T12:00:00Z`);
   const select = (day: string) => {
     onError("");
-    if (!stay.arrival || stay.departure || day <= stay.arrival) { onChange({ arrival: day, departure: "" }); return; }
+    if (choosing === "arrival" || !stay.arrival) { onChange({ arrival: day, departure: "" }); setChoosing("departure"); return; }
     const next = { arrival: stay.arrival, departure: day };
-    if (occupied.some(b => overlaps(next, b))) { onError("unavailable"); return; }
+    if (occupied.some(b => conflictsWithOccupied(next, b))) { onError("unavailable"); return; }
     onChange(next);
   };
-  const selectionStatus = stay.departure
+  const selectionStatus = choosing === "arrival" ? words(lang, "Velg ankomst i kalenderen", "Choose arrival on the calendar") : stay.departure
     ? words(lang, `Ankomst ${formatDay(stay.arrival, lang)} · Avreise ${formatDay(stay.departure, lang)}`, `Arrival ${formatDay(stay.arrival, lang)} · Departure ${formatDay(stay.departure, lang)}`)
     : stay.arrival
       ? words(lang, `Ankomst ${formatDay(stay.arrival, lang)} · Velg avreise`, `Arrival ${formatDay(stay.arrival, lang)} · Choose departure`)
@@ -34,11 +34,11 @@ function Calendar({ stay, onChange, occupied, lang, onError, today }: { stay: St
         <h3>{month.toLocaleDateString(lang === "nb" ? "nb-NO" : "en-GB", { month: "long", year: "numeric", timeZone: "UTC" })}</h3>
         <div className="bk-days">{(lang === "nb" ? ["M", "T", "O", "T", "F", "L", "S"] : ["M", "T", "W", "T", "F", "S", "S"]).map((day, i) => <span className="bk-weekday" key={i} aria-hidden="true">{day}</span>)}{Array.from({ length: leading }, (_, i) => <span key={`blank-${i}`} />)}{Array.from({ length: days }, (_, i) => {
           const day = new Date(Date.UTC(month.getUTCFullYear(), month.getUTCMonth(), i + 1, 12)).toISOString().slice(0, 10);
-          const choosingEnd = !!stay.arrival && !stay.departure && day > stay.arrival;
+          const choosingEnd = choosing === "departure" && !!stay.arrival;
           const occupiedDay = occupied.some(b => day >= b.arrival && day < b.departure);
-          const blocked = occupied.some(b => choosingEnd ? overlaps({ arrival: stay.arrival, departure: day }, b) : day >= b.arrival && day < b.departure);
+          const blocked = occupiedDay || (choosingEnd && (day <= stay.arrival || occupied.some(b => conflictsWithOccupied({ arrival: stay.arrival, departure: day }, b))));
           const disabled = day < today || blocked || dateValue(day) > dateValue(today) + 730 * 86400000 || (choosingEnd && nights({ arrival: stay.arrival, departure: day }) > 365);
-          const selected = day === stay.arrival || day === stay.departure;
+          const selected = !occupiedDay && (day === stay.arrival || day === stay.departure);
           const between = stay.arrival && stay.departure && day > stay.arrival && day < stay.departure;
           return <button type="button" key={day} data-date={day} disabled={disabled} aria-label={`${formatDay(day, lang)}${occupiedDay ? words(lang, ", reservert", ", reserved") : ""}`} aria-pressed={selected} className={`${occupiedDay ? "occupied" : ""} ${selected ? "selected" : ""} ${between ? "between" : ""} ${day === today ? "today" : ""}`} onClick={() => select(day)}>{i + 1}</button>;
         })}</div>
@@ -55,6 +55,7 @@ export function BookingForm() {
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
   const [stay, setStay] = useState<Stay>({ arrival: "", departure: "" });
+  const [choosing, setChoosing] = useState<"arrival" | "departure">("arrival");
   const [guests, setGuests] = useState(2);
   const [linenTowels, setLinenTowels] = useState(0);
   const quote = rentalQuote(stay, linenTowels, guests, availability?.nightlyPrices);
@@ -84,7 +85,7 @@ export function BookingForm() {
   }, []);
   const changeStep = (next: number) => { setStep(next); setError(""); requestAnimationFrame(() => formHeading.current?.focus()); };
   function datesValid() {
-    try { validateStay(stay); if (availability?.unavailable.some(b => overlaps(b, stay))) throw new Error("unavailable"); if (quote.total === null) throw new Error("pricing"); return true; }
+    try { validateStay(stay); if (availability?.unavailable.some(b => conflictsWithOccupied(stay, b))) throw new Error("unavailable"); if (quote.total === null) throw new Error("pricing"); return true; }
     catch (e) { setError((e as Error).message); return false; }
   }
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -114,9 +115,9 @@ export function BookingForm() {
         {availability && !availability.ready && <p role="status" className="bk-error">{errorText("setup", lang)}</p>}
         {step === 0 && <>
           <p>{w("Velg ankomst og avreise. Datoene reserveres først når vi har godkjent forespørselen.", "Choose arrival and departure. Dates are reserved only after we approve your enquiry.")}</p>
-          <div className="bk-invitation"><strong>{w("La fjelldrømmen bli virkelighet.", "Make your mountain escape a reality.")}</strong><span>{w("Velg datoene som passer, og planlegg et opphold skapt for dere.", "Choose your dates and plan a stay made for you.")}</span></div><div className="bk-fields bk-dates"><label>{w("Ankomst", "Arrival")}<input type="date" required min={availability?.today ?? osloToday()} value={stay.arrival} onChange={e => { setError(""); setStay({ arrival: e.target.value, departure: "" }); }} /></label><label>{w("Avreise", "Departure")}<input type="date" required min={stay.arrival || availability?.today || osloToday()} value={stay.departure} onChange={e => { setError(""); setStay({ ...stay, departure: e.target.value }); }} /></label></div>
+          <div className="bk-invitation"><strong>{w("La fjelldrømmen bli virkelighet.", "Make your mountain escape a reality.")}</strong><span>{w("Velg datoene som passer, og planlegg et opphold skapt for dere.", "Choose your dates and plan a stay made for you.")}</span></div><div className="bk-fields bk-dates">{(["arrival", "departure"] as const).map(field => <div className="bk-date-field" key={field}><span>{field === "arrival" ? w("Ankomst", "Arrival") : w("Avreise", "Departure")}</span><button type="button" aria-label={`${field === "arrival" ? w("Ankomst", "Arrival") : w("Avreise", "Departure")}: ${formatDay(stay[field], lang)}. ${w("Velg i kalenderen", "Choose on the calendar")}`} aria-pressed={choosing === field} disabled={!availability?.ready || (field === "departure" && !stay.arrival)} onClick={() => { setError(""); setChoosing(field); }}>{stay[field] ? formatDay(stay[field], lang) : w("Velg i kalenderen", "Choose on the calendar")} <span aria-hidden="true">▦</span></button></div>)}</div>
           <p className="bk-arrival-times">{w("Innsjekk fra kl. 16.00 · Utsjekk senest kl. 12.00", "Check-in from 16:00 · Check-out by 12:00")}</p>
-          {availability?.ready && <Calendar stay={stay} onChange={setStay} occupied={availability.unavailable} today={availability.today} lang={lang} onError={setError} />}
+          {availability?.ready && <Calendar stay={stay} onChange={setStay} occupied={availability.unavailable} today={availability.today} lang={lang} onError={setError} choosing={choosing} setChoosing={setChoosing} />}
           <div className="bk-fields"><div className="bk-guest-field"><label>{w("Antall gjester", "Number of guests")}<select value={guests} onChange={e => { const value = Number(e.target.value); setGuests(value); setLinenTowels(Math.min(linenTowels, value)); }}>{Array.from({ length: 29 }, (_, i) => <option key={i} value={i + 1}>{i + 1} {i === 0 ? w("gjest", "guest") : w("gjester", "guests")}</option>)}</select></label><small className="bk-guest-note">{w(`Ordinær pris: ${money(DAILY_RATE_NOK, lang)} per natt for inntil ${INCLUDED_GUESTS} gjester. Deretter +${money(EXTRA_GUEST_RATE_NOK, lang)} per ekstra gjest per natt.`, `Standard rate: ${money(DAILY_RATE_NOK, lang)} per night for up to ${INCLUDED_GUESTS} guests. Each extra guest adds ${money(EXTRA_GUEST_RATE_NOK, lang)} per night.`)}</small></div><label>{w("Anledning", "Occasion")}<select value={occasion} onChange={e => setOccasion(e.target.value)}><option value="private">{w("Familie og venner", "Family and friends")}</option><option value="company">{w("Firma / samling", "Company retreat")}</option><option value="celebration">{w("En spesiell anledning", "A special occasion")}</option></select></label></div>
         </>}
         {step === 1 && <><p>{w("Velg hvor mange gjester som ønsker sengetøy og håndklær samlet. Én pakke koster 350 kr per person.", "Choose how many guests would like the combined bed linen and towel package. It costs NOK 350 per person.")}</p>

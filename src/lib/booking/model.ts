@@ -26,7 +26,7 @@ export const finnReservations: Block[] = [
   { id: "finn-2026-11-27", arrival: "2026-11-27", departure: "2026-11-29", note: "Reservert via FINN", external: true },
   { id: "finn-2026-12-04", arrival: "2026-12-04", departure: "2026-12-06", note: "Reservert via FINN", external: true },
   { id: "finn-2026-12-18", arrival: "2026-12-18", departure: "2026-12-20", note: "Reservert via FINN", external: true },
-  { id: "finn-2026-12-23", arrival: "2026-12-23", departure: "2026-12-26", note: "Reservert via FINN", external: true },
+  { id: "finn-2026-12-23", arrival: "2026-12-23", departure: "2026-12-27", note: "Reservert via FINN", external: true },
   { id: "finn-2026-12-30", arrival: "2026-12-30", departure: "2027-01-01", note: "Reservert via FINN", external: true },
   { id: "owner-2027-01-12", arrival: "2027-01-12", departure: "2027-01-15", note: "Reservert av eier", external: true },
   { id: "owner-2027-03-11", arrival: "2027-03-11", departure: "2027-03-13", note: "Reservert av eier", external: true },
@@ -110,6 +110,8 @@ export function rentalQuote(stay: Stay, linenTowelsCount = 0, guests = 2, prices
   return { currency: "NOK", lines, rentalTotal, extraGuests, extraGuestRate: EXTRA_GUEST_RATE_NOK, guestSurchargePerNight, cleaningFee: CLEANING_FEE_NOK, linenTowelsCount, linenTowelsUnitPrice: LINEN_TOWELS_RATE_NOK, linenTowelsTotal, total: rentalTotal === null ? null : rentalTotal + CLEANING_FEE_NOK + linenTowelsTotal };
 }
 export function overlaps(a: Stay, b: Stay): boolean { return a.arrival < b.departure && b.arrival < a.departure; }
+// Neither guest date may fall on an occupied calendar day.
+export function conflictsWithOccupied(stay: Stay, occupied: Stay): boolean { return stay.arrival < occupied.departure && occupied.arrival <= stay.departure; }
 export function validateStay(stay: Stay): void {
   if (!isDate(stay.arrival) || !isDate(stay.departure) || stay.arrival < osloToday() || nights(stay) < 1 || nights(stay) > 365 || dateValue(stay.departure) > dateValue(osloToday()) + 730 * 86400000) throw new BookingError("dates");
 }
@@ -119,6 +121,10 @@ export function unavailable(state: BookingState): Stay[] {
 export function assertAvailable(state: BookingState, stay: Stay, exceptId?: string) {
   const occupied = [...finnReservations, ...state.blocks, ...state.bookings.filter(b => b.status === "accepted" && b.id !== exceptId)];
   if (occupied.some(other => overlaps(stay, other))) throw new BookingError("unavailable", 409);
+}
+export function assertGuestAvailable(state: BookingState, stay: Stay, exceptId?: string) {
+  const occupied = [...finnReservations, ...state.blocks, ...state.bookings.filter(b => b.status === "accepted" && b.id !== exceptId)];
+  if (occupied.some(other => conflictsWithOccupied(stay, other))) throw new BookingError("unavailable", 409);
 }
 export function updateOwnerStay(state: BookingState, update: Record<string, unknown>) {
   const id = typeof update.id === "string" ? update.id : "";
@@ -171,7 +177,7 @@ export function changeStatus(state: BookingState, booking: Booking, status: Book
   if (booking.status === status) return;
   const allowed: Record<BookingStatus, BookingStatus[]> = { pending: ["accepted", "declined"], accepted: ["cancelled"], declined: [], cancelled: [] };
   if (!allowed[booking.status].includes(status)) throw new BookingError("status", 409);
-  if (status === "accepted") { validateStay(booking); assertAvailable(state, booking, booking.id); }
+  if (status === "accepted") { validateStay(booking); assertGuestAvailable(state, booking, booking.id); }
   booking.status = status;
   booking.updatedAt = new Date().toISOString();
 }

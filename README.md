@@ -98,7 +98,9 @@ See [booking setup](docs/booking-setup.md) for local preview, production mainten
 and tests. The booking calendar does not synchronize with FINN.
 The owner-provided FINN reservations for November and December 2026 and owner
 holds for 12–14 January and 11–12 March 2027 are recorded as unavailable nights
-in the booking calendar, including the last listed night. The former 22–23
+in the booking calendar, including 23–26 December. Guests select both dates in
+the calendar; occupied dates cannot be arrival or departure dates, and stays
+cannot cross occupied dates. The former 22–23
 January hold has been removed. New reservations must still be added manually.
 
 ## Private statistics

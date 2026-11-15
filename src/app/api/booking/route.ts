@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
-import { BookingError, validOwnerPassword, assertAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, updateOwnerStay, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
+import { BookingError, validOwnerPassword, assertAvailable, assertGuestAvailable, changeStatus, finnReservations, osloToday, rentalQuote, setNightlyPrices, unavailable, updateOwnerStay, validateRequest, validateStay, type Booking, type BookingStatus } from "@/lib/booking/model";
 import { newPasswordAuth, ownerPasswordMatches, tokenHash } from "@/lib/booking/auth";
 import { configured, isLocalPreview, mutate, readState } from "@/lib/booking/store";
 import { body, cookieName, deliverNotices, equal, failure, guard, guestOrOwner, guestToken, notify, ownerOnly, ownerSession, publicBooking, rateLimit, reply, sendOwnerMail, session, withSession } from "@/lib/booking/server";
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
       const saved = await mutate(state => {
         const duplicate = state.bookings.find(b => b.requestKey === details.requestKey);
         if (duplicate) { if (duplicate.email !== details.email) throw new BookingError("details"); return duplicate; }
-        assertAvailable(state, details);
+        assertGuestAvailable(state, details);
         const { message, ...fields } = details;
         const pricing = rentalQuote(fields, fields.linenTowels, fields.guests, state.nightlyPrices);
         if (pricing.total === null) throw new BookingError("pricing");
