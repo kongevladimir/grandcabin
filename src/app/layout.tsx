@@ -10,8 +10,8 @@ import "./mobile.css";
 export const metadata: Metadata = {
   title: "Turu Crown · Sammen på Turufjell",
   description: site.description,
-  // Remove this restriction when the owner is ready to launch.
-  robots: { index: false, follow: false },
+  metadataBase: new URL("https://turucrown.no"),
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

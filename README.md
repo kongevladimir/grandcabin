@@ -143,8 +143,21 @@ style from its public base, run `node scripts/generate-regional-map-style.mjs`.
 - `public/images/` — photographs from the property listing.
 - `AGENTS.md` — guidance for the owner's agent.
 
-Search indexing is disabled in `src/app/layout.tsx` until the owner is ready to
-launch.
+Public pages allow indexing and following links through `src/app/layout.tsx`.
+Each public page declares its own canonical URL under `https://turucrown.no`;
+the root layout supplies only the base URL so private pages do not inherit a
+homepage canonical. Admin, owner, password recovery/reset and private conversation
+pages retain explicit `noindex, nofollow`. `public/robots.txt` permits crawling,
+including crawling excluded pages to read their noindex tags.
+
+After building, run `npm start -- --port 3001` and, in another terminal,
+`npm run test:indexing -- http://localhost:3001` to check the rendered HTML and
+HTTP headers for every public and private page, redirects and robots.txt.
+To deploy an approved fix, commit and push it to the connected GitHub branch;
+Cloudflare runs the configured build and deploy commands below. A successful
+build alone does not verify live indexing: run the same indexing check against
+`https://turucrown.no` after deployment, then use Search Console's live URL
+inspection to confirm the restriction is gone and request indexing.
 
 ## Cloudflare deployment
 
