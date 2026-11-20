@@ -37,6 +37,7 @@ for (const [from, to] of [['/login', '/admin'], ['/concepts/retreat/cabin', '/ca
 const robots = await fetch(new URL('/robots.txt', origin));
 assert.equal(robots.status, 200, 'robots.txt');
 const rules = (await robots.text()).replace(/#.*$/gm, '');
+assert.match(rules, /^Sitemap:\s*https:\/\/turucrown\.no\/sitemap\.xml\s*$/m, 'robots.txt sitemap declaration');
 // Check rules applicable to Google, ignoring separate AI crawler policies.
 let agents = [], directivesStarted = false;
 for (const line of rules.split(/\r?\n/)) {
@@ -54,4 +55,14 @@ for (const line of rules.split(/\r?\n/)) {
     }
   }
 }
-console.log(`PASS: ${publicPages.length} public pages allow indexing with correct canonicals; ${privatePages.length} private pages and 404 remain excluded; redirects and robots.txt checked on ${origin}.`);
+const sitemap = await fetch(new URL('/sitemap.xml', origin), { redirect: 'manual' });
+assert.equal(sitemap.status, 200, 'sitemap.xml');
+assert.match(sitemap.headers.get('content-type') || '', /^(application|text)\/xml\b/i, 'sitemap XML content type');
+const xml = await sitemap.text();
+assert.match(xml, /^<\?xml\s/);
+assert.match(xml, /<urlset\s+xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+assert.match(xml, /<\/urlset>\s*$/);
+const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+const expected = publicPages.map(path => new URL(path, canonicalOrigin).href);
+assert.deepEqual(locations.toSorted(), expected.toSorted(), 'sitemap must list all public canonicals exactly once and no private URLs');
+console.log(`PASS: ${publicPages.length} public pages allow indexing with correct canonicals; ${privatePages.length} private pages and 404 remain excluded; redirects, robots.txt and sitemap XML checked on ${origin}.`);

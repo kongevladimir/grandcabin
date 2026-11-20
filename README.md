@@ -150,9 +150,17 @@ homepage canonical. Admin, owner, password recovery/reset and private conversati
 pages retain explicit `noindex, nofollow`. `public/robots.txt` permits crawling,
 including crawling excluded pages to read their noindex tags.
 
+`src/app/sitemap.ts` generates the static `/sitemap.xml` metadata route with
+the 12 public canonical pages, including the public privacy policy. It uses
+only `https://turucrown.no` URLs and excludes admin, owner, password, login,
+private conversations and retired redirects. `public/robots.txt` advertises
+the sitemap while retaining its crawling rules. No guessed modification dates
+are included. Update the sitemap when adding or removing public indexable pages.
+
 After building, run `npm start -- --port 3001` and, in another terminal,
 `npm run test:indexing -- http://localhost:3001` to check the rendered HTML and
-HTTP headers for every public and private page, redirects and robots.txt.
+HTTP headers for every public and private page, redirects, robots.txt and the
+sitemap's XML, content type and exact public URL list.
 To deploy an approved fix, commit and push it to the connected GitHub branch;
 Cloudflare runs the configured build and deploy commands below. A successful
 build alone does not verify live indexing: run the same indexing check against
