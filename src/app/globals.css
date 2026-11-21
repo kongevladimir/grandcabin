@@ -2410,3 +2410,5 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-meeting-equipment-copy > .retreat-meeting-capacity-note { margin-top: 1.5rem; color: #67717c; font-size: .9rem; font-weight: 400; line-height: 1.75; letter-spacing: normal; }
 
 .retreat-detail-page[data-page="cabin"] :is(.retreat-cabin-intro-copy, .retreat-detail-text) a { text-decoration: underline; text-underline-offset: .2em; }
+
+.retreat-detail-page[data-page="bedrooms"] :is(.retreat-detail-text, .retreat-master-description-body, .retreat-suite-closing-copy) a { text-decoration: underline; text-underline-offset: .2em; }

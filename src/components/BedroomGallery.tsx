@@ -47,7 +47,7 @@ export function BedroomGallery({ language }: { language: Language }) {
   return (
     <section className="retreat-suite-gallery" aria-label={language === "nb" ? "Bildegalleri fra soverommene" : "Bedroom photo gallery"} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="retreat-suite-gallery-heading">
-        <p>{language === "nb" ? "ROM · TURU CROWN" : "ROOMS · TURU CROWN"}</p>
+        <p>{language === "nb" ? "10 SEPARATE OVERNATTINGSROM · TURU CROWN" : "10 SEPARATE SLEEPING ROOMS · TURU CROWN"}</p>
         <h2>{language === "nb" ? "Rom for å falle til ro" : "Rooms to return to"}</h2>
         <span>{language === "nb" ? "Se soverommene, fra luftige dobbeltsuiter til lune rom for familien." : "Explore the bedrooms, from airy double suites to inviting rooms for families."}</span>
       </div>
