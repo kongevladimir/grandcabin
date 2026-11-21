@@ -2261,7 +2261,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   text-shadow: 0 2px 6px rgb(0 0 0 / 70%), 0 6px 24px rgb(0 0 0 / 35%);
 }
 .retreat-detail-page[data-page="cabin"] .retreat-cabin-video-copy h1 {
-  font-size: clamp(3.5rem, 7vw, 6.75rem);
+  font-size: var(--cabin-title-size);
   font-weight: 500;
   line-height: 1.02;
   letter-spacing: -.025em;
@@ -2408,3 +2408,5 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-meeting-links { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin-top: 1.5rem; color: #895d34; font-size: .85rem; }
 .retreat-meeting-links a, .retreat-meetings-intro-copy a { text-decoration: underline; text-underline-offset: .25em; }
 .retreat-meeting-equipment-copy > .retreat-meeting-capacity-note { margin-top: 1.5rem; color: #67717c; font-size: .9rem; font-weight: 400; line-height: 1.75; letter-spacing: normal; }
+
+.retreat-detail-page[data-page="cabin"] :is(.retreat-cabin-intro-copy, .retreat-detail-text) a { text-decoration: underline; text-underline-offset: .2em; }
