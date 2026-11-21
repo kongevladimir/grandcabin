@@ -1203,7 +1203,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-map-card small { margin-top: 1.1rem; color: #d8b687; font-size: .58rem; font-weight: 800; letter-spacing: .08em; }
 .retreat-directions-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(3rem, 6vw, 7rem); }
 .retreat-directions-copy > p, .retreat-floor-heading > p, .retreat-master-suite > div:last-child > p, .retreat-gathering-heading > p { color: #895d34; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
-.retreat-directions-copy h2, .retreat-floor-heading h2, .retreat-master-suite h2, .retreat-gathering-heading h2 { margin: 1rem 0 2.2rem; font-size: clamp(3rem, 5.5vw, 6.2rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
+.retreat-directions-copy h2, .retreat-floor-heading h2, .retreat-master-suite h2, .retreat-gathering-heading :is(h1, h2) { margin: 1rem 0 2.2rem; font-size: clamp(3rem, 5.5vw, 6.2rem); font-weight: 500; line-height: .93; letter-spacing: -.06em; }
 .retreat-direction-list article { display: grid; grid-template-columns: 2.5rem 1fr; border-top: 1px solid rgba(23,32,44,.25); padding: 1rem 0; }
 .retreat-direction-list article b { grid-row: 1 / 4; color: #895d34; font-size: .65rem; }
 .retreat-direction-list h3 { font-size: 1.05rem; font-weight: 700; }
@@ -1359,14 +1359,14 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) { .retreat-suite-slide { transition: none; } }
 .retreat-gathering-types { padding: clamp(6rem, 10vw, 10rem) clamp(1.4rem, 5vw, 5rem); background: #f2f0eb; }
 .retreat-gathering-heading { display: grid; grid-template-columns: .35fr 1.65fr; gap: 3rem; margin-bottom: 5rem; }
-.retreat-gathering-heading h2 { margin-top: 0; max-width: 1000px; }
+.retreat-gathering-heading :is(h1, h2) { margin-top: 0; max-width: 1000px; }
 .retreat-gathering-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .retreat-gathering-grid > article { background: #fff; }
 .retreat-gathering-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
 .retreat-gathering-image img { object-fit: cover; object-position: center; }
 .retreat-gathering-grid > article > div:last-child { padding: 2.3rem; }
 .retreat-gathering-grid > article > div:last-child > span { color: #bd8e57; font-size: .68rem; font-weight: 800; }
-.retreat-gathering-grid h3 { margin: .8rem 0 1rem; font-size: 2.4rem; font-weight: 500; }
+.retreat-detail-page[data-page="meetings"] .retreat-gathering-grid h2 { margin: .8rem 0 1rem; font-family: var(--serif); font-size: 2.4rem; font-weight: 500; line-height: 1.2; letter-spacing: -.5px; }
 .retreat-gathering-grid p { color: #67717c; line-height: 1.75; }
 .retreat-gathering-grid ul { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
 .retreat-gathering-grid li { border: 1px solid #c9c6bf; border-radius: 999px; padding: .55rem .8rem; font-size: .66rem; font-weight: 700; }
@@ -1855,7 +1855,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-detail-story-copy h2,
   .retreat-turufjell-about-copy h2,
   .retreat-suite-editorial h2,
-  .retreat-gathering-heading h2,
+  .retreat-gathering-heading :is(h1, h2),
   .retreat-floor-heading h2,
   .retreat-master-suite h2,
   .retreat-master-description-heading h2,
@@ -2401,3 +2401,10 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .consent-actions button:focus-visible, .consent-settings-link:focus-visible { outline: 3px solid #bd8650; outline-offset: 2px; }
 .consent-settings-link { display: inline-block; width: fit-content; border: 0; border-bottom: 1px solid currentColor; padding: .15rem 0; color: inherit; background: transparent; font: inherit; text-align: left; cursor: pointer; }
 .retreat-footer-contact .consent-settings-link { margin-top: .5rem; font: 0.9rem/1.5 Arial, sans-serif; }
+
+/* Keep the meetings SEO copy within the existing editorial layout. */
+.retreat-detail-page[data-page="meetings"] .retreat-gathering-heading > div { min-width: 0; }
+.retreat-detail-page[data-page="meetings"] .retreat-meeting-lead { max-width: 850px; color: #67717c; font-size: 1rem; line-height: 1.8; }
+.retreat-meeting-links { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin-top: 1.5rem; color: #895d34; font-size: .85rem; }
+.retreat-meeting-links a, .retreat-meetings-intro-copy a { text-decoration: underline; text-underline-offset: .25em; }
+.retreat-meeting-equipment-copy > .retreat-meeting-capacity-note { margin-top: 1.5rem; color: #67717c; font-size: .9rem; font-weight: 400; line-height: 1.75; letter-spacing: normal; }
