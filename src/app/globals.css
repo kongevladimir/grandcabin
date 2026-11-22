@@ -2380,6 +2380,68 @@ footer p { margin: 15px 0 0; font-size: 12px; }
   .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay .retreat-turufjell-about-image { grid-area: auto; }
   .retreat-detail-page[data-page="turufjell"] .retreat-turufjell-about-overlay .retreat-turufjell-about-copy { grid-area: auto; width: auto; padding-block: 3.5rem; }
 }
+@media (min-width: 901px) {
+  .retreat-detail-page[data-page="location"] .retreat-detail.retreat-detail-location {
+    --location-photo-width: max(36rem, calc((100svh - 124px) * 4 / 3));
+    display: grid;
+    grid-template-columns: min(100%, var(--location-photo-width));
+    justify-content: center;
+    align-items: end;
+    min-height: 0;
+    padding-bottom: 1rem;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-image {
+    grid-area: 1 / 1;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy {
+    position: static;
+    grid-area: 1 / 1;
+    min-width: 0;
+    padding: .35rem clamp(1rem, 2.5vw, 2.5rem) .65rem;
+    background: linear-gradient(0deg, rgb(10 17 27 / 96%), rgb(10 17 27 / 72%) 78%, transparent);
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy h1 {
+    max-width: none;
+    margin: 0 0 .45rem;
+    font-size: clamp(2rem, 5.5svh, 4.5rem);
+    line-height: 1.05;
+    overflow-wrap: break-word;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy h1 span {
+    display: inline;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy h1 span + span::before {
+    content: " ";
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-text ul {
+    margin-top: .6rem;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-text > span {
+    line-height: 1.5;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-text li {
+    padding-block: .45rem;
+  }
+}
+@media (min-width: 901px) and (max-height: 700px) {
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy {
+    padding-inline: 1rem;
+  }
+
+  .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-text li {
+    padding-inline: .25rem;
+    font-size: .75rem;
+    letter-spacing: .01em;
+  }
+}
 @media (max-width: 900px) {
   .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-image { aspect-ratio: 4 / 3; }
   .retreat-detail-page[data-page="location"] .retreat-detail-location .retreat-detail-copy { padding-block: 3.5rem 2rem; }
