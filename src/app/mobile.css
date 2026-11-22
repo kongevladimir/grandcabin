@@ -206,3 +206,126 @@
   .retreat-header-pages .retreat-actions > a.retreat-booking-link { font-size: .55rem; padding-inline: .5rem; }
   .retreat-header-pages nav { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Supporting copy and controls on public pages. Display typography has its own scale. */
+.retreat-detail-page[data-page="cabin"] .retreat-detail-copy .retreat-detail-text > span {
+  font-size: var(--cabin-body-size);
+  color: #525d68;
+  line-height: 1.65;
+}
+
+.retreat-turufjell-activities-grid article > p,
+.retreat-activity-guide-grid article > p,
+.retreat-activity-guide-sources > p,
+.retreat-detail-page[data-page="meetings"] .retreat-meeting-capacity-note {
+  font-size: 1.0625rem;
+  color: #49535c;
+  line-height: 1.65;
+}
+
+.retreat-detail-page[data-page] .retreat-detail-text li,
+.retreat-floor-grid :is(li, strong),
+.retreat-company-card > small,
+.retreat-map-card :is(span, small),
+.retreat-floor-plans-selector button span,
+.retreat-activity-guide-grid article > small {
+  font-size: .8125rem;
+  line-height: 1.5;
+  letter-spacing: .04em;
+}
+
+.retreat-floor-grid strong,
+.retreat-activity-guide-grid article > small,
+.retreat-activity-guide-sources a,
+.retreat-turufjell-activities-intro > p {
+  color: #704a29;
+}
+
+.retreat-company-card > small { color: #555d60; }
+
+.retreat-detail-footer > div > p,
+.retreat-turufjell-activities-intro > p,
+.retreat-organized-gallery-count,
+.retreat-suite-gallery-open > span,
+.retreat-craft-bathroom-controls,
+.retreat-cabin-gallery-navigation button.retreat-gallery-playback {
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.retreat-footer-booking a,
+.retreat-home-hero .retreat-hero-copy > a,
+.retreat-turufjell-activities-link,
+.retreat-turufjell-about-link a,
+.retreat-activity-guide-intro > a,
+.retreat-activity-guide-intro nav a,
+.retreat-activity-guide-sources a,
+.retreat-map-link,
+.retreat-distance-copy > a,
+.retreat-floor-plan-view figcaption button,
+.retreat-tour-caption a {
+  font-size: .875rem;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+.retreat-header-pages .retreat-actions > a.retreat-booking-link {
+  font-size: .9375rem;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+.retreat-header-pages .concept-language { font-size: .8125rem; }
+.retreat-header-pages .concept-language button:not(.active) { opacity: .8; }
+.retreat-floor-plans-selector button { font-size: 1rem; line-height: 1.4; }
+.retreat-tour-intro > div:last-child span { font-size: 1rem; line-height: 1.65; }
+
+/* Scope booking changes to the public form and its price summary. */
+.bk-layout:has(> form.bk-panel + .bk-summary) {
+  --bk-muted: #505d5b;
+}
+
+.bk-layout > form.bk-panel :is(
+  .bk-fields label, input:not([type="checkbox"]), select, textarea,
+  .bk-arrival-times, .bk-guest-note, .bk-booking-rules, .bk-consent,
+  .bk-required-note, .bk-note, .bk-no-payment, .bk-extra p, .bk-error
+),
+.bk-layout > form.bk-panel > p { font-size: 1rem; line-height: 1.6; }
+
+.bk-layout > form.bk-panel :is(.bk-steps button, .bk-calendar-toolbar, .bk-days button) {
+  font-size: .9375rem;
+  line-height: 1.4;
+}
+
+.bk-layout > form.bk-panel :is(.bk-weekday, .bk-legend, .bk-steps button span) {
+  font-size: .8125rem;
+  line-height: 1.4;
+}
+
+.bk-layout > form.bk-panel .bk-steps li { min-width: 0; }
+.bk-layout > form.bk-panel .bk-invitation span { font-size: .9375rem; line-height: 1.6; }
+.bk-layout > form.bk-panel .bk-controls :is(.bk-primary, .bk-secondary) {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.bk-layout > form.bk-panel + .bk-summary :is(
+  .bk-summary-copy > p:not(.bk-kicker), .bk-summary-facts,
+  dl, .bk-total > span, .bk-total > small, .bk-price-row,
+  .bk-price-row.grand span, .bk-deposit p, .bk-contact
+) { font-size: .9375rem; line-height: 1.5; }
+
+.bk-layout > form.bk-panel + .bk-summary .bk-kicker { font-size: .8125rem; }
+.bk-layout > form.bk-panel + .bk-summary .bk-summary-facts,
+.bk-layout > form.bk-panel + .bk-summary .bk-price-row { flex-wrap: wrap; gap: .35rem .75rem; }
+.bk-layout > form.bk-panel + .bk-summary .bk-contact a { font-size: 1rem; }
+
+@media (max-width: 600px) {
+  .retreat-detail-page[data-page="cabin"] .retreat-detail-copy .retreat-detail-text > span { font-size: 1.0625rem; }
+  .retreat-turufjell-activities-grid article > p,
+  .retreat-activity-guide-grid article > p,
+  .retreat-activity-guide-sources > p,
+  .retreat-detail-page[data-page="meetings"] .retreat-meeting-capacity-note { font-size: 1rem; }
+  .retreat-floor-plans-selector button { font-size: .875rem; overflow-wrap: anywhere; }
+  .retreat-footer-contact a { white-space: normal; }
+}
