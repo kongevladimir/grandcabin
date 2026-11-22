@@ -2412,3 +2412,7 @@ footer p { margin: 15px 0 0; font-size: 12px; }
 .retreat-detail-page[data-page="cabin"] :is(.retreat-cabin-intro-copy, .retreat-detail-text) a { text-decoration: underline; text-underline-offset: .2em; }
 
 .retreat-detail-page[data-page="bedrooms"] :is(.retreat-detail-text, .retreat-master-description-body, .retreat-suite-closing-copy) a { text-decoration: underline; text-underline-offset: .2em; }
+
+.retreat-detail-page[data-page="turufjell"] :is(.retreat-detail-text, .retreat-turufjell-plan) a { text-decoration: underline; text-underline-offset: .2em; }
+.retreat-turufjell-plan h3 { margin: 1.6rem 0 .75rem; font-size: 1.4rem; font-weight: 500; }
+.retreat-turufjell-plan h3:first-child { margin-top: 0; }

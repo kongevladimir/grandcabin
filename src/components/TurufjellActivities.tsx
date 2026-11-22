@@ -6,8 +6,8 @@ type ActivityIcon = "ski" | "alpine" | "tour" | "hike" | "fishing" | "cycling" |
 const activities: { icon: ActivityIcon; nb: { title: string; text: string }; en: { title: string; text: string } }[] = [
   {
     icon: "ski",
-    nb: { title: "Langrenn", text: "Start turen rett utenfor hytta i Turufjells preparerte spor. Rundløyper passer både små og store, mens den 125 km lange Eventyrløypa leder via Nesbyen og Golsfjellet til Hemsedals løypenett på rundt 250 km." },
-    en: { title: "Cross-country skiing", text: "Set out from the cabin onto Turufjell’s groomed trails. Sheltered loops suit children and adults, while the 125 km Eventyrløypa leads via Nesbyen and Golsfjellet towards Hemsedal’s network of around 250 km of trails." },
+    nb: { title: "Langrenn", text: "Finn preparerte spor og rundløyper nær hytta for både små og store. Eventyrløypa er en regional rute på 125 km via Nesbyen og Golsfjellet mot Hemsedal, som har et eget løypenett på rundt 250 km. Dette er en lengre fjelltur, ikke en kontinuerlig preparert lokal familieløype. Sjekk dagens løypestatus før turen." },
+    en: { title: "Cross-country skiing", text: "Find groomed trails and local loops near the cabin for children and adults. Eventyrløypa is a regional 125 km route via Nesbyen and Golsfjellet towards Hemsedal, which has its own network of around 250 km. It is a longer mountain journey, rather than a continuously groomed local family trail. Check current trail conditions before setting out." },
   },
   {
     icon: "alpine",
@@ -26,8 +26,8 @@ const activities: { icon: ActivityIcon; nb: { title: string; text: string }; en:
   },
   {
     icon: "fishing",
-    nb: { title: "Fiske & jakt", text: "Mer enn 30 fiskevann gjør det lett å finne et stille sted ved vannet. Det finnes også mulighet for jakt i Flå-området. Jakt- og Fiskesenteret i Flå tilbyr kurs og opplevelser." },
-    en: { title: "Fishing & hunting", text: "More than 30 fishing lakes make it easy to find a quiet spot by the water. Hunting is also possible in the Flå area. The Hunting and Fishing Centre in Flå offers courses and experiences." },
+    nb: { title: "Fiske & jakt", text: "Det større området til Flå Østre Grunneierlag rommer over 30 fiskevann. Sjekk fiskekort og lokale vilkår før turen. Det finnes også jaktmuligheter i Flå-området, og Jakt- og Fiskesenteret i Flå tilbyr egne kurs og opplevelser." },
+    en: { title: "Fishing & hunting", text: "The wider Flå Østre Grunneierlag area contains more than 30 fishing lakes. Check fishing permits and local conditions before your trip. Hunting opportunities are also available in the Flå area, while the Hunting and Fishing Centre in Flå offers its own courses and experiences." },
   },
   {
     icon: "cycling",
@@ -75,7 +75,7 @@ export function TurufjellActivities({ language }: { language: Language }) {
       <div className="retreat-turufjell-activities-intro">
         <p>{language === "nb" ? "OPPLEVELSER HELE ÅRET" : "EXPERIENCES THROUGH THE SEASONS"}</p>
         <h2 id="turufjell-activities-title">{language === "nb" ? "Hva kan dere gjøre?" : "What is there to do?"}</h2>
-        <span>{language === "nb" ? "Fra aktive dager på fjellet til gode pauser sammen – Turufjell og Flå gir dere friheten til å fylle oppholdet på deres egen måte." : "From active days in the mountains to unhurried moments together, Turufjell and Flå let you shape the stay your way."}</span>
+        <span>{language === "nb" ? "Med Turu Crown som base kan dere velge vinterens skiopplevelser, sommerens og høstens turer eller aktiviteter med familien. Tilbudene avhenger av sesong, vær og driftsforhold. Attraksjoner, kafé og andre lokale tilbud drives av eksterne aktører og inngår ikke i leien av Turu Crown." : "With Turu Crown as your base, choose winter skiing, summer and autumn outings or family activities. Availability depends on the season, weather and operating conditions. Attractions, the café and other local services are run by external providers and are not included in the Turu Crown rental."}</span>
       </div>
       <div className="retreat-turufjell-activities-grid">
         {activities.map((activity) => {
@@ -83,7 +83,7 @@ export function TurufjellActivities({ language }: { language: Language }) {
           return <article className={activity.icon === "calm" ? "retreat-turufjell-activity-calm" : undefined} key={activity.icon}><ActivityIcon name={activity.icon} /><h3>{copy.title}</h3><p>{copy.text}</p></article>;
         })}
       </div>
-      <div className="retreat-turufjell-activities-links"><Link className="retreat-turufjell-activities-link" href="/turufjell/activities">{language === "nb" ? "SE ALLE VINTER- OG SOMMERAKTIVITETER" : "SEE ALL WINTER AND SUMMER ACTIVITIES"} →</Link></div>
+      <div className="retreat-turufjell-activities-links"><Link className="retreat-turufjell-activities-link" href="/turufjell/activities">{language === "nb" ? "Se vinter- og sommeraktiviteter" : "Explore winter and summer activities"}</Link></div>
     </section>
   );
 }
